@@ -1,5 +1,7 @@
 ﻿namespace FamousLakesQuiz;
+
 public record Answer(IEnumerable<string> Answers, int index);
+
 public enum QuestionType
 {
     Text,
@@ -18,7 +20,7 @@ public abstract class Question : IEquatable<Question>, IComparable<Question>
     public QuestionType Type { get; init; }
     public string Name { get; init; } = String.Empty;
     public Difficulty Difficulty { get; init; }
-#pragma warning disable
+
     public int CompareTo(Question other)
     {
         return (int)other.Difficulty.CompareTo((int)Difficulty);
@@ -27,7 +29,6 @@ public abstract class Question : IEquatable<Question>, IComparable<Question>
     {
         return other.Name == Name;
     }
-#pragma warning enable
 }
 public class TextQuestion : Question
 {
