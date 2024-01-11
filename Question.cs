@@ -4,8 +4,8 @@ public record Answer(IEnumerable<string> Answers, int index);
 
 public enum QuestionType
 {
-    Text,
-    Map
+    TEXT,
+    MAP
 }
 
 public enum Difficulty
@@ -32,9 +32,6 @@ public abstract class Question : IEquatable<Question>, IComparable<Question>
 }
 public class TextQuestion : Question
 {
-    public QuestionType Type { get; init; }
-    public string Name { get; init; }
-    public Difficulty Difficulty { get; init; }
-    public string Q { get; set; }  
+    public string Q { get; set; } = string.Empty;
     public Answer A { get; set; }
 }
