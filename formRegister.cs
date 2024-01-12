@@ -6,6 +6,7 @@ public partial class formRegister : Form
     {
         InitializeComponent();
         Resize += FormRegister_Resize;
+        Controls.OfType<TextBox>().ToList().CreateEquidistantIntervals(10);
     }
 
     public formRegister(IEnumerable<DataContextTag> context) : this()
@@ -16,7 +17,7 @@ public partial class formRegister : Form
             {
                 if ((string)dct.data == "") continue;
                 if (c.PlaceholderText.ToLower() != dct.tag) continue;
-                c.PlaceholderText = (string)dct.data;
+                c.Text = (string)dct.data;
             }
         }
     }
@@ -30,4 +31,27 @@ public partial class formRegister : Form
         btnRegister.Center()();
     }
 
+    private void btnRegister_Click(object sender, EventArgs e)
+    {
+        List<(string, RegBoxType)> deets = new()
+        {
+            // Fields
+            (txtBoxEmail.Text, RegBoxType.EMAIL),
+            (txtBoxPassword.Text, RegBoxType.PASSWORD),
+            (txtBoxGender.Text, RegBoxType.GENDER),
+            (txtBoxDisplayName.Text, RegBoxType.DISPLAY),
+            (txtBoxDob.Text, RegBoxType.DOB)
+        };
+
+        // Encrypt
+
+    }
+    private enum RegBoxType
+    {
+        EMAIL,
+        PASSWORD,
+        DISPLAY,
+        GENDER,
+        DOB
+    }
 }

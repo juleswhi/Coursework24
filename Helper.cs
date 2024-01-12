@@ -27,4 +27,13 @@ internal static class Helper
             control.Location = new((formMain.ChildForm!.Width / 2) - (int)(0.5 * control.Width), control.Location.Y);
         };
     }
+
+    public static void CreateEquidistantIntervals<T>(this List<T> controls, float distance, int index = 0) where T : Control
+    {
+        if (index >= controls.Count() - 1) return;
+        var bottom = controls[index].Bottom;
+        controls[index + 1].Top = bottom + (int)distance;
+
+        controls.CreateEquidistantIntervals(distance, index++);
+    }
 }
