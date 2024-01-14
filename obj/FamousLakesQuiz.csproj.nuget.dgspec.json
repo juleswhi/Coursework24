@@ -1,36 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\i hate windows\\Documents\\GitHub\\coursework-huh\\FamousLakesQuiz.csproj": {}
+    "/home/jules/coursework-huh/FamousLakesQuiz.csproj": {}
   },
   "projects": {
-    "C:\\Users\\i hate windows\\Documents\\GitHub\\coursework-huh\\FamousLakesQuiz.csproj": {
+    "/home/jules/coursework-huh/FamousLakesQuiz.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\i hate windows\\Documents\\GitHub\\coursework-huh\\FamousLakesQuiz.csproj",
+        "projectUniqueName": "/home/jules/coursework-huh/FamousLakesQuiz.csproj",
         "projectName": "FamousLakesQuiz",
-        "projectPath": "C:\\Users\\i hate windows\\Documents\\GitHub\\coursework-huh\\FamousLakesQuiz.csproj",
-        "packagesPath": "C:\\Users\\i hate windows\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\i hate windows\\Documents\\GitHub\\coursework-huh\\obj\\",
+        "projectPath": "/home/jules/coursework-huh/FamousLakesQuiz.csproj",
+        "packagesPath": "/home/jules/.nuget/packages/",
+        "outputPath": "/home/jules/coursework-huh/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\i hate windows\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/jules/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net7.0-windows"
+          "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0-windows7.0": {
-            "targetAlias": "net7.0-windows",
+          "net7.0": {
+            "targetAlias": "net7.0",
             "projectReferences": {}
           }
         },
@@ -41,8 +35,8 @@
         }
       },
       "frameworks": {
-        "net7.0-windows7.0": {
-          "targetAlias": "net7.0-windows",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "dependencies": {
             "BCrypt": {
               "target": "Package",
@@ -64,15 +58,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.14, 7.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.linux-x64",
+              "version": "[7.0.14, 7.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.14, 7.0.14]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
-            },
-            "Microsoft.WindowsDesktop.App.WindowsForms": {
-              "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.100/RuntimeIdentifierGraph.json"
         }
       }
     }

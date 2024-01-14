@@ -1,5 +1,4 @@
 ﻿using static FamousLakesQuiz.Helper;
-
 namespace FamousLakesQuiz;
 
 public partial class formLogin : Form
