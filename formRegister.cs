@@ -6,29 +6,29 @@ public partial class formRegister : Form
     {
         InitializeComponent();
         Resize += FormRegister_Resize;
-        Controls.OfType<TextBox>().ToList().CreateEquidistantIntervals(10);
     }
 
-    public formRegister(IEnumerable<DataContextTag> context) : this()
+    private void UseContext(IEnumerable<object> context) 
     {
-        foreach (var c in Controls.OfType<TextBox>())
+        var dcts = context.ToDCT();
+
+        foreach(var dct in dcts)
         {
-            foreach (var dct in context)
-            {
-                if ((string)dct.data == "") continue;
-                if (c.PlaceholderText.ToLower() != dct.tag) continue;
-                c.Text = (string)dct.data;
-            }
+            var control = Controls.OfType<TextBox>().FindTag(dct.tag);
+            if (control is null) continue;
+
+            (control as TextBox)!.PlaceholderText = (string)dct.data;
         }
+
     }
 
     private void FormRegister_Resize(object? sender, EventArgs e)
     {
         foreach (var c in Controls.OfType<TextBox>())
         {
-            c.Center()();
+            c.Center()(X);
         }
-        btnRegister.Center()();
+        btnRegister.Center()(X);
     }
 
     private void btnRegister_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
-﻿namespace FamousLakesQuiz;
+﻿using static System.Reflection.BindingFlags;
+namespace FamousLakesQuiz;
 
 public partial class formMain : Form
 {
@@ -7,24 +8,26 @@ public partial class formMain : Form
     public formMain()
     {
         InitializeComponent();
-        Activate<formLogin>();
+        Activate<formLogin>(new DataContextTag[]
+        {
+            new("Test", "email"),
+        });
     }
 
     public void Activate<T>(params DataContextTag[] context) where T : Form, new()
     {
         // Reflection 
         Type t = typeof(T);
-        var ctors = t.GetConstructors();
-        var contextConstructor = ctors.Where(x => x.GetParameters().Where(x => x.Name == "context").Count() != 0).Take(0);
+        var methods = t.GetMethod("UseContext");
 
-        // If found constructor exists and there is actually context
-        if(contextConstructor is not null && context.Length > 0)
+        // If method exists fr
+        if(methods is not null)
         {
-            ChildForm = _formFactory[(typeof(T), true)](context.ToList());
+            ChildForm = CreateForm<T>(context);
         } 
         else
         {
-            ChildForm = _formFactory[(typeof(T), false)](null);
+            ChildForm = new T();
         }
 
         // All the boring stuff to display the form
@@ -41,15 +44,10 @@ public partial class formMain : Form
         Refresh();
     }
 
-    public void CreateForm<T>() where T : Form, new() {
-        Type t = typeof(T);
+    public Form CreateForm<T>(params object[] context) where T : Form, new() {
+        var form =  (T)Activator.CreateInstance(typeof(T), args: context)!;
+        form.GetType().GetMethod("UseContext", NonPublic | Instance)!.Invoke(form, context);
+        return form;
     }
 
-    Dictionary<(Type, bool),  Func<IEnumerable<DataContextTag>?, Form>> _formFactory = new()
-    {
-        { (typeof(formLogin), false), (_) => new formLogin() },
-        { (typeof(formLogin), true), (o) => new formLogin(o!) },
-        { (typeof(formRegister), false), (_) => new formRegister() },
-        { (typeof(formRegister), true), (o) => new formRegister(o!) },
-    };
 }

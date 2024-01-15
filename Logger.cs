@@ -1,4 +1,3 @@
-using static FamousLakesQuiz.SeverityType;
 namespace FamousLakesQuiz;
 
 public enum SeverityType {
@@ -9,7 +8,7 @@ public enum SeverityType {
 
 public static class Logger {
     private static readonly string _logPath = "logs.txt";
-    private static readonly string _defaultHeader = "";
+    private const string _defaultHeader = "";
 
     public enum SeverityType {
         GREEN,
@@ -17,15 +16,21 @@ public static class Logger {
         RED
     }
 
-    public static void Log(string message, SeverityType severity = GREEN) {
-        severity switch {
-            ORANGE => WriteToFile(message, "Medium Severity"),
-            RED => WriteToFile(message, "Maximum Severity"),
-            _ => WriteToFile(message),
+    public static void Log(string message) {
+    }
+
+    public static void Log(string message, SeverityType severity)
+    {
+
+        switch (severity) {
+            case SeverityType.ORANGE: WriteToFile(message, "Medium Severity"); break;
+            case SeverityType.RED: WriteToFile(message, "Maximum Severity"); break;
+            default: WriteToFile(message); break;
         };
     }
 
-    private void WriteToFile(string message, string header = _defaultHeader) {
+    private static void WriteToFile(string message, string header = _defaultHeader)
+    {
         using (StreamWriter sw = new(_logPath, false)) {
             sw.WriteLine($"{header}: {message}");
         }

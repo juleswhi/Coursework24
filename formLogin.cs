@@ -14,39 +14,37 @@ public partial class formLogin : Form
         };
     }
 
-    public formLogin(IEnumerable<DataContextTag> context) : this()
+    private void UseContext(IEnumerable<DataContextTag> context) 
     {
-        _context = context.ToList();
+        /*
+        var dcts = context.ToDCT();
 
-        foreach(var c in Controls.OfType<TextBox>())
+        foreach(var dct in dcts)
         {
-            if (c.PlaceholderText is null) continue;
-            foreach(var dct in context)
-            {
-                // Cast to string for value type
-                if (c.PlaceholderText.ToLower() != dct.tag) continue;
+            var control = Controls.OfType<TextBox>().FindTag(dct.tag);
+            if (control is null) continue;
 
-                c.PlaceholderText = (string)dct.data;
-            }
+            (control as TextBox)!.PlaceholderText = (string)dct.data;
         }
+        */
+
+        txtBoxEmail.PlaceholderText = "CONTEXT";
 
     }
 
     private void onResize(object? sender, EventArgs e)
     {
-        lblLogin.Center()();
-        txtBoxEmail.Center()();
-        txtBoxPassword.Center()();
-        btnLogin.Center()();
+        lblLogin.Center()(X);
+        txtBoxEmail.Center()(X);
+        txtBoxPassword.Center()(X);
+        btnLogin.Center()(X);
 
-        lblNewQuiz.Center()();
+        lblNewQuiz.Center()(X);
 
-        txtBoxEmailRegister.Center()();
+        txtBoxEmailRegister.Center()(X);
         txtBoxEmailRegister.Left -= 55;
 
-        btnRegister.Center()();
+        btnRegister.Center()(X);
         btnRegister.Left += 90;
-
-
     }
 }

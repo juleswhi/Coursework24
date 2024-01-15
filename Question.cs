@@ -12,7 +12,7 @@ public enum Difficulty
 {
     EASY,
     MEDIUM,
-    HARD
+    HARD 
 }
 
 public abstract class Question : IEquatable<Question>, IComparable<Question>
