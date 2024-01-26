@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\i hate windows\\Documents\\GitHub\\coursework-huh\\FamousLakesQuiz.csproj": {}
+    "C:\\Users\\i hate windows\\Documents\\GitHub\\coursework-huh\\QonSerializer\\QonSerializer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\i hate windows\\Documents\\GitHub\\coursework-huh\\FamousLakesQuiz.csproj": {
+    "C:\\Users\\i hate windows\\Documents\\GitHub\\coursework-huh\\QonSerializer\\QonSerializer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\i hate windows\\Documents\\GitHub\\coursework-huh\\FamousLakesQuiz.csproj",
-        "projectName": "FamousLakesQuiz",
-        "projectPath": "C:\\Users\\i hate windows\\Documents\\GitHub\\coursework-huh\\FamousLakesQuiz.csproj",
+        "projectUniqueName": "C:\\Users\\i hate windows\\Documents\\GitHub\\coursework-huh\\QonSerializer\\QonSerializer.csproj",
+        "projectName": "QonSerializer",
+        "projectPath": "C:\\Users\\i hate windows\\Documents\\GitHub\\coursework-huh\\QonSerializer\\QonSerializer.csproj",
         "packagesPath": "C:\\Users\\i hate windows\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\i hate windows\\Documents\\GitHub\\coursework-huh\\obj\\",
+        "outputPath": "C:\\Users\\i hate windows\\Documents\\GitHub\\coursework-huh\\QonSerializer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -22,15 +22,15 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net7.0-windows"
+          "net7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0-windows7.0": {
-            "targetAlias": "net7.0-windows",
+          "net7.0": {
+            "targetAlias": "net7.0",
             "projectReferences": {}
           }
         },
@@ -41,14 +41,8 @@
         }
       },
       "frameworks": {
-        "net7.0-windows7.0": {
-          "targetAlias": "net7.0-windows",
-          "dependencies": {
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[13.0.3, )"
-            }
-          },
+        "net7.0": {
+          "targetAlias": "net7.0",
           "imports": [
             "net461",
             "net462",
@@ -63,9 +57,6 @@
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
-            },
-            "Microsoft.WindowsDesktop.App.WindowsForms": {
-              "privateAssets": "none"
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"

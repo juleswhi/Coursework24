@@ -10,5 +10,8 @@
     <Compile Update="formRegister.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="QuestionDir\formTextQuestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

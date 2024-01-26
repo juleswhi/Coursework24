@@ -1,65 +1,61 @@
-﻿using static FamousLakesQuiz.User.UserType;
-using DevOne.Security.Cryptography.BCrypt;
-using Newtonsoft.Json;
+﻿using static FamousLakesQuiz.Helper;
+using System.Security.Cryptography;
+using static FamousLakesQuiz.UserType;
+using System.Text;
+using System.Net.Mail;
+using System.Diagnostics;
 
 namespace FamousLakesQuiz;
 
-public record Name(string First, string Last, string[]? Middle);
-public record Password(string Hashed, string salt, Func<string, bool> Verify);
+public enum UserType
+{
+    USER,
+    ADMIN
+}
+public record Password(string Hashed, byte[] salt);
 
 internal class User
 {
-    public enum UserType
-    {
-        USER,
-        ADMIN
-    }
-    static readonly string _userpath = "Users.csv";
 
-    public Name Name { get; set; } = new("", "", null);
+    public string Name { get; set; } = string.Empty;
     public Password? Password { get; set; } = null;
+    public MailAddress? Email { get; set; } = null;
+    public string Gender { get; set; } = string.Empty;
     public UserType Type { get; set; } = USER;
     public bool IsLoggedIn { get; private set; }
-    public static List<User> Users
-    {
-        get
-        {
-            var users = File.ReadAllLines(_userpath);
-            return JsonConvert.DeserializeObject<List<User>>(users[0])!; 
-        }
-        set
-        {
-            using(StreamWriter sw = new StreamWriter(_userpath, false))
-            {
-                sw.Write(JsonConvert.SerializeObject(value));
-            }
-        }
-    }
 
-    public User(Name name, string password, bool isAdmin = false)
+
+    public User(string name, string password, bool isAdmin = false)
     {
         Name = name;
-        var salt = BCryptHelper.GenerateSalt();
+        var salt = RandomNumberGenerator.GetBytes(64);
+        byte[] passwordInBytes = Encoding.UTF8.GetBytes(password);
+
+        
         Password = new(
-                BCryptHelper.HashPassword(password, salt),
-                salt,
-                (password) =>
-                {
-                    return BCryptHelper.CheckPassword(password, this.Password?.Hashed);
-                }
+                Convert.ToBase64String(Rfc2898DeriveBytes.Pbkdf2(passwordInBytes, salt, 100_000, HashAlgorithmName.SHA512, 64)),
+                salt
+                //(password) =>
+                  //  CryptographicOperations.FixedTimeEquals(Rfc2898DeriveBytes.Pbkdf2(passwordInBytes, salt, 100_000, HashAlgorithmName.SHA512, 64), Encoding.UTF8.GetBytes(password))
             );
-        this.Type = isAdmin ? ADMIN : USER;
+
+        Debug.Print(Password.Hashed);
+        
+        Type = isAdmin ? ADMIN : USER;
+
+        // Write to file
+
     }
 
     public void Login() {
         foreach(var user in Users) {
             user.Logout();
         }
-        this.IsLoggedIn = true;
+        IsLoggedIn = true;
     }
 
     public void Logout() {
-        this.IsLoggedIn = false;
+        IsLoggedIn = false;
     }
 
 }

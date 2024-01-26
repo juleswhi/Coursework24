@@ -46,7 +46,7 @@
             txtBoxEmail.PlaceholderText = "Email";
             txtBoxEmail.Size = new Size(171, 33);
             txtBoxEmail.TabIndex = 9;
-            txtBoxEmail.Tag = "password";
+            txtBoxEmail.Tag = "email";
             // 
             // txtBoxPassword
             // 
@@ -70,7 +70,7 @@
             txtBoxDisplayName.PlaceholderText = "Display Name";
             txtBoxDisplayName.Size = new Size(171, 33);
             txtBoxDisplayName.TabIndex = 10;
-            txtBoxDisplayName.Tag = "";
+            txtBoxDisplayName.Tag = "display";
             // 
             // btnRegister
             // 
@@ -93,7 +93,7 @@
             txtBoxGender.PlaceholderText = "Gender";
             txtBoxGender.Size = new Size(171, 33);
             txtBoxGender.TabIndex = 10;
-            txtBoxGender.Tag = "";
+            txtBoxGender.Tag = "gender";
             // 
             // txtBoxDob
             // 
@@ -105,7 +105,7 @@
             txtBoxDob.PlaceholderText = "DOB D/M/Y";
             txtBoxDob.Size = new Size(171, 33);
             txtBoxDob.TabIndex = 10;
-            txtBoxDob.Tag = "";
+            txtBoxDob.Tag = "dob";
             // 
             // formRegister
             // 

@@ -1,6 +1,8 @@
-﻿namespace FamousLakesQuiz;
+﻿using static QonSerializer.QuestionType;
+using static QonSerializer.Difficulty;
+namespace QonSerializer;
 
-public record Answer(IEnumerable<string> Answers, int index);
+public record Answer(List<string> Answers, uint index);
 
 public enum QuestionType
 {
@@ -32,6 +34,10 @@ public abstract class Question : IEquatable<Question>, IComparable<Question>
 }
 public class TextQuestion : Question
 {
+    public TextQuestion()
+    {
+        Type = TEXT;
+    }
     public string Q { get; set; } = string.Empty;
     public Answer A { get; set; }
 }

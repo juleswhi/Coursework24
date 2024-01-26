@@ -2,15 +2,6 @@
   "version": 3,
   "targets": {
     "net7.0-windows7.0": {
-      "BCrypt/1.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/DevOne.Security.Cryptography.BCrypt.dll": {}
-        },
-        "runtime": {
-          "lib/DevOne.Security.Cryptography.BCrypt.dll": {}
-        }
-      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -27,18 +18,6 @@
     }
   },
   "libraries": {
-    "BCrypt/1.0.0": {
-      "sha512": "/ibwe2Sg7MJR26IrEzW2Rde9/+A+AYXB5Kf9w/8BVLDdzSfUe4W2M7i2efy1Wa9wHh1k0y81Q6h9Ty8C6IrUGA==",
-      "type": "package",
-      "path": "bcrypt/1.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "bcrypt.1.0.0.nupkg.sha512",
-        "bcrypt.nuspec",
-        "lib/DevOne.Security.Cryptography.BCrypt.dll"
-      ]
-    },
     "Newtonsoft.Json/13.0.3": {
       "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
       "type": "package",
@@ -72,7 +51,6 @@
   },
   "projectFileDependencyGroups": {
     "net7.0-windows7.0": [
-      "BCrypt >= 1.0.0",
       "Newtonsoft.Json >= 13.0.3"
     ]
   },
@@ -120,10 +98,6 @@
       "net7.0-windows7.0": {
         "targetAlias": "net7.0-windows",
         "dependencies": {
-          "BCrypt": {
-            "target": "Package",
-            "version": "[1.0.0, )"
-          },
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.3, )"
@@ -151,17 +125,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'BCrypt 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0-windows7.0'. This package may not be fully compatible with your project.",
-      "libraryId": "BCrypt",
-      "targetGraphs": [
-        "net7.0-windows7.0"
-      ]
-    }
-  ]
+  }
 }

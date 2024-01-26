@@ -11,7 +11,6 @@ C:\Users\i hate windows\Documents\GitHub\coursework-huh\bin\Debug\net7.0-windows
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\bin\Debug\net7.0-windows\FamousLakesQuiz.runtimeconfig.json
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\bin\Debug\net7.0-windows\FamousLakesQuiz.dll
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\bin\Debug\net7.0-windows\FamousLakesQuiz.pdb
-C:\Users\i hate windows\Documents\GitHub\coursework-huh\bin\Debug\net7.0-windows\DevOne.Security.Cryptography.BCrypt.dll
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\bin\Debug\net7.0-windows\Newtonsoft.Json.dll
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\FamousLakesQuiz.csproj.CopyComplete
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\FamousLakesQuiz.dll
@@ -20,3 +19,4 @@ C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\FamousLakesQuiz.genruntimeconfig.cache
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ref\FamousLakesQuiz.dll
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\FamousLakesQuiz.formRegister.resources
+C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\FamousLakesQuiz.QuestionDir.formTextQuestion.resources
