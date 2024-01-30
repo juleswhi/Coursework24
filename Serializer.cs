@@ -1,27 +1,52 @@
-﻿using static System.String;
-using static System.Char;
-using static LonSerializer.TokenType;
-using System.Text;
+﻿
+// -- Serializer.cs -- 
+//
+// This file contains classes which deal with the Serialization of Deserialization of LON
+// LON stands for ( Lake Object Notation ) and is used to store user and question details on disk
+
+// System.Reflection is nessesary due to the nature of the Parser
+// The Parser should be able to look up the properties of types at runtime to deserialize any object
 using System.Reflection;
+using System.Text;
+// Needed for Debug.Print
+// Testing purposes ( this using should be removed )
 using System.Diagnostics;
 
 
+// The LonConvert class and its associated classes ( Lexer, Parser, Token )
+// should be kept in a different namespace to keep things tidy 
 namespace LonSerializer;
 
 /// <summary>
 /// Lon ( Lake Object Notation ) Converter.
 /// </summary>
 
-internal static class LonConvert
+// This static class contains methods which deal with Serializing and Deserializing objects and strings respectively. 
+// The LonConvert class is able to Serialize both Questions and Users
+// It uses overloading so only one method call is needed
+public static class LonConvert
 {
+    // Serialize a question into a Lon String
     public static string Serialize(Question question)
     {
+        // StringBuilder is used as it is much faster than traditional string concat.
+        // This becomes nesessary when working with large strings ( 250+ concat operations )
         StringBuilder stringBuilder = new();
 
+        // Improvement to be made:
+        // Use reflection to get types at runtime, loop through them and append to stringBuilder
         stringBuilder.Append($"Type:\"{(int)question.Type}\",");
         stringBuilder.Append($"Name:\"{question.Name}\",");
         stringBuilder.Append($"Difficulty:\"{(int)question.Difficulty}\",");
 
+        // If the question is a TextQuestion:
+        // Loop through potential answers and append them to stringBuilder 
+        // Also append the Index and Q fields to the stringBuilder
+
+        // Improvement to be made:
+        // Whenm multiple different types of questions are implemented
+        // it would be time consuming to manually do this.
+        // Once again use reflection 
         if(question is TextQuestion)
         {
             stringBuilder.Append("{");
@@ -35,16 +60,18 @@ internal static class LonConvert
             stringBuilder.Append("}");
         }
 
+        // Return the final build string
         return stringBuilder.ToString();
     }
 
-    public static string Serialize(List<Question> questions)
+    // This method deals with serializing a list of objectrs 
+    public static string Serialize<T>(this List<T> objects) where T : Question, User
     {
         StringBuilder stringBuilder = new();
 
-        foreach(var q in questions)
+        foreach(var obj in objects)
         {
-            stringBuilder.Append(Serialize(q));
+            stringBuilder.Append(Serialize(obj));
             stringBuilder.Append("\n");
         }
 
@@ -65,7 +92,9 @@ internal static class LonConvert
     }
 }
 
-public enum TokenType
+// File scoped namespace
+// This enum represents the different `Tokens` that are found in the Lon strings
+file enum TokenType
 {
     COLON,
     LEFT_BRACKET,
@@ -74,23 +103,36 @@ public enum TokenType
     DATA
 }
 
-public class Token
+// Class representing the actual Token value
+file class Token
 {
+    // The specific type of `Token` 
     public TokenType Type { get; init; }
+    // The data that is attached to the `Type`
+    // This is only applicable to `IDENTIFIER` and `DATA`
+    // Nullable as some `Types` do not have associated data
     public object? Data { get; init; }
 
+    // This method allows for deconstruction of a Token
+    // Deconstruction is the breaking down of complex types into simpler ones
+    // Example:
+    // ( token, data ) = TokenName;
     public void Deconstruct(out TokenType type, out object? data)
     {
         type = Type;
         data = Data;
     }
 
+    // Simple constructor for the `Token` type
     public Token(TokenType type, object data)
     {
         Type = type;
         Data = data;
     }
 
+    // This constructor can be used if no data is present.
+    // However, an exception will be thrown if either a `DATA` or an `IDENTIFER` passed
+    // DON'T USE EXCEPTIONS!
     public Token(TokenType type)
     {
         if (type == DATA || type == IDENTIFIER) throw new Exception();
@@ -100,31 +142,72 @@ public class Token
     }
 }
 
-public static class Lexer
-{
+// File scoped namespace
+// This class deals with Lexical Analysis
 
+// Lexical Analysis is taking a string of text  
+// and converting it into a string of tokens.
+//
+// Example string: Name:"test"
+// Example tokens: IDENTIFIER - COLON - DATA
+
+// This is a common technique in building programming languages.
+file static class Lexer
+{
+    // This is a pointer to the current char in the string 
+    // ( The char to be evaluated ) 
     private static int _current;
+    // The list of `Tokens` which will be returned to the consumer
     private static List<Token> _tokens;
 
+    // These methods deal with navigating the string
+    
+    // An example of why they are necessary is how programming languages deal with the `=` sign
+    // When a programming language interpreter sees a `=`, 
+    // it doesn't know if it is an assignment operator, or a comparasin operator
+    // therefor it needs to see the next token before evaluating itself.
+    // The same concept is used here
+
+    // Next is used to iterate to the next char ( represented by `_current` ) 
     private static void Next(int step = 1) => _current += step;
+
+    // The `Peek` method is used to look at the next char in the str
+    // w/o having to increment the _current variable
     private static char Peek(ReadOnlySpan<char> str) => str[_current + 1];
+
+    // The `Current` method is ued to look at the current char in the str 
+    // Perhaps the most important helper method here
     private static char Current(ReadOnlySpan<char> str) => str[_current];
+
+    // The `Consume` method adds the `token` to the list, 
+    // and moves onto the next char to be evaluated
     private static void Consume(Token token)
     {
         _tokens.Add(token);
         _current++;
     }
 
-    // Spaggethu code
+    // This Lex method contains the actual loop of evaluation
+    // It takes in a string `input` which is the list of chars
     public static List<Token> Lex(string input)
     {
+        // Due to speed concerns with many evaluations,
+        // it improves performance by first converting the
+        // string to a `ReadOnlySpan`, which is must faster
+        // due to it's lack of writing ability.
         ReadOnlySpan<char> str = input.AsSpan();
 
+        // Becuase the method is static, 
+        // the fields should be reset to default
         _current = 0;
         _tokens = new();
 
+        // This loop does not contain any initialization or incrementor
+        // This is because it is handled by the helper methods mentioned previously
         for (; _current < str.Length;)
         {
+            // Most of the tokens are single character, 
+            // so no look ahead is needed.
             switch (Current(str))
             {
                 case ':':
@@ -141,14 +224,24 @@ public static class Lexer
                     break;
                 case '"':
                     {
+
+                        // If there is a ("), then the token should be of type `DATA`
+                        // The `Next()` is needed to proceed to the first character in the string
                         Next();
+
+                        // StringBuilder is used for performance
                         StringBuilder sb = new();
+
+                        // Loop through chars, until the second (")
+                        // While in the string, append the current char to the StringBuilder 
                         while (Current(str) != '"')
                         {
                             sb.Append(Current(str));
+                            // Jump to next char in the string
                             Next();
                         }
 
+                        // Finally consume as type `DATA`, with the final string
                         Consume(new Token(DATA, sb.ToString()));
 
                         break;
@@ -156,6 +249,10 @@ public static class Lexer
 
                 default:
                     {
+                        // Very similar to the `DATA` above
+                        
+                        // Due to the limitations of variable names,
+                        // No (") are necessary, just ensure all chars are letters 
                         StringBuilder sb = new();
                         while(IsLetterOrDigit(Current(str)))
                         {
@@ -163,20 +260,27 @@ public static class Lexer
                             Next();
                         }
 
+                        // Finally consume as type `IDENTIFIER`
                         Consume(new Token(IDENTIFIER, sb.ToString()));
                         break;
                     }
             }
         }
 
+        // Return the final list of `Tokens`
         return _tokens;
 
     }
 }
 
+// File scoped namespace
+// This static class deals with Parsing Tokens
+
+// The `Parser` class takes a List of Tokens 
+// ( From the Lexical Analysis )
+// And converts them into useable C# objects.
 public static class Parser
 {
-
     private static List<Type> ValidTypes = new()
     {
         typeof(Question),
