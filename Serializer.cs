@@ -1,56 +1,57 @@
 ﻿using static System.String;
 using static System.Char;
-using static QonSerializer.TokenType;
+using static LonSerializer.TokenType;
 using System.Text;
 using System.Reflection;
 using System.Diagnostics;
 
-namespace QonSerializer;
+
+namespace LonSerializer;
 
 /// <summary>
-/// Qon ( Question Object Notation ) Converter.
+/// Lon ( Lake Object Notation ) Converter.
 /// </summary>
 
-internal static class QonConvert
+internal static class LonConvert
 {
-    public static string SerializeQuestion(Question question)
+    public static string Serialize(Question question)
     {
         StringBuilder stringBuilder = new();
 
-        stringBuilder.Append($"Type:{question.Type},");
-        stringBuilder.Append($"Name:{question.Name},");
-        stringBuilder.Append($"Difficulty:{question.Difficulty},");
+        stringBuilder.Append($"Type:\"{(int)question.Type}\",");
+        stringBuilder.Append($"Name:\"{question.Name}\",");
+        stringBuilder.Append($"Difficulty:\"{(int)question.Difficulty}\",");
 
         if(question is TextQuestion)
         {
             stringBuilder.Append("{");
             TextQuestion tq = (question as TextQuestion)!;
-            stringBuilder.Append($"Question:{tq.Q},");
+            stringBuilder.Append($"Q:\"{tq.Q}\",");
             for(int i = 0; i < tq.A.Answers.Count; i++)
             {
-                stringBuilder.Append($"Answer{i+1}:{tq.A.Answers[i]},");
+                stringBuilder.Append($"Answer{i+1}:\"{tq.A.Answers[i]}\",");
             }
-            stringBuilder.Append($"Index:{tq.A.index}");
+            stringBuilder.Append($"Index:\"{tq.A.Index}\"");
             stringBuilder.Append("}");
         }
 
         return stringBuilder.ToString();
     }
 
-    public static string SerializeQuestion(List<Question> questions)
+    public static string Serialize(List<Question> questions)
     {
         StringBuilder stringBuilder = new();
 
         foreach(var q in questions)
         {
-            stringBuilder.Append(SerializeQuestion(q));
+            stringBuilder.Append(Serialize(q));
             stringBuilder.Append("\n");
         }
 
         return stringBuilder.ToString();
     }
 
-    public static List<Question> DeserializeQuestion(params string[] strs)
+    public static List<Question> Deserialize(params string[] strs)
     {
         List<Question> questions = new(); 
         foreach(var str in strs)
@@ -78,6 +79,12 @@ public class Token
     public TokenType Type { get; init; }
     public object? Data { get; init; }
 
+    public void Deconstruct(out TokenType type, out object? data)
+    {
+        type = Type;
+        data = Data;
+    }
+
     public Token(TokenType type, object data)
     {
         Type = type;
@@ -99,9 +106,8 @@ public static class Lexer
     private static int _current;
     private static List<Token> _tokens;
 
-    private static void Next() => _current++;
+    private static void Next(int step = 1) => _current += step;
     private static char Peek(ReadOnlySpan<char> str) => str[_current + 1];
-    private static char Previus(ReadOnlySpan<char> str) => str[_current - 1];
     private static char Current(ReadOnlySpan<char> str) => str[_current];
     private static void Consume(Token token)
     {
@@ -133,28 +139,31 @@ public static class Lexer
                 case '}':
                     Consume(new Token(RIGHT_BRACKET));
                     break;
+                case '"':
+                    {
+                        Next();
+                        StringBuilder sb = new();
+                        while (Current(str) != '"')
+                        {
+                            sb.Append(Current(str));
+                            Next();
+                        }
+
+                        Consume(new Token(DATA, sb.ToString()));
+
+                        break;
+                    }
+
                 default:
                     {
                         StringBuilder sb = new();
-                        while (IsLetterOrDigit(Peek(str)))
+                        while(IsLetterOrDigit(Current(str)))
                         {
-                            Next();
                             sb.Append(Current(str));
+                            Next();
                         }
 
-                        if(!_tokens.Any())
-                        {
-                            Consume(new Token(IDENTIFIER, sb.ToString()));
-                        }
-                        else if (_tokens.Last().Type == COLON)
-                        {
-                            Consume(new Token(DATA, sb.ToString()));
-                        }
-                        else
-                        {
-                            Consume(new Token(IDENTIFIER, sb.ToString()));
-                        }
-
+                        Consume(new Token(IDENTIFIER, sb.ToString()));
                         break;
                     }
             }
@@ -167,93 +176,165 @@ public static class Lexer
 
 public static class Parser
 {
+
+    private static List<Type> ValidTypes = new()
+    {
+        typeof(Question),
+        typeof(TextQuestion),
+        typeof(Answer)
+    };
+
     private static int _current;
     private static List<Token> _tokens = new();
 
-    private static void Next() => _current++;
+    private static void Next(int step = 1) => _current += step;
     private static Token Peek() => _tokens[_current < _tokens.Count ? _current + 1 : _current];
     private static Token Current() => _tokens[_current];
     private static Token Previous() => _tokens[_current > 0 ? _current - 1 : _current];
 
     public static Question Parse(List<Token> tokens)
     {
-
-        foreach(var token in tokens)
-        {
-            Debug.Print(token.Type.ToString());
-        }
+        var inBrackets = false;
 
         _current = 0;
         _tokens = tokens;
 
+        List<string> answers = new();
+        int index = 0;
+
         TextQuestion question = new(); 
-
-        // Grab the type of Question 
-        Type questionType = typeof(Question);
-        var questionFieldNames = questionType.GetFields(); 
-
-        // false for left, true for right
-        bool insideQuestions = false;
-
-        FieldInfo? currentField = null;
-
-        Answer currentAnswer = new(null, 0);
 
         for(; _current < _tokens.Count;)
         {
-            // Cond XOR 
-            // if (token.Type == COLON) side ^= true;
-
-            if (Current().Type == LEFT_BRACKET) insideQuestions ^= true;
-
             switch(Current().Type)
             {
+                case LEFT_BRACKET:
+                    inBrackets = true;
+                    break;
+
                 case IDENTIFIER:
-                    if (!insideQuestions)
                     {
-                        var field = questionFieldNames.FirstOrDefault(x => x.Name == (string)Current().Data!);
-                        if (field is null) break;
-                        currentField = field;
-                    }
-                    else
-                    {
-                        if((string)Current().Data! == "Question")
+                        var name = Current().Data as string;
+
+
+                        PropertyInfo? property = null;
+
+                        void GetProps(Type type)
                         {
-                            Next();
-                            Next();
-                            // Onto the data
-                            if(Current().Type != DATA)
+                            if (!ValidTypes.Contains(type))
                             {
-                                throw new Exception("Current Type was not DATA, Could not parse");
+                                return;
                             }
-                            question.Q = (string)Current().Data!;
+                            // Debug.Print($"Looking at type {type.Name}, for name: {name}");
+
+                            var props = type.GetProperties();
+
+                            property = props.FirstOrDefault(
+                                x => x.Name == name);
+
+                            if(property is not null)
+                            {
+                                return;
+                            }
+
+                            foreach(var prop in props)
+                            {
+                                GetProps(prop.PropertyType);
+                            }
                         }
-                        else if(((string)Current().Data!).Contains("Answer"))
+
+                        if(name!.ToLower().Contains("answer"))
                         {
                             Next();
-                            Next();
-                            currentAnswer.Answers.Add((string)Current().Data!);
+                            answers.Add((string)Current().Data!);
+                            // Debug.Print($"Added Answer: {Current().Data}");
+                            break;
                         }
-                        else if((string)Current().Data! == "Index")
+                        else if(name.ToLower().Contains("index"))
                         {
                             Next();
-                            Next();
-                            currentAnswer = new(currentAnswer.Answers, (uint)Current().Data!);
+                            index = int.Parse((string)Current().Data!);
+                            // Debug.Print($"Added Index: {Current().Data}");
+                            break;
                         }
+                        else
+                        {
+                            GetProps(question.GetType());
+                        }
+
+                        if(property is null)
+                        {
+                            // Debug.Print($"Could not find prop for {name}");
+                            break;
+                        }
+
+
+                        // Debug.Print($"Found Type: {property.Name}");
+
+                        // If null, then identifier must be in the Answers 
+                        if (property is null)
+                        {
+                            // Get type of the question ( TextQuestion etc... ) 
+                            // Look up properties recursively
+
+                            if(question.Type == QuestionType.TEXT)
+                            {
+                                property = CheckForProperties(typeof(Answer), name);
+                            }
+
+                            if(property is null)
+                            {
+                                Debug.Print($"Could not find property called: {name} in {question.GetType().Name}");
+                                break;
+                            }
+
+                        }
+
+                        Next();
+
+                        // If the property is an enum, then a explicit conversion from stirng -> enum Type is needed
+                        if (property!.PropertyType.IsEnum)
+                        {
+                            Enum.TryParse(property.PropertyType, (string)Current().Data!, out var output);
+                            property.SetValue(question, output);
+                        }
+                        else
+                        {
+                            property.SetValue(question, Convert.ChangeType(Current().Data, property.PropertyType));
+                        }
+
+
+                        // If its not a 
+                        // else
+                        // {
+                        // property.SetValue(question, Current().Data);
+                        // }
+
+
+
+
+                        break;
                     }
-                    break;
-                case DATA:
-                    if (currentField is null) break;
-                    currentField!.SetValue(question, Current().Data);
-                    break;
-                default:
-                    break;
             }
             Next();
         }
 
-        question.A = currentAnswer;
+        // question.A = new(null,);
+        question.A = new(answers, (uint)index);
         return question;
     }
+
     
+    private static PropertyInfo? CheckForProperties(Type type, string name)
+    {
+        var props = type.GetProperties();
+
+        var prop = props.FirstOrDefault(
+            x => x.Name == name);
+
+        return prop;
+    }
+
+
+
 }

@@ -1,1 +1,1 @@
-Type:TEXT,Name:QuestionName,Difficulty:MEDIUM,{Question:QuestionTitle,Answer1:AnswerOne,Answer2:AnswerTwo,Index:4}
+Type:"0",Name:"Location of lakes",Difficulty:"2",{Q:"Question?",Answer1:"rushmore",Answer2:"china",Answer3:"bangladesh",Answer4:"lincoln",Index:"3"}

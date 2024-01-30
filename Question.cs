@@ -1,8 +1,8 @@
-﻿using static QonSerializer.QuestionType;
-using static QonSerializer.Difficulty;
-namespace QonSerializer;
+﻿using static LonSerializer.QuestionType;
+using static LonSerializer.Difficulty;
+namespace LonSerializer;
 
-public record Answer(List<string> Answers, uint index);
+public record Answer(List<string> Answers, uint Index);
 
 public enum QuestionType
 {

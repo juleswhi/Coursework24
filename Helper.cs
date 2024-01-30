@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
+using LonSerializer;
 using static System.Reflection.BindingFlags;
 namespace FamousLakesQuiz;
 
@@ -25,6 +26,22 @@ internal static class Helper
     public static List<User> Users = new()
     {
         new("root", "password")
+    };
+
+
+    public static User TestUser => new User("TestUserName", "password", false);
+    public static TextQuestion TestQuestion => new TextQuestion()
+    {
+        Name = "Location of lakes",
+        Difficulty = Difficulty.HARD,
+        Q = "Question?",
+        A = new Answer(new()
+        {
+            "rushmore",
+            "china",
+            "bangladesh",
+            "lincoln"
+        }, 3)
     };
 
     public static bool VerifyPassword(this string password, User user)
