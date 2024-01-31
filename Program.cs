@@ -1,8 +1,8 @@
-using LonSerializer;
+using ChessMasterObjectNotation;
 using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
 
-namespace FamousLakesQuiz
+namespace ChessMasterQuiz
 {
     internal static class Program
     {

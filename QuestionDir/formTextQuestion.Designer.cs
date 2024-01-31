@@ -1,4 +1,4 @@
-﻿namespace FamousLakesQuiz.QuestionDir
+﻿namespace ChessMasterQuiz.QuestionDir
 {
     partial class formTextQuestion
     {

@@ -20,3 +20,6 @@ C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ref\FamousLakesQuiz.dll
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\FamousLakesQuiz.formRegister.resources
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\FamousLakesQuiz.QuestionDir.formTextQuestion.resources
+C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\FamousLakesQuiz.formMenu.resources
+C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\FamousLakesQuiz.Forms.formUserProfile.resources
+C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\FamousLakesQuiz.Forms.ProfilePictures.resources

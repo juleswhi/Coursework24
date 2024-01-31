@@ -1,5 +1,5 @@
-﻿using LonSerializer;
-namespace FamousLakesQuiz.QuestionDir;
+﻿using ChessMasterObjectNotation;
+namespace ChessMasterQuiz.QuestionDir;
 
 public partial class formTextQuestion : Form, IContext
 {

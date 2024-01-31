@@ -1,14 +1,14 @@
-﻿using static FamousLakesQuiz.ValidationType;
+﻿using static ChessMasterQuiz.ValidationType;
 using Newtonsoft.Json;
-using static FamousLakesQuiz.Helper;
+using static ChessMasterQuiz.Helper;
 using System.Net.Mail;
-using FamousLakesQuiz.QuestionDir;
-using LonSerializer;
-using static LonSerializer.Difficulty;
-using static LonSerializer.QuestionType;
+using ChessMasterQuiz.QuestionDir;
+using ChessMasterObjectNotation;
+using static ChessMasterObjectNotation.Difficulty;
+using static ChessMasterObjectNotation.QuestionType;
+using System.Diagnostics;
 
-
-namespace FamousLakesQuiz;
+namespace ChessMasterQuiz;
 
 public partial class formLogin : Form, IContext
 {
@@ -43,54 +43,23 @@ public partial class formLogin : Form, IContext
 
     private void btnLogin_Click(object sender, EventArgs e)
     {
+        // Readin Users
 
-        TextQuestion q = new()
-        {
-            Q = "Q1",
-            A = new Answer(new() 
-          {
-              "One",
-              "Two",
-              "Three",
-              "Four"
-          },
-          2),
-            Difficulty = MEDIUM
-        };
-
-        ActivateForm<formTextQuestion>(new DataContextTag(
-            q,
-            "question"
-            ),
-            new DataContextTag(
-                "1",
-                "number" 
-                ));
-        return;
         string emailText = txtBoxEmail.Text;
         string passwordText = txtBoxPassword.Text;
 
-        if(string.IsNullOrEmpty(emailText) || string.IsNullOrEmpty(passwordText))
+        if(emailText == "root" && passwordText == "root")
         {
-            return;
+            ActivateForm<formMenu>();
         }
 
-        if(!emailText.Validate(EMAIL))
-        {
-            return;
-        }
+        var u = new User(
+            "James",
+            "password",
+            false);
 
-        if (!MailAddress.TryCreate(emailText, out MailAddress mailAddr))
-        {
-            return;
-        }
+        u.Login();
 
-        var foundUser = Users.Where(x => x.Email?.Address == mailAddr.Address && passwordText.VerifyPassword(x));
-
-        if(foundUser.Any())
-        {
-            foundUser.First().Login();
-            lblLogin.Text = "logged in";
-        }
+        // var foundUser = Users.Where(x => x.Email?.Address == mailAddr.Address && passwordText.VerifyPassword(x));
     }
 }

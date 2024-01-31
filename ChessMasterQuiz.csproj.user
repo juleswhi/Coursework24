@@ -7,7 +7,13 @@
     <Compile Update="formMain.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="formMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="formRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\formUserProfile.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="QuestionDir\formTextQuestion.cs">

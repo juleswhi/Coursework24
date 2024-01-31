@@ -61,9 +61,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\i hate windows\\Documents\\GitHub\\coursework-huh\\FamousLakesQuiz.csproj",
-      "projectName": "FamousLakesQuiz",
-      "projectPath": "C:\\Users\\i hate windows\\Documents\\GitHub\\coursework-huh\\FamousLakesQuiz.csproj",
+      "projectUniqueName": "C:\\Users\\i hate windows\\Documents\\GitHub\\coursework-huh\\ChessMasterQuiz.csproj",
+      "projectName": "ChessMasterQuiz",
+      "projectPath": "C:\\Users\\i hate windows\\Documents\\GitHub\\coursework-huh\\ChessMasterQuiz.csproj",
       "packagesPath": "C:\\Users\\i hate windows\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\i hate windows\\Documents\\GitHub\\coursework-huh\\obj\\",
       "projectStyle": "PackageReference",

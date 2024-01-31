@@ -1,4 +1,4 @@
-﻿namespace FamousLakesQuiz;
+﻿namespace ChessMasterQuiz;
 
 public partial class formMain : Form
 {

@@ -1,6 +1,6 @@
-﻿using static LonSerializer.QuestionType;
-using static LonSerializer.Difficulty;
-namespace LonSerializer;
+﻿using static ChessMasterObjectNotation.QuestionType;
+using static ChessMasterObjectNotation.Difficulty;
+namespace ChessMasterObjectNotation;
 
 public record Answer(List<string> Answers, uint Index);
 

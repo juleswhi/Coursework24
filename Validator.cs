@@ -1,10 +1,10 @@
-﻿using static FamousLakesQuiz.ValidationType;
-using static FamousLakesQuiz.RequirementType;
+﻿using static ChessMasterQuiz.ValidationType;
+using static ChessMasterQuiz.RequirementType;
 using System.Text.RegularExpressions;
 using System.Net.Mail;
 using System.Text;
 
-namespace FamousLakesQuiz;
+namespace ChessMasterQuiz;
 
 enum ValidationType
 {

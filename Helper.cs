@@ -3,9 +3,9 @@ using System.Security.Cryptography;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
-using LonSerializer;
+using ChessMasterObjectNotation;
 using static System.Reflection.BindingFlags;
-namespace FamousLakesQuiz;
+namespace ChessMasterQuiz;
 
 public enum FormatDirection
 {
@@ -27,6 +27,11 @@ internal static class Helper
     {
         new("root", "password")
     };
+
+    public static User? ActiveUser
+    {
+        get => Users.FirstOrDefault(x => x.IsLoggedIn == true);
+    }
 
 
     public static User TestUser => new User("TestUserName", "password", false);

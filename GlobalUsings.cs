@@ -22,7 +22,7 @@ so you should only use when necessary ( enum types )
 // Allows for use of Helper methods from Helper.cs without needing to reference Helper class. 
 // Creates more seamless experience using helper ( extension ) methods ( see Helper.cs )
 
-global using static FamousLakesQuiz.Helper;
+global using static ChessMasterQuiz.Helper;
 
 /*
  
@@ -36,10 +36,10 @@ button.Center(X);
 
 */
 
-global using static FamousLakesQuiz.FormatDirection;
+global using static ChessMasterQuiz.FormatDirection;
 
 // Similar use to FormatDirection
-global using static FamousLakesQuiz.SeverityType;
+global using static ChessMasterQuiz.SeverityType;
 
 /*
  
@@ -59,4 +59,4 @@ using static System.Char;
 
 
 // Useful in context of LonSerializer
-using static LonSerializer.TokenType;
+using static ChessMasterObjectNotation.TokenType;

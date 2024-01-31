@@ -1,4 +1,4 @@
-﻿namespace FamousLakesQuiz
+﻿namespace ChessMasterQuiz
 {
     partial class formLogin
     {
@@ -66,7 +66,7 @@
             txtBoxEmailRegister.Name = "txtBoxEmailRegister";
             txtBoxEmailRegister.PlaceholderText = "Email";
             txtBoxEmailRegister.Size = new Size(171, 33);
-            txtBoxEmailRegister.TabIndex = 5;
+            txtBoxEmailRegister.TabIndex = 4;
             // 
             // btnRegister
             // 
@@ -74,7 +74,7 @@
             btnRegister.Location = new Point(443, 322);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(97, 33);
-            btnRegister.TabIndex = 6;
+            btnRegister.TabIndex = 5;
             btnRegister.Text = "Register";
             btnRegister.UseVisualStyleBackColor = true;
             // 
@@ -87,7 +87,7 @@
             txtBoxEmail.Name = "txtBoxEmail";
             txtBoxEmail.PlaceholderText = "Email";
             txtBoxEmail.Size = new Size(171, 33);
-            txtBoxEmail.TabIndex = 8;
+            txtBoxEmail.TabIndex = 1;
             // 
             // txtBoxPassword
             // 
@@ -99,7 +99,7 @@
             txtBoxPassword.PasswordChar = '*';
             txtBoxPassword.PlaceholderText = "Password";
             txtBoxPassword.Size = new Size(171, 33);
-            txtBoxPassword.TabIndex = 8;
+            txtBoxPassword.TabIndex = 2;
             // 
             // btnLogin
             // 
@@ -107,7 +107,7 @@
             btnLogin.Location = new Point(338, 152);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(97, 33);
-            btnLogin.TabIndex = 6;
+            btnLogin.TabIndex = 3;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;

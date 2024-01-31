@@ -1,4 +1,4 @@
-﻿namespace FamousLakesQuiz
+﻿namespace ChessMasterQuiz
 {
     partial class formRegister
     {

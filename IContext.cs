@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace FamousLakesQuiz;
+﻿namespace ChessMasterQuiz;
 
 interface IContext
 {

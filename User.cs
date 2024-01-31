@@ -1,11 +1,11 @@
-﻿using static FamousLakesQuiz.Helper;
+﻿using static ChessMasterQuiz.Helper;
 using System.Security.Cryptography;
-using static FamousLakesQuiz.UserType;
+using static ChessMasterQuiz.UserType;
 using System.Text;
 using System.Net.Mail;
 using System.Diagnostics;
 
-namespace FamousLakesQuiz;
+namespace ChessMasterQuiz;
 
 // This enum is used to identify a regular user from an admin
 // This is done through a property in the User class ( User.cs, line 25 )
@@ -39,6 +39,9 @@ public class User
 
     // The `UserType` can either be Admin or User 
     public UserType Type { get; set; } = USER;
+
+    // Reference to the image found in "Forms/ProfilePictures.resx"
+    public string ImageName { get; set; } = string.Empty;
 
     // Bool value to validate who is logged in
     public bool IsLoggedIn { get; private set; }

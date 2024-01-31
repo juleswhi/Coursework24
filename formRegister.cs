@@ -1,11 +1,11 @@
-﻿using static FamousLakesQuiz.ValidationType;
-using static FamousLakesQuiz.Helper;
+﻿using static ChessMasterQuiz.ValidationType;
+using static ChessMasterQuiz.Helper;
 using System.Net.Mail;
 using System.Linq.Expressions;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 
-namespace FamousLakesQuiz;
+namespace ChessMasterQuiz;
 public partial class formRegister : Form, IContext
 {
     public formRegister()
