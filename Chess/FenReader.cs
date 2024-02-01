@@ -1,4 +1,4 @@
-﻿namespace ChessMasterQuiz.Chess;
+﻿namespace Chess;
 
 public record FEN();
 

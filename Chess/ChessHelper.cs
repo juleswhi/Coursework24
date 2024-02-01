@@ -1,4 +1,4 @@
-﻿namespace ChessMasterQuiz.Chess;
+﻿namespace Chess;
 
 using static PieceType;
 
@@ -11,6 +11,28 @@ public static class ChessHelper
         { 'b', BISHOP },
         { 'r', ROOK },
         { 'q', QUEEN },
-        { 'k', KING }
+        { 'k', KING },
+        { 'P', PAWN },
+        { 'N', KNIGHT },
+        { 'B', BISHOP },
+        { 'R', ROOK },
+        { 'Q', QUEEN },
+        { 'K', KING }
+    };
+
+    public static Dictionary<PieceType, char> NotationToChar = new()
+    {
+        { PAWN , 'p'},
+        { KNIGHT , 'n'},
+        { BISHOP , 'b'},
+        { ROOK , 'r'},
+        { QUEEN , 'q'},
+        { KING , 'k'},
+        { PAWN , 'P'},
+        { KNIGHT , 'N'},
+        { BISHOP , 'B'},
+        { ROOK , 'R'},
+        { QUEEN , 'Q'},
+        { KING , 'K'}
     };
 }

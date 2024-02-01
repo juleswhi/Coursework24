@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,12 +19,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ProfilePictures.resx</DependentUpon>
     </Compile>
+    <Compile Update="PGNLibrary.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PGNLibrary.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="Forms\ProfilePictures.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ProfilePictures.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="PGNLibrary.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PGNLibrary.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

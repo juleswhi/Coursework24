@@ -1,11 +1,5 @@
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ChessMasterQuiz.csproj.AssemblyReference.cache
-C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\FamousLakesQuiz.formLogin.resources
-C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\FamousLakesQuiz.formMain.resources
-C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\FamousLakesQuiz.formMenu.resources
-C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\FamousLakesQuiz.formRegister.resources
-C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\FamousLakesQuiz.Forms.formUserProfile.resources
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ChessMasterQuiz.Forms.ProfilePictures.resources
-C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\FamousLakesQuiz.QuestionDir.formTextQuestion.resources
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ChessMasterQuiz.csproj.GenerateResource.cache
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ChessMasterQuiz.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ChessMasterQuiz.AssemblyInfoInputs.cache
@@ -23,3 +17,10 @@ C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ChessMasterQuiz.pdb
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ChessMasterQuiz.genruntimeconfig.cache
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ref\ChessMasterQuiz.dll
+C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ChessMasterQuiz.formLogin.resources
+C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ChessMasterQuiz.formMain.resources
+C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ChessMasterQuiz.formMenu.resources
+C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ChessMasterQuiz.formRegister.resources
+C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ChessMasterQuiz.Forms.formUserProfile.resources
+C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ChessMasterQuiz.PGNLibrary.resources
+C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ChessMasterQuiz.QuestionDir.formTextQuestion.resources

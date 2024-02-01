@@ -1,4 +1,4 @@
-﻿namespace ChessMasterQuiz.Chess;
+﻿namespace Chess;
 
 public enum PieceType
 {
@@ -9,7 +9,3 @@ public enum PieceType
     QUEEN,
     KING
 }  
-
-internal class Piece
-{
-}
