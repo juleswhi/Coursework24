@@ -1,4 +1,7 @@
-﻿using static ChessMasterQuiz.ValidationType;
+﻿using static ChessMasterQuiz.Helpers.ControlHelper;
+using static ChessMasterQuiz.Helpers.FormatDirection;
+using static System.FormatException;
+using static ChessMasterQuiz.ValidationType;
 using static ChessMasterQuiz.Helper;
 using System.Net.Mail;
 using System.Linq.Expressions;

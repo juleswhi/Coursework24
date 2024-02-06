@@ -1,4 +1,13 @@
-﻿namespace ChessMasterQuiz;
+﻿using static ChessMasterQuiz.Helpers.ControlHelper;
+namespace ChessMasterQuiz;
+
+
+/// <summary>
+/// Record type for Data-Context Tag Pair
+/// </summary>
+/// <param name="data">Object of data</param>
+/// <param name="tag">Tag to identify the data</param>
+public record DataContextTag(object data, string tag);
 
 interface IContext
 {

@@ -1,4 +1,6 @@
-﻿using static ChessMasterQuiz.ValidationType;
+﻿using static ChessMasterQuiz.Helpers.ControlHelper;
+using static ChessMasterQuiz.Helpers.FormatDirection;
+using static ChessMasterQuiz.ValidationType;
 using Newtonsoft.Json;
 using static ChessMasterQuiz.Helper;
 using System.Net.Mail;
@@ -7,6 +9,7 @@ using ChessMasterObjectNotation;
 using static ChessMasterObjectNotation.Difficulty;
 using static ChessMasterObjectNotation.QuestionType;
 using System.Diagnostics;
+using ChessMasterQuiz.Helpers;
 
 namespace ChessMasterQuiz;
 
@@ -22,6 +25,11 @@ public partial class formLogin : Form, IContext
         {
             ActivateForm<formRegister>(new DataContextTag(txtBoxEmailRegister.Text, "email"));
         };
+    }
+
+    private void ActivateForm<T>(DataContextTag dataContextTag)
+    {
+        throw new NotImplementedException();
     }
 
     Control.ControlCollection IContext._controls => Controls;
@@ -50,7 +58,7 @@ public partial class formLogin : Form, IContext
 
         if(emailText == "root" && passwordText == "root")
         {
-            ActivateForm<formMenu>();
+            ControlHelper.ActivateForm<formMenu>();
         }
 
         var u = new User(

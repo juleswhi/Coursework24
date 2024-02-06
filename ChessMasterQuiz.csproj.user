@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="Chess\BoardRepresentation\Board.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Chess\BoardRepresentation\Square.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="formLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -11,6 +17,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="formRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\formChessboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\formUserProfile.cs">

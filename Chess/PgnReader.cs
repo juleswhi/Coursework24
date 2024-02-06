@@ -43,11 +43,11 @@ public class PgnReader
 
         // for(int i = 0; i < parts.Length; i+=2)
         {
-            Debug.Print(parts[0]);
-            var tokens = LexMetadata(parts[0]);
+            // Debug.Print(parts[0]);
+            var tokens = LexGame(parts[1]);
             foreach(var token in tokens)
             {
-                Debug.Print(token.ToString());
+                // Debug.Print(token.ToString());
             }
 
         }
@@ -70,17 +70,17 @@ public class PgnReader
     {
         KEY,
         VALUE,
+        NOTATION,
         LEFT_BRACKET,
         RIGHT_BRACKET,
         LEFT_CURLY,
         RIGHT_CURLY
     }
 
-    class Token(TokenType Type, string? Data)
+    class Token(TokenType Type, object? Data)
     {
         public override string ToString() =>
             $"{Type}: {Data ?? ""}";
-
     }
 
     private IEnumerable<Token> LexMetadata(string str)
@@ -162,11 +162,11 @@ public class PgnReader
 
     }
 
-    private void LexGame(string str)
+    private IEnumerable<Token> LexGame(string str)
     {
         int _current = 0;
 
-        var next = (int n) => _current += n;
+        var next = (int n = 1) => _current += n;
         var peek = () => str[_current++];
         var current = () => str[_current];
 
@@ -178,33 +178,73 @@ public class PgnReader
 
         for (; _current < str.Length;)
         {
+            // Debug.Print("CURRENT TOKEN: {0}", current());
             switch (current())
             {
                 case '{':
                     {
-                        while (current() != '}')
+                        while (current() != '}' && current() != ')')
                         {
                             next(1);
                         }
                         break;
                     }
 
-                default: break;
+                case '(':
+                    {
+                        while (current() != '}' && current() != ')')
+                        {
+                            next();
+                        }
+                        break;
+                    }
 
+                case '[':
+                    {
+                        while (current() != '}' && current() != ']')
+                        {
+                            next();
+                        }
+                        break;
+                    }
+                default:
+                    {
+                        if(char.IsNumber(current()) || current() == '.' || char.IsWhiteSpace(current()) || !char.IsLetter(current())) {
+                            next();
+                            break;
+                        }
+
+
+                        StringBuilder sb = new();
+                        while(current() != ' ')
+                        {
+                            sb.Append(current());
+                            next();
+                        }
+
+                        // Debug.Print($"To be evaled: {sb}");
+
+                        SAN san = new();
+
+                        try
+                        {
+                            san = new SAN(sb.ToString());
+                        }
+                        catch(Exception)
+                        {
+                            next();
+                            break;
+                        }
+
+                        Debug.Print(san.ToString());
+
+                        yield return consume(
+                            new Token(TokenType.NOTATION, san));
+
+                        break;
+                    }
 
             }
         }
-
-
     }
-
-    private void Parse()
-    {
-
-    }
-
-
-
-
-
 }

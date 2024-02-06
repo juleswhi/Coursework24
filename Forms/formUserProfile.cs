@@ -1,4 +1,5 @@
-﻿namespace ChessMasterQuiz.Forms;
+﻿using static ChessMasterQuiz.Helpers.ControlHelper;
+namespace ChessMasterQuiz.Forms;
 
 public partial class formUserProfile : Form, IContext
 {

@@ -1,4 +1,5 @@
-﻿namespace ChessMasterQuiz;
+﻿using static ChessMasterQuiz.Helpers.ControlHelper;
+namespace ChessMasterQuiz;
 
 public partial class formMain : Form
 {

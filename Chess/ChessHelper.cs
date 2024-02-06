@@ -2,8 +2,42 @@
 
 using static PieceType;
 
+public enum Colour
+{
+    White,
+    Black
+} 
+
 public static class ChessHelper
 {
+    public static PieceType GetPiece(this char c)
+    {
+        switch(c.ToString().ToLower())
+        {
+            case "n":
+                return KNIGHT;
+            case "b":
+                return BISHOP;
+            case "r":
+                return ROOK;
+            case "q":
+                return QUEEN;
+            case "K":
+                return KING;
+        }
+
+        return PAWN;
+    }
+
+    public static char GetChar(this PieceType type) => type switch
+    {
+        PAWN => ' ',
+        KNIGHT => 'N',
+        BISHOP => 'B',
+        ROOK => 'R',
+        QUEEN => 'Q',
+        KING => 'K'
+    };
     public static Dictionary<char, PieceType> CharToNotation = new()
     {
         { 'p', PAWN },

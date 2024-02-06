@@ -1,7 +1,5 @@
-using ChessMasterObjectNotation;
 using Chess;
-using System.Diagnostics;
-using System.Security.Cryptography.X509Certificates;
+using ChessMasterQuiz.Forms;
 
 namespace ChessMasterQuiz
 {
@@ -16,13 +14,17 @@ namespace ChessMasterQuiz
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            // Application.Run(new formMain());
 
+            goto main;
             PgnReader reader = new();
 
             reader.FromBytes(
                 PGNLibrary.Steinitz_Best_Games
                 );
+
+            main:
+            Application.Run(new formChessboard());
+
 
         }
     }

@@ -1,4 +1,6 @@
-﻿using ChessMasterQuiz.Forms;
+﻿using static ChessMasterQuiz.Helpers.UserHelper;
+using static ChessMasterQuiz.Helpers.ControlHelper;
+using ChessMasterQuiz.Forms;
 
 namespace ChessMasterQuiz;
 

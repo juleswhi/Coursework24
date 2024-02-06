@@ -1,4 +1,5 @@
-﻿using static ChessMasterQuiz.Helper;
+﻿using static ChessMasterQuiz.Helpers.UserHelper;
+using static ChessMasterQuiz.Helper;
 using System.Security.Cryptography;
 using static ChessMasterQuiz.UserType;
 using System.Text;
