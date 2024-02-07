@@ -1,5 +1,7 @@
 ﻿namespace Chess;
 
+using System.Text;
+using static Colour;
 using static PieceType;
 
 public enum Colour
@@ -10,6 +12,8 @@ public enum Colour
 
 public static class ChessHelper
 {
+
+
     public static PieceType GetPiece(this char c)
     {
         switch(c.ToString().ToLower())
