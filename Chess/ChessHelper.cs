@@ -13,6 +13,13 @@ public enum Colour
 public static class ChessHelper
 {
 
+    public static IEnumerable<T> From<T>(params T[] nums)
+    {
+        foreach(var n in nums)
+        {
+            yield return n;
+        }
+    } 
 
     public static PieceType GetPiece(this char c)
     {

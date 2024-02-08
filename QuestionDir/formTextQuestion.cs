@@ -1,4 +1,5 @@
-﻿using ChessMasterObjectNotation;
+﻿using System.Diagnostics;
+using ChessMasterObjectNotation;
 namespace ChessMasterQuiz.QuestionDir;
 
 public partial class formTextQuestion : Form, IContext
@@ -16,6 +17,29 @@ public partial class formTextQuestion : Form, IContext
             btnAnswer3,
             btnAnswer4
         };
+
+        foreach(var b in _buttons)
+        {
+            b.Click += (s, e) =>
+            {
+                Debug.Print("Clicked");
+                if (OnAnswered is null)
+                {
+                    Debug.Print("Answered is null");
+                    return;
+                }
+
+                OnAnswered!.Invoke();
+            };
+        }
+    }
+
+    public Action OnAnswered { get; set; } = () => { };
+
+
+    public void FireAnswerCompleted(object sender, EventArgs e)
+    {
+        Debug.Print("Answer Completed");
     }
 
 
@@ -38,10 +62,28 @@ public partial class formTextQuestion : Form, IContext
             x => x.tag == "number")?
             .data as string;
 
-        if (number is null) return;
+        if (number is null)
+        {
+            Debug.Print("Number is null");
+            return;
+        }
 
         lblNumber.Text = number;
 
+
+        var onAnswered = context.FirstOrDefault(
+            x => x.tag == "action")?
+            .data as Action;
+
+        if(onAnswered is null)
+        {
+            Debug.Print("OnAnswered not passed through");
+            return;
+        }
+
+        Debug.Print($"OnAnswered is not null"); 
+
+        OnAnswered += onAnswered;
     }
 
     Control.ControlCollection IContext._controls => Controls;

@@ -1,5 +1,10 @@
+using static ChessMasterQuiz.Helpers.UserHelper;
+using System.Data.Common;
+using System.Diagnostics;
+using System.Text.Json;
 using Chess;
 using ChessMasterQuiz.Forms;
+using ChessMasterQuiz.Helpers;
 
 namespace ChessMasterQuiz
 {
@@ -22,10 +27,8 @@ namespace ChessMasterQuiz
                 PGNLibrary.Steinitz_Best_Games
                 );
 
-            main:
-            Application.Run(new formChessboard());
-
-
+        main:
+            Application.Run(new formMain());
         }
     }
 }

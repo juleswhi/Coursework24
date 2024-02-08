@@ -7,7 +7,6 @@ public record Answer(List<string> Answers, uint Index);
 public enum QuestionType
 {
     TEXT,
-    MAP
 }
 
 public enum Difficulty

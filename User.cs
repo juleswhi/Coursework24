@@ -21,9 +21,11 @@ public enum UserType
 // A record type is vastly similar to a class, but does most of the boring work for you.
 // The values in the "()" are automatically properties of the record type.
 // In addition to a class, records are reference types.
-public record Password(string Hashed, byte[] salt);
+[Serializable]
+public record Password(string Hashed, byte[] Salt);
 
 // This class handles representation of the User model.
+[Serializable]
 public class User
 {
     // `Name` is the username of the user. Note: Not Unique
@@ -63,16 +65,15 @@ public class User
         // Then converts the has to Base64, which is useful to put in text
         // The salt is also used to hash the password 
         var hashedPassword = 
-                Convert.ToBase64String(
                     Rfc2898DeriveBytes.Pbkdf2(passwordInBytes,
                         salt,
                         100_000,
                         HashAlgorithmName.SHA512,
-                        64));
+                        64);
         
         // Creates the password object with the hashedPassword and the salt.
         Password = new(
-                hashedPassword,
+                Encoding.UTF8.GetString(hashedPassword),
                 salt
             );
         

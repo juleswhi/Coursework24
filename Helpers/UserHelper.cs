@@ -10,7 +10,10 @@ public static class UserHelper
     static readonly string _userpath = "Users.csv";
     public static List<User> Users = new()
     {
-        new("root", "password")
+        new("root", "root")
+        {
+            Email = new System.Net.Mail.MailAddress("root@root.com"),
+        }
     };
 
     public static User? ActiveUser
@@ -23,10 +26,20 @@ public static class UserHelper
 
     public static bool VerifyPassword(this string password, User user)
     {
-        byte[] passwordInBytes = Encoding.UTF8.GetBytes(password.FromBase64());
-        return CryptographicOperations.FixedTimeEquals(
-            Rfc2898DeriveBytes.Pbkdf2(passwordInBytes, user.Password!.salt, 100_000, HashAlgorithmName.SHA512, 64)
-            , Encoding.UTF8.GetBytes(password));
+        byte[] passwordInBytes = Encoding.UTF8.GetBytes(password);
+
+        var hashedPassword = 
+                    Rfc2898DeriveBytes.Pbkdf2(passwordInBytes,
+                        user.Password.Salt,
+                        100_000,
+                        HashAlgorithmName.SHA512,
+                        64);
+
+        if(Encoding.UTF8.GetString(hashedPassword) == user.Password.Hashed)
+        {
+            return true;
+        }
+        return false;
     }
 
     public static void Add(this User user)

@@ -1,4 +1,5 @@
-﻿using static Chess.Colour;
+﻿using static Chess.ChessHelper;
+using static Chess.Colour;
 using System.Runtime.CompilerServices;
 using Chess;
 using System.Diagnostics;
@@ -20,14 +21,17 @@ public class Board : Panel
 
         for(int i = 0; i < 8; i++)
         {
-            for(int j = 0; j < 8; j++)
+            for(int j = 8; j >= 0; j--)
             {
                 Squares.Add(
+                    // Obfuscation so you can't ever understand this
+                    // Documentation can be found in hell
                     new Square(
                         (i + j) % 2 == 0
                             ? White
                             : Black,
-                        new Point(i * 50, j * 50)
+                        new Point(i * 50, j * 50),
+                        ((char)(i + 97), j + 1)
                             ));
             }
         }
@@ -46,49 +50,88 @@ public class Board : Panel
             Enumerable.Range(1, 2)
             .Select(x =>
 
-            Enumerable.Range(1, 8)
-                .Select(y => new Piece(
-                    (PieceType)1, ((char)(y + 96), x == 1 ? 2 : 7), x == 1 ? White : Black)
-                    ).ToList()).Aggregate((x, y) =>
-                    {
-                        y.AddRange(x);
-                        return y;
-                    })
+                Enumerable.Range(1, 8)
+                    .Select(y => new Piece(
+                        PieceType.PAWN, ((char)(y + 96), x == 1 ? 2 : 7), x == 1 ? White : Black)
+                        ).ToList()).Aggregate((x, y) =>
+                        {
+                            y.AddRange(x);
+                            return y;
+                        })
+                );
 
+        Pieces.AddRange(
+            Enumerable.Range(1, 2).Select(colour =>
+
+                From(1, 8).Select(
+                    x => new Piece(PieceType.ROOK, ((char)(x + 96), (colour == 1 ? 1 : 8)), (Colour)colour))
+                        ).Aggregate((x, y) =>
+                        {
+                            return y.Concat(x);
+                        }
+            ));
+
+
+        Pieces.AddRange(
+            Enumerable.Range(1, 2).Select(colour =>
+
+                From(2, 7).Select(
+                    x => new Piece(PieceType.KNIGHT, ((char)(x + 96), (colour == 1 ? 1 : 8)), (Colour)colour))
+                        ).Aggregate((x, y) =>
+                        {
+                            return y.Concat(x);
+                        }
+            ));
+
+
+        Pieces.AddRange(
+            Enumerable.Range(1, 2).Select(colour =>
+
+                From(3, 6).Select(
+                    x => new Piece(PieceType.BISHOP, ((char)(x + 96), (colour == 1 ? 1 : 8)), (Colour)colour))
+                        ).Aggregate((x, y) =>
+                        {
+                            return y.Concat(x);
+                        }
+            ));
+
+        Pieces.AddRange(
+            Enumerable.Range(1, 2).Select(colour =>
+                    new Piece(PieceType.KING, ('e', (colour == 1 ? 1 : 8)), (Colour)colour))
+            );
+
+        Pieces.AddRange(
+            Enumerable.Range(1, 2).Select(colour =>
+                    new Piece(PieceType.QUEEN, ('d', (colour == 1 ? 1 : 8)), (Colour)colour))
             );
     }
 
-
-
-
     private void Draw(object? sender, PaintEventArgs e)
     {
-        // e.Graphics.FillRectangle(Brushes.Blue, _defaultRectangle);
-
-        foreach(var piece in Pieces)
-        {
-            // Debug.Print($"{piece.Location}");
-        }
-
-
-
         foreach (var square in Squares)
         {
-            if (square.BoardLocation == ('a', 1))
-            {
-                e.Graphics.FillRectangle(
-                    Brushes.Green,
-                    new Rectangle(square.Location, new(50, 50))
-                    );
-            }
-            else
-            {
 
-            }
+            Debug.Print($"{square.BoardLocation}");
             e.Graphics.FillRectangle(
                 square.Colour == White ? Brushes.White : Brushes.Black,
                 new Rectangle(square.Location, new(50, 50))
                 );
+
+            foreach (var piece in Pieces)
+            {
+                if (piece.Location == square.BoardLocation)
+                {
+                    /*
+                    e.Graphics.FillRectangle(
+                        Brushes.Green,
+                        new Rectangle(square.Location, new(50, 50))
+                        );
+                    */
+
+                    e.Graphics.DrawString($"{piece.Colour}", new Font(FontFamily.GenericMonospace, 10), Brushes.Green, square.Location);
+                }
+            }
+
 
         }
     }

@@ -1,13 +1,6 @@
-﻿using static ChessMasterQuiz.Helpers.ControlHelper;
+﻿using static ChessMasterQuiz.Helpers.UserHelper;
+using static ChessMasterQuiz.Helpers.ControlHelper;
 using static ChessMasterQuiz.Helpers.FormatDirection;
-using static ChessMasterQuiz.ValidationType;
-using Newtonsoft.Json;
-using static ChessMasterQuiz.Helper;
-using System.Net.Mail;
-using ChessMasterQuiz.QuestionDir;
-using ChessMasterObjectNotation;
-using static ChessMasterObjectNotation.Difficulty;
-using static ChessMasterObjectNotation.QuestionType;
 using System.Diagnostics;
 using ChessMasterQuiz.Helpers;
 
@@ -51,23 +44,24 @@ public partial class formLogin : Form, IContext
 
     private void btnLogin_Click(object sender, EventArgs e)
     {
-        // Readin Users
-
         string emailText = txtBoxEmail.Text;
         string passwordText = txtBoxPassword.Text;
 
-        if(emailText == "root" && passwordText == "root")
+        var foundUser = Users.FirstOrDefault(x => x.Email?.Address == emailText);
+        if (foundUser is null)
         {
-            ControlHelper.ActivateForm<formMenu>();
+            Debug.Print("Couldn't Find the entered user");
+            return;
         }
 
-        var u = new User(
-            "James",
-            "password",
-            false);
+        if(!passwordText.VerifyPassword(foundUser!))
+        {
+            Debug.Print("Wrong Password");
+            return;
+        }
 
-        u.Login();
 
-        // var foundUser = Users.Where(x => x.Email?.Address == mailAddr.Address && passwordText.VerifyPassword(x));
+        foundUser.Login();
+        ControlHelper.ActivateForm<formMenu>();
     }
 }

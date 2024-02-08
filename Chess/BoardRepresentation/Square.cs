@@ -11,7 +11,7 @@ public class Square : Panel
     public PieceType? Type { get; set; }
     public Label Text { get; set; } = new();
 
-    public Square(Colour colour, Point location) : base()
+    public Square(Colour colour, Point location, (char, int) boardLocation) : base()
     {
         Colour = colour;
 
@@ -25,6 +25,7 @@ public class Square : Panel
         Margin = new(0, 0, 0, 0);
 
 
+        BoardLocation = boardLocation;
         Size = _defaultSquareSize;
 
         Location = location;
