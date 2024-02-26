@@ -2,9 +2,8 @@
 using static Chess.ChessHelper;
 namespace Chess;
 
-public class SAN
+public class SAN : IEquatable<SAN>
 {
-
     public int Castling { get; set; }
     public bool Capturing { get; set; } = false;
     public bool Check { get; set; } = false;
@@ -53,8 +52,9 @@ public class SAN
     {
     }
 
-    public void FromString(string str)
+    public static SAN FromString(string str)
     {
+        SAN san = new SAN();
         // ed
         // exd4
         // Nd4
@@ -62,46 +62,46 @@ public class SAN
 
         if(str.Count(x => x == 'O') == 2)
         {
-            Castling = 1;
-            return;
+            san.Castling = 1;
+            // return san;
         }
         else if(str.Count(x => x == 'O') == 3)
         {
-            Castling = -1;
-            return;
+            san.Castling = -1;
+            // return;
         }
 
 
 
         if (str.Contains('x'))
         {
-            Capturing = true;
+            san.Capturing = true;
         }
 
         if(str.Contains('+'))
         {
-            Check = true;
+            san.Check = true;
         }
 
         if(str.Contains('#'))
         {
-            Check = true;
-            CheckMate = true;
+            san.Check = true;
+            san.CheckMate = true;
         }
 
         // CharToNotation.TryGetValue(str[0], out PieceType p);
         if (char.IsUpper(str[0]))
         {
-            Piece = str[0].GetPiece();
+            san.Piece = str[0].GetPiece();
         }
-        else if(Capturing)
+        else if(san.Capturing)
         {
-            PawnCapturing = (str[0], -1);
-            Piece = PieceType.PAWN;
+            san.PawnCapturing = (str[0], -1);
+            san.Piece = PieceType.PAWN;
         }
         else
         {
-            Piece = PieceType.PAWN;
+            san.Piece = PieceType.PAWN;
         }
 
         int numLocation = str.IndexOfAny("123456789".ToArray());
@@ -109,9 +109,16 @@ public class SAN
         char file = str[numLocation - 1];
         char rank = str[numLocation];
 
-        Square = (
+        san.Square = (
             file,
             int.Parse(rank.ToString())
             );
+
+        return san;
+    }
+
+    public bool Equals(SAN? other)
+    {
+        return ToString() == other?.ToString();
     }
 }

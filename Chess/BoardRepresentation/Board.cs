@@ -1,23 +1,31 @@
-﻿using static Chess.ChessHelper;
-using static Chess.Colour;
+﻿using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using Chess;
-using System.Diagnostics;
+using ChessMasterQuiz.Chess;
+using static Chess.ChessHelper;
+using static Chess.Colour;
 
 namespace Chess.BoardRepresentation;
 
 public class Board : Panel
 {
-    public static readonly Size _defaultBoardSize = new(400, 400);
-    public static readonly Rectangle _defaultRectangle = new Rectangle(new(20, 20), _defaultBoardSize);
-    public static readonly int _defaultSquareWidth = 50;
+    public Piece? this[char file, int rank] =>
+        Pieces.FirstOrDefault(x => x.Location! == (file, rank));
+    public Piece? this[(char, int) location] =>
+        Pieces.FirstOrDefault(x => x.Location! == location);
+
+    private static readonly Size _defaultBoardSize = new(400, 400);
+    private int _squareWidth => this.Size.Width / 8;
+
+    private KeyValuePair<Square?, Square?> SelectedSquares = new(null, null);
 
     public List<Square> Squares = new();
     public List<Piece> Pieces = new();
-    public Board() : base()
+    public Board(Size? size = null) : base()
     {
+        MoveHelper.CurrentBoard = this;
         base.BackColor = Color.Gray;
-        Size = _defaultBoardSize;
+        size ??= _defaultBoardSize;
+        Size = (Size)size;
 
         for(int i = 0; i < 8; i++)
         {
@@ -30,92 +38,63 @@ public class Board : Panel
                         (i + j) % 2 == 0
                             ? White
                             : Black,
-                        new Point(i * 50, j * 50),
+                        new Point(i * 50, 350 - (j * 50)),
                         ((char)(i + 97), j + 1)
                             ));
             }
         }
 
-        PopulatePieces();
+        Squares.RemoveAll(x => x.BoardLocation.Item2 == 9);
+
+        // Generate both the white and black pieces
+        Pieces = PopulatePieces();
 
         Paint += Draw;
+        Click += (object? s, EventArgs e) =>
+        {
+            var pos = PointToClient(MousePosition);
+
+            Point roundedPoint = new Point(
+
+                (int)Math.Floor(pos.X / 50m) * 50,
+                (int)Math.Floor(pos.Y / 50m) * 50
+                );
+
+            foreach(var square in Squares)
+            {
+                if(square.Location == roundedPoint)
+                {
+                    SelectedSquares = new(square, SelectedSquares.Value);
+                }
+            }
+
+            Invalidate();
+        };
 
         Invalidate();
     }
 
-    private void PopulatePieces()
-    {
-        Pieces.AddRange(
-
-            Enumerable.Range(1, 2)
-            .Select(x =>
-
-                Enumerable.Range(1, 8)
-                    .Select(y => new Piece(
-                        PieceType.PAWN, ((char)(y + 96), x == 1 ? 2 : 7), x == 1 ? White : Black)
-                        ).ToList()).Aggregate((x, y) =>
-                        {
-                            y.AddRange(x);
-                            return y;
-                        })
-                );
-
-        Pieces.AddRange(
-            Enumerable.Range(1, 2).Select(colour =>
-
-                From(1, 8).Select(
-                    x => new Piece(PieceType.ROOK, ((char)(x + 96), (colour == 1 ? 1 : 8)), (Colour)colour))
-                        ).Aggregate((x, y) =>
-                        {
-                            return y.Concat(x);
-                        }
-            ));
-
-
-        Pieces.AddRange(
-            Enumerable.Range(1, 2).Select(colour =>
-
-                From(2, 7).Select(
-                    x => new Piece(PieceType.KNIGHT, ((char)(x + 96), (colour == 1 ? 1 : 8)), (Colour)colour))
-                        ).Aggregate((x, y) =>
-                        {
-                            return y.Concat(x);
-                        }
-            ));
-
-
-        Pieces.AddRange(
-            Enumerable.Range(1, 2).Select(colour =>
-
-                From(3, 6).Select(
-                    x => new Piece(PieceType.BISHOP, ((char)(x + 96), (colour == 1 ? 1 : 8)), (Colour)colour))
-                        ).Aggregate((x, y) =>
-                        {
-                            return y.Concat(x);
-                        }
-            ));
-
-        Pieces.AddRange(
-            Enumerable.Range(1, 2).Select(colour =>
-                    new Piece(PieceType.KING, ('e', (colour == 1 ? 1 : 8)), (Colour)colour))
-            );
-
-        Pieces.AddRange(
-            Enumerable.Range(1, 2).Select(colour =>
-                    new Piece(PieceType.QUEEN, ('d', (colour == 1 ? 1 : 8)), (Colour)colour))
-            );
-    }
 
     private void Draw(object? sender, PaintEventArgs e)
     {
         foreach (var square in Squares)
         {
-
-            Debug.Print($"{square.BoardLocation}");
             e.Graphics.FillRectangle(
-                square.Colour == White ? Brushes.White : Brushes.Black,
+                square.Colour == White ? Brushes.LightGray : Brushes.DarkGray,
                 new Rectangle(square.Location, new(50, 50))
-                );
+            );
+
+            if (SelectedSquares.Key is Square key)
+            {
+                if (key == square)
+                {
+                    e.Graphics.FillRectangle(
+                        square.Colour == White ? Brushes.LightGreen : Brushes.DarkGreen,
+                    new Rectangle(square.Location, new(50, 50))
+                    );
+                }
+            }
+
 
             foreach (var piece in Pieces)
             {
@@ -128,11 +107,31 @@ public class Board : Panel
                         );
                     */
 
-                    e.Graphics.DrawString($"{piece.Colour}", new Font(FontFamily.GenericMonospace, 10), Brushes.Green, square.Location);
+                    // e.Graphics.DrawString($"{piece.Type}", new Font(FontFamily.GenericMonospace, 10), Brushes.Green, square.Location);
+                    var image = piece.GetImage();
+                    e.Graphics.DrawImage(image, image.GetCenter(square.Location, new(_squareWidth, _squareWidth)));
                 }
             }
 
 
         }
+    }
+
+
+    public void DisplayGame(PGN pgn, int PlyPause = -1)
+    {
+        Thread gameThread = new Thread(() =>
+        {
+            foreach (var (white, black) in pgn.Moves)
+            {
+                Debug.Print($"Move White: {white}");
+                MoveHelper.GetPieceThatCouldMove(white.GetNotation());
+                Thread.Sleep(750);
+                Debug.Print($"Move Black: {black}");
+                Thread.Sleep(750);
+            }
+        });
+        gameThread.Start();
+
     }
 }

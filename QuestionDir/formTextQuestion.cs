@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using static ChessMasterQuiz.ContextTagType;
+using System.Diagnostics;
 using ChessMasterObjectNotation;
 namespace ChessMasterQuiz.QuestionDir;
 
@@ -10,14 +11,18 @@ public partial class formTextQuestion : Form, IContext
         InitializeComponent();
 
         // Buttons 
-        _buttons = new Button[]
-        {
+        // C# 12 Collection Initializer
+        _buttons = [
             btnAnswer1,
             btnAnswer2,
             btnAnswer3,
             btnAnswer4
-        };
+            ];
 
+
+        // Ensure that each button has a click delegate attached
+
+        // This delegate should check if the answer is correct, and then open the next question
         foreach(var b in _buttons)
         {
             b.Click += (s, e) =>
@@ -29,7 +34,7 @@ public partial class formTextQuestion : Form, IContext
                     return;
                 }
 
-                OnAnswered!.Invoke();
+                OnAnswered();
             };
         }
     }
@@ -46,20 +51,20 @@ public partial class formTextQuestion : Form, IContext
     public void UseContext(IEnumerable<DataContextTag> context)
     {
         TextQuestion? questionData = context.FirstOrDefault(
-            x => x.tag == "question")?
+            x => x.tag == QUESTION)?
             .data as TextQuestion;
 
         if (questionData is null) return;
 
         for(int i = 0; i < _buttons.Length; i++)
         {
-            _buttons[i].Text = questionData.A.Answers[i];
+            _buttons[i].Text = questionData.A!.Answers[i];
         }
 
         lblQuestion.Text = questionData.Q;
 
         string? number = context.FirstOrDefault(
-            x => x.tag == "number")?
+            x => x.tag == NUMBER)?
             .data as string;
 
         if (number is null)
@@ -70,9 +75,8 @@ public partial class formTextQuestion : Form, IContext
 
         lblNumber.Text = number;
 
-
         var onAnswered = context.FirstOrDefault(
-            x => x.tag == "action")?
+            x => x.tag == ACTION)?
             .data as Action;
 
         if(onAnswered is null)

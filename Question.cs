@@ -22,13 +22,13 @@ public abstract class Question : IEquatable<Question>, IComparable<Question>
     public string Name { get; init; } = String.Empty;
     public Difficulty Difficulty { get; init; }
 
-    public int CompareTo(Question other)
+    public int CompareTo(Question? other)
     {
-        return (int)other.Difficulty.CompareTo((int)Difficulty);
+        return (int)other!.Difficulty.CompareTo((int)Difficulty);
     }
-    public bool Equals(Question other)
+    public bool Equals(Question? other)
     {
-        return other.Name == Name;
+        return other!.Name == Name;
     }
 }
 public class TextQuestion : Question
@@ -37,6 +37,12 @@ public class TextQuestion : Question
     {
         Type = TEXT;
     }
+
+    public TextQuestion(string q, Answer a) : this()
+    {
+        Q = q;
+        A = a;
+    }
     public string Q { get; set; } = string.Empty;
-    public Answer A { get; set; }
+    public Answer? A { get; set; } = null;
 }

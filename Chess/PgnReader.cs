@@ -1,12 +1,14 @@
-﻿using System.Diagnostics;
+﻿using System.ComponentModel;
+using System.Diagnostics;
+using System.Reflection;
 using System.Text;
 
 namespace Chess;
 
-public record PGN(
+public record struct PGN(
     string Event,
     string Site,
-    DateTime Date,
+    DateTime? Date,
     int Round,
     string White,
     string Black,
@@ -19,7 +21,40 @@ public record PGN(
     string? Mode,
     FEN? FEN,
     List<(SAN, SAN)> Moves
-    );
+    )
+{
+
+    public static PGN From(List<(SAN, SAN)> Moves)
+    {
+        return new PGN(Moves);
+    }
+    public static PGN From(List<(Notation, Notation)> Moves)
+    {
+        return new PGN(Moves);
+    }
+
+    public PGN(List<(SAN,SAN)> Moves) : this(string.Empty, string.Empty, null, -1, string.Empty, string.Empty, string.Empty,
+        null, null, null, null, null, null, null, Moves)
+    {
+
+    }
+
+    public PGN(List<(Notation, Notation)> moves) : this(string.Empty, string.Empty, null, -1, string.Empty, string.Empty, string.Empty,
+        null, null, null, null, null, null, null, new())
+    {
+        foreach (var move in moves)
+        {
+            Moves.Add(
+                (
+                new SAN($"{move.Item1.Item1}{move.Item1.Item2}"),
+                new SAN($"{move.Item2.Item1}{move.Item2.Item2}")
+                )
+                );
+        }
+    }
+
+
+}
 
 public class PgnReader
 {
@@ -41,16 +76,53 @@ public class PgnReader
         },
         StringSplitOptions.RemoveEmptyEntries);
 
-        // for(int i = 0; i < parts.Length; i+=2)
+        for(int i = 0; i < parts.Length; i+=2)
         {
-            // Debug.Print(parts[0]);
-            var tokens = LexGame(parts[1]);
-            foreach(var token in tokens)
+
+            PGN pgn = new(string.Empty, string.Empty, default, -1, string.Empty, string.Empty,
+                string.Empty, null, null, null, null, null, null, null, new());
+
+            var meta = LexMetadata(parts[0]).Where(x => x.Type == TokenType.KEY 
+                                                   || x.Type == TokenType.VALUE);
+
+            var game = LexGame(parts[1]);
+
+            var props = typeof(PGN).GetProperties();
+
+            string currentField = "";
+
+            foreach(var prop in props)
             {
-                // Debug.Print(token.ToString());
+                Token field = meta.FirstOrDefault(x => (string)x.Data! == prop.Name);
+                if(field.Type == TokenType.KEY)
+                {
+                    currentField = (string)field.Data!;
+                    Debug.Print($"KEY: {field.Data!}");
+                    continue;
+                }
+
+                Debug.Print($"VALUE: {field.Data!}");
+
+                object output = field.Data!;
+                if (prop.PropertyType != typeof(string)) 
+                {
+                    output = Convert.ChangeType(field.Data, prop.PropertyType);
+                    Debug.Print($"Converting to type {prop.PropertyType}");
+                }
+                prop.SetMethod?.Invoke(pgn, new object[] { field.Data! });
+                Debug.Print($"{prop.GetMethod?.Invoke(pgn, new object[] { })}");
+
             }
 
         }
+    }
+
+    private PGN ToPGN(IEnumerable<Token> meta, IEnumerable<Token> game)
+    {
+
+
+
+        return default;
     }
 
     public void FromString(params string[] str)
@@ -77,7 +149,7 @@ public class PgnReader
         RIGHT_CURLY
     }
 
-    class Token(TokenType Type, object? Data)
+    record struct Token(TokenType Type, object? Data)
     {
         public override string ToString() =>
             $"{Type}: {Data ?? ""}";
@@ -91,10 +163,10 @@ public class PgnReader
         var peek = () => str[_current++];
         var current = () => str[_current];
 
-        var consume = (Token token) =>
+        var consume = (TokenType type, object? data = null) =>
         {
             _current++;
-            return token;
+            return new Token(type, data);
         };
 
         Type pgnType = typeof(PGN);
@@ -106,11 +178,11 @@ public class PgnReader
             {
 
                 case '[':
-                    yield return consume(new(TokenType.LEFT_BRACKET, null));
+                    yield return consume(TokenType.LEFT_BRACKET);
                     break;
 
                 case ']':
-                    yield return consume(new(TokenType.RIGHT_BRACKET, null));
+                    yield return consume(TokenType.RIGHT_BRACKET);
                     break;
 
 
@@ -126,10 +198,10 @@ public class PgnReader
                             next(1);
                         }
 
-                        yield return consume(new Token(
+                        yield return consume(
                             TokenType.VALUE,
                             sb.ToString()
-                            ));
+                            );
 
                         break;
                     }
@@ -149,10 +221,10 @@ public class PgnReader
                             next(1);
                         }
 
-                        yield return consume(new Token(
+                        yield return consume(
                             TokenType.KEY,
                             sb.ToString()
-                            ));
+                            );
 
                         continue;
                     }
@@ -170,10 +242,10 @@ public class PgnReader
         var peek = () => str[_current++];
         var current = () => str[_current];
 
-        var consume = (Token token) =>
+        var consume = (TokenType type, object? data = null) =>
         {
             _current++;
-            return token;
+            return new Token(type, data);
         };
 
         for (; _current < str.Length;)
@@ -239,7 +311,7 @@ public class PgnReader
                         Debug.Print(san.ToString());
 
                         yield return consume(
-                            new Token(TokenType.NOTATION, san));
+                            TokenType.NOTATION, san);
 
                         break;
                     }

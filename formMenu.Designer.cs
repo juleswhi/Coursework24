@@ -40,7 +40,7 @@
             // 
             lblLogin.AutoSize = true;
             lblLogin.Font = new Font("JetBrains Mono", 27.7499962F, FontStyle.Regular, GraphicsUnit.Point);
-            lblLogin.Location = new Point(282, 12);
+            lblLogin.Location = new Point(47, 46);
             lblLogin.Name = "lblLogin";
             lblLogin.Size = new Size(220, 49);
             lblLogin.TabIndex = 1;
@@ -59,7 +59,7 @@
             // btnLeaderboard
             // 
             btnLeaderboard.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnLeaderboard.Location = new Point(27, 179);
+            btnLeaderboard.Location = new Point(24, 205);
             btnLeaderboard.Name = "btnLeaderboard";
             btnLeaderboard.Size = new Size(253, 83);
             btnLeaderboard.TabIndex = 4;
@@ -70,7 +70,7 @@
             // btnPlay
             // 
             btnPlay.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnPlay.Location = new Point(27, 90);
+            btnPlay.Location = new Point(24, 116);
             btnPlay.Name = "btnPlay";
             btnPlay.Size = new Size(253, 83);
             btnPlay.TabIndex = 5;
@@ -81,7 +81,7 @@
             // btnSettings
             // 
             btnSettings.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSettings.Location = new Point(27, 268);
+            btnSettings.Location = new Point(24, 294);
             btnSettings.Name = "btnSettings";
             btnSettings.Size = new Size(253, 83);
             btnSettings.TabIndex = 5;

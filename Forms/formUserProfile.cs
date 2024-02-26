@@ -1,4 +1,5 @@
-﻿using static ChessMasterQuiz.Helpers.ControlHelper;
+﻿using static ChessMasterQuiz.ContextTagType;
+using static ChessMasterQuiz.Helpers.ControlHelper;
 namespace ChessMasterQuiz.Forms;
 
 public partial class formUserProfile : Form, IContext
@@ -12,7 +13,7 @@ public partial class formUserProfile : Form, IContext
 
     public void UseContext(IEnumerable<DataContextTag> context)
     {
-        User user = context.FirstOrDefault(x => x.tag! == "User")!.data! as User;
+        User? user = context.FirstOrDefault(x => x.tag! == USER)!.data! as User;
         if (user is null)
         {
             return;

@@ -21,6 +21,17 @@ public static class UserHelper
         get => Users.FirstOrDefault(x => x.IsLoggedIn == true);
     }
 
+    public static string SerializePassword(this Password password)
+    {
+        StringBuilder sb = new();
+
+        sb.Append($"{nameof(password.Hashed)}{{{password.Hashed}}}");
+
+        sb.Append($"{nameof(password.Salt)}{{{Encoding.UTF8.GetString(password.Salt)}}}");
+
+        return sb.ToString();
+    }
+
 
     public static User TestUser => new User("TestUserName", "password", false);
 
@@ -30,7 +41,7 @@ public static class UserHelper
 
         var hashedPassword = 
                     Rfc2898DeriveBytes.Pbkdf2(passwordInBytes,
-                        user.Password.Salt,
+                        user.Password!.Salt,
                         100_000,
                         HashAlgorithmName.SHA512,
                         64);

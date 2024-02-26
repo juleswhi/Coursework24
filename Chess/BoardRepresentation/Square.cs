@@ -1,6 +1,4 @@
-﻿using Chess;
-
-namespace Chess.BoardRepresentation;
+﻿namespace Chess.BoardRepresentation;
 
 public class Square : Panel
 {
@@ -9,7 +7,7 @@ public class Square : Panel
     new public Point Location { get; set; } = new();
     public Colour Colour { get; init; }
     public PieceType? Type { get; set; }
-    public Label Text { get; set; } = new();
+    new public Label Text { get; set; } = new();
 
     public Square(Colour colour, Point location, (char, int) boardLocation) : base()
     {
@@ -18,7 +16,8 @@ public class Square : Panel
         BackColor = Colour switch
         {
             Colour.Black => Color.Black,
-            Colour.White => Color.White
+            Colour.White => Color.White,
+            _ => Color.White
         };
 
         Padding = new(0, 0, 0, 0);

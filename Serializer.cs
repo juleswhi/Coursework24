@@ -60,7 +60,7 @@ public static class LonConvert
             stringBuilder.Append("{");
             TextQuestion tq = (question as TextQuestion)!;
             stringBuilder.Append($"Q:\"{tq.Q}\",");
-            for(int i = 0; i < tq.A.Answers.Count; i++)
+            for(int i = 0; i < tq.A!.Answers.Count; i++)
             {
                 stringBuilder.Append($"Answer{i+1}:\"{tq.A.Answers[i]}\",");
             }
@@ -305,7 +305,6 @@ file static class Parser
 
     public static Question Parse(List<Token> tokens)
     {
-        var inBrackets = false;
 
         _current = 0;
         _tokens = tokens;
@@ -320,7 +319,6 @@ file static class Parser
             switch(Current().Type)
             {
                 case LEFT_BRACKET:
-                    inBrackets = true;
                     break;
 
                 case IDENTIFIER:

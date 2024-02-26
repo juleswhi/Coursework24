@@ -1,4 +1,5 @@
-﻿using static ChessMasterQuiz.Helpers.UserHelper;
+﻿using static ChessMasterQuiz.ContextTagType;
+using static ChessMasterQuiz.Helpers.UserHelper;
 using static ChessMasterQuiz.Helpers.ControlHelper;
 using static ChessMasterQuiz.Helpers.FormatDirection;
 using System.Diagnostics;
@@ -16,13 +17,8 @@ public partial class formLogin : Form, IContext
         Resize += onResize;
         btnRegister.Click += (s, e) =>
         {
-            ActivateForm<formRegister>(new DataContextTag(txtBoxEmailRegister.Text, "email"));
+            ActivateForm<formRegister>(new DataContextTag(txtBoxEmailRegister.Text, EMAIL));
         };
-    }
-
-    private void ActivateForm<T>(DataContextTag dataContextTag)
-    {
-        throw new NotImplementedException();
     }
 
     Control.ControlCollection IContext._controls => Controls;

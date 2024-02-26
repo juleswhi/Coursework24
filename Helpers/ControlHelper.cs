@@ -4,8 +4,8 @@ namespace ChessMasterQuiz.Helpers;
 
 public enum FormatDirection
 {
-    X,
-    Y
+    X = 1,
+    Y = 2
 }
 
 public static class ControlHelper
@@ -56,9 +56,11 @@ public static class ControlHelper
         formMain.ChildForm.Enabled = true;
         formMain.ChildForm.Visible = true;
 
-        formMain.GetPanelHolder().Controls.Clear();
-        formMain.GetPanelHolder().Controls.Add(formMain.ChildForm);
-        formMain.GetPanelHolder().Show();
+        var holder = formMain.GetPanelHolder!();
+
+        holder.Controls.Clear();
+        holder.Controls.Add(formMain.ChildForm);
+        holder.Show();
     }
 
     /// <summary>
@@ -75,7 +77,7 @@ public static class ControlHelper
         var method = typeof(IContext).GetMethod("UseContext");
 
         // If the method exists | The form impl the interface
-        if (method is not null)
+        if (method is not null && typeof(IContext).IsAssignableFrom(typeof(T)))
         {
             method!.Invoke(instance, new object[] { context });
         }
@@ -88,17 +90,21 @@ public static class ControlHelper
     /// </summary>
     /// <param name="control">The Control to be centered</param>
     /// <returns>Action to center</returns>
-    public static void Center(this Control control, FormatDirection d)
+    public static void Center(this Control control, params FormatDirection[] directions)
     {
-        switch (d)
+        foreach (var d in directions)
         {
-            case X:
-                control.Location = new((formMain.ChildForm!.Width / 2) - (int)(0.5 * control.Width), control.Location.Y);
-                break;
-            case Y:
-                control.Location = new((formMain.ChildForm!.Width / 2) - (int)(0.5 * control.Width), control.Location.Y);
-                break;
-        };
+            switch (d)
+            {
+                case X:
+                    control.Location = new((formMain.ChildForm!.Width / 2) - (int)(0.5 * control.Width), control.Location.Y);
+                    break;
+                case Y:
+                    control.Location = new((formMain.ChildForm!.Width / 2) - (int)(0.5 * control.Width), control.Location.Y);
+                    break;
+            };
+
+        }
     }
 
     public static void Center(this Control control, FormatDirection direction, float distance)

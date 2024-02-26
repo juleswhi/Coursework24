@@ -1,1 +1,12 @@
-Type:"0",Name:"Location of lakes",Difficulty:"2",{Q:"Question?",Answer1:"rushmore",Answer2:"china",Answer3:"bangladesh",Answer4:"lincoln",Index:"3"}
+Type:"0",Name:"Magnus Carlsen",Difficulty:"0",{Q:"Where is Magnus Born?",Answer1:"Norway",Answer2:"Scandinavia",Answer3:"Russia",Answer4:"United Kindom",Index:"0"}
+Type:"0",Name:"Magnus Elo",Difficulty:"0",{Q:"What is the highest chess elo acheived OTB?",Answer1:"1994",Answer2:"2753",Answer3:"2882",Answer4:"2904",Index:"2"}
+Type:"0",Name:"Judit Polgar",Difficulty:"0",{Q:"Who is regarded as the greatest Woman chess player of all time?",Answer1:"Pia Cramling",Answer2:"Judit Polgar",Answer3:"Ju Wenjun",Answer4:"Lei Tingjie",Index:"1"}
+Type:"0",Name:"Woman Grandmaster",Difficulty:"0",{Q:"Who was the 5th female chess player to gain the title of Grandmaster?",Answer1:"Judit Polgar",Answer2:"Hou Yifan",Answer3:"Elisaveta Bykova",Answer4:"Pia Cramling",Index:"3"}
+Type:"0",Name:"World Chamption",Difficulty:"0",{Q:"Who has had the World Chess Champion title for the longest?",Answer1:"Garry Kasparov",Answer2:"Magnus Carlsen",Answer3:"Anatoly Karpov",Answer4:"Emanuel Lasker",Index:"3"}
+Type:"0",Name:"World Champion",Difficulty:"0",{Q:"Who is the current World Chess Champion?",Answer1:"Garry Kasparov",Answer2:"Magnus Carlsen",Answer3:"Ding Liren",Answer4:"Ian Nepomniachtchi",Index:"2"}
+Type:"0",Name:"Chess Nickname",Difficulty:"0",{Q:"Who had the nickname, "Lightning Kid" as a young chess player?",Answer1:"Fabiano Caruana",Answer2:"Vishwanathan Anand",Answer3:"Sergey Karjakin",Answer4:"Ian Nepomniachtchi",Index:"1"}
+Type:"0",Name:"World Chess Championship",Difficulty:"0",{Q:"How long was Magnus Carlsen's reign as World Champion?",Answer1:"5 Years",Answer2:"7 Years",Answer3:"10 years",Answer4:"11 Years",Index:"2"}
+Type:"0",Name:"World Chess Champion",Difficulty:"0",{Q:"Who was the 12th World Chess Champion?",Answer1:"Anatoly Karpov",Answer2:"Wilhelm Steinitz",Answer3:"Vishwanathan Anand",Answer4:"Fabiano Caruana",Index:"0"}
+Type:"0",Name:"World Chess Champion",Difficulty:"0",{Q:"Who is the first Woman's World Chess Champion from China",Answer1:"Ju Wenju",Answer2:"Zhu Chen",Answer3:"Zhang Fujiang",Answer4:"Xu Tianli",Index:"2"}
+Type:"0",Name:"Opening",Difficulty:"0",{Q:"What is the official name for the opening known as, "The Spanish"",Answer1:"Ponziani",Answer2:"Ruy Lopez",Answer3:"Sicilian Defense",Answer4:"Alekhine's Defense",Index:"1"}
+Type:"0",Name:"Chess Opening",Difficulty:"0",{Q:"Which chess player does NOT have an opening named after them?",Answer1:"Vasja Pirc",Answer2:"Alexander Alekhine",Answer3:"Aron Nimzowitsch",Answer4:"Garry Kasparov",Index:"3"}

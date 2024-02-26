@@ -1,4 +1,5 @@
-﻿using static ChessMasterQuiz.Helpers.ControlHelper;
+﻿using static ChessMasterQuiz.ContextTagType;
+using static ChessMasterQuiz.Helpers.ControlHelper;
 using static ChessMasterQuiz.Helpers.FormatDirection;
 using static System.FormatException;
 using static ChessMasterQuiz.ValidationType;
@@ -33,7 +34,7 @@ public partial class formRegister : Form, IContext
     {
         foreach (var dct in context)
         {
-            if (dct.tag == "email")
+            if (dct.tag == ContextTagType.EMAIL)
             {
                 txtBoxEmail.Text = (string)dct.data;
             }
@@ -53,7 +54,7 @@ public partial class formRegister : Form, IContext
         Dictionary<ValidationType, string> ValidationToTextBox = new()
         {
             // Fields
-            {EMAIL,  txtBoxEmail.Text },
+            {ValidationType.EMAIL,  txtBoxEmail.Text },
             {PASSWORD, txtBoxPassword.Text },
             {GENDER, txtBoxGender.Text },
             {DISPLAY, txtBoxDisplayName.Text } ,

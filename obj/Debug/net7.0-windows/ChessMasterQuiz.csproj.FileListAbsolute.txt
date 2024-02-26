@@ -25,3 +25,6 @@ C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ChessMasterQuiz.PGNLibrary.resources
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ChessMasterQuiz.QuestionDir.formTextQuestion.resources
 C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ChessMasterQuiz.Forms.formChessboard.resources
+C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ChessMasterQuiz.QuestionDir.formQuizResult.resources
+C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ChessMasterQuiz.Forms.formAddQuestion.resources
+C:\Users\i hate windows\Documents\GitHub\coursework-huh\obj\Debug\net7.0-windows\ChessMasterQuiz.Chess.ChessPieces.resources

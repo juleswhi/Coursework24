@@ -5,6 +5,7 @@ using static ChessMasterQuiz.UserType;
 using System.Text;
 using System.Net.Mail;
 using System.Diagnostics;
+using ChessMasterQuiz.Helpers;
 
 namespace ChessMasterQuiz;
 
@@ -43,12 +44,17 @@ public class User
     // The `UserType` can either be Admin or User 
     public UserType Type { get; set; } = USER;
 
+    // The current rating of the user 
+    public ELO Elo { get; set; } = new();
+
     // Reference to the image found in "Forms/ProfilePictures.resx"
     public string ImageName { get; set; } = string.Empty;
 
     // Bool value to validate who is logged in
     public bool IsLoggedIn { get; private set; }
 
+    public User()
+    {}
 
     // Constructor for the User class takes a plain text password and stores it as a hash
     public User(string name, string password, bool isAdmin = false)
@@ -92,6 +98,72 @@ public class User
     // Logs the user out by simply chaning their `IsLoggedIn` property.
     public void Logout() {
         IsLoggedIn = false;
+    }
+
+    public string Serialize()
+    {
+        StringBuilder sb = new();
+
+        // Grab fields
+
+        var fields = typeof(User).GetProperties();
+
+        foreach(var field in fields)
+        {
+            sb.Append($"{field.Name}{{");
+            if (field.Name == "Password")
+            {
+                var data = field.GetValue(this) as Password;
+                sb.Append($"{UserHelper.SerializePassword(
+                    (field.GetValue(this) as Password)!
+                    )}");
+            }
+            else
+            {
+                sb.Append(field.GetValue(this));
+            }
+            sb.Append("}");
+        }
+
+        return sb.ToString();
+    }
+
+    public static IEnumerable<User> Deserialize(params string[] @string)
+    {
+        StringBuilder stringBuilder = new();
+        foreach (var str in @string)
+        {
+
+            User user = new();
+            // Parse String
+            var current = 0;
+            var next = () => current++;
+
+            while (current < str.Length)
+            {
+                while (str[current] != '{')
+                {
+                    stringBuilder.Append(str[current]);
+                    current++;
+                }
+
+                string fieldName = stringBuilder.ToString();
+                stringBuilder.Clear();
+
+                current++;
+
+                while (str[current] != '}')
+                {
+                    stringBuilder.Append(str[current]);
+                    current++;
+                }
+
+                current++;
+            }
+
+            yield return user;
+
+        }
     }
 
 }
