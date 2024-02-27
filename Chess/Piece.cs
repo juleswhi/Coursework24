@@ -33,7 +33,7 @@ public class Piece
     public Colour Colour { get; set; }
 
 
-    public void Move(SAN location)
+    public void Move(string location)
     {
         bool legalMove = Type switch
         {

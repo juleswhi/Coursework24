@@ -134,7 +134,7 @@ public class Board : Panel
             this["e7"]?.Move(SAN.From("e5"));
             Thread.Sleep(750);
             Invalidate();
-            this["Qd1"]?.Move(SAN.From("Qf3"));
+            this["Qd1"]?.Move(SAN.From("f3"));
             Thread.Sleep(750);
             Invalidate();
         });

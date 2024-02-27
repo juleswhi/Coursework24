@@ -1,5 +1,4 @@
 ﻿using static ChessMasterQuiz.Chess.ChessPieces;
-namespace Chess;
 
 using System.Diagnostics;
 using System.Reflection.Metadata.Ecma335;
@@ -9,10 +8,16 @@ using ChessMasterQuiz.Chess;
 using static Colour;
 using static PieceType;
 
+namespace Chess;
 public enum Colour
 {
     White = 1,
     Black = 2
+}
+
+public record struct Notation(char File, int Rank)
+{
+
 }
 
 public static class ChessHelper

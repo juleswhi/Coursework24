@@ -76,7 +76,7 @@ public static class MoveHelper
         }
     }
 
-    public static bool PawnMove(SAN start, SAN destination, Board? board = null)
+    public static bool PawnMove(SAN start, Notation destination, Board? board = null)
     {
         if(board is null && CurrentBoard is null)
         {
@@ -87,6 +87,8 @@ public static class MoveHelper
         {
             CurrentBoard = b;
         }
+
+        if(destination)
 
         return true;
     }

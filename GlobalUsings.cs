@@ -39,4 +39,4 @@ global using static ChessMasterQuiz.SeverityType;
 */
 
 global using static ChessMasterQuiz.Helpers.ControlHelper;
-global using Notation = (char, int);
+// global using Notation = (char, int);
