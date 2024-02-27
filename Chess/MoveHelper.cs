@@ -10,7 +10,7 @@ public static class MoveHelper
 
     public static Board? CurrentBoard = null;
 
-    public static bool CheckIfPieceOnSquare(SAN location)
+    public static bool CheckIfPieceOnSquare(Notation location)
     {
         Debug.Print($"Checking if piece is on square.");
         if(CurrentBoard is Board board)
@@ -29,9 +29,9 @@ public static class MoveHelper
         return false;
     }
 
-    public static bool SquareIsNotation(Notation square, SAN move)
+    public static bool SquareIsNotation(Notation square, Notation move)
     {
-        return SAN.From($"{square.Item1}{square.Item2}").GetNotation() == move.GetNotation();
+        return square == move;
     }
 
     public static bool CheckIfCheck()
@@ -39,7 +39,7 @@ public static class MoveHelper
         return false;
     }
 
-    public static IEnumerable<Piece> GetPieceThatCouldMove(SAN location)
+    public static IEnumerable<Piece> GetPieceThatCouldMove(Notation location)
     {
         if(CurrentBoard is null)
         {
@@ -48,7 +48,7 @@ public static class MoveHelper
 
         List<Piece> pieces = CurrentBoard.Pieces;
 
-        Func<SAN, SAN, Board, bool> validateMove;
+        Func<Notation, Notation, Board, bool> validateMove;
 
         for (int i = 0; i < pieces.Count; i++)
         {
@@ -60,7 +60,7 @@ public static class MoveHelper
                 _ => PawnMove
             };
 
-            if (validateMove is Func<SAN, SAN, Board, bool> meth)
+            if (validateMove is Func<Notation, Notation, Board, bool> meth)
             {
                 Debug.Print("Move Function Exists");
                 if (meth(pieces[i].Location, location, CurrentBoard))
@@ -76,7 +76,7 @@ public static class MoveHelper
         }
     }
 
-    public static bool PawnMove(SAN start, Notation destination, Board? board = null)
+    public static bool PawnMove(Notation start, Notation destination, Board? board = null)
     {
         if(board is null && CurrentBoard is null)
         {
@@ -88,17 +88,16 @@ public static class MoveHelper
             CurrentBoard = b;
         }
 
-        if(destination)
 
         return true;
     }
 
-    public static bool KnightMove(SAN start, SAN destination, Board? board = null)
+    public static bool KnightMove(Notation start, Notation destination, Board? board = null)
     {
         return false;
     }
 
-    public static bool BishopMove(SAN start, SAN destination, Board? board = null)
+    public static bool BishopMove(Notation start, Notation destination, Board? board = null)
     {
         return false;
     }

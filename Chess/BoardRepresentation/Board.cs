@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using ChessMasterQuiz.Chess;
+﻿using ChessMasterQuiz.Chess;
 using static Chess.ChessHelper;
 using static Chess.Colour;
 
@@ -9,12 +7,11 @@ namespace Chess.BoardRepresentation;
 public class Board : Panel
 {
     public Piece? this[char file, int rank] =>
-        Pieces.FirstOrDefault(x => x.Location! == SAN.From($"{file}{rank}"));
+        Pieces.FirstOrDefault(x => x.Location! == Notation.From(file, rank));
     public Piece? this[SAN location] =>
-        Pieces.FirstOrDefault(x => x.Location! == location);
+        Pieces.FirstOrDefault(x => x.Location!.ToString() == location.GetNotation());
     public Piece? this[string location] =>
-        Pieces.FirstOrDefault(x => x.Location!.GetNotation() == SAN.From(location).GetNotation());
-
+        Pieces.FirstOrDefault(x => x.Location!.Equals(location));
 
 
     private static readonly Size _defaultBoardSize = new(400, 400);
@@ -102,7 +99,7 @@ public class Board : Panel
 
             foreach (var piece in Pieces)
             {
-                if (MoveHelper.SquareIsNotation(square.BoardLocation, piece.Location))
+                if (MoveHelper.SquareIsNotation(Notation.From(square.BoardLocation), piece.Location))
                 {
                     /*
                     e.Graphics.FillRectangle(
@@ -126,17 +123,6 @@ public class Board : Panel
     {
         Thread gameThread = new Thread(() =>
         {
-            Thread.Sleep(750);
-            this["e2"]?.Move(SAN.From("e4"));
-            Invalidate();
-            Thread.Sleep(750);
-            Invalidate();
-            this["e7"]?.Move(SAN.From("e5"));
-            Thread.Sleep(750);
-            Invalidate();
-            this["Qd1"]?.Move(SAN.From("f3"));
-            Thread.Sleep(750);
-            Invalidate();
         });
         gameThread.Start();
 

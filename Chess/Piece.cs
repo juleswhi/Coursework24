@@ -15,7 +15,7 @@ public enum PieceType
 
 public class Piece
 {
-    public Piece(PieceType type, SAN location, Colour colour)
+    public Piece(PieceType type, Notation location, Colour colour)
     {
         Type = type;
         Location = location;
@@ -24,21 +24,23 @@ public class Piece
     public Piece(PieceType type, (char, int) location, Colour colour)
     {
         Type = type;
-        Location = SAN.From($"{location.Item1}{location.Item2}");
+        Location = Notation.From(location);
         Colour = colour;
     }
 
     public PieceType Type { get; set; }
-    public SAN Location { get; set; }
+    public Notation Location { get; set; }
     public Colour Colour { get; set; }
 
 
     public void Move(string location)
     {
+        Notation square = Notation.From(location);
+        
         bool legalMove = Type switch
         {
-            PieceType.PAWN => MoveHelper.PawnMove(Location, location),
-            _ => MoveHelper.PawnMove(Location, location)
+            PieceType.PAWN => MoveHelper.PawnMove(Location, square),
+            _ => MoveHelper.PawnMove(Location, square)
         };
 
         if(!legalMove)
@@ -48,7 +50,8 @@ public class Piece
         }
 
         Debug.Print($"Legal Move, {location}");
-        Location = location;
+        Location = square;
+        MoveHelper.CurrentBoard?.Invalidate();
     }
 
 

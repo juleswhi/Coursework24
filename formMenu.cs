@@ -1,6 +1,5 @@
 ﻿using static ChessMasterQuiz.ContextTagType;
 using static ChessMasterQuiz.Helpers.UserHelper;
-using static ChessMasterQuiz.Helpers.ControlHelper;
 using ChessMasterQuiz.Forms;
 using ChessMasterQuiz.QuestionDir;
 using ChessMasterObjectNotation;
@@ -17,7 +16,6 @@ public partial class formMenu : Form, IContext
     public void UseContext(IEnumerable<DataContextTag> context)
     {
         // Get Random Chess Game
-
     }
 
     public formMenu()
@@ -34,21 +32,19 @@ public partial class formMenu : Form, IContext
 
         // reader.FromBytes(PGNLibrary.Steinitz_Best_Games);
 
+        SAN san = SAN.From("Qxe4");
+
+        Debug.Print($"{san.GetNotation()}");
+
+
         board.Location = new Point(300, 25);
         Controls.Add(board);
-        /*
-                PGN pgn = PGN.From(
-                    new List<(SAN, SAN)>()
-                    {
-                        { (SAN.FromString("e4"), SAN.FromString("e5") ) }
-                    }
-                    );
 
-        */
+        // board.DisplayGame(new());
 
-        // Debug.Print($"SAN of e4 is: {SAN.From("e4").GetNotation()}");
 
-        board.DisplayGame(new());
+
+
     }
 
     private void pBoxProfile_Click(object sender, EventArgs e)

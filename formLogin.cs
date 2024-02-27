@@ -58,6 +58,6 @@ public partial class formLogin : Form, IContext
 
 
         foundUser.Login();
-        ControlHelper.ActivateForm<formMenu>();
+        ActivateForm<formMenu>();
     }
 }

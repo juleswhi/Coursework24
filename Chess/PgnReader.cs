@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace Chess;
@@ -21,50 +22,11 @@ public record struct PGN(
     string? Mode,
     FEN? FEN,
     List<(SAN, SAN)> Moves
-    )
-{
-
-    public static PGN From(List<(SAN, SAN)> Moves)
-    {
-        return new PGN(Moves);
-    }
-    public static PGN From(List<(Notation, Notation)> Moves)
-    {
-        return new PGN(Moves);
-    }
-
-    public PGN(List<(SAN,SAN)> Moves) : this(string.Empty, string.Empty, null, -1, string.Empty, string.Empty, string.Empty,
-        null, null, null, null, null, null, null, Moves)
-    {
-
-    }
-
-    public PGN(List<(Notation, Notation)> moves) : this(string.Empty, string.Empty, null, -1, string.Empty, string.Empty, string.Empty,
-        null, null, null, null, null, null, null, new())
-    {
-        foreach (var move in moves)
-        {
-            Moves.Add(
-                (
-                new SAN($"{move.Item1.Item1}{move.Item1.Item2}"),
-                new SAN($"{move.Item2.Item1}{move.Item2.Item2}")
-                )
-                );
-        }
-    }
-
-
-}
+    );
 
 public class PgnReader
 {
-
     public List<PGN> Games { get; set; } = new();
-
-    public void FromFile(string path)
-    {
-        FromString(File.ReadAllLines(path));
-    }
 
     public void FromBytes(params byte[] bytes)
     {
@@ -76,65 +38,66 @@ public class PgnReader
         },
         StringSplitOptions.RemoveEmptyEntries);
 
-        for(int i = 0; i < parts.Length; i+=2)
+        // for(int i = 0; i < parts.Length; i+=2)
         {
 
             PGN pgn = new(string.Empty, string.Empty, default, -1, string.Empty, string.Empty,
                 string.Empty, null, null, null, null, null, null, null, new());
 
             var meta = LexMetadata(parts[0]).Where(x => x.Type == TokenType.KEY 
-                                                   || x.Type == TokenType.VALUE);
+                                                   || x.Type == TokenType.VALUE).ToList();
 
-            var game = LexGame(parts[1]);
+            var game = LexGame(parts[1]).ToList();
 
-            var props = typeof(PGN).GetProperties();
+            // Do something with tokens to convert to PGN 
+            MetaTokensToPgn(ref pgn, meta);
 
-            string currentField = "";
-
-            foreach(var prop in props)
+            foreach(var token in game)
             {
-                Token field = meta.FirstOrDefault(x => (string)x.Data! == prop.Name);
-                if(field.Type == TokenType.KEY)
-                {
-                    currentField = (string)field.Data!;
-                    Debug.Print($"KEY: {field.Data!}");
-                    continue;
-                }
-
-                Debug.Print($"VALUE: {field.Data!}");
-
-                object output = field.Data!;
-                if (prop.PropertyType != typeof(string)) 
-                {
-                    output = Convert.ChangeType(field.Data, prop.PropertyType)!;
-                    Debug.Print($"Converting to type {prop.PropertyType}");
-                }
-                prop.SetMethod?.Invoke(pgn, new object[] { field.Data! });
-                Debug.Print($"{prop.GetMethod?.Invoke(pgn, new object[] { })}");
-
+                Debug.Print($"Token Type: {token.Type}, Token Data: {token.Data}");
             }
 
+            Games.Add(pgn);
         }
     }
 
-    private PGN ToPGN(IEnumerable<Token> meta, IEnumerable<Token> game)
+    private void MetaTokensToPgn(ref PGN pgn, List<Token> meta)
     {
-
-
-
-        return default;
-    }
-
-    public void FromString(params string[] str)
-    {
-        foreach(var line in str)
+        var props = typeof(PGN).GetProperties();
+        for (int i = 0; i < meta.Count(); i++)
         {
-            if(line == "")
+            if (meta[i].Type != TokenType.KEY)
             {
-                break;
+                continue;
             }
 
-            Debug.Print(line);
+            PropertyInfo? property = props.FirstOrDefault(x => x.Name == (string)meta[i].Data!);
+
+            // If the property is found
+            if (property is PropertyInfo prop)
+            {
+                if (prop.PropertyType == typeof(string))
+                {
+                    prop.SetValue(pgn, meta[i + 1].Data);
+                }
+                else if (prop.PropertyType == typeof(DateTime?))
+                {
+                    DateTime date = Convert.ToDateTime(meta[i + 1].Data);
+                    prop.SetValue(pgn, date);
+                }
+                else if (prop.PropertyType == typeof(int?))
+                {
+                    int num = Convert.ToInt32(meta[i + 1].Data);
+                    prop.SetValue(pgn, num);
+                }
+                else
+                {
+                    var data = Convert.ChangeType(meta[i + 1].Data, prop.PropertyType);
+                    prop.SetValue(pgn, data);
+                }
+            }
+
+            i++;
         }
     }
 
@@ -296,22 +259,12 @@ public class PgnReader
 
                         // Debug.Print($"To be evaled: {sb}");
 
-                        SAN san = new();
-
-                        try
-                        {
-                            san = new SAN(sb.ToString());
-                        }
-                        catch(Exception)
-                        {
-                            next();
-                            break;
-                        }
+                        SAN san = new SAN(sb.ToString());
 
                         Debug.Print(san.ToString());
 
                         yield return consume(
-                            TokenType.NOTATION, san);
+                            TokenType.NOTATION, san.ToString());
 
                         break;
                     }

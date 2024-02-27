@@ -5,8 +5,8 @@ using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
 using System.Text;
 using ChessMasterQuiz.Chess;
-using static Colour;
-using static PieceType;
+using static Chess.Colour;
+using static Chess.PieceType;
 
 namespace Chess;
 public enum Colour
@@ -15,9 +15,38 @@ public enum Colour
     Black = 2
 }
 
-public record struct Notation(char File, int Rank)
+public record struct Notation(char File, int Rank) : IEquatable<SAN>, IEquatable<string>
 {
+    public override string ToString()
+    {
+        return $"{File}{Rank}";
+    }
 
+    public static Notation From((char, int) location)
+    {
+        return new Notation(location.Item1, location.Item2);
+    }
+
+    public static Notation From(string location)
+    {
+        if (location.Length != 2) return default;
+        return new Notation(location[0], int.Parse(location[1].ToString()));
+    }
+
+    public static Notation From(char file, int rank)
+    {
+        return new Notation(file, rank);
+    }
+
+    public bool Equals(SAN? other)
+    {
+        return ToString() == other?.GetNotation();
+    }
+
+    public bool Equals(string? other)
+    {
+        return ToString() == other;
+    }
 }
 
 public static class ChessHelper
@@ -190,7 +219,7 @@ public static class ChessHelper
 
         foreach(var piece in Pieces)
         {
-            if(piece.Location.Square.Item2 == 9)
+            if(piece.Location.Rank == 9)
             {
                 Pieces.Remove(piece);
             }

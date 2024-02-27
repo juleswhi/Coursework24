@@ -2,7 +2,7 @@
 using static Chess.ChessHelper;
 namespace Chess;
 
-public class SAN : IEquatable<SAN>
+public class SAN : IEquatable<SAN>, IEquatable<Notation>
 {
     public int Castling { get; set; }
     public bool Capturing { get; set; } = false;
@@ -12,7 +12,7 @@ public class SAN : IEquatable<SAN>
     public PieceType Piece { get; set; }
     public char? SpecifyPiece { get; set; }
     public PieceType? IsQueening { get; set; } = null;
-    public (char, int) Square { get; set; }
+    public Notation Square { get; set; }
 
 
     // This ToString override is used to print the SAN in proper notation
@@ -36,8 +36,8 @@ public class SAN : IEquatable<SAN>
             PawnCapturing.Item2 == -1 ? $"{PawnCapturing.Item1}" : $"{PawnCapturing.Item2}"
             ) : "")}" +
         $"{(Capturing ? "x" : "")}" +
-        $"{Square.Item1}" +
-        $"{Square.Item2}" +
+        $"{Square.File}" +
+        $"{Square.Rank}" +
         $"{(IsQueening == null ? "" : $"={((PieceType)IsQueening).GetChar()}")}";
 
         return ret.Trim();
@@ -71,8 +71,6 @@ public class SAN : IEquatable<SAN>
             san.Castling = -1;
             // return;
         }
-
-
 
         if (str.Contains('x'))
         {
@@ -108,12 +106,13 @@ public class SAN : IEquatable<SAN>
         int numLocation = str.IndexOfAny("123456789".ToArray());
 
         char file = str[numLocation - 1];
-        char rank = str[numLocation];
+        Debug.Print($"{str[numLocation]}");
+        int rank = Convert.ToInt16(str[numLocation].ToString());
 
-        san.Square = (
-            file,
-            int.Parse(rank.ToString())
-            );
+
+        Debug.Print($"File: {file}, Rank: {rank}");
+
+        san.Square = Notation.From(file, rank);
 
         return san;
     }
@@ -121,5 +120,10 @@ public class SAN : IEquatable<SAN>
     public bool Equals(SAN? other)
     {
         return ToString() == other?.ToString();
+    }
+
+    public bool Equals(Notation other)
+    {
+        return GetNotation() == other.ToString();
     }
 }
