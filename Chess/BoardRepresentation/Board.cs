@@ -9,9 +9,13 @@ namespace Chess.BoardRepresentation;
 public class Board : Panel
 {
     public Piece? this[char file, int rank] =>
-        Pieces.FirstOrDefault(x => x.Location! == (file, rank));
-    public Piece? this[(char, int) location] =>
+        Pieces.FirstOrDefault(x => x.Location! == SAN.From($"{file}{rank}"));
+    public Piece? this[SAN location] =>
         Pieces.FirstOrDefault(x => x.Location! == location);
+    public Piece? this[string location] =>
+        Pieces.FirstOrDefault(x => x.Location!.GetNotation() == SAN.From(location).GetNotation());
+
+
 
     private static readonly Size _defaultBoardSize = new(400, 400);
     private int _squareWidth => this.Size.Width / 8;
@@ -98,7 +102,7 @@ public class Board : Panel
 
             foreach (var piece in Pieces)
             {
-                if (piece.Location == square.BoardLocation)
+                if (MoveHelper.SquareIsNotation(square.BoardLocation, piece.Location))
                 {
                     /*
                     e.Graphics.FillRectangle(
@@ -122,14 +126,17 @@ public class Board : Panel
     {
         Thread gameThread = new Thread(() =>
         {
-            foreach (var (white, black) in pgn.Moves)
-            {
-                Debug.Print($"Move White: {white}");
-                MoveHelper.GetPieceThatCouldMove(white.GetNotation());
-                Thread.Sleep(750);
-                Debug.Print($"Move Black: {black}");
-                Thread.Sleep(750);
-            }
+            Thread.Sleep(750);
+            this["e2"]?.Move(SAN.From("e4"));
+            Invalidate();
+            Thread.Sleep(750);
+            Invalidate();
+            this["e7"]?.Move(SAN.From("e5"));
+            Thread.Sleep(750);
+            Invalidate();
+            this["Qd1"]?.Move(SAN.From("Qf3"));
+            Thread.Sleep(750);
+            Invalidate();
         });
         gameThread.Start();
 

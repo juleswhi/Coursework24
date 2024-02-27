@@ -34,6 +34,7 @@
             btnRegister = new Button();
             txtBoxGender = new TextBox();
             txtBoxDob = new TextBox();
+            progressPassword = new ProgressBar();
             SuspendLayout();
             // 
             // txtBoxEmail
@@ -53,7 +54,7 @@
             txtBoxPassword.AcceptsReturn = true;
             txtBoxPassword.AcceptsTab = true;
             txtBoxPassword.Font = new Font("JetBrains Mono", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtBoxPassword.Location = new Point(276, 72);
+            txtBoxPassword.Location = new Point(276, 82);
             txtBoxPassword.Name = "txtBoxPassword";
             txtBoxPassword.PlaceholderText = "Password";
             txtBoxPassword.Size = new Size(171, 33);
@@ -65,7 +66,7 @@
             txtBoxDisplayName.AcceptsReturn = true;
             txtBoxDisplayName.AcceptsTab = true;
             txtBoxDisplayName.Font = new Font("JetBrains Mono", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtBoxDisplayName.Location = new Point(276, 132);
+            txtBoxDisplayName.Location = new Point(276, 163);
             txtBoxDisplayName.Name = "txtBoxDisplayName";
             txtBoxDisplayName.PlaceholderText = "Display Name";
             txtBoxDisplayName.Size = new Size(171, 33);
@@ -88,7 +89,7 @@
             txtBoxGender.AcceptsReturn = true;
             txtBoxGender.AcceptsTab = true;
             txtBoxGender.Font = new Font("JetBrains Mono", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtBoxGender.Location = new Point(276, 192);
+            txtBoxGender.Location = new Point(276, 231);
             txtBoxGender.Name = "txtBoxGender";
             txtBoxGender.PlaceholderText = "Gender";
             txtBoxGender.Size = new Size(171, 33);
@@ -100,18 +101,27 @@
             txtBoxDob.AcceptsReturn = true;
             txtBoxDob.AcceptsTab = true;
             txtBoxDob.Font = new Font("JetBrains Mono", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtBoxDob.Location = new Point(276, 252);
+            txtBoxDob.Location = new Point(276, 281);
             txtBoxDob.Name = "txtBoxDob";
             txtBoxDob.PlaceholderText = "DOB D/M/Y";
             txtBoxDob.Size = new Size(171, 33);
             txtBoxDob.TabIndex = 10;
             txtBoxDob.Tag = "dob";
             // 
+            // progressPassword
+            // 
+            progressPassword.Location = new Point(276, 117);
+            progressPassword.Name = "progressPassword";
+            progressPassword.Size = new Size(171, 10);
+            progressPassword.TabIndex = 12;
+            progressPassword.Click += progressPassword_Click;
+            // 
             // formRegister
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(progressPassword);
             Controls.Add(btnRegister);
             Controls.Add(txtBoxDob);
             Controls.Add(txtBoxGender);
@@ -132,5 +142,6 @@
         private Button btnRegister;
         private TextBox txtBoxGender;
         private TextBox txtBoxDob;
+        private ProgressBar progressPassword;
     }
 }

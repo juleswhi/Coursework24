@@ -36,16 +36,19 @@ public partial class formMenu : Form, IContext
 
         board.Location = new Point(300, 25);
         Controls.Add(board);
+        /*
+                PGN pgn = PGN.From(
+                    new List<(SAN, SAN)>()
+                    {
+                        { (SAN.FromString("e4"), SAN.FromString("e5") ) }
+                    }
+                    );
 
-        PGN pgn = PGN.From(
-            new List<(SAN, SAN)>()
-            {
-                { (SAN.FromString("e4"), SAN.FromString("e5") ) }
-            }
-            );
+        */
 
-        board.DisplayGame(pgn);
+        // Debug.Print($"SAN of e4 is: {SAN.From("e4").GetNotation()}");
 
+        board.DisplayGame(new());
     }
 
     private void pBoxProfile_Click(object sender, EventArgs e)

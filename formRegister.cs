@@ -15,6 +15,7 @@ public partial class formRegister : Form, IContext
     public formRegister()
     {
         InitializeComponent();
+        progressPassword.Maximum = 100;
         Resize += FormRegister_Resize;
         foreach (var control in Controls.OfType<TextBox>())
         {
@@ -22,8 +23,12 @@ public partial class formRegister : Form, IContext
             {
                 var sender = (s as TextBox)!;
                 ValidationType vt = (ValidationType)Enum.Parse(typeof(ValidationType), sender.Tag!.ToString()!.ToUpper());
-                Debug.Print(vt.ToString());
-                control.RedIfWrong(sender.Text.Validate(vt));
+                (var val, var percentage) = sender.Text.Validate(vt);
+                if(vt is PASSWORD)
+                {
+                    progressPassword.Value = Math.Min(Math.Max(0, (int)percentage), 100);
+                }
+                else control.RedIfWrong(val);
             };
         }
     }
@@ -46,6 +51,7 @@ public partial class formRegister : Form, IContext
         {
             c.Center(X);
         }
+        progressPassword.Center(X);
         btnRegister.Center(X);
     }
 
@@ -63,9 +69,9 @@ public partial class formRegister : Form, IContext
 
         var enumValues = Enum.GetValues(typeof(ValidationType)).Cast<ValidationType>();
 
-        foreach(var val in enumValues)
+        foreach (var val in enumValues)
         {
-            if (ValidationToTextBox[val].Validate(val))
+            if (ValidationToTextBox[val].Validate(val).Item1)
             {
                 return;
             }
@@ -74,6 +80,11 @@ public partial class formRegister : Form, IContext
         new User(
             name: ValidationToTextBox[DISPLAY],
             password: ValidationToTextBox[PASSWORD]
-            ); 
+            );
+    }
+
+    private void progressPassword_Click(object sender, EventArgs e)
+    {
+
     }
 }

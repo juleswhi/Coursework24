@@ -21,12 +21,19 @@ public class Piece
         Location = location;
         Colour = colour;
     }
+    public Piece(PieceType type, (char, int) location, Colour colour)
+    {
+        Type = type;
+        Location = SAN.From($"{location.Item1}{location.Item2}");
+        Colour = colour;
+    }
+
     public PieceType Type { get; set; }
     public SAN Location { get; set; }
     public Colour Colour { get; set; }
 
 
-    public void Move((char, int) location)
+    public void Move(SAN location)
     {
         bool legalMove = Type switch
         {
@@ -42,10 +49,6 @@ public class Piece
 
         Debug.Print($"Legal Move, {location}");
         Location = location;
-    }
-    public void Move(char rank, int file)
-    {
-        Move((rank, file));
     }
 
 

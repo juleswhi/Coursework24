@@ -185,7 +185,7 @@ public static class ChessHelper
 
         foreach(var piece in Pieces)
         {
-            if(piece.Location.Item2 == 9)
+            if(piece.Location.Square.Item2 == 9)
             {
                 Pieces.Remove(piece);
             }

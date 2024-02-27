@@ -106,7 +106,7 @@ public class PgnReader
                 object output = field.Data!;
                 if (prop.PropertyType != typeof(string)) 
                 {
-                    output = Convert.ChangeType(field.Data, prop.PropertyType);
+                    output = Convert.ChangeType(field.Data, prop.PropertyType)!;
                     Debug.Print($"Converting to type {prop.PropertyType}");
                 }
                 prop.SetMethod?.Invoke(pgn, new object[] { field.Data! });

@@ -25,8 +25,7 @@ enum RequirementType
 
 internal static class Validator
 {
-
-    public static bool Validate(this string text, ValidationType type)
+    public static (bool, float) Validate(this string text, ValidationType type)
     {
         Dictionary<RequirementType, bool> ValidationLookup = new()
         {
@@ -40,11 +39,11 @@ internal static class Validator
         switch (type)
         {
             case EMAIL:
-                return MailAddress.TryCreate(text, out _);
+                return (MailAddress.TryCreate(text, out _), -1);
             case DOB:
-                return DateTime.TryParse(text, out _);
+                return (DateTime.TryParse(text, out _), -1);
             case DISPLAY:
-                return ValidateDisplayName(text);
+                return (ValidateDisplayName(text), -1);
             case PASSWORD:
 
                 if(text.Length > 8)
@@ -52,28 +51,29 @@ internal static class Validator
                     ValidationLookup[LENGTH] = true;
                 }
 
-                if(text.Where(x => !char.IsLetterOrDigit(x)).Count() > 2)
+                if(text.Where(x => !char.IsLetterOrDigit(x)).Count() > 1)
                 {
                     ValidationLookup[SPECIALCHARACTERS] = true;
                 }
 
-                if (text.Any(x => char.IsUpper(x)))
+                if (text.Any(char.IsUpper))
                 {
                     ValidationLookup[UPPERCASE] = true;
                 }
 
-                if(text.Any(x => char.IsDigit(x))) {
+                if (text.Any(char.IsDigit))
+                {
                     ValidationLookup[NUMBER] = true;
                 }
 
                 if(ValidationLookup.All(x => x.Value == true))
                 {
-                    return true;
+                    return (true, 100);
                 }
-                return false;
+                return (false, ValidationLookup.Count(x => x.Value == true) * 25);
         }
         var regex = new Regex(ValidationTypeRegex[type]);
-        return regex.IsMatch(text);
+        return (regex.IsMatch(text), -1);
     }
 
     private static bool ValidateDisplayName(this string text)

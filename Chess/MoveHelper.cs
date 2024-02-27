@@ -1,4 +1,5 @@
-﻿using Chess;
+﻿using System.Diagnostics;
+using Chess;
 using Chess.BoardRepresentation;
 
 
@@ -11,15 +12,26 @@ public static class MoveHelper
 
     public static bool CheckIfPieceOnSquare(SAN location)
     {
-        foreach(var piece in CurrentBoard.Pieces)
+        Debug.Print($"Checking if piece is on square.");
+        if(CurrentBoard is Board board)
         {
-            if(piece.Location == location)
+            foreach (var piece in board.Pieces)
             {
-                return true;
+                if (piece.Location == location)
+                {
+                    Debug.Print($"There is a piece on the square");
+                    return true;
+                }
             }
         }
 
+        Debug.Print($"There is not a piece on the square");
         return false;
+    }
+
+    public static bool SquareIsNotation(Notation square, SAN move)
+    {
+        return SAN.From($"{square.Item1}{square.Item2}").GetNotation() == move.GetNotation();
     }
 
     public static bool CheckIfCheck()
@@ -34,25 +46,33 @@ public static class MoveHelper
             throw new Exception("CurrentBoard must not be null");
         }
 
-        ReadOnlySpan<Piece> pieces = CurrentBoard.Pieces.ToArray().AsSpan();
+        List<Piece> pieces = CurrentBoard.Pieces;
 
         Func<SAN, SAN, Board, bool> validateMove;
-        for (int i = 0; i < pieces.Length; i++)
+
+        for (int i = 0; i < pieces.Count; i++)
         {
             validateMove = pieces[i] switch
             {
                 { Type: PieceType.PAWN } => PawnMove,
                 { Type: PieceType.KNIGHT } => KnightMove,
-                { Type: PieceType.BISHOP } => BishopMove
+                { Type: PieceType.BISHOP } => BishopMove,
+                _ => PawnMove
             };
 
             if (validateMove is Func<SAN, SAN, Board, bool> meth)
-
-            if (meth(pieces[i].Location, location, CurrentBoard))
             {
-                yield return pieces[i];
+                Debug.Print("Move Function Exists");
+                if (meth(pieces[i].Location, location, CurrentBoard))
+                {
+                    Debug.Print($"Got the correct piece");
+                    yield return pieces[i];
+                }
+                else
+                {
+                    Debug.Print($"Could not validate the right square");
+                }
             }
-
         }
     }
 
@@ -68,36 +88,7 @@ public static class MoveHelper
             CurrentBoard = b;
         }
 
-        if (CheckIfPieceOnSquare(destination) )
-        {
-            if ((destination.Item1 == start.Item1 + 1
-             || destination.Item1 == start.Item1 - 1)
-             && destination.Item2 == start.Item2 + 1
-             )
-            {
-                return true;
-            }
-        }
-
-        if (start.Square.Item2 == destination.Square.Item2 + 1 &&
-            start.Square.Item1 == destination.Square.Item1)
-        {
-            if(!CheckIfPieceOnSquare(destination))
-            {
-                return true;
-            }
-        }
-
-        if (start.Square.Item2 == destination.Square.Item2 + 2 &&
-            start.Square.Item1 == destination.Square.Item1)
-        {
-            if( !CheckIfPieceOnSquare(destination))
-            {
-                return true;
-            }
-        }
-
-        return false;
+        return true;
     }
 
     public static bool KnightMove(SAN start, SAN destination, Board? board = null)

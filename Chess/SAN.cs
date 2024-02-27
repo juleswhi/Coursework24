@@ -21,7 +21,6 @@ public class SAN : IEquatable<SAN>
         GetNotation().Trim();
     public string GetNotation()
     {
-
         if(Castling == 1)
         {
             return "O-O";
@@ -31,7 +30,7 @@ public class SAN : IEquatable<SAN>
             return "O-O-O";
         }
 
-        return $"{Piece.GetChar()}" +
+        string ret =  $"{Piece.GetChar()}" +
         $"{(SpecifyPiece is null ? "" : SpecifyPiece)}" +
         $"{(Capturing && Piece == PieceType.PAWN ? (
             PawnCapturing.Item2 == -1 ? $"{PawnCapturing.Item1}" : $"{PawnCapturing.Item2}"
@@ -41,18 +40,20 @@ public class SAN : IEquatable<SAN>
         $"{Square.Item2}" +
         $"{(IsQueening == null ? "" : $"={((PieceType)IsQueening).GetChar()}")}";
 
+        return ret.Trim();
+
     }
 
     public SAN(string str)
     {
-        FromString(str);
+        From(str);
     }
 
     public SAN()
     {
     }
 
-    public static SAN FromString(string str)
+    public static SAN From(string str)
     {
         SAN san = new SAN();
         // ed
