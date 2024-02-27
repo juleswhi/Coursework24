@@ -13,7 +13,7 @@
     You could write:
     WriteLine();
 
-    However, This is an antipattern by making your code less verbose and therefor harder to read,
+    However, This could be considered an antipattern by making your code less verbose and therefor harder to read,
     so you should only use when necessary ( enum types )
 
 */
@@ -39,4 +39,5 @@ global using static ChessMasterQuiz.SeverityType;
 */
 
 global using static ChessMasterQuiz.Helpers.ControlHelper;
+global using static System.Reflection.BindingFlags;
 // global using Notation = (char, int);
