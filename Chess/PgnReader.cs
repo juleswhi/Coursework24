@@ -122,7 +122,7 @@ public class PgnReader
     {
         int _current = 0;
 
-        var next = (int n) => _current += n;
+        var next = (int n = 1) => _current += n;
         var peek = () => str[_current++];
         var current = () => str[_current];
 
