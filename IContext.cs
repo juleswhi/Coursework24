@@ -17,8 +17,15 @@ public enum ContextTagType
 /// <param name="tag">Tag to identify the data</param>
 public record DataContextTag(object data, ContextTagType tag);
 
+/*
+   The IContext interface allows the Context System 
+   to ensure that the method is available 
+   TYPE SAFETY YEAH!
+ */
 interface IContext
 {
+    // TODO: Please pleaser please please
+    // refactor to remove default implemetnation it fuckingt sucskc
     protected Control.ControlCollection _controls { get; }
     public void UseContext(IEnumerable<DataContextTag> context) 
     {
