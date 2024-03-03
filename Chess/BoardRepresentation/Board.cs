@@ -1,4 +1,5 @@
-﻿using ChessMasterQuiz.Chess;
+﻿using System.Diagnostics;
+using ChessMasterQuiz.Chess;
 using static Chess.ChessHelper;
 using static Chess.Colour;
 
@@ -12,6 +13,9 @@ public class Board : Panel
         Pieces.FirstOrDefault(x => x.Location!.ToString() == location.GetNotation());
     public Piece? this[string location] =>
         Pieces.FirstOrDefault(x => x.Location!.Equals(location));
+
+    public Piece? this[Notation location] =>
+        Pieces.FirstOrDefault(x => x.Location! == location);
 
 
     private static readonly Size _defaultBoardSize = new(400, 400);
@@ -123,6 +127,15 @@ public class Board : Panel
     {
         Thread gameThread = new Thread(() =>
         {
+            foreach(var (white, black) in pgn.Moves)
+            {
+                // Debug.Print($"White move: {this[white.InitialSquare]?.Location}");
+                this[white.InitialSquare]?.Move(white.Square.ToString());
+                Thread.Sleep(750);
+                // Debug.Print($"Black move: {this[white.InitialSquare]?.Location}");
+                this[black.InitialSquare]?.Move(black.Square.ToString());
+                Thread.Sleep(750);
+            }
         });
         gameThread.Start();
 

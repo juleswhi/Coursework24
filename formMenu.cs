@@ -30,21 +30,16 @@ public partial class formMenu : Form, IContext
 
         PgnReader reader = new PgnReader();
 
-        // reader.FromBytes(PGNLibrary.Steinitz_Best_Games);
+        reader.FromBytes(PGNLibrary.Steinitz_Best_Games);
 
-        SAN san = SAN.From("Qxe4");
+        var game = reader.Games.First();
 
-        Debug.Print($"{san.GetNotation()}");
-
+        Debug.Print($"{game.Moves.Count}");
 
         board.Location = new Point(300, 25);
         Controls.Add(board);
 
-        // board.DisplayGame(new());
-
-
-
-
+        board.DisplayGame(game);
     }
 
     private void pBoxProfile_Click(object sender, EventArgs e)

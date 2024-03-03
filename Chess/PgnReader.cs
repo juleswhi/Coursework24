@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Chess;
 
-public record struct PGN(
+public record class PGN(
     string Event,
     string Site,
     DateTime? Date,
@@ -22,7 +22,13 @@ public record struct PGN(
     string? Mode,
     FEN? FEN,
     List<(SAN, SAN)> Moves
-    );
+    )
+{
+    public PGN(List<(SAN, SAN)> moves) : this(string.Empty, string.Empty, null, -1, string.Empty, string.Empty, string.Empty, null, null, null, null, null, null, null, new())
+    {
+        Moves = moves;
+    }
+}
 
 public class PgnReader
 {
@@ -50,18 +56,21 @@ public class PgnReader
             var game = LexGame(parts[1]).ToList();
 
             // Do something with tokens to convert to PGN 
-            MetaTokensToPgn(ref pgn, meta);
+            pgn = MetaTokensToPgn(pgn, meta);
 
-            foreach(var token in game)
+
+            for(int i = 0; i < game.Count; i += 2)
             {
-                Debug.Print($"Token Type: {token.Type}, Token Data: {token.Data}");
-            }
+                (SAN, SAN) move = (SAN.From((string)game[i].Data), SAN.From((string)game[i+1].Data));
+                pgn.Moves.Add(move);
+                Debug.Print($"Added Move {i / 2}");
+            } 
 
             Games.Add(pgn);
         }
     }
 
-    private void MetaTokensToPgn(ref PGN pgn, List<Token> meta)
+    private PGN MetaTokensToPgn(PGN pgn, List<Token> meta)
     {
         var props = typeof(PGN).GetProperties();
         for (int i = 0; i < meta.Count(); i++)
@@ -76,29 +85,32 @@ public class PgnReader
             // If the property is found
             if (property is PropertyInfo prop)
             {
+                // Debug.Print($"Property: {prop.Name} yeah, {meta[i+1]}");
                 if (prop.PropertyType == typeof(string))
                 {
-                    prop.SetValue(pgn, meta[i + 1].Data);
+                    prop.SetMethod?.Invoke(pgn, new object[] { (string)meta[i + 1].Data });
                 }
                 else if (prop.PropertyType == typeof(DateTime?))
                 {
                     DateTime date = Convert.ToDateTime(meta[i + 1].Data);
-                    prop.SetValue(pgn, date);
+                    prop.SetMethod?.Invoke(pgn, new object[] { date });
                 }
                 else if (prop.PropertyType == typeof(int?))
                 {
                     int num = Convert.ToInt32(meta[i + 1].Data);
-                    prop.SetValue(pgn, num);
+                    prop.SetMethod?.Invoke(pgn, new object[] { num });
                 }
                 else
                 {
                     var data = Convert.ChangeType(meta[i + 1].Data, prop.PropertyType);
-                    prop.SetValue(pgn, data);
+                    prop.SetMethod?.Invoke(pgn, new object[] { data! });
                 }
             }
 
             i++;
         }
+
+        return pgn;
     }
 
     enum TokenType
@@ -123,7 +135,6 @@ public class PgnReader
         int _current = 0;
 
         var next = (int n) => _current += n;
-        var peek = () => str[_current++];
         var current = () => str[_current];
 
         var consume = (TokenType type, object? data = null) =>
@@ -197,6 +208,13 @@ public class PgnReader
 
     }
 
+    private static Dictionary<char, char> SkipperToCloserMap = new()
+    {
+        { '{', '}' },
+        { '(', ')' },
+        { '[', ']' },
+    };
+
     private IEnumerable<Token> LexGame(string str)
     {
         int _current = 0;
@@ -205,7 +223,24 @@ public class PgnReader
         var peek = () => str[_current++];
         var current = () => str[_current];
 
-        var consume = (TokenType type, object? data = null) =>
+        var skipto = (char skipper) => {
+            int referenceCount = 1;
+            while(referenceCount != 0)
+            {
+                next();
+                if(current() == skipper)
+                {
+                    referenceCount++;
+                }
+                else if(current() == SkipperToCloserMap[skipper])
+                {
+                    referenceCount--;
+                }
+
+            }
+        };
+
+        var consume = (TokenType type, object? data) =>
         {
             _current++;
             return new Token(type, data);
@@ -213,35 +248,24 @@ public class PgnReader
 
         for (; _current < str.Length;)
         {
-            // Debug.Print("CURRENT TOKEN: {0}", current());
             switch (current())
             {
                 case '{':
-                    {
-                        while (current() != '}' && current() != ')')
-                        {
-                            next(1);
-                        }
-                        break;
-                    }
+                    skipto('{');
+                    break;
 
                 case '(':
-                    {
-                        while (current() != '}' && current() != ')')
-                        {
-                            next();
-                        }
-                        break;
-                    }
+                    skipto('(');
+                    break;
 
                 case '[':
-                    {
-                        while (current() != '}' && current() != ']')
-                        {
-                            next();
-                        }
-                        break;
-                    }
+                    skipto('[');
+                    break;
+
+                case '$':
+                    next(2);
+                    break;
+
                 default:
                     {
                         if(char.IsNumber(current()) || current() == '.' || char.IsWhiteSpace(current()) || !char.IsLetter(current())) {
@@ -257,14 +281,8 @@ public class PgnReader
                             next();
                         }
 
-                        // Debug.Print($"To be evaled: {sb}");
-
-                        SAN san = new SAN(sb.ToString());
-
-                        Debug.Print(san.ToString());
-
                         yield return consume(
-                            TokenType.NOTATION, san.ToString());
+                            TokenType.NOTATION, sb.ToString());
 
                         break;
                     }
@@ -272,4 +290,6 @@ public class PgnReader
             }
         }
     }
+
+
 }

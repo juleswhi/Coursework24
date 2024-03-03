@@ -1,4 +1,6 @@
 ﻿using System.Diagnostics;
+using System.Dynamic;
+using ChessMasterQuiz.Chess;
 using static Chess.ChessHelper;
 namespace Chess;
 
@@ -13,6 +15,7 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
     public char? SpecifyPiece { get; set; }
     public PieceType? IsQueening { get; set; } = null;
     public Notation Square { get; set; }
+    public Notation InitialSquare { get; set; }
 
 
     // This ToString override is used to print the SAN in proper notation
@@ -56,20 +59,16 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
     public static SAN From(string str)
     {
         SAN san = new SAN();
-        // ed
-        // exd4
-        // Nd4
-        // Nxd4
 
         if(str.Count(x => x == 'O') == 2)
         {
             san.Castling = 1;
-            // return san;
+            return san;
         }
         else if(str.Count(x => x == 'O') == 3)
         {
             san.Castling = -1;
-            // return;
+            return san;
         }
 
         if (str.Contains('x'))
@@ -103,19 +102,63 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
             san.Piece = PieceType.PAWN;
         }
 
-        int numLocation = str.IndexOfAny("123456789".ToArray());
+        int numLocation = str.IndexOfAny("12345678".ToArray());
 
         char file = str[numLocation - 1];
-        Debug.Print($"{str[numLocation]}");
         int rank = Convert.ToInt16(str[numLocation].ToString());
-
-
-        Debug.Print($"File: {file}, Rank: {rank}");
 
         san.Square = Notation.From(file, rank);
 
+        san.InitialSquare = san.GetInitialLocation();
+
         return san;
     }
+
+    public Notation GetInitialLocation()
+    {
+
+        int PAWN_DIRECTION;
+
+
+        switch(Piece)
+        {
+            case PieceType.PAWN:
+                {
+                    foreach(var pawn in MoveHelper.CurrentBoard!.Pieces.Where(x => x.Type == PieceType.PAWN))
+                    {
+                        PAWN_DIRECTION = pawn.Colour == Colour.White ? -1 : 1;
+                        if (pawn.Location.File != Square.File) continue;
+
+                        if (pawn.Location.Rank == Square.Rank + PAWN_DIRECTION)
+                        {
+                        }
+                        else if (pawn.Location.Rank == Square.Rank + PAWN_DIRECTION * 2)
+                        {
+                            if(pawn.Colour == Colour.White)
+                            {
+                                if (pawn.Location.Rank != 2) continue;
+                            }
+                            else if(pawn.Colour == Colour.Black)
+                            {
+                                if (pawn.Location.Rank != 7) continue;
+                            }
+                        }
+                        else continue;
+
+                        // Debug.Print($"Found PAWN at {pawn.Location.File}{pawn.Location.Rank} to move to {Square.File}{Square.Rank}");
+                        return pawn.Location;
+                    }
+
+                    break;
+                }
+
+            case PieceType.KNIGHT:
+                    break;
+        }
+
+        return new();
+    }
+
 
     public bool Equals(SAN? other)
     {

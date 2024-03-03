@@ -45,11 +45,11 @@ public class Piece
 
         if(!legalMove)
         {
-            Debug.Print("Not Legal Move");
+            // Debug.Print("Not Legal Move");
             return;
         }
 
-        Debug.Print($"Legal Move, {location}");
+        // Debug.Print($"Legal Move, {location}");
         Location = square;
         MoveHelper.CurrentBoard?.Invalidate();
     }
