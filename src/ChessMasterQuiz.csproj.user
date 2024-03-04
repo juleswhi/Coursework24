@@ -7,31 +7,28 @@
     <Compile Update="Chess\BoardRepresentation\Square.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="formLogin.cs">
+    <Compile Update="Forms\Menus\formLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="formMain.cs">
+    <Compile Update="Forms\formMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="formMenu.cs">
+    <Compile Update="Forms\Menus\formMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="formRegister.cs">
+    <Compile Update="Forms\Menus\formRegister.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\formAddQuestion.cs">
+    <Compile Update="Forms\Admin\formAddQuestion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\formChessboard.cs">
+    <Compile Update="Forms\Menus\formUserProfile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\formUserProfile.cs">
+    <Compile Update="Forms\Questions\formQuizResult.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="QuestionDir\formQuizResult.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="QuestionDir\formTextQuestion.cs">
+    <Compile Update="Forms\Questions\formTextQuestion.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

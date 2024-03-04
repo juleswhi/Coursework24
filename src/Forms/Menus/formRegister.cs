@@ -1,13 +1,14 @@
-﻿using static ChessMasterQuiz.ContextTagType;
+﻿using static ChessMasterQuiz.Misc.ContextTagType;
 using static ChessMasterQuiz.Helpers.ControlHelper;
 using static ChessMasterQuiz.Helpers.FormatDirection;
 using static System.FormatException;
-using static ChessMasterQuiz.ValidationType;
+using static ChessMasterQuiz.Misc.ValidationType;
 using static ChessMasterQuiz.Helper;
 using System.Net.Mail;
 using System.Linq.Expressions;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using ChessMasterQuiz.Misc;
 
 namespace ChessMasterQuiz;
 public partial class formRegister : Form, IContext

@@ -1,4 +1,5 @@
-﻿using static ChessMasterQuiz.Helpers.FormatDirection;
+﻿using ChessMasterQuiz.Misc;
+using static ChessMasterQuiz.Helpers.FormatDirection;
 namespace ChessMasterQuiz.Helpers;
 
 

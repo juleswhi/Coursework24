@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace ChessMasterQuiz.Helpers;
+namespace User;
 
 public static class UserHelper
 {
@@ -39,14 +39,14 @@ public static class UserHelper
     {
         byte[] passwordInBytes = Encoding.UTF8.GetBytes(password);
 
-        var hashedPassword = 
+        var hashedPassword =
                     Rfc2898DeriveBytes.Pbkdf2(passwordInBytes,
                         user.Password!.Salt,
                         100_000,
                         HashAlgorithmName.SHA512,
                         64);
 
-        if(Encoding.UTF8.GetString(hashedPassword) == user.Password.Hashed)
+        if (Encoding.UTF8.GetString(hashedPassword) == user.Password.Hashed)
         {
             return true;
         }

@@ -1,6 +1,7 @@
-﻿using static ChessMasterQuiz.ContextTagType;
+﻿using static ChessMasterQuiz.Misc.ContextTagType;
 using System.Diagnostics;
-using ChessMasterObjectNotation;
+using ChessMasterQuiz.Misc;
+
 namespace ChessMasterQuiz.QuestionDir;
 
 public partial class formTextQuestion : Form, IContext

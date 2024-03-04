@@ -23,7 +23,7 @@
 // Creates more seamless experience using helper ( extension ) methods ( see Helper.cs )
 
 // Similar use to FormatDirection
-global using static ChessMasterQuiz.SeverityType;
+global using static ChessMasterQuiz.Misc.SeverityType;
 
 /*
  
@@ -40,4 +40,5 @@ global using static ChessMasterQuiz.SeverityType;
 
 global using static ChessMasterQuiz.Helpers.ControlHelper;
 global using static System.Reflection.BindingFlags;
+global using User;
 // global using Notation = (char, int);

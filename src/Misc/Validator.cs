@@ -1,10 +1,10 @@
-﻿using static ChessMasterQuiz.ValidationType;
-using static ChessMasterQuiz.RequirementType;
+﻿using static ChessMasterQuiz.Misc.ValidationType;
+using static ChessMasterQuiz.Misc.RequirementType;
 using System.Text.RegularExpressions;
 using System.Net.Mail;
 using System.Text;
 
-namespace ChessMasterQuiz;
+namespace ChessMasterQuiz.Misc;
 
 enum ValidationType
 {
@@ -43,15 +43,15 @@ internal static class Validator
             case DOB:
                 return (DateTime.TryParse(text, out _), -1);
             case DISPLAY:
-                return (ValidateDisplayName(text), -1);
+                return (text.ValidateDisplayName(), -1);
             case PASSWORD:
 
-                if(text.Length > 8)
+                if (text.Length > 8)
                 {
                     ValidationLookup[LENGTH] = true;
                 }
 
-                if(text.Where(x => !char.IsLetterOrDigit(x)).Count() > 1)
+                if (text.Where(x => !char.IsLetterOrDigit(x)).Count() > 1)
                 {
                     ValidationLookup[SPECIALCHARACTERS] = true;
                 }
@@ -66,7 +66,7 @@ internal static class Validator
                     ValidationLookup[NUMBER] = true;
                 }
 
-                if(ValidationLookup.All(x => x.Value == true))
+                if (ValidationLookup.All(x => x.Value == true))
                 {
                     return (true, 100);
                 }
@@ -94,4 +94,4 @@ internal static class Validator
         { DISPLAY, @"\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+" },
         { GENDER, @"/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u" },
     };
-} 
+}

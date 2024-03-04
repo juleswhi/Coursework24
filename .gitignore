@@ -1,4 +1,6 @@
 src/bin/
 src/obj
+bin/
+obj/
 .idea
 .vs

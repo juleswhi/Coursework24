@@ -1,11 +1,11 @@
-﻿using static ChessMasterQuiz.ContextTagType;
-using static ChessMasterQuiz.Helpers.UserHelper;
+﻿using static ChessMasterQuiz.Misc.ContextTagType;
+using static ChessMasterQuiz.UserRepresentation.UserHelper;
 using ChessMasterQuiz.Forms;
 using ChessMasterQuiz.QuestionDir;
-using ChessMasterObjectNotation;
 using Chess.BoardRepresentation;
 using Chess;
 using System.Diagnostics;
+using ChessMasterQuiz.Misc;
 
 namespace ChessMasterQuiz;
 

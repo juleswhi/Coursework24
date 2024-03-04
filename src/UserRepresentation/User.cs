@@ -1,13 +1,12 @@
-﻿using static ChessMasterQuiz.Helpers.UserHelper;
+﻿using static ChessMasterQuiz.UserRepresentation.UserHelper;
 using static ChessMasterQuiz.Helper;
 using System.Security.Cryptography;
-using static ChessMasterQuiz.UserType;
+using static ChessMasterQuiz.UserRepresentation.UserType;
 using System.Text;
 using System.Net.Mail;
 using System.Diagnostics;
-using ChessMasterQuiz.Helpers;
 
-namespace ChessMasterQuiz;
+namespace User;
 
 // This enum is used to identify a regular user from an admin
 // This is done through a property in the User class ( User.cs, line 25 )
@@ -37,7 +36,7 @@ public class User
 
     // This `MailAddress` type represents an email address
     public MailAddress? Email { get; set; } = null;
-    
+
     // Gender is a string for inclusivity 
     public string Gender { get; set; } = string.Empty;
 
@@ -54,7 +53,7 @@ public class User
     public bool IsLoggedIn { get; private set; }
 
     public User()
-    {}
+    { }
 
     // Constructor for the User class takes a plain text password and stores it as a hash
     public User(string name, string password, bool isAdmin = false)
@@ -66,37 +65,40 @@ public class User
 
         // Convert the string `password` to a byte array. This is what the hashing algorithm needs
         byte[] passwordInBytes = Encoding.UTF8.GetBytes(password);
-        
+
         // This snippet hashes the `passwordInBytes` with the `Pbkdf2` hashing algo
         // Then converts the has to Base64, which is useful to put in text
         // The salt is also used to hash the password 
-        var hashedPassword = 
+        var hashedPassword =
                     Rfc2898DeriveBytes.Pbkdf2(passwordInBytes,
                         salt,
                         100_000,
                         HashAlgorithmName.SHA512,
                         64);
-        
+
         // Creates the password object with the hashedPassword and the salt.
         Password = new(
                 Encoding.UTF8.GetString(hashedPassword),
                 salt
             );
-        
+
         // The type is inferred from the bool isAdmin
         Type = isAdmin ? ADMIN : USER;
     }
 
     // This method double checks that all users are logged out before logging in a specific user.
-    public void Login() {
-        foreach(var user in Users) {
+    public void Login()
+    {
+        foreach (var user in Users)
+        {
             user.Logout();
         }
         IsLoggedIn = true;
     }
 
     // Logs the user out by simply chaning their `IsLoggedIn` property.
-    public void Logout() {
+    public void Logout()
+    {
         IsLoggedIn = false;
     }
 
@@ -108,14 +110,14 @@ public class User
 
         var fields = typeof(User).GetProperties();
 
-        foreach(var field in fields)
+        foreach (var field in fields)
         {
             sb.Append($"{field.Name}{{");
             if (field.Name == "Password")
             {
                 var data = field.GetValue(this) as Password;
-                sb.Append($"{UserHelper.SerializePassword(
-                    (field.GetValue(this) as Password)!
+                sb.Append($"{(field.GetValue(this) as Password)!
+.SerializePassword(
                     )}");
             }
             else

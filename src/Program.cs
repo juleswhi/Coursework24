@@ -1,10 +1,9 @@
-using static ChessMasterQuiz.Helpers.UserHelper;
+using static ChessMasterQuiz.UserRepresentation.UserHelper;
 using System.Data.Common;
 using System.Diagnostics;
 using System.Text.Json;
 using Chess;
 using ChessMasterQuiz.Forms;
-using ChessMasterQuiz.Helpers;
 using ChessMasterQuiz.Chess;
 
 namespace ChessMasterQuiz

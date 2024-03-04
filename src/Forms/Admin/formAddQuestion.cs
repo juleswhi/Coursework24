@@ -1,7 +1,7 @@
 ﻿using static ChessMasterQuiz.Helpers.ControlHelper;
 using System.Data;
 using System.Diagnostics;
-using ChessMasterObjectNotation;
+using ChessMasterQuiz.Misc;
 
 namespace ChessMasterQuiz.Forms
 {

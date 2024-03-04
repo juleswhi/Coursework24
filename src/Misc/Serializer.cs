@@ -15,7 +15,7 @@ using System.Diagnostics;
 // This allows for access to the User class
 using ChessMasterQuiz;
 
-using static ChessMasterObjectNotation.TokenType; 
+using static ChessMasterQuiz.Misc.TokenType;
 
 using static System.String;
 using static System.Char;
@@ -23,7 +23,7 @@ using static System.Char;
 
 // The LonConvert class and its associated classes ( Lexer, Parser, Token )
 // should be kept in a different namespace to keep things tidy 
-namespace ChessMasterObjectNotation;
+namespace ChessMasterQuiz.Misc;
 
 /// <summary>
 /// Lon ( Lake Object Notation ) Converter.
@@ -55,14 +55,14 @@ public static class LonConvert
         // Whenm multiple different types of questions are implemented
         // it would be time consuming to manually do this.
         // Once again use reflection 
-        if(question is TextQuestion)
+        if (question is TextQuestion)
         {
             stringBuilder.Append("{");
             TextQuestion tq = (question as TextQuestion)!;
             stringBuilder.Append($"Q:\"{tq.Q}\",");
-            for(int i = 0; i < tq.A!.Answers.Count; i++)
+            for (int i = 0; i < tq.A!.Answers.Count; i++)
             {
-                stringBuilder.Append($"Answer{i+1}:\"{tq.A.Answers[i]}\",");
+                stringBuilder.Append($"Answer{i + 1}:\"{tq.A.Answers[i]}\",");
             }
             stringBuilder.Append($"Index:\"{tq.A.Index}\"");
             stringBuilder.Append("}");
@@ -73,11 +73,11 @@ public static class LonConvert
     }
 
     // This method deals with serializing a list of objectrs 
-    public static string Serialize<T>(this List<T> objects) where T : Question 
+    public static string Serialize<T>(this List<T> objects) where T : Question
     {
         StringBuilder stringBuilder = new();
 
-        foreach(var obj in objects)
+        foreach (var obj in objects)
         {
             stringBuilder.Append(Serialize(obj));
             stringBuilder.Append("\n");
@@ -88,8 +88,8 @@ public static class LonConvert
 
     public static List<Question> Deserialize(params string[] strs)
     {
-        List<Question> questions = new(); 
-        foreach(var str in strs)
+        List<Question> questions = new();
+        foreach (var str in strs)
         {
             if (IsNullOrWhiteSpace(str)) continue;
             List<Token> tokens = Lexer.Lex(str);
@@ -168,7 +168,7 @@ file static class Lexer
     static List<Token> _tokens = new();
 
     // These methods deal with navigating the string
-    
+
     // An example of why they are necessary is how programming languages deal with the `=` sign
     // When a programming language interpreter sees a `=`, 
     // it doesn't know if it is an assignment operator, or a comparasin operator
@@ -257,11 +257,11 @@ file static class Lexer
                 default:
                     {
                         // Very similar to the `DATA` above
-                        
+
                         // Due to the limitations of variable names,
                         // No (") are necessary, just ensure all chars are letters 
                         StringBuilder sb = new();
-                        while(IsLetterOrDigit(Current(str)))
+                        while (IsLetterOrDigit(Current(str)))
                         {
                             sb.Append(Current(str));
                             Next();
@@ -312,11 +312,11 @@ file static class Parser
         List<string> answers = new();
         int index = 0;
 
-        TextQuestion question = new(); 
+        TextQuestion question = new();
 
-        for(; _current < _tokens.Count;)
+        for (; _current < _tokens.Count;)
         {
-            switch(Current().Type)
+            switch (Current().Type)
             {
                 case LEFT_BRACKET:
                     break;
@@ -341,25 +341,25 @@ file static class Parser
                             property = props.FirstOrDefault(
                                 x => x.Name == name);
 
-                            if(property is not null)
+                            if (property is not null)
                             {
                                 return;
                             }
 
-                            foreach(var prop in props)
+                            foreach (var prop in props)
                             {
                                 GetProps(prop.PropertyType);
                             }
                         }
 
-                        if(name!.ToLower().Contains("answer"))
+                        if (name!.ToLower().Contains("answer"))
                         {
                             Next();
                             answers.Add((string)Current().Data!);
                             // Debug.Print($"Added Answer: {Current().Data}");
                             break;
                         }
-                        else if(name.ToLower().Contains("index"))
+                        else if (name.ToLower().Contains("index"))
                         {
                             Next();
                             index = int.Parse((string)Current().Data!);
@@ -371,7 +371,7 @@ file static class Parser
                             GetProps(question.GetType());
                         }
 
-                        if(property is null)
+                        if (property is null)
                         {
                             // Debug.Print($"Could not find prop for {name}");
                             break;
@@ -386,12 +386,12 @@ file static class Parser
                             // Get type of the question ( TextQuestion etc... ) 
                             // Look up properties recursively
 
-                            if(question.Type == QuestionType.TEXT)
+                            if (question.Type == QuestionType.TEXT)
                             {
                                 property = CheckForProperties(typeof(Answer), name);
                             }
 
-                            if(property is null)
+                            if (property is null)
                             {
                                 Debug.Print($"Could not find property called: {name} in {question.GetType().Name}");
                                 break;
@@ -433,7 +433,7 @@ file static class Parser
         return question;
     }
 
-    
+
     private static PropertyInfo? CheckForProperties(Type type, string name)
     {
         var props = type.GetProperties();

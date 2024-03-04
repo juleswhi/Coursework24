@@ -11,10 +11,10 @@
 
 using System.Diagnostics;
 
-namespace ChessMasterQuiz;
+namespace User;
 
 // Primary constructor is used to create a Rating prop
-public record struct ELO (int Rating)
+public record struct ELO(int Rating)
 {
 
     // Represents either a win or a loss
@@ -36,7 +36,8 @@ public record struct ELO (int Rating)
     private readonly static int s_bonusScore = 10;
 
     // Blank constructor to allow for the default initial rating
-    public ELO() : this(s_initialRating) {
+    public ELO() : this(s_initialRating)
+    {
         Rating = s_initialRating;
     }
 
@@ -80,7 +81,7 @@ public record struct ELO (int Rating)
         float resultantRating = Ra + K * (Sa - Ea) + addedBonus;
 
         // Make sure the elo isnt too low
-        if(resultantRating < s_minimumPossibleElo)
+        if (resultantRating < s_minimumPossibleElo)
         {
             return;
         }

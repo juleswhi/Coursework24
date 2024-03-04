@@ -1,5 +1,8 @@
-﻿using static ChessMasterQuiz.ContextTagType;
+﻿using ChessMasterQuiz.UserRepresentation;
+using static ChessMasterQuiz.Misc.ContextTagType;
 using static ChessMasterQuiz.Helpers.ControlHelper;
+using ChessMasterQuiz.Misc;
+
 namespace ChessMasterQuiz.Forms;
 
 public partial class formUserProfile : Form, IContext
