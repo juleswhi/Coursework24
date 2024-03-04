@@ -1,4 +1,3 @@
-using static ChessMasterQuiz.UserRepresentation.UserHelper;
 using System.Data.Common;
 using System.Diagnostics;
 using System.Text.Json;
@@ -21,7 +20,6 @@ namespace ChessMasterQuiz
             ApplicationConfiguration.Initialize();
 
             Application.Run(new formMain());
-
         }
     }
 }

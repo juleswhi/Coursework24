@@ -114,11 +114,23 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
         return san;
     }
 
+    private static int FileNumberFromChar(char file) => file switch
+    {
+        'a' => 1,
+        'b' => 2,
+        'c' => 3,
+        'd' => 4,
+        'e' => 5,
+        'f' => 6,
+        'g' => 7,
+        'h' => 8,
+        _ => -1
+    };
+
     public Notation GetInitialLocation()
     {
 
         int PAWN_DIRECTION;
-
 
         switch(Piece)
         {
@@ -126,6 +138,8 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
                 {
                     foreach(var pawn in MoveHelper.CurrentBoard!.Pieces.Where(x => x.Type == PieceType.PAWN))
                     {
+                        int pawnFile = FileNumberFromChar(pawn.Location.File);
+                        int destFile = FileNumberFromChar(Square.File);
                         PAWN_DIRECTION = pawn.Colour == Colour.White ? -1 : 1;
                         if (pawn.Location.File != Square.File) continue;
 
@@ -134,13 +148,21 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
                         }
                         else if (pawn.Location.Rank == Square.Rank + PAWN_DIRECTION * 2)
                         {
-                            if(pawn.Colour == Colour.White)
+                            if (pawn.Colour == Colour.White)
                             {
                                 if (pawn.Location.Rank != 2) continue;
                             }
-                            else if(pawn.Colour == Colour.Black)
+                            else if (pawn.Colour == Colour.Black)
                             {
                                 if (pawn.Location.Rank != 7) continue;
+                            }
+                        }
+
+                        else if (pawnFile == destFile + 1 || pawnFile == destFile - 1)
+                        {
+                            if (pawn.Location.Rank + PAWN_DIRECTION == Square.Rank)
+                            {
+                                return pawn.Location;
                             }
                         }
                         else continue;
@@ -153,7 +175,51 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
                 }
 
             case PieceType.KNIGHT:
-                    break;
+                foreach (var knight in MoveHelper.CurrentBoard!.Pieces.Where(x => x.Type == PieceType.KNIGHT))
+                {
+                    int knightFile = FileNumberFromChar(knight.Location.File);
+                    int destFile = FileNumberFromChar(Square.File);
+
+                    if(knightFile == destFile + 1 || knightFile == destFile - 1)
+                    {
+                        if(knight.Location.Rank == Square.Rank + 2 ||
+                            knight.Location.Rank == Square.Rank - 2)
+                        {
+                            return knight.Location;
+                        }
+                    }
+                    else if(knightFile == destFile + 2 || knightFile == destFile - 2)
+                    {
+                        if(knight.Location.Rank == Square.Rank + 1 || 
+                            knight.Location.Rank == Square.Rank - 1)
+                        {
+                            return knight.Location;
+                        }
+                    }
+                }
+                break;
+
+            case PieceType.BISHOP:
+                foreach (var bishop in MoveHelper.CurrentBoard!.Pieces.Where(x => x.Type == PieceType.BISHOP))
+                {
+                    int bishopFile = FileNumberFromChar(bishop.Location.File);
+                    int destFile = FileNumberFromChar(Square.File);
+
+                    for(int i = 1; i < 8; i++)
+                    {
+                        // Check in all four directions
+                        if(bishopFile + i == destFile && bishop.Location.Rank + i == Square.Rank)
+                            return bishop.Location;
+                        else if(bishopFile - i == destFile && bishop.Location.Rank + i == Square.Rank)
+                            return bishop.Location;
+                        else if(bishopFile - i == destFile && bishop.Location.Rank - i == Square.Rank)
+                            return bishop.Location;
+                        else if(bishopFile + i == destFile && bishop.Location.Rank - i == Square.Rank)
+                            return bishop.Location;
+                    }
+                }
+
+                break;
         }
 
         return new();

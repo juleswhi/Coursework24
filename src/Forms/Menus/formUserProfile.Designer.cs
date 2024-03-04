@@ -39,6 +39,7 @@
             lblRatingValue = new Label();
             lblRating = new Label();
             lblMainMenu = new Button();
+            btnNext = new Button();
             ((System.ComponentModel.ISupportInitialize)pBoxProfileImage).BeginInit();
             SuspendLayout();
             // 
@@ -159,11 +160,22 @@
             lblMainMenu.UseVisualStyleBackColor = true;
             lblMainMenu.Click += lblMainMenu_Click;
             // 
+            // btnNext
+            // 
+            btnNext.Location = new Point(559, 188);
+            btnNext.Name = "btnNext";
+            btnNext.Size = new Size(171, 41);
+            btnNext.TabIndex = 14;
+            btnNext.Text = "Next";
+            btnNext.UseVisualStyleBackColor = true;
+            btnNext.Click += btnNext_Click;
+            // 
             // formUserProfile
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnNext);
             Controls.Add(lblMainMenu);
             Controls.Add(lblRatingValue);
             Controls.Add(lblRating);
@@ -195,5 +207,7 @@
         private Label lblRatingValue;
         private Label lblRating;
         private Button lblMainMenu;
+        private Button button1;
+        private Button btnNext;
     }
 }

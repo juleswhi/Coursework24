@@ -1,6 +1,7 @@
-﻿using static ChessMasterObjectNotation.QuestionType;
-using static ChessMasterObjectNotation.Difficulty;
-namespace ChessMasterObjectNotation;
+﻿using static ChessMasterQuiz.Misc.QuestionType;
+using static ChessMasterQuiz.Misc.Difficulty;
+
+namespace ChessMasterQuiz.Misc;
 
 public record Answer(List<string> Answers, uint Index);
 
@@ -13,18 +14,18 @@ public enum Difficulty
 {
     EASY,
     MEDIUM,
-    HARD 
+    HARD
 }
 
 public abstract class Question : IEquatable<Question>, IComparable<Question>
 {
     public QuestionType Type { get; init; }
-    public string Name { get; init; } = String.Empty;
+    public string Name { get; init; } = string.Empty;
     public Difficulty Difficulty { get; init; }
 
     public int CompareTo(Question? other)
     {
-        return (int)other!.Difficulty.CompareTo((int)Difficulty);
+        return other!.Difficulty.CompareTo((int)Difficulty);
     }
     public bool Equals(Question? other)
     {

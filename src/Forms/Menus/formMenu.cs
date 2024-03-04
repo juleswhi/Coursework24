@@ -1,11 +1,10 @@
-﻿using static ChessMasterQuiz.Misc.ContextTagType;
-using static ChessMasterQuiz.UserRepresentation.UserHelper;
-using ChessMasterQuiz.Forms;
+﻿using ChessMasterQuiz.Forms;
 using ChessMasterQuiz.QuestionDir;
 using Chess.BoardRepresentation;
 using Chess;
 using System.Diagnostics;
 using ChessMasterQuiz.Misc;
+using ChessMasterQuiz.Chess;
 
 namespace ChessMasterQuiz;
 
@@ -15,7 +14,22 @@ public partial class formMenu : Form, IContext
 
     public void UseContext(IEnumerable<DataContextTag> context)
     {
-        // Get Random Chess Game
+        if(context is null || context.Count() == 0)
+        {
+            // Grab logged in user
+            User.User? loggedIn = ActiveUser;
+            if(loggedIn is User.User current)
+            {
+                pBoxProfile.Image = User.User.ProfilePictures[current.ImageIndex];
+            }
+            return;
+        }
+        //Grab user
+        User.User? user = context.FirstOrDefault(x => x.tag == USER)!.data as User.User;
+        if(user is User.User u)
+        {
+            pBoxProfile.Image = User.User.ProfilePictures[u.ImageIndex];
+        }
     }
 
     public formMenu()
@@ -23,7 +37,7 @@ public partial class formMenu : Form, IContext
         InitializeComponent();
 
         pBoxProfile.BackgroundImageLayout = ImageLayout.Stretch;
-        pBoxProfile.Image = Chess.ChessPieces.WhitePawn;
+        // pBoxProfile.Image = Chess.ChessPieces.WhitePawn;
         pBoxProfile.SizeMode = PictureBoxSizeMode.CenterImage;
 
         Board board = new Board();
@@ -34,8 +48,6 @@ public partial class formMenu : Form, IContext
 
         var game = reader.Games.First();
 
-        Debug.Print($"{game.Moves.Count}");
-
         board.Location = new Point(300, 25);
         Controls.Add(board);
 
@@ -44,6 +56,7 @@ public partial class formMenu : Form, IContext
 
     private void pBoxProfile_Click(object sender, EventArgs e)
     {
+        MoveHelper.CurrentBoard?.StopGame();
         ActivateForm<formUserProfile>(new DataContextTag(
             ActiveUser!,
             USER
@@ -55,10 +68,9 @@ public partial class formMenu : Form, IContext
         // Bring to another play form??
         // Free Play / Competitive
         // Puzzles
-
-
         // Generate list of quesitons here
 
+        MoveHelper.CurrentBoard?.StopGame();
         var file = File.ReadAllLines("questions.qon");
 
         var questions = LonConvert.Deserialize(file);
@@ -96,6 +108,7 @@ public partial class formMenu : Form, IContext
 
     private void btnSettings_Click(object sender, EventArgs e)
     {
+        MoveHelper.CurrentBoard?.StopGame();
         ActivateForm<formAddQuestion>();
     }
 }

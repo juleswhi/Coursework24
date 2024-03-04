@@ -63,7 +63,6 @@ public class PgnReader
             {
                 (SAN, SAN) move = (SAN.From((string)game[i].Data), SAN.From((string)game[i+1].Data));
                 pgn.Moves.Add(move);
-                Debug.Print($"Added Move {i / 2}");
             } 
 
             Games.Add(pgn);
@@ -85,7 +84,6 @@ public class PgnReader
             // If the property is found
             if (property is PropertyInfo prop)
             {
-                // Debug.Print($"Property: {prop.Name} yeah, {meta[i+1]}");
                 if (prop.PropertyType == typeof(string))
                 {
                     prop.SetMethod?.Invoke(pgn, new object[] { (string)meta[i + 1].Data });

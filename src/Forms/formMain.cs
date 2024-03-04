@@ -11,7 +11,7 @@ public partial class formMain : Form
         InitializeComponent();
         GetPanelHolder = () => panelHolder;
 
-        ActivateForm<formMenu>();
-        // ActivateForm<formLogin>();
+        // ActivateForm<formMenu>();
+        ActivateForm<formLogin>();
     }
 }

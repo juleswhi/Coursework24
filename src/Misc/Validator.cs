@@ -29,16 +29,16 @@ internal static class Validator
     {
         Dictionary<RequirementType, bool> ValidationLookup = new()
         {
-            { LENGTH, false },
-            { SPECIALCHARACTERS, false },
-            { UPPERCASE, false },
-            { NUMBER, false },
+            { RequirementType.LENGTH, false },
+            { RequirementType.SPECIALCHARACTERS, false },
+            { RequirementType.UPPERCASE, false },
+            { RequirementType.NUMBER, false },
 
         };
 
         switch (type)
         {
-            case EMAIL:
+            case ValidationType.EMAIL:
                 return (MailAddress.TryCreate(text, out _), -1);
             case DOB:
                 return (DateTime.TryParse(text, out _), -1);
@@ -63,7 +63,7 @@ internal static class Validator
 
                 if (text.Any(char.IsDigit))
                 {
-                    ValidationLookup[NUMBER] = true;
+                    ValidationLookup[RequirementType.NUMBER] = true;
                 }
 
                 if (ValidationLookup.All(x => x.Value == true))
@@ -89,7 +89,7 @@ internal static class Validator
 
     public static Dictionary<ValidationType, string> ValidationTypeRegex = new()
     {
-        { EMAIL, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" },
+        { ValidationType.EMAIL, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" },
         { PASSWORD, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" },
         { DISPLAY, @"\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+" },
         { GENDER, @"/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u" },

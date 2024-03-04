@@ -1,10 +1,9 @@
-﻿using static ChessMasterQuiz.UserRepresentation.UserHelper;
-using static ChessMasterQuiz.Helper;
-using System.Security.Cryptography;
-using static ChessMasterQuiz.UserRepresentation.UserType;
+﻿using System.Security.Cryptography;
 using System.Text;
 using System.Net.Mail;
 using System.Diagnostics;
+using ChessMasterQuiz.Forms;
+using ChessMasterQuiz.Chess;
 
 namespace User;
 
@@ -41,19 +40,49 @@ public class User
     public string Gender { get; set; } = string.Empty;
 
     // The `UserType` can either be Admin or User 
-    public UserType Type { get; set; } = USER;
+    public UserType Type { get; set; } = UserType.USER;
 
     // The current rating of the user 
     public ELO Elo { get; set; } = new();
 
+    // A percentage representing the users accuracy
+    public float Accuracy { get; set; } 
+
+    // Represents the most questions answered in a single round for a particular user
+    public int HighScore { get; set; }
+
+    // The amount of quizs the user has completed
+    public int QuizesCompleted { get; set; }
+
     // Reference to the image found in "Forms/ProfilePictures.resx"
-    public string ImageName { get; set; } = string.Empty;
+    public int ImageIndex { get; set; } = 0;
 
     // Bool value to validate who is logged in
     public bool IsLoggedIn { get; private set; }
 
+    public static IReadOnlyList<Image> ProfilePictures { get; } 
+
     public User()
     { }
+
+    static User()
+    {
+        ProfilePictures = new List<Image>()
+        {
+            ChessPieces.WhitePawn,
+            ChessPieces.WhiteKnight,
+            ChessPieces.WhiteBishop,
+            ChessPieces.WhiteRook,
+            ChessPieces.WhiteQueen,
+            ChessPieces.WhiteKing,
+            ChessPieces.BlackPawn,
+            ChessPieces.BlackKnight,
+            ChessPieces.BlackBishop,
+            ChessPieces.BlackRook,
+            ChessPieces.BlackQueen,
+            ChessPieces.BlackKing
+        };
+    }
 
     // Constructor for the User class takes a plain text password and stores it as a hash
     public User(string name, string password, bool isAdmin = false)
@@ -83,7 +112,7 @@ public class User
             );
 
         // The type is inferred from the bool isAdmin
-        Type = isAdmin ? ADMIN : USER;
+        Type = isAdmin ? UserType.ADMIN : UserType.USER;
     }
 
     // This method double checks that all users are logged out before logging in a specific user.

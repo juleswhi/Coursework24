@@ -27,6 +27,7 @@ public class Board : Panel
     public List<Piece> Pieces = new();
     public Board(Size? size = null) : base()
     {
+        SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
         MoveHelper.CurrentBoard = this;
         base.BackColor = Color.Gray;
         size ??= _defaultBoardSize;
@@ -82,6 +83,11 @@ public class Board : Panel
 
     private void Draw(object? sender, PaintEventArgs e)
     {
+        e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+        e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+        e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+        e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half;
+        e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
         foreach (var square in Squares)
         {
             e.Graphics.FillRectangle(
@@ -122,19 +128,29 @@ public class Board : Panel
         }
     }
 
+    public void StopGame()
+    {
+        _continueGame = false;
+    }
 
-    public void DisplayGame(PGN pgn, int PlyPause = -1)
+    private bool _continueGame = true;
+
+    public void DisplayGame(PGN pgn, int PlyPause = 1000)
     {
         Thread gameThread = new Thread(() =>
         {
-            foreach(var (white, black) in pgn.Moves)
+            _continueGame = true;
+            foreach (var (white, black) in pgn.Moves)
             {
                 // Debug.Print($"White move: {this[white.InitialSquare]?.Location}");
-                this[white.InitialSquare]?.Move(white.Square.ToString());
-                Thread.Sleep(750);
+                this[white.InitialSquare]?.Move(white);
+                Debug.Print($"{white.GetNotation()}");
+                Thread.Sleep(PlyPause);
                 // Debug.Print($"Black move: {this[white.InitialSquare]?.Location}");
-                this[black.InitialSquare]?.Move(black.Square.ToString());
-                Thread.Sleep(750);
+                this[black.InitialSquare]?.Move(black);
+                Debug.Print($"{black.GetNotation()}");
+                Thread.Sleep(PlyPause);
+                if (!_continueGame) break;
             }
         });
         gameThread.Start();

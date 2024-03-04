@@ -33,14 +33,12 @@ public class Piece
     public Colour Colour { get; set; }
 
 
-    public void Move(string location)
+    public void Move(SAN location)
     {
-        Notation square = Notation.From(location);
-        
         bool legalMove = Type switch
         {
-            PieceType.PAWN => MoveHelper.PawnMove(Location, square),
-            _ => MoveHelper.PawnMove(Location, square)
+            // PieceType.PAWN => MoveHelper.PawnMove(Location, location.Square),
+            _ => true
         };
 
         if(!legalMove)
@@ -49,11 +47,23 @@ public class Piece
             return;
         }
 
+        var pieceOnSquare = MoveHelper.CurrentBoard!.Pieces.FirstOrDefault(x => x.Location == location.Square);
+
+        if(pieceOnSquare is Piece p)
+        {
+            Debug.Print($"Found: {pieceOnSquare.Type} on square {location.Square}");
+            p.Remove();
+        }
+
         // Debug.Print($"Legal Move, {location}");
-        Location = square;
+        Location = location.Square;
         MoveHelper.CurrentBoard?.Invalidate();
     }
 
+    public void Remove()
+    {
+        MoveHelper.CurrentBoard?.Pieces.Remove(this);
+    }
 
     public override string ToString()
     {
