@@ -1,8 +1,4 @@
-﻿using static ChessMasterQuiz.Misc.ContextTagType;
-using static ChessMasterQuiz.Helpers.ControlHelper;
-using static ChessMasterQuiz.Helpers.FormatDirection;
-using System.Diagnostics;
-using ChessMasterQuiz.Helpers;
+﻿using System.Diagnostics;
 using ChessMasterQuiz.Misc;
 
 namespace ChessMasterQuiz;
@@ -14,50 +10,43 @@ public partial class formLogin : Form, IContext
     {
         InitializeComponent();
 
+        pBoxLogo.Image = GeneralResources.ChessMasterLogo;
+        pBoxLogo.SizeMode = PictureBoxSizeMode.StretchImage;
+
         Resize += onResize;
         btnRegister.Click += (s, e) =>
         {
-            ActivateForm<formRegister>(new DataContextTag(txtBoxEmailRegister.Text, EMAIL));
+            ActivateForm<formRegister>();
         };
     }
 
     Control.ControlCollection IContext._controls => Controls;
     private void onResize(object? sender, EventArgs e)
     {
-        lblLogin.Center(X);
-        txtBoxEmail.Center(X);
-        txtBoxPassword.Center(X);
-        btnLogin.Center(X);
-
-        lblNewQuiz.Center(X);
-
-        txtBoxEmailRegister.Center(X);
-        txtBoxEmailRegister.Left -= 55;
-
-        btnRegister.Center(X);
-        btnRegister.Left += 90;
     }
 
     private void btnLogin_Click(object sender, EventArgs e)
     {
-        string emailText = txtBoxEmail.Text;
+        string usernameText = txtBoxEmail.Text;
         string passwordText = txtBoxPassword.Text;
 
-        var foundUser = Users.FirstOrDefault(x => x.Email?.Address == emailText);
+        var foundUser = Users.FirstOrDefault(x => x.Username == usernameText);
         if (foundUser is null)
         {
-            Debug.Print("Couldn't Find the entered user");
             return;
         }
 
-        if(!passwordText.VerifyPassword(foundUser!))
+        if (!passwordText.VerifyPassword(foundUser!))
         {
-            Debug.Print("Wrong Password");
             return;
         }
-
 
         foundUser.Login();
         ActivateForm<formMenu>(new DataContextTag(foundUser, USER));
+    }
+
+    private void formLogin_Load(object sender, EventArgs e)
+    {
+
     }
 }

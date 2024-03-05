@@ -11,7 +11,7 @@
 
 using System.Diagnostics;
 
-namespace User;
+namespace UserRepresentation;
 
 // Primary constructor is used to create a Rating prop
 public record struct ELO(int Rating)

@@ -40,6 +40,6 @@ global using static ChessMasterQuiz.Misc.SeverityType;
 
 global using static ChessMasterQuiz.Helpers.ControlHelper;
 global using static System.Reflection.BindingFlags;
-global using User;
+global using UserRepresentation;
 global using static ChessMasterQuiz.Misc.ContextTagType;
-global using static User.UserHelper;
+global using static UserRepresentation.UserHelper;

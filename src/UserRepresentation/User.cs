@@ -5,7 +5,7 @@ using System.Diagnostics;
 using ChessMasterQuiz.Forms;
 using ChessMasterQuiz.Chess;
 
-namespace User;
+namespace UserRepresentation;
 
 // This enum is used to identify a regular user from an admin
 // This is done through a property in the User class ( User.cs, line 25 )
@@ -33,11 +33,14 @@ public class User
     // A `Password` record is used to store not only the hashed password, but also the salt 
     public Password? Password { get; set; } = null;
 
-    // This `MailAddress` type represents an email address
-    public MailAddress? Email { get; set; } = null;
+    // This `Username` represents a unique username to identify the user
+    public string? Username { get; set; } = null;
 
     // Gender is a string for inclusivity 
     public string Gender { get; set; } = string.Empty;
+
+    // The Date of birth of the user
+    public DateTime DOB { get; set; } 
 
     // The `UserType` can either be Admin or User 
     public UserType Type { get; set; } = UserType.USER;
@@ -55,7 +58,7 @@ public class User
     public int QuizesCompleted { get; set; }
 
     // Reference to the image found in "Forms/ProfilePictures.resx"
-    public int ImageIndex { get; set; } = 0;
+    public int ImageIndex { get; set; } = 3;
 
     // Bool value to validate who is logged in
     public bool IsLoggedIn { get; private set; }
@@ -87,7 +90,7 @@ public class User
     // Constructor for the User class takes a plain text password and stores it as a hash
     public User(string name, string password, bool isAdmin = false)
     {
-        Name = name;
+        Username = name;
 
         // Generate a random `salt` which is needed for the hashing algorithm to make it more secure
         var salt = RandomNumberGenerator.GetBytes(64);
@@ -123,12 +126,14 @@ public class User
             user.Logout();
         }
         IsLoggedIn = true;
+        ActiveUser = this;
     }
 
     // Logs the user out by simply chaning their `IsLoggedIn` property.
     public void Logout()
     {
         IsLoggedIn = false;
+        ActiveUser = null;
     }
 
     public string Serialize()

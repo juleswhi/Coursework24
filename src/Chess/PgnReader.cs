@@ -58,10 +58,9 @@ public class PgnReader
             // Do something with tokens to convert to PGN 
             pgn = MetaTokensToPgn(pgn, meta);
 
-
             for(int i = 0; i < game.Count; i += 2)
             {
-                (SAN, SAN) move = (SAN.From((string)game[i].Data), SAN.From((string)game[i+1].Data));
+                (SAN, SAN) move = (SAN.From((string)game[i].Data!), SAN.From((string)game[i+1].Data!));
                 pgn.Moves.Add(move);
             } 
 
@@ -86,7 +85,7 @@ public class PgnReader
             {
                 if (prop.PropertyType == typeof(string))
                 {
-                    prop.SetMethod?.Invoke(pgn, new object[] { (string)meta[i + 1].Data });
+                    prop.SetMethod?.Invoke(pgn, new object[] { (string)meta[i + 1].Data! });
                 }
                 else if (prop.PropertyType == typeof(DateTime?))
                 {
@@ -174,7 +173,6 @@ public class PgnReader
                             TokenType.VALUE,
                             sb.ToString()
                             );
-
                         break;
                     }
 

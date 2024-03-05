@@ -1,24 +1,41 @@
 ﻿using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
-using Newtonsoft.Json;
+using System.Text.Json;
 
-namespace User;
+namespace UserRepresentation;
 
 public static class UserHelper
 {
-    static readonly string _userpath = "Users.csv";
-    public static List<User> Users = new()
+    static readonly string _userpath = "users.json";
+
+    public static List<User> Users => ReadUsers();
+
+    public static List<User> ReadUsers()
     {
-        new("root", "root")
+        string input = File.ReadAllText(_userpath);
+
+        List<User>? users = JsonSerializer.Deserialize<List<User>>(input);
+
+        if(users is null)
         {
-            Email = new System.Net.Mail.MailAddress("root@root.com"),
+            throw new Exception($"Could not serialize the List of users correctly :(");
         }
-    };
+
+        return users;
+    }
+
+    public static void WriteUsers(List<User>? u = null)
+    {
+        string json = JsonSerializer.Serialize(u ?? Users);
+
+        File.WriteAllText(_userpath, json);
+    }
 
     public static User? ActiveUser
     {
-        get => Users.FirstOrDefault(x => x.IsLoggedIn == true);
+        get;
+        set;
     }
 
     public static string SerializePassword(this Password password)
@@ -33,7 +50,11 @@ public static class UserHelper
     }
 
 
-    public static User TestUser => new User("TestUserName", "password", false);
+    public static User TestUser => new User("root", "root", false)
+    {
+        Name = "Root User",
+        Gender = "N/A",
+    };
 
     public static bool VerifyPassword(this string password, User user)
     {
@@ -57,20 +78,4 @@ public static class UserHelper
     {
         Users.Add(user);
     }
-
-    public static void WriteUsers()
-    {
-        string json = JsonConvert.SerializeObject(Users);
-        using (StreamWriter sw = new(_userpath, false))
-        {
-            sw.Write(json);
-        }
-    }
-
-    public static void ReadUsers()
-    {
-        Debug.Print(File.ReadAllLines(_userpath).First());
-        Users = JsonConvert.DeserializeObject<List<User>>(File.ReadAllLines(_userpath).First())!;
-    }
-
 }

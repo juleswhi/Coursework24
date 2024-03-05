@@ -9,6 +9,7 @@ namespace ChessMasterQuiz.Misc;
 enum ValidationType
 {
     EMAIL,
+    USERNAME,
     PASSWORD,
     DISPLAY,
     DOB,
@@ -29,9 +30,9 @@ internal static class Validator
     {
         Dictionary<RequirementType, bool> ValidationLookup = new()
         {
-            { RequirementType.LENGTH, false },
-            { RequirementType.SPECIALCHARACTERS, false },
-            { RequirementType.UPPERCASE, false },
+            { LENGTH, false },
+            { SPECIALCHARACTERS, false },
+            { UPPERCASE, false },
             { RequirementType.NUMBER, false },
 
         };
@@ -39,13 +40,16 @@ internal static class Validator
         switch (type)
         {
             case ValidationType.EMAIL:
-                return (MailAddress.TryCreate(text, out _), -1);
+                return (MailAddress.TryCreate(text, out _), 100);
             case DOB:
-                return (DateTime.TryParse(text, out _), -1);
+                return (DateTime.TryParse(text, out _), 100);
             case DISPLAY:
-                return (text.ValidateDisplayName(), -1);
+                return (text.ValidateDisplayName(), 100);
+            case GENDER:
+                return (text.ValidateGender(), 100);
+            case USERNAME:
+                return (text.ValidateUsername(), 100);
             case PASSWORD:
-
                 if (text.Length > 8)
                 {
                     ValidationLookup[LENGTH] = true;
@@ -78,10 +82,36 @@ internal static class Validator
 
     private static bool ValidateDisplayName(this string text)
     {
-        if (text.Any(x => !char.IsLetter(x)))
+        if (string.IsNullOrWhiteSpace(text)) return false;
+        if (text.Length < 4) return false;
+        if (text.Length > 16) return false;
+        if (text.Any(x => !char.IsLetterOrDigit(x)))
         {
             return false;
         }
+
+        return true;
+    }
+
+    private static bool ValidateUsername(this string text)
+    {
+        if (string.IsNullOrWhiteSpace(text)) return false;
+        if (text.Length < 4) return false;
+        if (text.Length > 16) return false;
+        if (text.Any(x => !char.IsLetterOrDigit(x)))
+        {
+            return false;
+        }
+        // if (Users.Any(x => x.Username?.ToLower() == text)) return false;
+
+        return true;
+
+    }
+
+    private static bool ValidateGender(this string text)
+    {
+        if (text.Length > 15) return false;
+        if (text.Any(x => !char.IsLetter(x))) return false;
 
         return true;
     }

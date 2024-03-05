@@ -11,6 +11,23 @@ public enum FormatDirection
 
 public static class ControlHelper
 {
+
+    public static bool Has(this IEnumerable<DataContextTag> context, ContextTagType type)
+    {
+        return context.Any(x => x.tag == type);
+    }
+
+    public static IEnumerable<object> Get(this IEnumerable<DataContextTag> context, ContextTagType type)
+    {
+        return context.Where(x => x.tag == type).Select(x => x.data);
+    }
+
+    public static object? GetFirst(this IEnumerable<DataContextTag> context, ContextTagType type)
+    {
+        return context.Where(x => x.tag == type).Select(x => x.data).FirstOrDefault();
+    }
+
+
     public static Control? FindTag(this IEnumerable<Control> controls, string tag)
     {
         foreach(var control in controls)

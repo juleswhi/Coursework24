@@ -2,34 +2,32 @@
 using ChessMasterQuiz.QuestionDir;
 using Chess.BoardRepresentation;
 using Chess;
-using System.Diagnostics;
 using ChessMasterQuiz.Misc;
 using ChessMasterQuiz.Chess;
+using ChessMasterQuiz.Forms.Menus;
 
 namespace ChessMasterQuiz;
 
 public partial class formMenu : Form, IContext
 {
     Control.ControlCollection IContext._controls => Controls;
+    private User? _user = null;
 
     public void UseContext(IEnumerable<DataContextTag> context)
     {
-        if(context is null || context.Count() == 0)
+
+        User? userContext = (User?)context.GetFirst(USER);
+
+        if(userContext is null)
         {
-            // Grab logged in user
-            User.User? loggedIn = ActiveUser;
-            if(loggedIn is User.User current)
-            {
-                pBoxProfile.Image = User.User.ProfilePictures[current.ImageIndex];
-            }
-            return;
+            userContext = ActiveUser;
         }
-        //Grab user
-        User.User? user = context.FirstOrDefault(x => x.tag == USER)!.data as User.User;
-        if(user is User.User u)
-        {
-            pBoxProfile.Image = User.User.ProfilePictures[u.ImageIndex];
-        }
+
+        _user = userContext!;
+
+        pBoxProfile.Image = User.ProfilePictures[_user!.ImageIndex];
+
+        label1.Text = _user.Username;
     }
 
     public formMenu()
@@ -58,7 +56,7 @@ public partial class formMenu : Form, IContext
     {
         MoveHelper.CurrentBoard?.StopGame();
         ActivateForm<formUserProfile>(new DataContextTag(
-            ActiveUser!,
+            _user!,
             USER
             ));
     }
@@ -103,7 +101,8 @@ public partial class formMenu : Form, IContext
 
     private void btnLeaderboard_Click(object sender, EventArgs e)
     {
-
+        MoveHelper.CurrentBoard?.StopGame();
+        ActivateForm<formLeaderboard>();
     }
 
     private void btnSettings_Click(object sender, EventArgs e)

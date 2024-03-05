@@ -30,50 +30,40 @@
         {
             lblNewQuiz = new Label();
             lblLogin = new Label();
-            txtBoxEmailRegister = new TextBox();
             btnRegister = new Button();
             txtBoxEmail = new TextBox();
             txtBoxPassword = new TextBox();
             btnLogin = new Button();
+            pBoxLogo = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pBoxLogo).BeginInit();
             SuspendLayout();
             // 
             // lblNewQuiz
             // 
             lblNewQuiz.AutoSize = true;
-            lblNewQuiz.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
-            lblNewQuiz.Location = new Point(282, 288);
+            lblNewQuiz.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNewQuiz.Location = new Point(27, 325);
             lblNewQuiz.Name = "lblNewQuiz";
-            lblNewQuiz.Size = new Size(238, 31);
+            lblNewQuiz.Size = new Size(271, 36);
             lblNewQuiz.TabIndex = 3;
             lblNewQuiz.Text = "New to the Quiz?";
             // 
             // lblLogin
             // 
             lblLogin.AutoSize = true;
-            lblLogin.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
-            lblLogin.Location = new Point(338, 20);
+            lblLogin.Font = new Font("JetBrains Mono", 23.9999962F, FontStyle.Regular, GraphicsUnit.Point);
+            lblLogin.Location = new Point(105, 61);
             lblLogin.Name = "lblLogin";
-            lblLogin.Size = new Size(84, 31);
+            lblLogin.Size = new Size(114, 43);
             lblLogin.TabIndex = 4;
             lblLogin.Text = "Login";
-            // 
-            // txtBoxEmailRegister
-            // 
-            txtBoxEmailRegister.AcceptsReturn = true;
-            txtBoxEmailRegister.AcceptsTab = true;
-            txtBoxEmailRegister.Font = new Font("JetBrains Mono", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtBoxEmailRegister.Location = new Point(266, 322);
-            txtBoxEmailRegister.Name = "txtBoxEmailRegister";
-            txtBoxEmailRegister.PlaceholderText = "Email";
-            txtBoxEmailRegister.Size = new Size(171, 33);
-            txtBoxEmailRegister.TabIndex = 4;
             // 
             // btnRegister
             // 
             btnRegister.Font = new Font("JetBrains Mono", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnRegister.Location = new Point(443, 322);
+            btnRegister.Location = new Point(67, 371);
             btnRegister.Name = "btnRegister";
-            btnRegister.Size = new Size(97, 33);
+            btnRegister.Size = new Size(181, 50);
             btnRegister.TabIndex = 5;
             btnRegister.Text = "Register";
             btnRegister.UseVisualStyleBackColor = true;
@@ -82,50 +72,60 @@
             // 
             txtBoxEmail.AcceptsReturn = true;
             txtBoxEmail.AcceptsTab = true;
-            txtBoxEmail.Font = new Font("JetBrains Mono", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtBoxEmail.Location = new Point(298, 64);
+            txtBoxEmail.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxEmail.Location = new Point(56, 125);
             txtBoxEmail.Name = "txtBoxEmail";
-            txtBoxEmail.PlaceholderText = "Email";
-            txtBoxEmail.Size = new Size(171, 33);
+            txtBoxEmail.PlaceholderText = "Username";
+            txtBoxEmail.Size = new Size(222, 43);
             txtBoxEmail.TabIndex = 1;
             // 
             // txtBoxPassword
             // 
             txtBoxPassword.AcceptsReturn = true;
             txtBoxPassword.AcceptsTab = true;
-            txtBoxPassword.Font = new Font("JetBrains Mono", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtBoxPassword.Location = new Point(298, 103);
+            txtBoxPassword.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxPassword.Location = new Point(56, 174);
             txtBoxPassword.Name = "txtBoxPassword";
             txtBoxPassword.PasswordChar = '*';
             txtBoxPassword.PlaceholderText = "Password";
-            txtBoxPassword.Size = new Size(171, 33);
+            txtBoxPassword.Size = new Size(222, 43);
             txtBoxPassword.TabIndex = 2;
             // 
             // btnLogin
             // 
             btnLogin.Font = new Font("JetBrains Mono", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnLogin.Location = new Point(338, 152);
+            btnLogin.Location = new Point(56, 223);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(97, 33);
+            btnLogin.Size = new Size(222, 43);
             btnLogin.TabIndex = 3;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
+            // 
+            // pBoxLogo
+            // 
+            pBoxLogo.Location = new Point(353, 21);
+            pBoxLogo.Name = "pBoxLogo";
+            pBoxLogo.Size = new Size(400, 400);
+            pBoxLogo.TabIndex = 6;
+            pBoxLogo.TabStop = false;
             // 
             // formLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(pBoxLogo);
             Controls.Add(txtBoxPassword);
             Controls.Add(txtBoxEmail);
             Controls.Add(btnLogin);
             Controls.Add(btnRegister);
-            Controls.Add(txtBoxEmailRegister);
             Controls.Add(lblLogin);
             Controls.Add(lblNewQuiz);
             Name = "formLogin";
-            Text = "formLogin";
+            Text = "Chess Master";
+            Load += formLogin_Load;
+            ((System.ComponentModel.ISupportInitialize)pBoxLogo).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -134,10 +134,10 @@
 
         private Label lblNewQuiz;
         private Label lblLogin;
-        private TextBox txtBoxEmailRegister;
         private Button btnRegister;
         private TextBox txtBoxEmail;
         private TextBox txtBoxPassword;
         private Button btnLogin;
+        private PictureBox pBoxLogo;
     }
 }

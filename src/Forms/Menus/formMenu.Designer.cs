@@ -33,6 +33,7 @@
             btnLeaderboard = new Button();
             btnPlay = new Button();
             btnSettings = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pBoxProfile).BeginInit();
             SuspendLayout();
             // 
@@ -89,11 +90,21 @@
             btnSettings.UseVisualStyleBackColor = true;
             btnSettings.Click += btnSettings_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(146, 20);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 6;
+            label1.Text = "label1";
+            // 
             // formMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             Controls.Add(btnSettings);
             Controls.Add(btnPlay);
             Controls.Add(btnLeaderboard);
@@ -113,5 +124,6 @@
         private Button btnLeaderboard;
         private Button btnPlay;
         private Button btnSettings;
+        private Label label1;
     }
 }

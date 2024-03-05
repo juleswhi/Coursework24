@@ -24,6 +24,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ProfilePictures.resx</DependentUpon>
     </Compile>
+    <Compile Update="GeneralResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GeneralResources.resx</DependentUpon>
+    </Compile>
     <Compile Update="PGNLibrary.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -39,6 +44,10 @@
     <EmbeddedResource Update="Forms\ProfilePictures.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ProfilePictures.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="GeneralResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GeneralResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="PGNLibrary.resx">
       <Generator>ResXFileCodeGenerator</Generator>
