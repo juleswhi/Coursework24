@@ -1,6 +1,7 @@
 src/bin/
-src/obj
+src/obj/
 bin/
 obj/
 .idea
 .vs
+!src/bin/Debug/net7.0-windows/users.json
