@@ -1,5 +1,4 @@
-﻿using static ChessMasterQuiz.Helpers.ControlHelper;
-using System.Data;
+﻿using System.Data;
 using System.Diagnostics;
 using ChessMasterQuiz.Misc;
 
@@ -35,9 +34,10 @@ namespace ChessMasterQuiz.Forms
 
             TextQuestion tq = new()
             {
-                Name = txtBoxTitle.Text,
                 Q = txtBoxQuestion.Text,
-                A = new Answer(new() { txtBoxAnswerOne.Text, txtBoxAnswerTwo.Text, txtBoxAnswerThree.Text, txtBoxAnswerFour.Text }, (uint)checkBoxes.IndexOf(checkBoxes.First(x => x.Checked)))
+                A = new Answer(new() { txtBoxAnswerOne.Text, txtBoxAnswerTwo.Text, txtBoxAnswerThree.Text, txtBoxAnswerFour.Text }, (uint)checkBoxes.IndexOf(checkBoxes.First(x => x.Checked))),
+                Rating = int.Parse(txtBoxRating.Text)
+                
             };
 
             var serialized = LonConvert.Serialize(tq);
@@ -47,12 +47,22 @@ namespace ChessMasterQuiz.Forms
                 sw.WriteLine(serialized);
             }
 
+            foreach (var textbox in Controls.OfType<TextBox>())
+            {
+                textbox.Text = "";
+            }
+
             Debug.Print($"Written to file");
         }
 
         private void btnBackToMenu_Click(object sender, EventArgs e)
         {
             ActivateForm<formMenu>();
+        }
+
+        private void txtBoxRating_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

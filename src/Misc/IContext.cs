@@ -4,6 +4,8 @@ namespace ChessMasterQuiz.Misc;
 public enum ContextTagType
 {
     QUESTION,
+    QUESTIONS_CORRECT,
+    INDEX,
     NUMBER,
     ACTION,
     EMAIL,

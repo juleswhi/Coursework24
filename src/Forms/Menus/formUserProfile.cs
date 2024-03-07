@@ -30,6 +30,7 @@ public partial class formUserProfile : Form, IContext
 
         pBoxProfileImage.Image = User.ProfilePictures[_user.ImageIndex];
         pBoxProfileImage.SizeMode = PictureBoxSizeMode.CenterImage;
+        pBoxProfileImage.BackgroundImageLayout = ImageLayout.Stretch;
     }
 
     private void label2_Click(object sender, EventArgs e)
@@ -50,21 +51,16 @@ public partial class formUserProfile : Form, IContext
 
     private void btnNext_Click(object sender, EventArgs e)
     {
+        if (_user is null) return;
+
         if (_user.ImageIndex == User.ProfilePictures.Count - 1)
         {
             _user.ImageIndex = 5;
         }
         else _user.ImageIndex++;
 
-        Debug.Print($"User image index: {_user.ImageIndex}");
-
         pBoxProfileImage.Image = User.ProfilePictures[_user.ImageIndex];
 
         WriteUsers();
-        Debug.Print($"Saving index");
-        _ = Users;
-
-        Debug.Print($"Index of user: {Users.First(x => x.Username == _user.Username).ImageIndex}");
-
     }
 }

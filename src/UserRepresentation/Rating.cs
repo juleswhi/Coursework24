@@ -14,8 +14,9 @@ using System.Diagnostics;
 namespace UserRepresentation;
 
 // Primary constructor is used to create a Rating prop
-public record struct ELO(int Rating)
+public record class ELO
 {
+    public int Rating { get; set; }
 
     // Represents either a win or a loss
     public enum MatchupResult
@@ -36,12 +37,12 @@ public record struct ELO(int Rating)
     private readonly static int s_bonusScore = 10;
 
     // Blank constructor to allow for the default initial rating
-    public ELO() : this(s_initialRating)
+    public ELO()
     {
         Rating = s_initialRating;
     }
 
-    public static void Match(ref ELO elo, MatchupResult result, int opponentRating)
+    public static void Match(ELO elo, MatchupResult result, int opponentRating)
     {
         // ELO FORMULA 
         // R'a = Ra + K * (Sa - Ea) + Sa * V
@@ -92,5 +93,8 @@ public record struct ELO(int Rating)
 
         // Finally, update the rating!
         elo.Rating = (int)resultantRating;
+
+
+        UpdateUser(ActiveUser!);
     }
 }

@@ -25,9 +25,25 @@ public static class UserHelper
         return users;
     }
 
-    public static void WriteUsers(List<User>? u = null)
+    public static void UpdateUser(User user)
     {
-        string json = JsonSerializer.Serialize(u ?? Users);
+        List<User> users = Users;
+
+        users.RemoveAll(x => x.Username == user.Username);
+
+        users.Add(user);
+
+        WriteUsers(users);
+    }
+
+    public static void WriteUsers()
+    {
+        UpdateUser(ActiveUser!);
+    }
+
+    public static void WriteUsers(List<User>? u)
+    {
+        string json = JsonSerializer.Serialize(u);
 
         File.WriteAllText(_userpath, json);
     }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            txtBoxTitle = new TextBox();
             txtBoxAnswerOne = new TextBox();
             txtBoxQuestion = new TextBox();
             txtBoxAnswerFour = new TextBox();
@@ -40,16 +39,8 @@
             checkBox3 = new CheckBox();
             checkBox4 = new CheckBox();
             btnBackToMenu = new Button();
+            txtBoxRating = new TextBox();
             SuspendLayout();
-            // 
-            // txtBoxTitle
-            // 
-            txtBoxTitle.Location = new Point(155, 73);
-            txtBoxTitle.Name = "txtBoxTitle";
-            txtBoxTitle.PlaceholderText = "Question Title";
-            txtBoxTitle.Size = new Size(527, 23);
-            txtBoxTitle.TabIndex = 0;
-            txtBoxTitle.TextChanged += textBox1_TextChanged;
             // 
             // txtBoxAnswerOne
             // 
@@ -153,11 +144,21 @@
             btnBackToMenu.UseVisualStyleBackColor = true;
             btnBackToMenu.Click += btnBackToMenu_Click;
             // 
+            // txtBoxRating
+            // 
+            txtBoxRating.Location = new Point(167, 265);
+            txtBoxRating.Name = "txtBoxRating";
+            txtBoxRating.PlaceholderText = "Rating";
+            txtBoxRating.Size = new Size(100, 23);
+            txtBoxRating.TabIndex = 12;
+            txtBoxRating.TextChanged += txtBoxRating_TextChanged;
+            // 
             // formAddQuestion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(txtBoxRating);
             Controls.Add(btnBackToMenu);
             Controls.Add(checkBox4);
             Controls.Add(checkBox3);
@@ -169,7 +170,6 @@
             Controls.Add(txtBoxAnswerFour);
             Controls.Add(txtBoxQuestion);
             Controls.Add(txtBoxAnswerOne);
-            Controls.Add(txtBoxTitle);
             Name = "formAddQuestion";
             Text = "formAddQuestion";
             ResumeLayout(false);
@@ -177,8 +177,6 @@
         }
 
         #endregion
-
-        private TextBox txtBoxTitle;
         private TextBox txtBoxAnswerOne;
         private TextBox txtBoxQuestion;
         private TextBox txtBoxAnswerFour;
@@ -190,5 +188,6 @@
         private CheckBox checkBox3;
         private CheckBox checkBox4;
         private Button btnBackToMenu;
+        private TextBox txtBoxRating;
     }
 }

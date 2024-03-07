@@ -5,6 +5,8 @@ using Chess;
 using ChessMasterQuiz.Misc;
 using ChessMasterQuiz.Chess;
 using ChessMasterQuiz.Forms.Menus;
+using ChessMasterQuiz.Forms.Questions;
+using System.Diagnostics;
 
 namespace ChessMasterQuiz;
 
@@ -15,8 +17,7 @@ public partial class formMenu : Form, IContext
 
     public void UseContext(IEnumerable<DataContextTag> context)
     {
-
-        User? userContext = (User?)context.GetFirst(USER);
+        var userContext = (User?)context.GetFirst(USER);
 
         if(userContext is null)
         {
@@ -35,7 +36,6 @@ public partial class formMenu : Form, IContext
         InitializeComponent();
 
         pBoxProfile.BackgroundImageLayout = ImageLayout.Stretch;
-        // pBoxProfile.Image = Chess.ChessPieces.WhitePawn;
         pBoxProfile.SizeMode = PictureBoxSizeMode.CenterImage;
 
         Board board = new Board();
@@ -70,18 +70,39 @@ public partial class formMenu : Form, IContext
 
         MoveHelper.CurrentBoard?.StopGame();
         var file = File.ReadAllLines("questions.qon");
-
         var questions = LonConvert.Deserialize(file);
 
+        questions.Shuffle();
+
+        questions = questions.Take(10).ToList();
+
         int questionIndex = 0;
+        int questionsCorrect = 0;
 
-        var onAnswer = new Action(() => { });
+        var onAnswer = EmptyActionGeneric<bool, int>();
 
-        onAnswer += () =>
+        onAnswer += (bool correct, int elo) =>
         {
+            if (correct) questionsCorrect++;
+
+            if(_user is User user)
+            {
+                if (elo != -1)
+                {
+                    Debug.Print($"NEW ELO MATCH: {user.Elo}, QUESTION ELO: {elo}");
+                    ELO.Match(user.Elo, correct ? ELO.MatchupResult.WIN : ELO.MatchupResult.LOSS, elo);
+                    Debug.Print($"RESULTANT RATING: {user.Elo}");
+                }
+            }
+
             if (questionIndex >= questions.Count)
             {
                 // Go to exit screen
+                ActivateForm<formResult>(
+                    new DataContextTag(questionsCorrect, QUESTIONS_CORRECT),
+                    new DataContextTag(questionIndex, INDEX),
+                    new DataContextTag(_user?.Elo.Rating!, NUMBER)
+                    );
                 return;
             }
 
@@ -96,7 +117,7 @@ public partial class formMenu : Form, IContext
                 );
         };
 
-        onAnswer();
+        onAnswer(false, -1);
     }
 
     private void btnLeaderboard_Click(object sender, EventArgs e)

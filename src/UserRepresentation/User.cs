@@ -135,5 +135,4 @@ public class User
         IsLoggedIn = false;
         ActiveUser = null;
     }
-
 }

@@ -43,3 +43,5 @@ global using static System.Reflection.BindingFlags;
 global using UserRepresentation;
 global using static ChessMasterQuiz.Misc.ContextTagType;
 global using static UserRepresentation.UserHelper;
+global using DCT = ChessMasterQuiz.Misc.DataContextTag;
+global using static ChessMasterQuiz.Helpers.Helper;

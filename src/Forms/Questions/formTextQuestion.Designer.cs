@@ -38,11 +38,12 @@
             // 
             // lblQuestion
             // 
+            lblQuestion.Anchor = AnchorStyles.None;
             lblQuestion.AutoSize = true;
-            lblQuestion.Font = new Font("JetBrains Mono", 27.7499962F, FontStyle.Regular, GraphicsUnit.Point);
-            lblQuestion.Location = new Point(313, 38);
+            lblQuestion.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblQuestion.Location = new Point(341, 48);
             lblQuestion.Name = "lblQuestion";
-            lblQuestion.Size = new Size(198, 49);
+            lblQuestion.Size = new Size(143, 36);
             lblQuestion.TabIndex = 0;
             lblQuestion.Text = "Question";
             // 

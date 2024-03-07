@@ -6,7 +6,8 @@ namespace ChessMasterQuiz.QuestionDir;
 
 public partial class formTextQuestion : Form, IContext
 {
-    private Button[] _buttons;
+    private List<Button> _buttons;
+    private TextQuestion? _tq = null;
     public formTextQuestion()
     {
         InitializeComponent();
@@ -24,71 +25,55 @@ public partial class formTextQuestion : Form, IContext
         // Ensure that each button has a click delegate attached
 
         // This delegate should check if the answer is correct, and then open the next question
-        foreach(var b in _buttons)
+        foreach (var b in _buttons)
         {
             b.Click += (s, e) =>
             {
-                Debug.Print("Clicked");
-                if (OnAnswered is null)
+                if (OnAnswered is Action<bool, int> answer)
                 {
-                    Debug.Print("Answered is null");
-                    return;
+                    var ans = _buttons.IndexOf(b) == _tq?.A?.Index;
+                    answer(ans, _tq!.Rating);
                 }
-
-                OnAnswered();
             };
         }
     }
 
-    public Action OnAnswered { get; set; } = () => { };
-
-
-    public void FireAnswerCompleted(object sender, EventArgs e)
-    {
-        Debug.Print("Answer Completed");
-    }
-
+    public Action<bool, int> OnAnswered { get; set; } = EmptyActionGeneric<bool, int>();
 
     public void UseContext(IEnumerable<DataContextTag> context)
     {
-        TextQuestion? questionData = context.FirstOrDefault(
-            x => x.tag == QUESTION)?
-            .data as TextQuestion;
-
-        if (questionData is null) return;
-
-        for(int i = 0; i < _buttons.Length; i++)
+        var questionData = context.GetFirst(QUESTION) as TextQuestion;
+        if(questionData is TextQuestion q)
         {
-            _buttons[i].Text = questionData.A!.Answers[i];
+            _tq = q;
         }
 
-        lblQuestion.Text = questionData.Q;
+        if (questionData is null) ActivateForm<formMenu>();
 
-        string? number = context.FirstOrDefault(
-            x => x.tag == NUMBER)?
-            .data as string;
-
-        if (number is null)
+        for (int i = 0; i < _buttons.Count; i++)
         {
-            Debug.Print("Number is null");
-            return;
+            if (_buttons[i] is null) continue;
+            if (questionData.A.Answers.Count <= i) continue;
+            _buttons[i].Text = questionData?.A?.Answers[i];
         }
+
+        lblQuestion.Text = questionData?.Q;
+
+        var number = context.GetFirst(NUMBER) as string;
+
+        if (number is null) ActivateForm<formMenu>();
 
         lblNumber.Text = number;
 
-        var onAnswered = context.FirstOrDefault(
-            x => x.tag == ACTION)?
-            .data as Action;
+        var onAnswered = context.GetFirst(ACTION);
 
-        if(onAnswered is null)
-        {
-            Debug.Print("OnAnswered not passed through");
-            return;
-        }
+        if (onAnswered is null) ActivateForm<formMenu>();
 
-        Debug.Print($"OnAnswered is not null"); 
+        Debug.Print($"OnAnswered is not null");
 
-        OnAnswered += onAnswered;
+        OnAnswered += (Action<bool, int>)onAnswered!;
+
+        lblQuestion.Location = new Point((Width / 2) - (lblQuestion.Width / 2), lblQuestion.Location.Y);
     }
 
     Control.ControlCollection IContext._controls => Controls;

@@ -45,7 +45,7 @@ public static class LonConvert
         // Use reflection to get types at runtime, loop through them and append to stringBuilder
         stringBuilder.Append($"Type:\"{(int)question.Type}\",");
         stringBuilder.Append($"Name:\"{question.Name}\",");
-        stringBuilder.Append($"Difficulty:\"{(int)question.Difficulty}\",");
+        stringBuilder.Append($"Rating:\"{question.Rating}\",");
 
         // If the question is a TextQuestion:
         // Loop through potential answers and append them to stringBuilder 
