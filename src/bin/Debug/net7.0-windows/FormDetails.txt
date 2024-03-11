@@ -1,1622 +1,473 @@
--------------
-formLogin
--------------
+--- formLogin ---
 
 pBoxLogo:
 		Size: [400, 400]
 		Location: [353, 21]
-		ForeColour: ControlText
-		BackColour: Control
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
 		Font: Segoe UI
-		FontSize: 9
+		Font Size: 9
 
 txtBoxPassword:
 		Size: [222, 43]
 		Location: [56, 174]
-		ForeColour: WindowText
-		BackColour: Window
+		ForeColour: Color [WindowText]
+		BackColour: Color [Window]
 		Font: JetBrains Mono
-		FontSize: 20.25
+		Font Size: 20.25
 
 txtBoxEmail:
 		Size: [222, 43]
 		Location: [56, 125]
-		ForeColour: WindowText
-		BackColour: Window
+		ForeColour: Color [WindowText]
+		BackColour: Color [Window]
 		Font: JetBrains Mono
-		FontSize: 20.25
+		Font Size: 20.25
 
 btnLogin:
 		Size: [222, 43]
 		Location: [56, 223]
-		ForeColour: ControlText
-		BackColour: Control
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
 		Font: JetBrains Mono
-		FontSize: 11.25
+		Font Size: 11.25
 
 btnRegister:
 		Size: [181, 50]
 		Location: [67, 371]
-		ForeColour: ControlText
-		BackColour: Control
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
 		Font: JetBrains Mono
-		FontSize: 11.25
+		Font Size: 11.25
 
 lblLogin:
 		Size: [114, 43]
 		Location: [105, 61]
-		ForeColour: ControlText
-		BackColour: Control
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
 		Font: JetBrains Mono
-		FontSize: 23.999996
+		Font Size: 23.999996
 
 lblNewQuiz:
 		Size: [271, 36]
 		Location: [27, 325]
-		ForeColour: ControlText
-		BackColour: Control
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
 		Font: JetBrains Mono
-		FontSize: 20.25
+		Font Size: 20.25
 
 
-
--------------
-formRegister
--------------
-
-btnBack:
-		Size: [108, 63]
-		Location: [30, 357]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-pBarDob:
-		Size: [249, 10]
-		Location: [47, 322]
-		ForeColour: Highlight
-		BackColour: Control
-		Font: Segoe UI
-		FontSize: 9
-
-pBarGender:
-		Size: [249, 10]
-		Location: [47, 257]
-		ForeColour: Highlight
-		BackColour: Control
-		Font: Segoe UI
-		FontSize: 9
-
-pBarDisplayName:
-		Size: [249, 10]
-		Location: [47, 192]
-		ForeColour: Highlight
-		BackColour: Control
-		Font: Segoe UI
-		FontSize: 9
-
-pBarUsername:
-		Size: [249, 10]
-		Location: [47, 62]
-		ForeColour: Highlight
-		BackColour: Control
-		Font: Segoe UI
-		FontSize: 9
-
-pBoxLogo:
-		Size: [400, 400]
-		Location: [360, 20]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: Segoe UI
-		FontSize: 9
-
-progressPassword:
-		Size: [249, 10]
-		Location: [47, 127]
-		ForeColour: Highlight
-		BackColour: Control
-		Font: Segoe UI
-		FontSize: 9
-
-btnRegister:
-		Size: [174, 63]
-		Location: [146, 357]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-txtBoxDob:
-		Size: [249, 43]
-		Location: [47, 273]
-		ForeColour: WindowText
-		BackColour: Window
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-txtBoxGender:
-		Size: [249, 43]
-		Location: [47, 208]
-		ForeColour: WindowText
-		BackColour: Window
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-txtBoxDisplayName:
-		Size: [249, 43]
-		Location: [47, 143]
-		ForeColour: WindowText
-		BackColour: Window
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-txtBoxPassword:
-		Size: [249, 43]
-		Location: [47, 78]
-		ForeColour: WindowText
-		BackColour: Window
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-txtBoxEmail:
-		Size: [249, 43]
-		Location: [47, 13]
-		ForeColour: WindowText
-		BackColour: Window
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-
-
--------------
-formLogin
--------------
-
-pBoxLogo:
-		Size: [400, 400]
-		Location: [353, 21]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: Segoe UI
-		FontSize: 9
-
-txtBoxPassword:
-		Size: [222, 43]
-		Location: [56, 174]
-		ForeColour: WindowText
-		BackColour: Window
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-txtBoxEmail:
-		Size: [222, 43]
-		Location: [56, 125]
-		ForeColour: WindowText
-		BackColour: Window
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-btnLogin:
-		Size: [222, 43]
-		Location: [56, 223]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 11.25
-
-btnRegister:
-		Size: [181, 50]
-		Location: [67, 371]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 11.25
-
-lblLogin:
-		Size: [114, 43]
-		Location: [105, 61]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 23.999996
-
-lblNewQuiz:
-		Size: [271, 36]
-		Location: [27, 325]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-
-
--------------
-formMenu
--------------
+--- formMenu ---
 
 label1:
 		Size: [29, 15]
 		Location: [146, 20]
-		ForeColour: ControlText
-		BackColour: Control
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
 		Font: Segoe UI
-		FontSize: 9
+		Font Size: 9
 
 btnSettings:
 		Size: [253, 83]
 		Location: [24, 294]
-		ForeColour: ControlText
-		BackColour: Control
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
 		Font: JetBrains Mono
-		FontSize: 20.25
+		Font Size: 20.25
 
 btnPlay:
 		Size: [253, 83]
 		Location: [24, 116]
-		ForeColour: ControlText
-		BackColour: Control
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
 		Font: JetBrains Mono
-		FontSize: 20.25
+		Font Size: 20.25
 
 btnLeaderboard:
 		Size: [253, 83]
 		Location: [24, 205]
-		ForeColour: ControlText
-		BackColour: Control
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
 		Font: JetBrains Mono
-		FontSize: 20.25
+		Font Size: 20.25
 
 pBoxProfile:
 		Size: [72, 65]
 		Location: [716, 12]
-		ForeColour: ControlText
-		BackColour: ActiveCaption
+		ForeColour: Color [ControlText]
+		BackColour: Color [ActiveCaption]
 		Font: Segoe UI
-		FontSize: 9
+		Font Size: 9
 
 lblLogin:
 		Size: [220, 49]
 		Location: [47, 46]
-		ForeColour: ControlText
-		BackColour: Control
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
 		Font: JetBrains Mono
-		FontSize: 27.749996
+		Font Size: 27.749996
 
 :
 		Size: [400, 400]
 		Location: [300, 25]
-		ForeColour: ControlText
-		BackColour: Gray
+		ForeColour: Color [ControlText]
+		BackColour: Color [Gray]
 		Font: Segoe UI
-		FontSize: 9
+		Font Size: 9
 
 
-
--------------
-formUserProfile
--------------
-
-btnNext:
-		Size: [171, 41]
-		Location: [559, 188]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: Segoe UI
-		FontSize: 9
-
-lblMainMenu:
-		Size: [181, 53]
-		Location: [559, 361]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 11.25
-
-lblRatingValue:
-		Size: [104, 47]
-		Location: [332, 308]
-		ForeColour: Firebrick
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 26.249996
-
-lblRating:
-		Size: [98, 31]
-		Location: [315, 265]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-lblAccuracyValue:
-		Size: [41, 47]
-		Location: [81, 308]
-		ForeColour: Firebrick
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 26.249996
-
-lblAccuracy:
-		Size: [126, 31]
-		Location: [51, 265]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-lblQuizCompleteValue:
-		Size: [62, 47]
-		Location: [332, 135]
-		ForeColour: Firebrick
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 26.249996
-
-lblTopScoreValue:
-		Size: [62, 47]
-		Location: [81, 135]
-		ForeColour: Firebrick
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 26.249996
-
-lblQuizCompleted:
-		Size: [238, 31]
-		Location: [231, 92]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-pBoxProfileImage:
-		Size: [171, 158]
-		Location: [559, 24]
-		ForeColour: ControlText
-		BackColour: ActiveCaption
-		Font: Segoe UI
-		FontSize: 9
-
-lblTopScore:
-		Size: [140, 31]
-		Location: [51, 92]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-lblUsername:
-		Size: [110, 49]
-		Location: [51, 9]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 27.749996
-
-
-
--------------
-formMenu
--------------
-
-label1:
-		Size: [29, 15]
-		Location: [146, 20]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: Segoe UI
-		FontSize: 9
-
-btnSettings:
-		Size: [253, 83]
-		Location: [24, 294]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-btnPlay:
-		Size: [253, 83]
-		Location: [24, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-btnLeaderboard:
-		Size: [253, 83]
-		Location: [24, 205]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-pBoxProfile:
-		Size: [72, 65]
-		Location: [716, 12]
-		ForeColour: ControlText
-		BackColour: ActiveCaption
-		Font: Segoe UI
-		FontSize: 9
-
-lblLogin:
-		Size: [220, 49]
-		Location: [47, 46]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 27.749996
-
-:
-		Size: [400, 400]
-		Location: [300, 25]
-		ForeColour: ControlText
-		BackColour: Gray
-		Font: Segoe UI
-		FontSize: 9
-
-
-
--------------
-formChooseQuiz
--------------
-
-btnWrittenQuestions:
-		Size: [264, 189]
-		Location: [397, 115]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnPuzzles:
-		Size: [264, 189]
-		Location: [127, 115]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-
-
--------------
-formPuzzleQuestion
--------------
-
-lblWinningMove:
-		Size: [337, 27]
-		Location: [451, 77]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 15.75
-
-btnAnswer4:
-		Size: [170, 131]
-		Location: [618, 255]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 15.75
-
-btnAnswer3:
-		Size: [170, 131]
-		Location: [442, 255]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 15.75
-
-btnAnswer2:
-		Size: [170, 131]
-		Location: [618, 118]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 15.75
-
-btnAnswer1:
-		Size: [170, 131]
-		Location: [442, 118]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 15.75
-
-:
-		Size: [400, 400]
-		Location: [30, 30]
-		ForeColour: ControlText
-		BackColour: Gray
-		Font: Segoe UI
-		FontSize: 9
-
-
-
--------------
-formPuzzleQuestion
--------------
-
-lblWinningMove:
-		Size: [337, 27]
-		Location: [451, 77]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 15.75
-
-btnAnswer4:
-		Size: [170, 131]
-		Location: [618, 255]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 15.75
-
-btnAnswer3:
-		Size: [170, 131]
-		Location: [442, 255]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 15.75
-
-btnAnswer2:
-		Size: [170, 131]
-		Location: [618, 118]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 15.75
-
-btnAnswer1:
-		Size: [170, 131]
-		Location: [442, 118]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 15.75
-
-:
-		Size: [400, 400]
-		Location: [30, 30]
-		ForeColour: ControlText
-		BackColour: Gray
-		Font: Segoe UI
-		FontSize: 9
-
-
-
--------------
-formPuzzleQuestion
--------------
-
-lblWinningMove:
-		Size: [337, 27]
-		Location: [451, 77]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 15.75
-
-btnAnswer4:
-		Size: [170, 131]
-		Location: [618, 255]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 15.75
-
-btnAnswer3:
-		Size: [170, 131]
-		Location: [442, 255]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 15.75
-
-btnAnswer2:
-		Size: [170, 131]
-		Location: [618, 118]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 15.75
-
-btnAnswer1:
-		Size: [170, 131]
-		Location: [442, 118]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 15.75
-
-:
-		Size: [400, 400]
-		Location: [30, 30]
-		ForeColour: ControlText
-		BackColour: Gray
-		Font: Segoe UI
-		FontSize: 9
-
-
-
--------------
-formPuzzleQuestion
--------------
-
-lblWinningMove:
-		Size: [337, 27]
-		Location: [451, 77]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 15.75
-
-btnAnswer4:
-		Size: [170, 131]
-		Location: [618, 255]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 15.75
-
-btnAnswer3:
-		Size: [170, 131]
-		Location: [442, 255]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 15.75
-
-btnAnswer2:
-		Size: [170, 131]
-		Location: [618, 118]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 15.75
-
-btnAnswer1:
-		Size: [170, 131]
-		Location: [442, 118]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 15.75
-
-:
-		Size: [400, 400]
-		Location: [30, 30]
-		ForeColour: ControlText
-		BackColour: Gray
-		Font: Segoe UI
-		FontSize: 9
-
-
-
--------------
-formResult
--------------
-
-label1:
-		Size: [101, 15]
-		Location: [76, 32]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: Segoe UI
-		FontSize: 9
-
-btnHome:
-		Size: [130, 51]
-		Location: [658, 387]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: Segoe UI
-		FontSize: 9
-
-lblQuestion:
-		Size: [114, 63]
-		Location: [257, 183]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 35.999996
-
-
-
--------------
-formMenu
--------------
-
-label1:
-		Size: [29, 15]
-		Location: [146, 20]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: Segoe UI
-		FontSize: 9
-
-btnSettings:
-		Size: [253, 83]
-		Location: [24, 294]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-btnPlay:
-		Size: [253, 83]
-		Location: [24, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-btnLeaderboard:
-		Size: [253, 83]
-		Location: [24, 205]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-pBoxProfile:
-		Size: [72, 65]
-		Location: [716, 12]
-		ForeColour: ControlText
-		BackColour: ActiveCaption
-		Font: Segoe UI
-		FontSize: 9
-
-lblLogin:
-		Size: [220, 49]
-		Location: [47, 46]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 27.749996
-
-:
-		Size: [400, 400]
-		Location: [300, 25]
-		ForeColour: ControlText
-		BackColour: Gray
-		Font: Segoe UI
-		FontSize: 9
-
-
-
--------------
-formChooseQuiz
--------------
-
-btnWrittenQuestions:
-		Size: [264, 189]
-		Location: [397, 115]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnPuzzles:
-		Size: [264, 189]
-		Location: [127, 115]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-
-
--------------
-formTextQuestion
--------------
-
-btnAnswer4:
-		Size: [274, 120]
-		Location: [412, 242]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer2:
-		Size: [274, 120]
-		Location: [412, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer3:
-		Size: [277, 120]
-		Location: [129, 242]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer1:
-		Size: [277, 120]
-		Location: [129, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-lblNumber:
-		Size: [34, 39]
-		Location: [669, 9]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 21.75
-
-lblQuestion:
-		Size: [623, 36]
-		Location: [97, 48]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-
-
--------------
-formTextQuestion
--------------
-
-btnAnswer4:
-		Size: [274, 120]
-		Location: [412, 242]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer2:
-		Size: [274, 120]
-		Location: [412, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer3:
-		Size: [277, 120]
-		Location: [129, 242]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer1:
-		Size: [277, 120]
-		Location: [129, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-lblNumber:
-		Size: [34, 39]
-		Location: [669, 9]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 21.75
-
-lblQuestion:
-		Size: [799, 36]
-		Location: [9, 48]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-
-
--------------
-formTextQuestion
--------------
-
-btnAnswer4:
-		Size: [274, 120]
-		Location: [412, 242]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer2:
-		Size: [274, 120]
-		Location: [412, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer3:
-		Size: [277, 120]
-		Location: [129, 242]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer1:
-		Size: [277, 120]
-		Location: [129, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-lblNumber:
-		Size: [34, 39]
-		Location: [669, 9]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 21.75
-
-lblQuestion:
-		Size: [703, 36]
-		Location: [57, 48]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-
-
--------------
-formTextQuestion
--------------
-
-btnAnswer4:
-		Size: [274, 120]
-		Location: [412, 242]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer2:
-		Size: [274, 120]
-		Location: [412, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer3:
-		Size: [277, 120]
-		Location: [129, 242]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer1:
-		Size: [277, 120]
-		Location: [129, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-lblNumber:
-		Size: [34, 39]
-		Location: [669, 9]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 21.75
-
-lblQuestion:
-		Size: [815, 36]
-		Location: [1, 48]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-
-
--------------
-formTextQuestion
--------------
-
-btnAnswer4:
-		Size: [274, 120]
-		Location: [412, 242]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer2:
-		Size: [274, 120]
-		Location: [412, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer3:
-		Size: [277, 120]
-		Location: [129, 242]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer1:
-		Size: [277, 120]
-		Location: [129, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-lblNumber:
-		Size: [34, 39]
-		Location: [669, 9]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 21.75
-
-lblQuestion:
-		Size: [319, 36]
-		Location: [249, 48]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-
-
--------------
-formTextQuestion
--------------
-
-btnAnswer4:
-		Size: [274, 120]
-		Location: [412, 242]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer2:
-		Size: [274, 120]
-		Location: [412, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer3:
-		Size: [277, 120]
-		Location: [129, 242]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer1:
-		Size: [277, 120]
-		Location: [129, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-lblNumber:
-		Size: [34, 39]
-		Location: [669, 9]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 21.75
-
-lblQuestion:
-		Size: [719, 36]
-		Location: [49, 48]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-
-
--------------
-formTextQuestion
--------------
-
-btnAnswer4:
-		Size: [274, 120]
-		Location: [412, 242]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer2:
-		Size: [274, 120]
-		Location: [412, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer3:
-		Size: [277, 120]
-		Location: [129, 242]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer1:
-		Size: [277, 120]
-		Location: [129, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-lblNumber:
-		Size: [34, 39]
-		Location: [669, 9]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 21.75
-
-lblQuestion:
-		Size: [623, 36]
-		Location: [97, 48]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-
-
--------------
-formTextQuestion
--------------
-
-btnAnswer4:
-		Size: [274, 120]
-		Location: [412, 242]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer2:
-		Size: [274, 120]
-		Location: [412, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer3:
-		Size: [277, 120]
-		Location: [129, 242]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer1:
-		Size: [277, 120]
-		Location: [129, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-lblNumber:
-		Size: [34, 39]
-		Location: [669, 9]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 21.75
-
-lblQuestion:
-		Size: [447, 36]
-		Location: [185, 48]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-
-
--------------
-formTextQuestion
--------------
-
-btnAnswer4:
-		Size: [274, 120]
-		Location: [412, 242]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer2:
-		Size: [274, 120]
-		Location: [412, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer3:
-		Size: [277, 120]
-		Location: [129, 242]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer1:
-		Size: [277, 120]
-		Location: [129, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-lblNumber:
-		Size: [34, 39]
-		Location: [669, 9]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 21.75
-
-lblQuestion:
-		Size: [431, 36]
-		Location: [193, 48]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-
-
--------------
-formTextQuestion
--------------
-
-btnAnswer4:
-		Size: [274, 120]
-		Location: [412, 242]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer2:
-		Size: [274, 120]
-		Location: [412, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer3:
-		Size: [277, 120]
-		Location: [129, 242]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-btnAnswer1:
-		Size: [277, 120]
-		Location: [129, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 17.999998
-
-lblNumber:
-		Size: [51, 39]
-		Location: [669, 9]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 21.75
-
-lblQuestion:
-		Size: [687, 36]
-		Location: [65, 48]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-
-
--------------
-formResult
--------------
-
-label1:
-		Size: [101, 15]
-		Location: [76, 32]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: Segoe UI
-		FontSize: 9
-
-btnHome:
-		Size: [130, 51]
-		Location: [658, 387]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: Segoe UI
-		FontSize: 9
-
-lblQuestion:
-		Size: [143, 63]
-		Location: [257, 183]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 35.999996
-
-
-
--------------
-formMenu
--------------
-
-label1:
-		Size: [29, 15]
-		Location: [146, 20]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: Segoe UI
-		FontSize: 9
-
-btnSettings:
-		Size: [253, 83]
-		Location: [24, 294]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-btnPlay:
-		Size: [253, 83]
-		Location: [24, 116]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-btnLeaderboard:
-		Size: [253, 83]
-		Location: [24, 205]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 20.25
-
-pBoxProfile:
-		Size: [72, 65]
-		Location: [716, 12]
-		ForeColour: ControlText
-		BackColour: ActiveCaption
-		Font: Segoe UI
-		FontSize: 9
-
-lblLogin:
-		Size: [220, 49]
-		Location: [47, 46]
-		ForeColour: ControlText
-		BackColour: Control
-		Font: JetBrains Mono
-		FontSize: 27.749996
-
-:
-		Size: [400, 400]
-		Location: [300, 25]
-		ForeColour: ControlText
-		BackColour: Gray
-		Font: Segoe UI
-		FontSize: 9
-
-
-
--------------
-formAddQuestion
--------------
+--- formAddQuestion ---
 
 txtBoxRating:
 		Size: [100, 23]
 		Location: [167, 265]
-		ForeColour: WindowText
-		BackColour: Window
+		ForeColour: Color [WindowText]
+		BackColour: Color [Window]
 		Font: Segoe UI
-		FontSize: 9
+		Font Size: 9
 
 btnBackToMenu:
 		Size: [200, 102]
 		Location: [523, 268]
-		ForeColour: ControlText
-		BackColour: Control
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
 		Font: Segoe UI
-		FontSize: 15.75
+		Font Size: 15.75
 
 checkBox4:
 		Size: [83, 19]
 		Location: [688, 220]
-		ForeColour: ControlText
-		BackColour: Control
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
 		Font: Segoe UI
-		FontSize: 9
+		Font Size: 9
 
 checkBox3:
 		Size: [83, 19]
 		Location: [688, 189]
-		ForeColour: ControlText
-		BackColour: Control
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
 		Font: Segoe UI
-		FontSize: 9
+		Font Size: 9
 
 checkBox2:
 		Size: [83, 19]
 		Location: [688, 160]
-		ForeColour: ControlText
-		BackColour: Control
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
 		Font: Segoe UI
-		FontSize: 9
+		Font Size: 9
 
 checkBox1:
 		Size: [83, 19]
 		Location: [688, 135]
-		ForeColour: ControlText
-		BackColour: Control
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
 		Font: Segoe UI
-		FontSize: 9
+		Font Size: 9
 
 btnCreate:
 		Size: [200, 102]
 		Location: [305, 268]
-		ForeColour: ControlText
-		BackColour: Control
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
 		Font: Segoe UI
-		FontSize: 15.75
+		Font Size: 15.75
 
 txtBoxAnswerTwo:
 		Size: [527, 23]
 		Location: [155, 160]
-		ForeColour: WindowText
-		BackColour: Window
+		ForeColour: Color [WindowText]
+		BackColour: Color [Window]
 		Font: Segoe UI
-		FontSize: 9
+		Font Size: 9
 
 txtBoxAnswerThree:
 		Size: [527, 23]
 		Location: [155, 189]
-		ForeColour: WindowText
-		BackColour: Window
+		ForeColour: Color [WindowText]
+		BackColour: Color [Window]
 		Font: Segoe UI
-		FontSize: 9
+		Font Size: 9
 
 txtBoxAnswerFour:
 		Size: [527, 23]
 		Location: [155, 218]
-		ForeColour: WindowText
-		BackColour: Window
+		ForeColour: Color [WindowText]
+		BackColour: Color [Window]
 		Font: Segoe UI
-		FontSize: 9
+		Font Size: 9
 
 txtBoxQuestion:
 		Size: [527, 23]
 		Location: [155, 102]
-		ForeColour: WindowText
-		BackColour: Window
+		ForeColour: Color [WindowText]
+		BackColour: Color [Window]
 		Font: Segoe UI
-		FontSize: 9
+		Font Size: 9
 
 txtBoxAnswerOne:
 		Size: [527, 23]
 		Location: [155, 131]
-		ForeColour: WindowText
-		BackColour: Window
+		ForeColour: Color [WindowText]
+		BackColour: Color [Window]
 		Font: Segoe UI
-		FontSize: 9
+		Font Size: 9
 
 
+--- formUserProfile ---
 
--------------
-formMenu
--------------
-
-label1:
-		Size: [29, 15]
-		Location: [146, 20]
-		ForeColour: ControlText
-		BackColour: Control
+btnNext:
+		Size: [171, 41]
+		Location: [559, 188]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
 		Font: Segoe UI
-		FontSize: 9
+		Font Size: 9
 
-btnSettings:
-		Size: [253, 83]
-		Location: [24, 294]
-		ForeColour: ControlText
-		BackColour: Control
+lblMainMenu:
+		Size: [181, 53]
+		Location: [559, 361]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
 		Font: JetBrains Mono
-		FontSize: 20.25
+		Font Size: 11.25
 
-btnPlay:
-		Size: [253, 83]
-		Location: [24, 116]
-		ForeColour: ControlText
-		BackColour: Control
+lblRatingValue:
+		Size: [83, 47]
+		Location: [332, 308]
+		ForeColour: Color [Firebrick]
+		BackColour: Color [Control]
 		Font: JetBrains Mono
-		FontSize: 20.25
+		Font Size: 26.249996
 
-btnLeaderboard:
-		Size: [253, 83]
-		Location: [24, 205]
-		ForeColour: ControlText
-		BackColour: Control
+lblRating:
+		Size: [98, 31]
+		Location: [315, 265]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
 		Font: JetBrains Mono
-		FontSize: 20.25
+		Font Size: 17.999998
 
-pBoxProfile:
-		Size: [72, 65]
-		Location: [716, 12]
-		ForeColour: ControlText
-		BackColour: ActiveCaption
+lblAccuracyValue:
+		Size: [41, 47]
+		Location: [81, 308]
+		ForeColour: Color [Firebrick]
+		BackColour: Color [Control]
+		Font: JetBrains Mono
+		Font Size: 26.249996
+
+lblAccuracy:
+		Size: [126, 31]
+		Location: [51, 265]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
+		Font: JetBrains Mono
+		Font Size: 17.999998
+
+lblQuizCompleteValue:
+		Size: [62, 47]
+		Location: [332, 135]
+		ForeColour: Color [Firebrick]
+		BackColour: Color [Control]
+		Font: JetBrains Mono
+		Font Size: 26.249996
+
+lblTopScoreValue:
+		Size: [62, 47]
+		Location: [81, 135]
+		ForeColour: Color [Firebrick]
+		BackColour: Color [Control]
+		Font: JetBrains Mono
+		Font Size: 26.249996
+
+lblQuizCompleted:
+		Size: [238, 31]
+		Location: [231, 92]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
+		Font: JetBrains Mono
+		Font Size: 17.999998
+
+pBoxProfileImage:
+		Size: [171, 158]
+		Location: [559, 24]
+		ForeColour: Color [ControlText]
+		BackColour: Color [ActiveCaption]
 		Font: Segoe UI
-		FontSize: 9
+		Font Size: 9
 
-lblLogin:
-		Size: [220, 49]
-		Location: [47, 46]
-		ForeColour: ControlText
-		BackColour: Control
+lblTopScore:
+		Size: [140, 31]
+		Location: [51, 92]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
 		Font: JetBrains Mono
-		FontSize: 27.749996
+		Font Size: 17.999998
+
+lblUsername:
+		Size: [110, 49]
+		Location: [51, 9]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
+		Font: JetBrains Mono
+		Font Size: 27.749996
+
+
+--- formChooseQuiz ---
+
+btnWrittenQuestions:
+		Size: [264, 189]
+		Location: [397, 115]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
+		Font: JetBrains Mono
+		Font Size: 17.999998
+
+btnPuzzles:
+		Size: [264, 189]
+		Location: [127, 115]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
+		Font: JetBrains Mono
+		Font Size: 17.999998
+
+
+--- formPuzzleQuestion ---
+
+lblWinningMove:
+		Size: [337, 27]
+		Location: [451, 77]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+btnAnswer4:
+		Size: [170, 131]
+		Location: [618, 255]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+btnAnswer3:
+		Size: [170, 131]
+		Location: [442, 255]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+btnAnswer2:
+		Size: [170, 131]
+		Location: [618, 118]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+btnAnswer1:
+		Size: [170, 131]
+		Location: [442, 118]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
+		Font: JetBrains Mono
+		Font Size: 15.75
 
 :
 		Size: [400, 400]
-		Location: [300, 25]
-		ForeColour: ControlText
-		BackColour: Gray
+		Location: [30, 30]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Gray]
 		Font: Segoe UI
-		FontSize: 9
+		Font Size: 9
 
 
+--- formResult ---
 
--------------
-formLeaderboard
--------------
+label1:
+		Size: [89, 15]
+		Location: [76, 32]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
+		Font: Segoe UI
+		Font Size: 9
+
+btnHome:
+		Size: [130, 51]
+		Location: [658, 387]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
+		Font: Segoe UI
+		Font Size: 9
+
+lblQuestion:
+		Size: [114, 63]
+		Location: [257, 183]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
+		Font: JetBrains Mono
+		Font Size: 35.999996
+
+
+--- formTextQuestion ---
+
+btnAnswer4:
+		Size: [274, 120]
+		Location: [412, 242]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
+		Font: JetBrains Mono
+		Font Size: 17.999998
+
+btnAnswer2:
+		Size: [274, 120]
+		Location: [412, 116]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
+		Font: JetBrains Mono
+		Font Size: 17.999998
+
+btnAnswer3:
+		Size: [277, 120]
+		Location: [129, 242]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
+		Font: JetBrains Mono
+		Font Size: 17.999998
+
+btnAnswer1:
+		Size: [277, 120]
+		Location: [129, 116]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
+		Font: JetBrains Mono
+		Font Size: 17.999998
+
+lblNumber:
+		Size: [34, 39]
+		Location: [669, 9]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
+		Font: JetBrains Mono
+		Font Size: 21.75
+
+lblQuestion:
+		Size: [431, 36]
+		Location: [193, 48]
+		ForeColour: Color [ControlText]
+		BackColour: Color [Control]
+		Font: JetBrains Mono
+		Font Size: 20.25
+
+
+--- formLeaderboard ---
 
 flpEntries:
 		Size: [450, 300]
 		Location: [165, 68]
-		ForeColour: ControlText
-		BackColour: Silver
+		ForeColour: Color [ControlText]
+		BackColour: Color [Silver]
 		Font: Segoe UI
-		FontSize: 9
-
-
-
+		Font Size: 9
