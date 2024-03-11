@@ -164,7 +164,7 @@ public static class ChessHelper
             .Select(x =>
                 Enumerable.Range(1, 8)
                     .Select(y => new Piece(
-                        PAWN, ((char)(y + 96), x == 1 ? 2 : 7), x == 1 ? White : Black)
+                        PAWN, Notation.From((char)(y + 96), x == 1 ? 2 : 7), x == 1 ? White : Black)
                         ).ToList()).Aggregate((x, y) =>
                         {
                             y.AddRange(x);
@@ -176,7 +176,7 @@ public static class ChessHelper
             Enumerable.Range(1, 2).Select(colour =>
 
                 From(1, 8).Select(
-                    x => new Piece(PieceType.ROOK, ((char)(x + 96), (colour == 1 ? 1 : 8)), (Colour)colour))
+                    x => new Piece(ROOK, Notation.From((char)(x + 96), (colour == 1 ? 1 : 8)), (Colour)colour))
                         ).Aggregate((x, y) =>
                         {
                             return y.Concat(x);
@@ -188,7 +188,7 @@ public static class ChessHelper
             Enumerable.Range(1, 2).Select(colour =>
 
                 From(2, 7).Select(
-                    x => new Piece(PieceType.KNIGHT, ((char)(x + 96), (colour == 1 ? 1 : 8)), (Colour)colour))
+                    x => new Piece(KNIGHT, Notation.From((char)(x + 96), (colour == 1 ? 1 : 8)), (Colour)colour))
                         ).Aggregate((x, y) =>
                         {
                             return y.Concat(x);
@@ -200,7 +200,7 @@ public static class ChessHelper
             Enumerable.Range(1, 2).Select(colour =>
 
                 From(3, 6).Select(
-                    x => new Piece(PieceType.BISHOP, ((char)(x + 96), (colour == 1 ? 1 : 8)), (Colour)colour))
+                    x => new Piece(BISHOP, Notation.From((char)(x + 96), (colour == 1 ? 1 : 8)), (Colour)colour))
                         ).Aggregate((x, y) =>
                         {
                             return y.Concat(x);
@@ -209,12 +209,12 @@ public static class ChessHelper
 
         Pieces.AddRange(
             Enumerable.Range(1, 2).Select(colour =>
-                    new Piece(PieceType.KING, ('e', (colour == 1 ? 1 : 8)), (Colour)colour))
+                    new Piece(KING, Notation.From('e', (colour == 1 ? 1 : 8)), (Colour)colour))
             );
 
         Pieces.AddRange(
             Enumerable.Range(1, 2).Select(colour =>
-                    new Piece(QUEEN, ('d', (colour == 1 ? 1 : 8)), (Colour)colour))
+                    new Piece(QUEEN, Notation.From('d', (colour == 1 ? 1 : 8)), (Colour)colour))
             );
 
         foreach(var piece in Pieces)

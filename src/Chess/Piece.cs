@@ -15,17 +15,11 @@ public enum PieceType
 
 public class Piece
 {
-    public Piece(PieceType type, Notation location, Colour colour)
+    public Piece(PieceType Type, Notation Location, Colour Colour)
     {
-        Type = type;
-        Location = location;
-        Colour = colour;
-    }
-    public Piece(PieceType type, (char, int) location, Colour colour)
-    {
-        Type = type;
-        Location = Notation.From(location);
-        Colour = colour;
+        this.Type = Type;
+        this.Location = Location;
+        this.Colour = Colour;
     }
 
     public PieceType Type { get; set; }

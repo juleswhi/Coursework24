@@ -48,3 +48,4 @@ global using static ChessMasterQuiz.Helpers.Helper;
 global using static Chess.PieceType;
 global using static Chess.Colour;
 global using Chess;
+global using static Chess.Notation;
