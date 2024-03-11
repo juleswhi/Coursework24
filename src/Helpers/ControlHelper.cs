@@ -1,5 +1,7 @@
-﻿using ChessMasterQuiz.Misc;
-using ChessMasterQuiz.Scraper;
+﻿
+using WinFormsScraper;
+
+using ChessMasterQuiz.Misc;
 using static ChessMasterQuiz.Helpers.FormatDirection;
 namespace ChessMasterQuiz.Helpers;
 
@@ -160,7 +162,7 @@ public static class ControlHelper
         {
             method!.Invoke(instance, new object[] { context });
         }
-        FormScraper.PrintForm(instance);
+        WinFormsScraper.WinFormsScraper.Scrape(instance);
         // Return the form
         return instance;
     }

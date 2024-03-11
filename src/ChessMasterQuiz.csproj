@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="bin\Debug\net7.0-windows\FormDetails.txt" />
     <Content Include="bin\Debug\net7.0-windows\puzzles.json" />
     <Content Include="bin\Debug\net7.0-windows\users.json" />
   </ItemGroup>
@@ -20,6 +21,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="WinFormsScraper" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
