@@ -11,6 +11,11 @@
 
   <ItemGroup>
     <Content Include="bin\Debug\net7.0-windows\puzzles.json" />
+    <Content Include="bin\Debug\net7.0-windows\users.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net7.0-windows\questions.qon" />
   </ItemGroup>
 
   <ItemGroup>

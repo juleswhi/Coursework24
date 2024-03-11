@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography;
+using System.Text.Json;
 using ChessMasterQuiz.Misc;
 
 namespace ChessMasterQuiz.Helpers;
@@ -34,6 +35,29 @@ public static class Helper
         };
 
         return new Random().Next(@base - 400, @base + 400);
+    }
+
+    private const string _puzzlePath = "puzzles.json";
+
+    public static void WritePuzzles(this List<Puzzle> puzzles)
+    {
+        string json = JsonSerializer.Serialize(puzzles);
+
+        File.WriteAllText(_puzzlePath, json);
+    }
+
+    public static List<Puzzle> ReadPuzzles()
+    {
+        string input = File.ReadAllText(_puzzlePath);
+
+        List<Puzzle>? puzzles = JsonSerializer.Deserialize<List<Puzzle>>(input);
+
+        if(puzzles is null)
+        {
+            throw new Exception($"Could not deserialize the List of Puzzles correctly :(");
+        }
+
+        return puzzles;
     }
 }
 
