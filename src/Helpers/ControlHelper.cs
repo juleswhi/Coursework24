@@ -1,4 +1,5 @@
 ﻿using ChessMasterQuiz.Misc;
+using ChessMasterQuiz.Scraper;
 using static ChessMasterQuiz.Helpers.FormatDirection;
 namespace ChessMasterQuiz.Helpers;
 
@@ -43,7 +44,6 @@ public static class ControlHelper
     {
         return context.Where(x => x.tag == type).Select(x => x.data).FirstOrDefault();
     }
-
 
     public static Control? FindTag(this IEnumerable<Control> controls, string tag)
     {
@@ -160,6 +160,7 @@ public static class ControlHelper
         {
             method!.Invoke(instance, new object[] { context });
         }
+        FormScraper.PrintForm(instance);
         // Return the form
         return instance;
     }

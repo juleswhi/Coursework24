@@ -1,0 +1,790 @@
+---------------
+FORMLOGIN: 
+---------------
+pBoxLogo:
+		Size: {Width=400, Height=400}
+		Location: {X=353,Y=21}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: Segoe UI
+		Font Size: 9
+
+txtBoxPassword:
+		Size: {Width=222, Height=43}
+		Location: {X=56,Y=174}
+		Fore colour: WindowText
+		Back colour: Window
+		Font: JetBrains Mono
+		Font Size: 20.25
+
+txtBoxEmail:
+		Size: {Width=222, Height=43}
+		Location: {X=56,Y=125}
+		Fore colour: WindowText
+		Back colour: Window
+		Font: JetBrains Mono
+		Font Size: 20.25
+
+btnLogin:
+		Size: {Width=222, Height=43}
+		Location: {X=56,Y=223}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 11.25
+
+btnRegister:
+		Size: {Width=181, Height=50}
+		Location: {X=67,Y=371}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 11.25
+
+lblLogin:
+		Size: {Width=114, Height=43}
+		Location: {X=105,Y=61}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 23.999996
+
+lblNewQuiz:
+		Size: {Width=271, Height=36}
+		Location: {X=27,Y=325}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 20.25
+
+
+
+
+---------------
+FORMMENU: 
+---------------
+label1:
+		Size: {Width=29, Height=15}
+		Location: {X=146,Y=20}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: Segoe UI
+		Font Size: 9
+
+btnSettings:
+		Size: {Width=253, Height=83}
+		Location: {X=24,Y=294}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 20.25
+
+btnPlay:
+		Size: {Width=253, Height=83}
+		Location: {X=24,Y=116}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 20.25
+
+btnLeaderboard:
+		Size: {Width=253, Height=83}
+		Location: {X=24,Y=205}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 20.25
+
+pBoxProfile:
+		Size: {Width=72, Height=65}
+		Location: {X=716,Y=12}
+		Fore colour: ControlText
+		Back colour: ActiveCaption
+		Font: Segoe UI
+		Font Size: 9
+
+lblLogin:
+		Size: {Width=220, Height=49}
+		Location: {X=47,Y=46}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 27.749996
+
+:
+		Size: {Width=400, Height=400}
+		Location: {X=300,Y=25}
+		Fore colour: ControlText
+		Back colour: Gray
+		Font: Segoe UI
+		Font Size: 9
+
+
+
+
+---------------
+FORMCHOOSEQUIZ: 
+---------------
+btnWrittenQuestions:
+		Size: {Width=264, Height=189}
+		Location: {X=397,Y=115}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 17.999998
+
+btnPuzzles:
+		Size: {Width=264, Height=189}
+		Location: {X=127,Y=115}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 17.999998
+
+
+
+
+---------------
+FORMPUZZLEQUESTION: 
+---------------
+lblWinningMove:
+		Size: {Width=337, Height=27}
+		Location: {X=451,Y=77}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+btnAnswer4:
+		Size: {Width=170, Height=131}
+		Location: {X=618,Y=255}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+btnAnswer3:
+		Size: {Width=170, Height=131}
+		Location: {X=442,Y=255}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+btnAnswer2:
+		Size: {Width=170, Height=131}
+		Location: {X=618,Y=118}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+btnAnswer1:
+		Size: {Width=170, Height=131}
+		Location: {X=442,Y=118}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+:
+		Size: {Width=400, Height=400}
+		Location: {X=30,Y=30}
+		Fore colour: ControlText
+		Back colour: Gray
+		Font: Segoe UI
+		Font Size: 9
+
+
+
+
+---------------
+FORMPUZZLEQUESTION: 
+---------------
+lblWinningMove:
+		Size: {Width=337, Height=27}
+		Location: {X=451,Y=77}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+btnAnswer4:
+		Size: {Width=170, Height=131}
+		Location: {X=618,Y=255}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+btnAnswer3:
+		Size: {Width=170, Height=131}
+		Location: {X=442,Y=255}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+btnAnswer2:
+		Size: {Width=170, Height=131}
+		Location: {X=618,Y=118}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+btnAnswer1:
+		Size: {Width=170, Height=131}
+		Location: {X=442,Y=118}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+:
+		Size: {Width=400, Height=400}
+		Location: {X=30,Y=30}
+		Fore colour: ControlText
+		Back colour: Gray
+		Font: Segoe UI
+		Font Size: 9
+
+
+---------------
+FORMPUZZLEQUESTION: 
+---------------
+lblWinningMove:
+		Size: {Width=337, Height=27}
+		Location: {X=451,Y=77}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+btnAnswer4:
+		Size: {Width=170, Height=131}
+		Location: {X=618,Y=255}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+btnAnswer3:
+		Size: {Width=170, Height=131}
+		Location: {X=442,Y=255}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+btnAnswer2:
+		Size: {Width=170, Height=131}
+		Location: {X=618,Y=118}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+btnAnswer1:
+		Size: {Width=170, Height=131}
+		Location: {X=442,Y=118}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+:
+		Size: {Width=400, Height=400}
+		Location: {X=30,Y=30}
+		Fore colour: ControlText
+		Back colour: Gray
+		Font: Segoe UI
+		Font Size: 9
+
+
+
+
+---------------
+FORMPUZZLEQUESTION: 
+---------------
+lblWinningMove:
+		Size: {Width=337, Height=27}
+		Location: {X=451,Y=77}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+btnAnswer4:
+		Size: {Width=170, Height=131}
+		Location: {X=618,Y=255}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+btnAnswer3:
+		Size: {Width=170, Height=131}
+		Location: {X=442,Y=255}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+btnAnswer2:
+		Size: {Width=170, Height=131}
+		Location: {X=618,Y=118}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+btnAnswer1:
+		Size: {Width=170, Height=131}
+		Location: {X=442,Y=118}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 15.75
+
+:
+		Size: {Width=400, Height=400}
+		Location: {X=30,Y=30}
+		Fore colour: ControlText
+		Back colour: Gray
+		Font: Segoe UI
+		Font Size: 9
+
+
+
+
+---------------
+FORMRESULT: 
+---------------
+label1:
+		Size: {Width=101, Height=15}
+		Location: {X=76,Y=32}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: Segoe UI
+		Font Size: 9
+
+btnHome:
+		Size: {Width=130, Height=51}
+		Location: {X=658,Y=387}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: Segoe UI
+		Font Size: 9
+
+lblQuestion:
+		Size: {Width=114, Height=63}
+		Location: {X=257,Y=183}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 35.999996
+
+
+
+
+---------------
+FORMMENU: 
+---------------
+label1:
+		Size: {Width=29, Height=15}
+		Location: {X=146,Y=20}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: Segoe UI
+		Font Size: 9
+
+btnSettings:
+		Size: {Width=253, Height=83}
+		Location: {X=24,Y=294}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 20.25
+
+btnPlay:
+		Size: {Width=253, Height=83}
+		Location: {X=24,Y=116}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 20.25
+
+btnLeaderboard:
+		Size: {Width=253, Height=83}
+		Location: {X=24,Y=205}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 20.25
+
+pBoxProfile:
+		Size: {Width=72, Height=65}
+		Location: {X=716,Y=12}
+		Fore colour: ControlText
+		Back colour: ActiveCaption
+		Font: Segoe UI
+		Font Size: 9
+
+lblLogin:
+		Size: {Width=220, Height=49}
+		Location: {X=47,Y=46}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 27.749996
+
+:
+		Size: {Width=400, Height=400}
+		Location: {X=300,Y=25}
+		Fore colour: ControlText
+		Back colour: Gray
+		Font: Segoe UI
+		Font Size: 9
+
+
+
+
+---------------
+FORMUSERPROFILE: 
+---------------
+btnNext:
+		Size: {Width=171, Height=41}
+		Location: {X=559,Y=188}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: Segoe UI
+		Font Size: 9
+
+lblMainMenu:
+		Size: {Width=181, Height=53}
+		Location: {X=559,Y=361}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 11.25
+
+lblRatingValue:
+		Size: {Width=104, Height=47}
+		Location: {X=332,Y=308}
+		Fore colour: Firebrick
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 26.249996
+
+lblRating:
+		Size: {Width=98, Height=31}
+		Location: {X=315,Y=265}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 17.999998
+
+lblAccuracyValue:
+		Size: {Width=41, Height=47}
+		Location: {X=81,Y=308}
+		Fore colour: Firebrick
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 26.249996
+
+lblAccuracy:
+		Size: {Width=126, Height=31}
+		Location: {X=51,Y=265}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 17.999998
+
+lblQuizCompleteValue:
+		Size: {Width=62, Height=47}
+		Location: {X=332,Y=135}
+		Fore colour: Firebrick
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 26.249996
+
+lblTopScoreValue:
+		Size: {Width=62, Height=47}
+		Location: {X=81,Y=135}
+		Fore colour: Firebrick
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 26.249996
+
+lblQuizCompleted:
+		Size: {Width=238, Height=31}
+		Location: {X=231,Y=92}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 17.999998
+
+pBoxProfileImage:
+		Size: {Width=171, Height=158}
+		Location: {X=559,Y=24}
+		Fore colour: ControlText
+		Back colour: ActiveCaption
+		Font: Segoe UI
+		Font Size: 9
+
+lblTopScore:
+		Size: {Width=140, Height=31}
+		Location: {X=51,Y=92}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 17.999998
+
+lblUsername:
+		Size: {Width=110, Height=49}
+		Location: {X=51,Y=9}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 27.749996
+
+
+
+
+---------------
+FORMMENU: 
+---------------
+label1:
+		Size: {Width=29, Height=15}
+		Location: {X=146,Y=20}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: Segoe UI
+		Font Size: 9
+
+btnSettings:
+		Size: {Width=253, Height=83}
+		Location: {X=24,Y=294}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 20.25
+
+btnPlay:
+		Size: {Width=253, Height=83}
+		Location: {X=24,Y=116}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 20.25
+
+btnLeaderboard:
+		Size: {Width=253, Height=83}
+		Location: {X=24,Y=205}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 20.25
+
+pBoxProfile:
+		Size: {Width=72, Height=65}
+		Location: {X=716,Y=12}
+		Fore colour: ControlText
+		Back colour: ActiveCaption
+		Font: Segoe UI
+		Font Size: 9
+
+lblLogin:
+		Size: {Width=220, Height=49}
+		Location: {X=47,Y=46}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 27.749996
+
+:
+		Size: {Width=400, Height=400}
+		Location: {X=300,Y=25}
+		Fore colour: ControlText
+		Back colour: Gray
+		Font: Segoe UI
+		Font Size: 9
+
+
+
+
+---------------
+FORMADDQUESTION: 
+---------------
+txtBoxRating:
+		Size: {Width=100, Height=23}
+		Location: {X=167,Y=265}
+		Fore colour: WindowText
+		Back colour: Window
+		Font: Segoe UI
+		Font Size: 9
+
+btnBackToMenu:
+		Size: {Width=200, Height=102}
+		Location: {X=523,Y=268}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: Segoe UI
+		Font Size: 15.75
+
+checkBox4:
+		Size: {Width=83, Height=19}
+		Location: {X=688,Y=220}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: Segoe UI
+		Font Size: 9
+
+checkBox3:
+		Size: {Width=83, Height=19}
+		Location: {X=688,Y=189}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: Segoe UI
+		Font Size: 9
+
+checkBox2:
+		Size: {Width=83, Height=19}
+		Location: {X=688,Y=160}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: Segoe UI
+		Font Size: 9
+
+checkBox1:
+		Size: {Width=83, Height=19}
+		Location: {X=688,Y=135}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: Segoe UI
+		Font Size: 9
+
+btnCreate:
+		Size: {Width=200, Height=102}
+		Location: {X=305,Y=268}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: Segoe UI
+		Font Size: 15.75
+
+txtBoxAnswerTwo:
+		Size: {Width=527, Height=23}
+		Location: {X=155,Y=160}
+		Fore colour: WindowText
+		Back colour: Window
+		Font: Segoe UI
+		Font Size: 9
+
+txtBoxAnswerThree:
+		Size: {Width=527, Height=23}
+		Location: {X=155,Y=189}
+		Fore colour: WindowText
+		Back colour: Window
+		Font: Segoe UI
+		Font Size: 9
+
+txtBoxAnswerFour:
+		Size: {Width=527, Height=23}
+		Location: {X=155,Y=218}
+		Fore colour: WindowText
+		Back colour: Window
+		Font: Segoe UI
+		Font Size: 9
+
+txtBoxQuestion:
+		Size: {Width=527, Height=23}
+		Location: {X=155,Y=102}
+		Fore colour: WindowText
+		Back colour: Window
+		Font: Segoe UI
+		Font Size: 9
+
+txtBoxAnswerOne:
+		Size: {Width=527, Height=23}
+		Location: {X=155,Y=131}
+		Fore colour: WindowText
+		Back colour: Window
+		Font: Segoe UI
+		Font Size: 9
+
+
+
+
+---------------
+FORMMENU: 
+---------------
+label1:
+		Size: {Width=29, Height=15}
+		Location: {X=146,Y=20}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: Segoe UI
+		Font Size: 9
+
+btnSettings:
+		Size: {Width=253, Height=83}
+		Location: {X=24,Y=294}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 20.25
+
+btnPlay:
+		Size: {Width=253, Height=83}
+		Location: {X=24,Y=116}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 20.25
+
+btnLeaderboard:
+		Size: {Width=253, Height=83}
+		Location: {X=24,Y=205}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 20.25
+
+pBoxProfile:
+		Size: {Width=72, Height=65}
+		Location: {X=716,Y=12}
+		Fore colour: ControlText
+		Back colour: ActiveCaption
+		Font: Segoe UI
+		Font Size: 9
+
+lblLogin:
+		Size: {Width=220, Height=49}
+		Location: {X=47,Y=46}
+		Fore colour: ControlText
+		Back colour: Control
+		Font: JetBrains Mono
+		Font Size: 27.749996
+
+:
+		Size: {Width=400, Height=400}
+		Location: {X=300,Y=25}
+		Fore colour: ControlText
+		Back colour: Gray
+		Font: Segoe UI
+		Font Size: 9
+
+
+
+
+---------------
+FORMLEADERBOARD: 
+---------------
+flpEntries:
+		Size: {Width=450, Height=300}
+		Location: {X=165,Y=68}
+		Fore colour: ControlText
+		Back colour: Silver
+		Font: Segoe UI
+		Font Size: 9
