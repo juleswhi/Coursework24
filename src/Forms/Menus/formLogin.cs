@@ -5,7 +5,6 @@ namespace ChessMasterQuiz;
 
 public partial class formLogin : Form, IContext
 {
-    private List<DataContextTag> _context = new();
     public formLogin()
     {
         InitializeComponent();
@@ -20,7 +19,6 @@ public partial class formLogin : Form, IContext
         };
     }
 
-    Control.ControlCollection IContext._controls => Controls;
     private void onResize(object? sender, EventArgs e)
     {
     }
@@ -42,11 +40,15 @@ public partial class formLogin : Form, IContext
         }
 
         foundUser.Login();
-        ActivateForm<formMenu>(new DataContextTag(foundUser, USER));
+        ActivateForm<formMenu>((foundUser, USER));
     }
 
     private void formLogin_Load(object sender, EventArgs e)
     {
 
+    }
+
+    public void UseContext(IEnumerable<DCT> context)
+    {
     }
 }

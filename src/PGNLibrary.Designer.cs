@@ -63,6 +63,16 @@ namespace ChessMasterQuiz {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Puzzles {
+            get {
+                object obj = ResourceManager.GetObject("Puzzles", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Steinitz_Best_Games {
             get {
                 object obj = ResourceManager.GetObject("Steinitz_Best_Games", resourceCulture);

@@ -45,3 +45,6 @@ global using static ChessMasterQuiz.Misc.ContextTagType;
 global using static UserRepresentation.UserHelper;
 global using DCT = ChessMasterQuiz.Misc.DataContextTag;
 global using static ChessMasterQuiz.Helpers.Helper;
+global using static Chess.PieceType;
+global using static Chess.Colour;
+global using Chess;

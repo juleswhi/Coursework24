@@ -22,6 +22,23 @@ public static class ControlHelper
         return context.Where(x => x.tag == type).Select(x => x.data);
     }
 
+    private static Dictionary<Type, ContextTagType> TypeToContextMap = new()
+    {
+        { typeof(Puzzle), PUZZLE },
+
+    };
+
+    public static T? GetFirst<T>(this IEnumerable<DCT> context)
+    {
+        var tag = TypeToContextMap[typeof(T)];
+        return GetFirst<T>(context, tag);
+    }
+
+    public static T? GetFirst<T>(this IEnumerable<DataContextTag> context, ContextTagType type)
+    {
+        return (T?)context.Where(x => x.tag == type).Select(x => x.data).FirstOrDefault();
+    }
+
     public static object? GetFirst(this IEnumerable<DataContextTag> context, ContextTagType type)
     {
         return context.Where(x => x.tag == type).Select(x => x.data).FirstOrDefault();
@@ -62,7 +79,51 @@ public static class ControlHelper
     /// </summary>
     public static formMain Main => (Form.ActiveForm as formMain)!;
 
-    public static void ActivateForm<T>(params DataContextTag[] context) where T : Form, new()
+
+    public static void ActivateForm<T>() where T : Form, new()
+    {
+        // Create the form
+        formMain.ChildForm = CreateForm<T>([]);
+
+        // All the boring stuff to display the form
+        formMain.ChildForm.TopLevel = false;
+        formMain.ChildForm.Dock = DockStyle.Fill;
+        formMain.ChildForm.FormBorderStyle = FormBorderStyle.None;
+        formMain.ChildForm.Enabled = true;
+        formMain.ChildForm.Visible = true;
+
+        var holder = formMain.GetPanelHolder!();
+
+        holder.Controls.Clear();
+        holder.Controls.Add(formMain.ChildForm);
+        holder.Show();
+    }
+
+    public static void ActivateForm<T>(params (object, ContextTagType)[] context) where T : Form, new()
+    {
+        List<DCT> dct = new();
+        foreach(var (obj, tag) in context)
+        {
+            dct.Add(new(obj, tag));
+        }
+        // Create the form
+        formMain.ChildForm = CreateForm<T>(dct);
+
+        // All the boring stuff to display the form
+        formMain.ChildForm.TopLevel = false;
+        formMain.ChildForm.Dock = DockStyle.Fill;
+        formMain.ChildForm.FormBorderStyle = FormBorderStyle.None;
+        formMain.ChildForm.Enabled = true;
+        formMain.ChildForm.Visible = true;
+
+        var holder = formMain.GetPanelHolder!();
+
+        holder.Controls.Clear();
+        holder.Controls.Add(formMain.ChildForm);
+        holder.Show();
+    }
+
+    public static void ActivateFormDCT<T>(params DataContextTag[] context) where T : Form, new()
     {
         // Create the form
         formMain.ChildForm = CreateForm<T>(context);

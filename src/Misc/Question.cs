@@ -22,7 +22,7 @@ public abstract class Question : IEquatable<Question>, IComparable<Question>
     public QuestionType Type { get; init; }
     public string Name { get; init; } = string.Empty;
     public Difficulty Difficulty { get; init; }
-    public int Rating { get; init; } = -1;
+    public virtual int Rating { get; init; } = -1;
 
     public int CompareTo(Question? other)
     {

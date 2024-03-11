@@ -207,7 +207,6 @@
         private Label lblRatingValue;
         private Label lblRating;
         private Button lblMainMenu;
-        private Button button1;
         private Button btnNext;
     }
 }

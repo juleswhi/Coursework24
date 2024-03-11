@@ -147,6 +147,10 @@ public class Board : Panel
                 Debug.Print($"{white.GetNotation()}");
                 Thread.Sleep(PlyPause);
                 // Debug.Print($"Black move: {this[white.InitialSquare]?.Location}");
+                if(black is null)
+                {
+                    break;
+                }
                 this[black.InitialSquare]?.Move(black);
                 Debug.Print($"{black.GetNotation()}");
                 Thread.Sleep(PlyPause);

@@ -9,7 +9,6 @@ public partial class formResult : Form, IContext
         InitializeComponent();
     }
 
-    Control.ControlCollection IContext._controls => Controls;
     public void UseContext(IEnumerable<DCT> context)
     {
         var correct = (int)context.GetFirst(QUESTIONS_CORRECT)!;

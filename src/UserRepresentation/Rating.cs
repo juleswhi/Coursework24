@@ -7,10 +7,6 @@
  
  */
 
-
-
-using System.Diagnostics;
-
 namespace UserRepresentation;
 
 // Primary constructor is used to create a Rating prop

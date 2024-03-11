@@ -61,8 +61,6 @@ public partial class formRegister : Form, IContext
         }
     }
 
-    Control.ControlCollection IContext._controls => Controls;
-
     public void UseContext(IEnumerable<DataContextTag> context)
     {
         foreach (var dct in context)
@@ -113,7 +111,7 @@ public partial class formRegister : Form, IContext
 
         WriteUsers();
 
-        ActivateForm<formMenu>(new DataContextTag(user, USER));
+        ActivateForm<formMenu>((user, USER));
     }
 
     private void progressPassword_Click(object sender, EventArgs e)

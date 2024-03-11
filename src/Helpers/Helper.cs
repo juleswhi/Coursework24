@@ -34,5 +34,7 @@ public static class Helper
         };
 
         return new Random().Next(@base - 400, @base + 400);
-    } 
+    }
 }
+
+

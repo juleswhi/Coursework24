@@ -12,7 +12,6 @@ namespace ChessMasterQuiz;
 
 public partial class formMenu : Form, IContext
 {
-    Control.ControlCollection IContext._controls => Controls;
     private User? _user = null;
 
     public void UseContext(IEnumerable<DataContextTag> context)
@@ -43,8 +42,12 @@ public partial class formMenu : Form, IContext
         PgnReader reader = new PgnReader();
 
         reader.FromBytes(PGNLibrary.Steinitz_Best_Games);
+        PGN game = new();
 
-        var game = reader.Games.First();
+        if(reader.Games.Count != 0)
+        {
+            game = reader.Games.First();
+        }
 
         board.Location = new Point(300, 25);
         Controls.Add(board);
@@ -55,69 +58,13 @@ public partial class formMenu : Form, IContext
     private void pBoxProfile_Click(object sender, EventArgs e)
     {
         MoveHelper.CurrentBoard?.StopGame();
-        ActivateForm<formUserProfile>(new DataContextTag(
-            _user!,
-            USER
-            ));
+        ActivateForm<formUserProfile>((_user!, USER));
     }
 
     private void btnPlay_Click(object sender, EventArgs e)
     {
-        // Bring to another play form??
-        // Free Play / Competitive
-        // Puzzles
-        // Generate list of quesitons here
-
         MoveHelper.CurrentBoard?.StopGame();
-        var file = File.ReadAllLines("questions.qon");
-        var questions = LonConvert.Deserialize(file);
-
-        questions.Shuffle();
-
-        questions = questions.Take(10).ToList();
-
-        int questionIndex = 0;
-        int questionsCorrect = 0;
-
-        var onAnswer = EmptyActionGeneric<bool, int>();
-
-        onAnswer += (bool correct, int elo) =>
-        {
-            if (correct) questionsCorrect++;
-
-            if(_user is User user)
-            {
-                if (elo != -1)
-                {
-                    Debug.Print($"NEW ELO MATCH: {user.Elo}, QUESTION ELO: {elo}");
-                    ELO.Match(user.Elo, correct ? ELO.MatchupResult.WIN : ELO.MatchupResult.LOSS, elo);
-                    Debug.Print($"RESULTANT RATING: {user.Elo}");
-                }
-            }
-
-            if (questionIndex >= questions.Count)
-            {
-                // Go to exit screen
-                ActivateForm<formResult>(
-                    new DataContextTag(questionsCorrect, QUESTIONS_CORRECT),
-                    new DataContextTag(questionIndex, INDEX),
-                    new DataContextTag(_user?.Elo.Rating!, NUMBER)
-                    );
-                return;
-            }
-
-            ActivateForm<formTextQuestion>(
-                new DataContextTag(
-                    questions[questionIndex++], QUESTION),
-                new DataContextTag(
-                    questionIndex.ToString(), NUMBER),
-                new DataContextTag(
-                    onAnswer,
-                    ACTION)
-                );
-        };
-
-        onAnswer(false, -1);
+        ActivateForm<formChooseQuiz>((_user!, USER));
     }
 
     private void btnLeaderboard_Click(object sender, EventArgs e)

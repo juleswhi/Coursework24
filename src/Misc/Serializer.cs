@@ -21,18 +21,18 @@ using static System.String;
 using static System.Char;
 
 
-// The LonConvert class and its associated classes ( Lexer, Parser, Token )
+// The QonConvert class and its associated classes ( Lexer, Parser, Token )
 // should be kept in a different namespace to keep things tidy 
 namespace ChessMasterQuiz.Misc;
 
 /// <summary>
-/// Lon ( Lake Object Notation ) Converter.
+/// Qon ( Question Object Notation ) Converter.
 /// </summary>
 
 // This static class contains methods which deal with Serializing and Deserializing objects and strings respectively. 
-// The LonConvert class is able to Serialize both Questions and Users
+// The QonConvert class is able to Serialize both Questions and Users
 // It uses overloading so only one method call is needed
-public static class LonConvert
+public static class QonConvert
 {
     // Serialize a question into a Lon String
     public static string Serialize(Question question)

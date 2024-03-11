@@ -10,9 +10,7 @@ public partial class formUserProfile : Form, IContext
         InitializeComponent();
     }
 
-    Control.ControlCollection IContext._controls => Controls;
     private User? _user;
-
     public void UseContext(IEnumerable<DataContextTag> context)
     {
         User? user = (User)context.Get(USER).First();
@@ -46,7 +44,7 @@ public partial class formUserProfile : Form, IContext
     private void lblMainMenu_Click(object sender, EventArgs e)
     {
         WriteUsers();
-        ActivateForm<formMenu>(new DataContextTag(_user!, USER));
+        ActivateForm<formMenu>((_user!, USER));
     }
 
     private void btnNext_Click(object sender, EventArgs e)

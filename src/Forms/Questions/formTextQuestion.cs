@@ -1,5 +1,4 @@
-﻿using static ChessMasterQuiz.Misc.ContextTagType;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using ChessMasterQuiz.Misc;
 
 namespace ChessMasterQuiz.QuestionDir;
@@ -53,7 +52,7 @@ public partial class formTextQuestion : Form, IContext
         for (int i = 0; i < _buttons.Count; i++)
         {
             if (_buttons[i] is null) continue;
-            if (questionData.A.Answers.Count <= i) continue;
+            if (questionData?.A?.Answers.Count <= i) continue;
             _buttons[i].Text = questionData?.A?.Answers[i];
         }
 
@@ -75,6 +74,4 @@ public partial class formTextQuestion : Form, IContext
 
         lblQuestion.Location = new Point((Width / 2) - (lblQuestion.Width / 2), lblQuestion.Location.Y);
     }
-
-    Control.ControlCollection IContext._controls => Controls;
 }
