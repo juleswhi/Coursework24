@@ -21,7 +21,7 @@ public class Board : Panel
     private static readonly Size _defaultBoardSize = new(400, 400);
     private int _squareWidth => this.Size.Width / 8;
 
-    private KeyValuePair<Square?, Square?> SelectedSquares = new(null, null);
+    public Square? SelectedSquare = null;
 
     public List<Square> Squares = new();
     public List<Piece> Pieces = new();
@@ -70,7 +70,8 @@ public class Board : Panel
             {
                 if(square.Location == roundedPoint)
                 {
-                    SelectedSquares = new(square, SelectedSquares.Value);
+                    SelectedSquare = square;
+                    Debug.Print($"Selected square is: {square}");
                 }
             }
 
@@ -95,7 +96,8 @@ public class Board : Panel
                 new Rectangle(square.Location, new(50, 50))
             );
 
-            if (SelectedSquares.Key is Square key)
+            
+            if (SelectedSquare is Square key)
             {
                 if (key == square)
                 {

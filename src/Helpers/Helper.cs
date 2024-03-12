@@ -1,4 +1,4 @@
-﻿using System.Security.Cryptography;
+﻿using System.Diagnostics;
 using System.Text.Json;
 using ChessMasterQuiz.Misc;
 
@@ -55,6 +55,11 @@ public static class Helper
         if(puzzles is null)
         {
             throw new Exception($"Could not deserialize the List of Puzzles correctly :(");
+        }
+
+        foreach(var puzzle in puzzles)
+        {
+            Debug.Print($"{puzzle.Rating}");
         }
 
         return puzzles;

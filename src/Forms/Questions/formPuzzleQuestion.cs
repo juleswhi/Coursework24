@@ -19,7 +19,7 @@ public partial class formPuzzleQuestion : Form, IContext
         {
             return; // Error here?
         }
-        List<(string, bool)>? answers = puzzle.Moves;
+        List<string>? answers = puzzle.Moves;
 
         List<Button> buttons = new()
         {
@@ -37,9 +37,7 @@ public partial class formPuzzleQuestion : Form, IContext
             {
                 if (OnAnswered is Action<bool, int> answer)
                 {
-                    var ans = buttons.IndexOf(b) == puzzle.Moves.IndexOf(
-                        puzzle.Moves.FirstOrDefault(
-                        x => x.Item2 == true));
+                    var ans = buttons.IndexOf(b) == puzzle.CorrectMove;
 
                     answer(ans, puzzle!.Rating);
                 }
@@ -53,7 +51,7 @@ public partial class formPuzzleQuestion : Form, IContext
 
         for (int i = 0; i < answers.Count; i++)
         {
-            buttons[i].Text = answers[i].Item1;
+            buttons[i].Text = answers[i];
         }
 
         Board board = new Board();

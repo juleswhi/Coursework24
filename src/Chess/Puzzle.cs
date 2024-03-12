@@ -13,7 +13,8 @@ public class Puzzle : Question
     public override int Rating { get; init; } 
     public Colour ToMove { get; set; } 
     public IEnumerable<Piece> Setup { get; set; } 
-    public List<(string, bool)> Moves { get; set; } 
+    public List<string> Moves { get; set; } 
+    public int CorrectMove { get; set; }
     public static void CreatePuzzles()
     {
         Puzzles = ReadPuzzles();

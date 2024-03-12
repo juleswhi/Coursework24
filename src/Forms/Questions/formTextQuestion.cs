@@ -62,7 +62,7 @@ public partial class formTextQuestion : Form, IContext
 
         if (number is null) ActivateForm<formMenu>();
 
-        lblNumber.Text = number;
+        lblNumber.Text = $"{number} / 10";
 
         var onAnswered = context.GetFirst(ACTION);
 

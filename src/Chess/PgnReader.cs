@@ -230,7 +230,6 @@ public class PgnReader
 
     private IEnumerable<Token> LexGame(string str)
     {
-        Debug.Print($"{str}");
         int _current = 0;
 
         var next = (int n = 1) => _current += n;

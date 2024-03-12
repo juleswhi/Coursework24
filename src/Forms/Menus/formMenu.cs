@@ -1,12 +1,9 @@
 ﻿using ChessMasterQuiz.Forms;
-using ChessMasterQuiz.QuestionDir;
 using Chess.BoardRepresentation;
-using Chess;
 using ChessMasterQuiz.Misc;
 using ChessMasterQuiz.Chess;
 using ChessMasterQuiz.Forms.Menus;
-using ChessMasterQuiz.Forms.Questions;
-using System.Diagnostics;
+using ChessMasterQuiz.Forms.Admin;
 
 namespace ChessMasterQuiz;
 
@@ -76,6 +73,6 @@ public partial class formMenu : Form, IContext
     private void btnSettings_Click(object sender, EventArgs e)
     {
         MoveHelper.CurrentBoard?.StopGame();
-        ActivateForm<formAddQuestion>();
+        ActivateForm<formCreatePuzzle>();
     }
 }

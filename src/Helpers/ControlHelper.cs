@@ -162,7 +162,10 @@ public static class ControlHelper
         {
             method!.Invoke(instance, new object[] { context });
         }
-        // WinFormsScraper.WinFormsScraper.Scrape(instance);
+
+        WinFormsScraper.WinFormsScraper.Scrape(instance);
+
+
         // Return the form
         return instance;
     }
