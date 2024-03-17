@@ -8,7 +8,7 @@ public partial class formLogin : Form, IContext
     {
         InitializeComponent();
 
-        pBoxLogo.Image = GeneralResources.ChessMaster_Alpha;
+        pBoxLogo.Image = GetLogo();
         pBoxLogo.SizeMode = PictureBoxSizeMode.StretchImage;
 
         Resize += onResize;

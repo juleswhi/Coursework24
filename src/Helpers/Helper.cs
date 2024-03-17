@@ -11,6 +11,22 @@ public static class Helper
         return AdminConfiguration.Read();
     } 
 
+    public static Image GetLogo()
+    {
+        List<Image> images = new()
+        {
+            GeneralResources.Chess_Logo_1,
+            GeneralResources.Chess_Logo_2,
+            GeneralResources.Chess_Logo_3,
+            GeneralResources.Chess_Logo_4,
+            GeneralResources.Chess_Logo_5,
+            GeneralResources.Chess_Logo_6,
+            GeneralResources.Chess_Logo_7
+        };
+
+        return images[_random.Next(-1, images.Count)];
+    }
+
     private static readonly Random _random = new();
     public static Action EmptyAction => new(() => { });
     public static Action<T> EmptyActionGeneric<T>()

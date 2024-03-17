@@ -27,7 +27,7 @@ public partial class formRegister : Form, IContext
             { GENDER, pBarGender }
         };
 
-        pBoxLogo.Image = GeneralResources.ChessMaster_Alpha;
+        pBoxLogo.Image = GetLogo();
         pBoxLogo.SizeMode = PictureBoxSizeMode.StretchImage;
         progressPassword.Maximum = 100;
         Resize += FormRegister_Resize;
