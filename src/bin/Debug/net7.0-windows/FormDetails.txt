@@ -8,6 +8,11 @@ panelHolder:
 
 --- formLogin ---
 
+btnExit:
+		Font: JetBrains Mono - 14.25px
+		Location: [685, 398]
+		Size: [103, 40]
+
 pBoxLogo:
 		Font: Segoe UI - 9px
 		Location: [353, 21]
@@ -30,7 +35,7 @@ btnLogin:
 
 btnRegister:
 		Font: JetBrains Mono - 11.25px
-		Location: [67, 371]
+		Location: [76, 371]
 		Size: [181, 50]
 
 lblLogin:
@@ -40,21 +45,21 @@ lblLogin:
 
 lblNewQuiz:
 		Font: JetBrains Mono - 20.25px
-		Location: [27, 325]
+		Location: [36, 325]
 		Size: [271, 36]
 
 
 --- formMenu ---
 
-label1:
-		Font: Segoe UI - 9px
-		Location: [146, 20]
-		Size: [38, 15]
-
-btnSettings:
+btnLogout:
 		Font: JetBrains Mono - 20.25px
 		Location: [24, 294]
 		Size: [253, 83]
+
+btnSettings:
+		Font: JetBrains Mono - 20.25px
+		Location: [24, 383]
+		Size: [253, 45]
 
 btnPlay:
 		Font: JetBrains Mono - 20.25px
@@ -73,7 +78,7 @@ pBoxProfile:
 
 lblLogin:
 		Font: JetBrains Mono - 27.749996px
-		Location: [47, 46]
+		Location: [40, 46]
 		Size: [220, 49]
 
 :
@@ -363,9 +368,9 @@ btnAnswer1:
 --- formResult ---
 
 label1:
-		Font: Segoe UI - 9px
-		Location: [76, 32]
-		Size: [38, 15]
+		Font: JetBrains Mono - 14.25px
+		Location: [365, 158]
+		Size: [78, 25]
 
 btnHome:
 		Font: Segoe UI - 9px
@@ -380,23 +385,131 @@ lblQuestion:
 
 --- formChooseQuiz ---
 
+btnMainMenu:
+		Font: JetBrains Mono - 14.25px
+		Location: [658, 393]
+		Size: [130, 45]
+
 btnWrittenQuestions:
-		Font: JetBrains Mono - 17.999998px
+		Font: JetBrains Mono - 26.249996px
 		Location: [397, 115]
 		Size: [264, 189]
 
 btnPuzzles:
-		Font: JetBrains Mono - 17.999998px
+		Font: JetBrains Mono - 26.249996px
 		Location: [127, 115]
 		Size: [264, 189]
 
 
 --- formLeaderboard ---
 
-flpEntries:
+btnMainMenu:
+		Font: JetBrains Mono - 9.75px
+		Location: [663, 387]
+		Size: [115, 51]
+
+lblHighScore:
+		Font: JetBrains Mono - 11.999998px
+		Location: [488, 18]
+		Size: [110, 21]
+
+lblAccuracy:
+		Font: JetBrains Mono - 11.999998px
+		Location: [353, 18]
+		Size: [90, 21]
+
+lblElo:
+		Font: JetBrains Mono - 11.999998px
+		Location: [244, 18]
+		Size: [50, 21]
+
+lblUsername:
+		Font: JetBrains Mono - 11.999998px
+		Location: [104, 18]
+		Size: [90, 21]
+
+pnlHolder:
 		Font: Segoe UI - 9px
-		Location: [165, 68]
-		Size: [450, 300]
+		Location: [71, 48]
+		Size: [554, 390]
+
+
+--- formAdminMenu ---
+
+btnDemote:
+		Font: JetBrains Mono - 14.25px
+		Location: [422, 379]
+		Size: [120, 32]
+
+btnPromote:
+		Font: JetBrains Mono - 14.25px
+		Location: [296, 379]
+		Size: [120, 32]
+
+txtBoxPromote:
+		Font: JetBrains Mono - 15.75px
+		Location: [296, 338]
+		Size: [246, 35]
+
+label4:
+		Font: JetBrains Mono - 15.75px
+		Location: [324, 308]
+		Size: [194, 27]
+
+btnMainMenu:
+		Font: JetBrains Mono - 15.75px
+		Location: [642, 394]
+		Size: [146, 44]
+
+label3:
+		Font: JetBrains Mono - 26.249996px
+		Location: [17, 9]
+		Size: [377, 47]
+
+btnCreateQuestions:
+		Font: JetBrains Mono - 17.999998px
+		Location: [324, 155]
+		Size: [283, 79]
+
+btnCreatePuzzles:
+		Font: JetBrains Mono - 17.999998px
+		Location: [324, 70]
+		Size: [283, 79]
+
+chckBoxPasswordMedium:
+		Font: JetBrains Mono - 15.75px
+		Location: [78, 357]
+		Size: [109, 31]
+
+checkBoxPasswordWeak:
+		Font: JetBrains Mono - 15.75px
+		Location: [78, 394]
+		Size: [83, 31]
+
+label2:
+		Font: JetBrains Mono - 15.75px
+		Location: [17, 290]
+		Size: [233, 27]
+
+chckBoxPasswordStrong:
+		Font: JetBrains Mono - 15.75px
+		Location: [78, 320]
+		Size: [109, 31]
+
+label1:
+		Font: JetBrains Mono - 26.249996px
+		Location: [12, 243]
+		Size: [293, 47]
+
+btnViewQuestions:
+		Font: JetBrains Mono - 17.999998px
+		Location: [17, 155]
+		Size: [283, 79]
+
+btnViewPuzzles:
+		Font: JetBrains Mono - 17.999998px
+		Location: [17, 70]
+		Size: [283, 79]
 
 
 --- formAdminSettings ---
@@ -441,22 +554,22 @@ pBoxWhiteKing:
 
 pBoxWhiteKnight:
 		Font: Segoe UI - 9px
-		Location: [577, 78]
+		Location: [634, 24]
 		Size: [51, 47]
 
 pBoxWhiteBishop:
 		Font: Segoe UI - 9px
-		Location: [632, 24]
+		Location: [689, 24]
 		Size: [51, 47]
 
 pBoxWhiteRook:
 		Font: Segoe UI - 9px
-		Location: [634, 78]
+		Location: [577, 78]
 		Size: [51, 47]
 
 pBoxWhiteQueen:
 		Font: Segoe UI - 9px
-		Location: [689, 24]
+		Location: [634, 78]
 		Size: [51, 47]
 
 pBoxWhitePawn:
@@ -465,53 +578,86 @@ pBoxWhitePawn:
 		Size: [51, 47]
 
 cBoxToMove:
-		Font: Segoe UI - 9px
-		Location: [612, 285]
-		Size: [105, 19]
+		Font: JetBrains Mono - 11.999998px
+		Location: [581, 272]
+		Size: [169, 25]
 
 btnBack:
-		Font: Segoe UI - 9px
+		Font: JetBrains Mono - 14.25px
 		Location: [666, 376]
-		Size: [75, 23]
+		Size: [108, 62]
 
 txtBoxRating:
-		Font: Segoe UI - 9px
-		Location: [612, 256]
-		Size: [100, 23]
+		Font: JetBrains Mono - 11.999998px
+		Location: [612, 237]
+		Size: [100, 29]
 
 btnCreatePuzzle:
-		Font: Segoe UI - 9px
-		Location: [585, 376]
-		Size: [75, 23]
+		Font: JetBrains Mono - 14.25px
+		Location: [552, 376]
+		Size: [108, 62]
 
 txtBoxAlternative3:
-		Font: Segoe UI - 9px
-		Location: [585, 347]
-		Size: [75, 23]
+		Font: JetBrains Mono - 9.75px
+		Location: [537, 334]
+		Size: [123, 25]
 
 txtBoxAlternative2:
-		Font: Segoe UI - 9px
-		Location: [666, 347]
-		Size: [75, 23]
+		Font: JetBrains Mono - 9.75px
+		Location: [666, 334]
+		Size: [122, 25]
 
 txtBoxAlternative1:
-		Font: Segoe UI - 9px
-		Location: [666, 318]
-		Size: [75, 23]
+		Font: JetBrains Mono - 9.75px
+		Location: [666, 303]
+		Size: [121, 25]
 
 txtBoxWinningMove:
-		Font: Segoe UI - 9px
-		Location: [585, 318]
-		Size: [75, 23]
-
-btnAddPiece:
-		Font: Segoe UI - 9px
-		Location: [0, 0]
-		Size: [75, 23]
+		Font: JetBrains Mono - 9.75px
+		Location: [537, 303]
+		Size: [123, 25]
 
 :
 		Font: Segoe UI - 9px
 		Location: [50, 20]
+		Size: [400, 400]
+
+
+--- formViewPuzzles ---
+
+chckBoxMediumPuzzles:
+		Font: JetBrains Mono - 15.75px
+		Location: [576, 248]
+		Size: [210, 31]
+
+chckBoxHardPuzzles:
+		Font: JetBrains Mono - 15.75px
+		Location: [576, 285]
+		Size: [184, 31]
+
+chckBoxEasyPuzzles:
+		Font: JetBrains Mono - 15.75px
+		Location: [576, 211]
+		Size: [184, 31]
+
+btnMainMenu:
+		Font: JetBrains Mono - 14.25px
+		Location: [647, 397]
+		Size: [141, 41]
+
+btnPreviousPuzzle:
+		Font: JetBrains Mono - 17.999998px
+		Location: [549, 114]
+		Size: [239, 69]
+
+btnNextPuzzle:
+		Font: JetBrains Mono - 17.999998px
+		Location: [549, 39]
+		Size: [239, 69]
+
+:
+		Font: Segoe UI - 9px
+		Location: [100, 10]
 		Size: [400, 400]
 
 
