@@ -34,30 +34,35 @@
             // 
             // btnPuzzles
             // 
-            btnPuzzles.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
+            btnPuzzles.BackColor = Color.FromArgb(192, 255, 192);
+            btnPuzzles.FlatStyle = FlatStyle.Flat;
+            btnPuzzles.Font = new Font("JetBrains Mono", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
             btnPuzzles.Location = new Point(127, 115);
             btnPuzzles.Name = "btnPuzzles";
             btnPuzzles.Size = new Size(264, 189);
             btnPuzzles.TabIndex = 0;
             btnPuzzles.Text = "Puzzles";
-            btnPuzzles.UseVisualStyleBackColor = true;
+            btnPuzzles.UseVisualStyleBackColor = false;
             btnPuzzles.Click += btnPuzzles_Click;
             // 
             // btnWrittenQuestions
             // 
-            btnWrittenQuestions.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
+            btnWrittenQuestions.BackColor = Color.FromArgb(192, 255, 192);
+            btnWrittenQuestions.FlatStyle = FlatStyle.Flat;
+            btnWrittenQuestions.Font = new Font("JetBrains Mono", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
             btnWrittenQuestions.Location = new Point(397, 115);
             btnWrittenQuestions.Name = "btnWrittenQuestions";
             btnWrittenQuestions.Size = new Size(264, 189);
             btnWrittenQuestions.TabIndex = 1;
             btnWrittenQuestions.Text = "Written Questions";
-            btnWrittenQuestions.UseVisualStyleBackColor = true;
+            btnWrittenQuestions.UseVisualStyleBackColor = false;
             btnWrittenQuestions.Click += btnWrittenQuestions_Click;
             // 
             // formChooseQuiz
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(800, 450);
             Controls.Add(btnWrittenQuestions);
             Controls.Add(btnPuzzles);

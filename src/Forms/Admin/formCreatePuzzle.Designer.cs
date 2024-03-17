@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            txtBoxLocation = new TextBox();
             btnAddPiece = new Button();
             txtBoxWinningMove = new TextBox();
             txtBoxAlternative1 = new TextBox();
@@ -64,27 +63,16 @@
             ((System.ComponentModel.ISupportInitialize)pBoxBlackPawn).BeginInit();
             SuspendLayout();
             // 
-            // txtBoxLocation
-            // 
-            txtBoxLocation.Location = new Point(528, 416);
-            txtBoxLocation.Name = "txtBoxLocation";
-            txtBoxLocation.PlaceholderText = "Location..";
-            txtBoxLocation.Size = new Size(100, 23);
-            txtBoxLocation.TabIndex = 1;
-            // 
             // btnAddPiece
             // 
-            btnAddPiece.Location = new Point(623, 237);
+            btnAddPiece.Location = new Point(0, 0);
             btnAddPiece.Name = "btnAddPiece";
             btnAddPiece.Size = new Size(75, 23);
-            btnAddPiece.TabIndex = 3;
-            btnAddPiece.Text = "Add";
-            btnAddPiece.UseVisualStyleBackColor = true;
-            btnAddPiece.Click += btnAddPiece_Click;
+            btnAddPiece.TabIndex = 26;
             // 
             // txtBoxWinningMove
             // 
-            txtBoxWinningMove.Location = new Point(632, 357);
+            txtBoxWinningMove.Location = new Point(585, 318);
             txtBoxWinningMove.Name = "txtBoxWinningMove";
             txtBoxWinningMove.PlaceholderText = "Winning Move..";
             txtBoxWinningMove.Size = new Size(75, 23);
@@ -92,7 +80,7 @@
             // 
             // txtBoxAlternative1
             // 
-            txtBoxAlternative1.Location = new Point(713, 357);
+            txtBoxAlternative1.Location = new Point(666, 318);
             txtBoxAlternative1.Name = "txtBoxAlternative1";
             txtBoxAlternative1.PlaceholderText = "Alternative Move";
             txtBoxAlternative1.Size = new Size(75, 23);
@@ -100,7 +88,7 @@
             // 
             // txtBoxAlternative2
             // 
-            txtBoxAlternative2.Location = new Point(713, 386);
+            txtBoxAlternative2.Location = new Point(666, 347);
             txtBoxAlternative2.Name = "txtBoxAlternative2";
             txtBoxAlternative2.PlaceholderText = "Alternative Move";
             txtBoxAlternative2.Size = new Size(75, 23);
@@ -108,7 +96,7 @@
             // 
             // txtBoxAlternative3
             // 
-            txtBoxAlternative3.Location = new Point(632, 386);
+            txtBoxAlternative3.Location = new Point(585, 347);
             txtBoxAlternative3.Name = "txtBoxAlternative3";
             txtBoxAlternative3.PlaceholderText = "Alternative Move";
             txtBoxAlternative3.Size = new Size(75, 23);
@@ -116,7 +104,7 @@
             // 
             // btnCreatePuzzle
             // 
-            btnCreatePuzzle.Location = new Point(632, 415);
+            btnCreatePuzzle.Location = new Point(585, 376);
             btnCreatePuzzle.Name = "btnCreatePuzzle";
             btnCreatePuzzle.Size = new Size(75, 23);
             btnCreatePuzzle.TabIndex = 8;
@@ -126,7 +114,7 @@
             // 
             // txtBoxRating
             // 
-            txtBoxRating.Location = new Point(659, 295);
+            txtBoxRating.Location = new Point(612, 256);
             txtBoxRating.Name = "txtBoxRating";
             txtBoxRating.PlaceholderText = "Rating..";
             txtBoxRating.Size = new Size(100, 23);
@@ -134,7 +122,7 @@
             // 
             // btnBack
             // 
-            btnBack.Location = new Point(713, 415);
+            btnBack.Location = new Point(666, 376);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(75, 23);
             btnBack.TabIndex = 11;
@@ -145,7 +133,7 @@
             // cBoxToMove
             // 
             cBoxToMove.AutoSize = true;
-            cBoxToMove.Location = new Point(659, 324);
+            cBoxToMove.Location = new Point(612, 285);
             cBoxToMove.Name = "cBoxToMove";
             cBoxToMove.Size = new Size(105, 19);
             cBoxToMove.TabIndex = 13;
@@ -298,7 +286,6 @@
             Controls.Add(txtBoxAlternative1);
             Controls.Add(txtBoxWinningMove);
             Controls.Add(btnAddPiece);
-            Controls.Add(txtBoxLocation);
             Name = "formCreatePuzzle";
             Text = "formCreatePuzzle";
             ((System.ComponentModel.ISupportInitialize)pBoxWhitePawn).EndInit();
@@ -318,7 +305,6 @@
         }
 
         #endregion
-        private TextBox txtBoxLocation;
         private Button btnAddPiece;
         private TextBox txtBoxWinningMove;
         private TextBox txtBoxAlternative1;

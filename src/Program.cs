@@ -1,4 +1,4 @@
-using static ChessMasterQuiz.Helpers.Helper;
+using WinFormsScraper;
 namespace ChessMasterQuiz;
 
 internal static class Program

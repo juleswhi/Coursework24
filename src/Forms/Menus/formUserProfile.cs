@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using ChessMasterQuiz.Misc;
+﻿using ChessMasterQuiz.Misc;
 
 namespace ChessMasterQuiz.Forms;
 
@@ -15,8 +14,10 @@ public partial class formUserProfile : Form, IContext
     {
         User? user = (User)context.Get(USER).First();
 
-        if (user is null) 
+        if (user is null)
+        {
             user = ActiveUser!;
+        }
 
         _user = user;
 
@@ -31,16 +32,6 @@ public partial class formUserProfile : Form, IContext
         pBoxProfileImage.BackgroundImageLayout = ImageLayout.Stretch;
     }
 
-    private void label2_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void pBoxProfileImage_Click(object sender, EventArgs e)
-    {
-
-    }
-
     private void lblMainMenu_Click(object sender, EventArgs e)
     {
         WriteUsers();
@@ -49,13 +40,19 @@ public partial class formUserProfile : Form, IContext
 
     private void btnNext_Click(object sender, EventArgs e)
     {
-        if (_user is null) return;
+        if (_user is null)
+        {
+            return;
+        }
 
         if (_user.ImageIndex == User.ProfilePictures.Count - 1)
         {
-            _user.ImageIndex = 5;
+            _user.ImageIndex = 0;
         }
-        else _user.ImageIndex++;
+        else
+        {
+            _user.ImageIndex++;
+        }
 
         pBoxProfileImage.Image = User.ProfilePictures[_user.ImageIndex];
 

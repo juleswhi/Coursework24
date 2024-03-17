@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using ChessMasterQuiz.Forms.Questions;
+﻿using ChessMasterQuiz.Forms.Questions;
 using ChessMasterQuiz.Misc;
 using ChessMasterQuiz.QuestionDir;
 
@@ -12,7 +11,7 @@ public partial class formChooseQuiz : Form, IContext
     {
         User? user = context.GetFirst<User>(USER);
 
-        if(user is null)
+        if (user is null)
         {
             user = ActiveUser!;
         }
@@ -41,9 +40,12 @@ public partial class formChooseQuiz : Form, IContext
 
         onAnswer += (bool correct, int elo) =>
         {
-            if (correct) questionsCorrect++;
+            if (correct)
+            {
+                questionsCorrect++;
+            }
 
-            if(_user is User user)
+            if (_user is User user)
             {
                 if (elo != -1)
                 {
@@ -53,6 +55,16 @@ public partial class formChooseQuiz : Form, IContext
 
             if (questionIndex >= questions.Count)
             {
+                // Update accuracy
+                if (_user?.QuizesCompleted == 0)
+                {
+                    _user.Accuracy = (int)(questionsCorrect * 10);
+                }
+                else
+                {
+                    _user!.Accuracy = (int)((questionsCorrect * 10) + _user.Accuracy) / 2;
+                }
+
                 // Go to exit screen
                 ActivateForm<formResult>(
                     (questionsCorrect, QUESTIONS_CORRECT),
@@ -74,9 +86,7 @@ public partial class formChooseQuiz : Form, IContext
 
     private void btnPuzzles_Click(object sender, EventArgs e)
     {
-        Puzzle.CreatePuzzles();
         List<Puzzle> puzzles = Puzzle.Puzzles;
-        // puzzles = puzzles.Take(puzzles.Count).ToList();
 
         int questionIndex = 0;
         int questionsCorrect = 0;
@@ -85,9 +95,12 @@ public partial class formChooseQuiz : Form, IContext
 
         onAnswer += (bool correct, int elo) =>
         {
-            if (correct) questionsCorrect++;
+            if (correct)
+            {
+                questionsCorrect++;
+            }
 
-            if(_user is User user)
+            if (_user is User user)
             {
                 if (elo != -1)
                 {
@@ -97,7 +110,6 @@ public partial class formChooseQuiz : Form, IContext
 
             if (questionIndex >= puzzles.Count)
             {
-                // Go to exit screen
                 ActivateForm<formResult>(
                     (questionsCorrect, QUESTIONS_CORRECT),
                     (questionIndex, INDEX),

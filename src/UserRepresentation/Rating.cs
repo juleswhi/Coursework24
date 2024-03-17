@@ -90,7 +90,6 @@ public record class ELO
         // Finally, update the rating!
         elo.Rating = (int)resultantRating;
 
-
         UpdateUser(ActiveUser!);
     }
 }

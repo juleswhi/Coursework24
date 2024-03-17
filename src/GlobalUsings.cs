@@ -23,8 +23,11 @@
 // Creates more seamless experience using helper ( extension ) methods ( see Helper.cs )
 
 // Similar use to FormatDirection
-global using static ChessMasterQuiz.Misc.SeverityType;
-
+global using Chess;
+global using UserRepresentation;
+global using static Chess.Colour;
+global using static Chess.Notation;
+global using static Chess.PieceType;
 /*
  
     Allows use of important methods w/o them hanging off the type ( gross ) 
@@ -39,13 +42,9 @@ global using static ChessMasterQuiz.Misc.SeverityType;
 */
 
 global using static ChessMasterQuiz.Helpers.ControlHelper;
-global using static System.Reflection.BindingFlags;
-global using UserRepresentation;
+global using static ChessMasterQuiz.Helpers.Helper;
 global using static ChessMasterQuiz.Misc.ContextTagType;
+global using static ChessMasterQuiz.Misc.SeverityType;
 global using static UserRepresentation.UserHelper;
 global using DCT = ChessMasterQuiz.Misc.DataContextTag;
-global using static ChessMasterQuiz.Helpers.Helper;
-global using static Chess.PieceType;
-global using static Chess.Colour;
-global using Chess;
-global using static Chess.Notation;
+global using static ChessMasterQuiz.Helpers.FormatDirection;

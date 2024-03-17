@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Text;
 
 namespace Chess;
@@ -140,8 +139,10 @@ public class PgnReader
 
     record struct Token(TokenType Type, object? Data)
     {
-        public override string ToString() =>
-            $"{Type}: {Data ?? ""}";
+        public override string ToString()
+        {
+            return $"{Type}: {Data ?? ""}";
+        }
     }
 
     private IEnumerable<Token> LexMetadata(string str)
@@ -221,7 +222,7 @@ public class PgnReader
 
     }
 
-    private static Dictionary<char, char> SkipperToCloserMap = new()
+    private static readonly Dictionary<char, char> SkipperToCloserMap = new()
     {
         { '{', '}' },
         { '(', ')' },

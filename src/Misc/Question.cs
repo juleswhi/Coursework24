@@ -1,5 +1,4 @@
 ﻿using static ChessMasterQuiz.Misc.QuestionType;
-using static ChessMasterQuiz.Misc.Difficulty;
 
 namespace ChessMasterQuiz.Misc;
 
@@ -38,7 +37,7 @@ public class TextQuestion : Question
     public TextQuestion()
     {
         Type = TEXT;
-        if(Rating != -1)
+        if (Rating != -1)
         {
             Rating = RatingFromDifficulty(Difficulty);
         }

@@ -6,19 +6,15 @@
 
 // System.Reflection is nessesary due to the nature of the Parser
 // The Parser should be able to look up the properties of types at runtime to deserialize any object
-using System.Reflection;
-using System.Text;
 // Needed for Debug.Print
 // Testing purposes ( this using should be removed )
 using System.Diagnostics;
-
-// This allows for access to the User class
-using ChessMasterQuiz;
-
-using static ChessMasterQuiz.Misc.TokenType;
-
-using static System.String;
+using System.Reflection;
+using System.Text;
 using static System.Char;
+using static System.String;
+// This allows for access to the User class
+using static ChessMasterQuiz.Misc.TokenType;
 
 
 // The QonConvert class and its associated classes ( Lexer, Parser, Token )
@@ -91,7 +87,11 @@ public static class QonConvert
         List<Question> questions = new();
         foreach (var str in strs)
         {
-            if (IsNullOrWhiteSpace(str)) continue;
+            if (IsNullOrWhiteSpace(str))
+            {
+                continue;
+            }
+
             List<Token> tokens = Lexer.Lex(str);
             Question question = Parser.Parse(tokens);
             questions.Add(question);
@@ -142,7 +142,10 @@ file class Token
     // DON'T USE EXCEPTIONS!
     public Token(TokenType type)
     {
-        if (type == DATA || type == IDENTIFIER) throw new Exception();
+        if (type == DATA || type == IDENTIFIER)
+        {
+            throw new Exception();
+        }
 
         Type = type;
         Data = null;
@@ -176,15 +179,24 @@ file static class Lexer
     // The same concept is used here
 
     // Next is used to iterate to the next char ( represented by `_current` ) 
-    static void Next(int step = 1) => _current += step;
+    static void Next(int step = 1)
+    {
+        _current += step;
+    }
 
     // The `Peek` method is used to look at the next char in the str
     // w/o having to increment the _current variable
-    static char Peek(ReadOnlySpan<char> str) => str[_current + 1];
+    static char Peek(ReadOnlySpan<char> str)
+    {
+        return str[_current + 1];
+    }
 
     // The `Current` method is ued to look at the current char in the str 
     // Perhaps the most important helper method here
-    static char Current(ReadOnlySpan<char> str) => str[_current];
+    static char Current(ReadOnlySpan<char> str)
+    {
+        return str[_current];
+    }
 
     // The `Consume` method adds the `token` to the list, 
     // and moves onto the next char to be evaluated
@@ -288,7 +300,7 @@ file static class Lexer
 // And converts them into useable C# objects.
 file static class Parser
 {
-    static List<Type> ValidTypes = new()
+    static readonly List<Type> ValidTypes = new()
     {
         typeof(Question),
         typeof(TextQuestion),
@@ -298,10 +310,25 @@ file static class Parser
     static int _current;
     static List<Token> _tokens = new();
 
-    static void Next(int step = 1) => _current += step;
-    static Token Peek() => _tokens[_current < _tokens.Count ? _current + 1 : _current];
-    static Token Current() => _tokens[_current];
-    static Token Previous() => _tokens[_current > 0 ? _current - 1 : _current];
+    static void Next(int step = 1)
+    {
+        _current += step;
+    }
+
+    static Token Peek()
+    {
+        return _tokens[_current < _tokens.Count ? _current + 1 : _current];
+    }
+
+    static Token Current()
+    {
+        return _tokens[_current];
+    }
+
+    static Token Previous()
+    {
+        return _tokens[_current > 0 ? _current - 1 : _current];
+    }
 
     public static Question Parse(List<Token> tokens)
     {

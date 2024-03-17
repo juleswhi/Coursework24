@@ -46,20 +46,23 @@
             // 
             // btnHome
             // 
+            btnHome.BackColor = Color.FromArgb(192, 255, 192);
+            btnHome.FlatStyle = FlatStyle.Flat;
             btnHome.Location = new Point(658, 387);
             btnHome.Name = "btnHome";
             btnHome.Size = new Size(130, 51);
             btnHome.TabIndex = 2;
             btnHome.Text = "Back";
-            btnHome.UseVisualStyleBackColor = true;
+            btnHome.UseVisualStyleBackColor = false;
             btnHome.Click += btnHome_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(76, 32);
+            label1.Font = new Font("JetBrains Mono", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(365, 158);
             label1.Name = "label1";
-            label1.Size = new Size(38, 15);
+            label1.Size = new Size(78, 25);
             label1.TabIndex = 3;
             label1.Text = "label1";
             // 
@@ -67,6 +70,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(800, 450);
             Controls.Add(label1);
             Controls.Add(btnHome);

@@ -33,6 +33,7 @@
             btnAnswer3 = new Button();
             btnAnswer4 = new Button();
             lblWinningMove = new Label();
+            label1 = new Label();
             SuspendLayout();
             // 
             // btnAnswer1
@@ -85,11 +86,22 @@
             lblWinningMove.TabIndex = 4;
             lblWinningMove.Text = "What is the winning move?";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("JetBrains Mono", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(698, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(90, 27);
+            label1.TabIndex = 5;
+            label1.Text = "label1";
+            // 
             // formPuzzleQuestion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             Controls.Add(lblWinningMove);
             Controls.Add(btnAnswer4);
             Controls.Add(btnAnswer3);
@@ -108,5 +120,6 @@
         private Button btnAnswer3;
         private Button btnAnswer4;
         private Label lblWinningMove;
+        private Label label1;
     }
 }

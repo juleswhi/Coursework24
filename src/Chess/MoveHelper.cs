@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using Chess;
 using Chess.BoardRepresentation;
 
 
@@ -13,7 +12,7 @@ public static class MoveHelper
     public static bool CheckIfPieceOnSquare(Notation location)
     {
         Debug.Print($"Checking if piece is on square.");
-        if(CurrentBoard is Board board)
+        if (CurrentBoard is Board board)
         {
             foreach (var piece in board.Pieces)
             {
@@ -41,7 +40,7 @@ public static class MoveHelper
 
     public static IEnumerable<Piece> GetPieceThatCouldMove(Notation location)
     {
-        if(CurrentBoard is null)
+        if (CurrentBoard is null)
         {
             throw new Exception("CurrentBoard must not be null");
         }
@@ -78,12 +77,12 @@ public static class MoveHelper
 
     public static bool PawnMove(Notation start, Notation destination, Board? board = null)
     {
-        if(board is null && CurrentBoard is null)
+        if (board is null && CurrentBoard is null)
         {
             throw new Exception("Board must be instantiated");
         }
 
-        if(board is Board b)
+        if (board is Board b)
         {
             CurrentBoard = b;
         }

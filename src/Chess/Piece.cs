@@ -11,7 +11,7 @@ public enum PieceType
     ROOK,
     QUEEN,
     KING
-}  
+}
 
 public class Piece
 {
@@ -35,7 +35,7 @@ public class Piece
             _ => true
         };
 
-        if(!legalMove)
+        if (!legalMove)
         {
             // Debug.Print("Not Legal Move");
             return;
@@ -43,7 +43,7 @@ public class Piece
 
         var pieceOnSquare = MoveHelper.CurrentBoard!.Pieces.FirstOrDefault(x => x.Location == location.Square);
 
-        if(pieceOnSquare is Piece p)
+        if (pieceOnSquare is Piece p)
         {
             Debug.Print($"Found: {pieceOnSquare.Type} on square {location.Square}");
             p.Remove();
@@ -61,6 +61,6 @@ public class Piece
 
     public override string ToString()
     {
-        return $"{Colour}{Type}";
+        return $"{Colour} {Type} at {Location}";
     }
 }

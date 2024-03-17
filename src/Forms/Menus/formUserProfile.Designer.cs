@@ -65,13 +65,13 @@
             // 
             // pBoxProfileImage
             // 
-            pBoxProfileImage.BackColor = SystemColors.ActiveCaption;
+            pBoxProfileImage.BackColor = Color.FromArgb(192, 255, 192);
+            pBoxProfileImage.BorderStyle = BorderStyle.FixedSingle;
             pBoxProfileImage.Location = new Point(559, 24);
             pBoxProfileImage.Name = "pBoxProfileImage";
             pBoxProfileImage.Size = new Size(171, 158);
             pBoxProfileImage.TabIndex = 4;
             pBoxProfileImage.TabStop = false;
-            pBoxProfileImage.Click += pBoxProfileImage_Click;
             // 
             // lblQuizCompleted
             // 
@@ -87,31 +87,29 @@
             // 
             lblTopScoreValue.AutoSize = true;
             lblTopScoreValue.Font = new Font("JetBrains Mono", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTopScoreValue.ForeColor = Color.Firebrick;
+            lblTopScoreValue.ForeColor = Color.FromArgb(0, 192, 0);
             lblTopScoreValue.Location = new Point(81, 135);
             lblTopScoreValue.Name = "lblTopScoreValue";
             lblTopScoreValue.Size = new Size(62, 47);
             lblTopScoreValue.TabIndex = 7;
             lblTopScoreValue.Text = "-1";
-            lblTopScoreValue.Click += label2_Click;
             // 
             // lblQuizCompleteValue
             // 
             lblQuizCompleteValue.AutoSize = true;
             lblQuizCompleteValue.Font = new Font("JetBrains Mono", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
-            lblQuizCompleteValue.ForeColor = Color.Firebrick;
+            lblQuizCompleteValue.ForeColor = Color.FromArgb(0, 192, 0);
             lblQuizCompleteValue.Location = new Point(332, 135);
             lblQuizCompleteValue.Name = "lblQuizCompleteValue";
             lblQuizCompleteValue.Size = new Size(62, 47);
             lblQuizCompleteValue.TabIndex = 7;
             lblQuizCompleteValue.Text = "-1";
-            lblQuizCompleteValue.Click += label2_Click;
             // 
             // lblAccuracyValue
             // 
             lblAccuracyValue.AutoSize = true;
             lblAccuracyValue.Font = new Font("JetBrains Mono", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
-            lblAccuracyValue.ForeColor = Color.Firebrick;
+            lblAccuracyValue.ForeColor = Color.FromArgb(0, 192, 0);
             lblAccuracyValue.Location = new Point(81, 308);
             lblAccuracyValue.Name = "lblAccuracyValue";
             lblAccuracyValue.Size = new Size(62, 47);
@@ -132,7 +130,7 @@
             // 
             lblRatingValue.AutoSize = true;
             lblRatingValue.Font = new Font("JetBrains Mono", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
-            lblRatingValue.ForeColor = Color.Firebrick;
+            lblRatingValue.ForeColor = Color.FromArgb(0, 192, 0);
             lblRatingValue.Location = new Point(332, 308);
             lblRatingValue.Name = "lblRatingValue";
             lblRatingValue.Size = new Size(62, 47);
@@ -151,29 +149,34 @@
             // 
             // lblMainMenu
             // 
+            lblMainMenu.BackColor = Color.FromArgb(192, 255, 192);
+            lblMainMenu.FlatStyle = FlatStyle.Flat;
             lblMainMenu.Font = new Font("JetBrains Mono", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblMainMenu.Location = new Point(559, 361);
             lblMainMenu.Name = "lblMainMenu";
             lblMainMenu.Size = new Size(181, 53);
             lblMainMenu.TabIndex = 12;
             lblMainMenu.Text = "Back To Main Menu";
-            lblMainMenu.UseVisualStyleBackColor = true;
+            lblMainMenu.UseVisualStyleBackColor = false;
             lblMainMenu.Click += lblMainMenu_Click;
             // 
             // btnNext
             // 
+            btnNext.BackColor = Color.FromArgb(192, 255, 192);
+            btnNext.FlatStyle = FlatStyle.Flat;
             btnNext.Location = new Point(559, 188);
             btnNext.Name = "btnNext";
             btnNext.Size = new Size(171, 41);
             btnNext.TabIndex = 14;
             btnNext.Text = "Next";
-            btnNext.UseVisualStyleBackColor = true;
+            btnNext.UseVisualStyleBackColor = false;
             btnNext.Click += btnNext_Click;
             // 
             // formUserProfile
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(800, 450);
             Controls.Add(btnNext);
             Controls.Add(lblMainMenu);

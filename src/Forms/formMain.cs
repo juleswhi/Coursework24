@@ -1,5 +1,4 @@
-﻿using static ChessMasterQuiz.Helpers.ControlHelper;
-namespace ChessMasterQuiz;
+﻿namespace ChessMasterQuiz;
 
 public partial class formMain : Form
 {
@@ -10,6 +9,9 @@ public partial class formMain : Form
     {
         InitializeComponent();
         GetPanelHolder = () => panelHolder;
+        Text = "Chess Master Quiz";
+
+        Users.ForEach(x => x.Logout());
 
         // ActivateForm<formMenu>();
         ActivateForm<formLogin>();

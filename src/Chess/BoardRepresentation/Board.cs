@@ -1,7 +1,5 @@
-﻿using System.Diagnostics;
-using ChessMasterQuiz.Chess;
+﻿using ChessMasterQuiz.Chess;
 using static Chess.ChessHelper;
-using static Chess.Colour;
 
 namespace Chess.BoardRepresentation;
 
@@ -17,6 +15,7 @@ public class Board : Panel
     public Piece? this[Notation location] =>
         Pieces.FirstOrDefault(x => x.Location! == location);
 
+    public Action<Square?> BoardClick = EmptyActionGeneric<Square?>();
 
     private static readonly Size _defaultBoardSize = new(400, 400);
     private int _squareWidth => this.Size.Width / 8;
@@ -33,17 +32,17 @@ public class Board : Panel
         size ??= _defaultBoardSize;
         Size = (Size)size;
 
-        for(int i = 0; i < 8; i++)
+        for (int i = 0; i < 8; i++)
         {
-            for(int j = 8; j >= 0; j--)
+            for (int j = 8; j >= 0; j--)
             {
                 Squares.Add(
                     // Obfuscation so you can't ever understand this
                     // Documentation can be found in hell
                     new Square(
                         (i + j) % 2 == 0
-                            ? White
-                            : Black,
+                            ? Black
+                            : White,
                         new Point(i * 50, 350 - (j * 50)),
                         ((char)(i + 97), j + 1)
                             ));
@@ -60,18 +59,18 @@ public class Board : Panel
         {
             var pos = PointToClient(MousePosition);
 
-            Point roundedPoint = new Point(
+            Point roundedPoint = new(
 
                 (int)Math.Floor(pos.X / 50m) * 50,
                 (int)Math.Floor(pos.Y / 50m) * 50
                 );
 
-            foreach(var square in Squares)
+            foreach (var square in Squares)
             {
-                if(square.Location == roundedPoint)
+                if (square.Location == roundedPoint)
                 {
                     SelectedSquare = square;
-                    Debug.Print($"Selected square is: {square}");
+                    BoardClick(SelectedSquare);
                 }
             }
 
@@ -96,7 +95,7 @@ public class Board : Panel
                 new Rectangle(square.Location, new(50, 50))
             );
 
-            
+
             if (SelectedSquare is Square key)
             {
                 if (key == square)
@@ -139,24 +138,23 @@ public class Board : Panel
 
     public void DisplayGame(PGN pgn, int PlyPause = 1000)
     {
-        Thread gameThread = new Thread(() =>
+        Thread gameThread = new(() =>
         {
             _continueGame = true;
             foreach (var (white, black) in pgn.Moves)
             {
-                // Debug.Print($"White move: {this[white.InitialSquare]?.Location}");
                 this[white.InitialSquare]?.Move(white);
-                Debug.Print($"{white.GetNotation()}");
                 Thread.Sleep(PlyPause);
-                // Debug.Print($"Black move: {this[white.InitialSquare]?.Location}");
-                if(black is null)
+                if (black is null)
                 {
                     break;
                 }
                 this[black.InitialSquare]?.Move(black);
-                Debug.Print($"{black.GetNotation()}");
                 Thread.Sleep(PlyPause);
-                if (!_continueGame) break;
+                if (!_continueGame)
+                {
+                    break;
+                }
             }
         });
         gameThread.Start();

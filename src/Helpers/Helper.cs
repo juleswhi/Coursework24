@@ -6,15 +6,27 @@ namespace ChessMasterQuiz.Helpers;
 
 public static class Helper
 {
-    private static Random _random = new Random();
-    public static Action EmptyAction => new Action(() => { });
-    public static Action<T> EmptyActionGeneric<T>() => new Action<T>((_) => { });
-    public static Action<Ti, Tj> EmptyActionGeneric<Ti, Tj>() => new Action<Ti, Tj>((_, _) => { });
-    public static void MainMenu() => ActivateForm<formMenu>();
+    private static readonly Random _random = new();
+    public static Action EmptyAction => new(() => { });
+    public static Action<T> EmptyActionGeneric<T>()
+    {
+        return new Action<T>((_) => { });
+    }
+
+    public static Action<Ti, Tj> EmptyActionGeneric<Ti, Tj>()
+    {
+        return new Action<Ti, Tj>((_, _) => { });
+    }
+
+    public static void MainMenu()
+    {
+        ActivateForm<formMenu>();
+    }
+
     public static void Shuffle<T>(this IList<T> list)
     {
         int n = list.Count;
-        while(n > 1)
+        while (n > 1)
         {
             n--;
             int k = _random.Next(n + 1);
@@ -52,12 +64,12 @@ public static class Helper
 
         List<Puzzle>? puzzles = JsonSerializer.Deserialize<List<Puzzle>>(input);
 
-        if(puzzles is null)
+        if (puzzles is null)
         {
             throw new Exception($"Could not deserialize the List of Puzzles correctly :(");
         }
 
-        foreach(var puzzle in puzzles)
+        foreach (var puzzle in puzzles)
         {
             Debug.Print($"{puzzle.Rating}");
         }

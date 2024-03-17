@@ -54,7 +54,9 @@ public partial class formPuzzleQuestion : Form, IContext
             buttons[i].Text = answers[i];
         }
 
-        Board board = new Board();
+        label1.Text = $"{context.GetFirst<string>(NUMBER)} / 10";
+
+        Board board = new();
         board.Location = new(30, 30);
         board.Pieces = puzzle.Setup.ToList();
 

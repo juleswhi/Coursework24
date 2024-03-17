@@ -1,8 +1,7 @@
-﻿using static ChessMasterQuiz.Misc.ValidationType;
-using static ChessMasterQuiz.Misc.RequirementType;
+﻿using System.Net.Mail;
 using System.Text.RegularExpressions;
-using System.Net.Mail;
-using System.Text;
+using static ChessMasterQuiz.Misc.RequirementType;
+using static ChessMasterQuiz.Misc.ValidationType;
 
 namespace ChessMasterQuiz.Misc;
 
@@ -82,9 +81,21 @@ internal static class Validator
 
     private static bool ValidateDisplayName(this string text)
     {
-        if (string.IsNullOrWhiteSpace(text)) return false;
-        if (text.Length < 4) return false;
-        if (text.Length > 16) return false;
+        if (string.IsNullOrWhiteSpace(text))
+        {
+            return false;
+        }
+
+        if (text.Length < 4)
+        {
+            return false;
+        }
+
+        if (text.Length > 16)
+        {
+            return false;
+        }
+
         if (text.Any(x => !char.IsLetterOrDigit(x)))
         {
             return false;
@@ -95,9 +106,21 @@ internal static class Validator
 
     private static bool ValidateUsername(this string text)
     {
-        if (string.IsNullOrWhiteSpace(text)) return false;
-        if (text.Length < 4) return false;
-        if (text.Length > 16) return false;
+        if (string.IsNullOrWhiteSpace(text))
+        {
+            return false;
+        }
+
+        if (text.Length < 4)
+        {
+            return false;
+        }
+
+        if (text.Length > 16)
+        {
+            return false;
+        }
+
         if (text.Any(x => !char.IsLetterOrDigit(x)))
         {
             return false;
@@ -110,8 +133,15 @@ internal static class Validator
 
     private static bool ValidateGender(this string text)
     {
-        if (text.Length > 15) return false;
-        if (text.Any(x => !char.IsLetter(x))) return false;
+        if (text.Length > 15)
+        {
+            return false;
+        }
+
+        if (text.Any(x => !char.IsLetter(x)))
+        {
+            return false;
+        }
 
         return true;
     }

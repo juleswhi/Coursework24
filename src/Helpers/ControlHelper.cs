@@ -1,7 +1,4 @@
-﻿
-using WinFormsScraper;
-
-using ChessMasterQuiz.Misc;
+﻿using ChessMasterQuiz.Misc;
 using static ChessMasterQuiz.Helpers.FormatDirection;
 namespace ChessMasterQuiz.Helpers;
 
@@ -25,7 +22,7 @@ public static class ControlHelper
         return context.Where(x => x.tag == type).Select(x => x.data);
     }
 
-    private static Dictionary<Type, ContextTagType> TypeToContextMap = new()
+    private static readonly Dictionary<Type, ContextTagType> TypeToContextMap = new()
     {
         { typeof(Puzzle), PUZZLE },
 
@@ -49,27 +46,41 @@ public static class ControlHelper
 
     public static Control? FindTag(this IEnumerable<Control> controls, string tag)
     {
-        foreach(var control in controls)
+        foreach (var control in controls)
         {
-            if (control.Tag is null) continue;
-            if ((string)control.Tag == tag) return control;
+            if (control.Tag is null)
+            {
+                continue;
+            }
+
+            if ((string)control.Tag == tag)
+            {
+                return control;
+            }
         }
         return null;
     }
 
     public static IEnumerable<TextBox> FindPlaceHolder(this IEnumerable<TextBox> controls, string text)
     {
-        foreach(var control in controls)
+        foreach (var control in controls)
         {
-            if (control.PlaceholderText is null) continue;
-            if (control.PlaceholderText.ToLower() == text) yield return control;
+            if (control.PlaceholderText is null)
+            {
+                continue;
+            }
+
+            if (control.PlaceholderText.ToLower() == text)
+            {
+                yield return control;
+            }
         }
     }
 
     public static IEnumerable<DataContextTag> ToDCT(this IEnumerable<object> objs)
     {
         List<DataContextTag> dcts = new();
-        foreach(var o in objs)
+        foreach (var o in objs)
         {
             dcts.Add((DataContextTag)o);
         }
@@ -104,7 +115,7 @@ public static class ControlHelper
     public static void ActivateForm<T>(params (object, ContextTagType)[] context) where T : Form, new()
     {
         List<DCT> dct = new();
-        foreach(var (obj, tag) in context)
+        foreach (var (obj, tag) in context)
         {
             dct.Add(new(obj, tag));
         }
@@ -150,7 +161,8 @@ public static class ControlHelper
     /// <typeparam name="T">The Type of Form to Create</typeparam>
     /// <param name="context">Enumerable of <c>DataContextTag</c>'s to pass</param>
     /// <returns>The Form Created</returns>
-    public static Form CreateForm<T>(IEnumerable<DataContextTag> context) where T : Form, new() {
+    public static Form CreateForm<T>(IEnumerable<DataContextTag> context) where T : Form, new()
+    {
         // Create the Form
         var instance = Activator.CreateInstance<T>()!;
 
@@ -163,8 +175,7 @@ public static class ControlHelper
             method!.Invoke(instance, new object[] { context });
         }
 
-        WinFormsScraper.WinFormsScraper.Scrape(instance);
-
+        // WinFormsScraper.WinFormsScraper.Scrape(instance);
 
         // Return the form
         return instance;
@@ -209,19 +220,23 @@ public static class ControlHelper
 
     public static void RedIfWrong(this TextBox textbox, bool isRight)
     {
-        if(isRight)
+        if (isRight)
         {
             textbox.BackColor = Color.FromArgb(255, 81, 94, 74);
         }
         else
         {
             textbox.BackColor = Color.FromArgb(255, 225, 117, 111);
-        } 
+        }
     }
 
     public static void CreateEquidistantIntervals<T>(this List<T> controls, float distance, int index = 0) where T : Control
     {
-        if (index >= controls.Count() - 1) return;
+        if (index >= controls.Count() - 1)
+        {
+            return;
+        }
+
         var bottom = controls[index].Bottom;
         controls[index + 1].Top = bottom + (int)distance;
 

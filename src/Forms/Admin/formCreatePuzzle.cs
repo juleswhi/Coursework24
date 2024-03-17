@@ -4,8 +4,8 @@ namespace ChessMasterQuiz.Forms.Admin;
 
 public partial class formCreatePuzzle : Form
 {
-    private List<Piece> pieces = new();
-    private Board? _board = new();
+    private readonly List<Piece> pieces = new();
+    private readonly Board? _board = new();
 
     private PieceType? SelectedPiece = null;
     private Colour? SelectedColour = null;
@@ -17,11 +17,28 @@ public partial class formCreatePuzzle : Form
         _board.Location = new Point(50, 20);
         _board.Pieces.Clear();
 
-        foreach(PictureBox pbox in Controls.OfType<PictureBox>())
+        _board.BoardClick += (Square? s) =>
+        {
+            if (SelectedPiece is null)
+            {
+                return;
+            }
+
+            if (SelectedColour is null)
+            {
+                return;
+            }
+
+            pieces.Add(new Piece((PieceType)SelectedPiece, From(s!.BoardLocation), (Colour)SelectedColour!));
+            _board.Pieces = pieces;
+            _board!.Invalidate();
+        };
+
+        foreach (PictureBox pbox in Controls.OfType<PictureBox>())
         {
             pbox.Click += (s, e) =>
             {
-                if(SelectedPBox is not null)
+                if (SelectedPBox is not null)
                 {
                     SelectedPBox.BorderStyle = BorderStyle.None;
                 }
@@ -30,23 +47,6 @@ public partial class formCreatePuzzle : Form
             };
         }
         Controls.Add(_board);
-
-    }
-
-    private void btnAddPiece_Click(object sender, EventArgs e)
-    {
-        if (SelectedPiece is null) return;
-        if (SelectedColour is null) return;
-
-        if (_board.SelectedSquare is null) return;
-
-        Notation Location = Notation.From(_board.SelectedSquare!.BoardLocation);
-
-        pieces.Add(new Piece((PieceType)SelectedPiece, Location, (Colour)SelectedColour!));
-
-        _board!.Pieces = pieces;
-
-        _board!.Invalidate();
 
     }
 

@@ -5,7 +5,7 @@ namespace ChessMasterQuiz.QuestionDir;
 
 public partial class formTextQuestion : Form, IContext
 {
-    private List<Button> _buttons;
+    private readonly List<Button> _buttons;
     private TextQuestion? _tq = null;
     public formTextQuestion()
     {
@@ -42,17 +42,28 @@ public partial class formTextQuestion : Form, IContext
     public void UseContext(IEnumerable<DataContextTag> context)
     {
         var questionData = context.GetFirst(QUESTION) as TextQuestion;
-        if(questionData is TextQuestion q)
+        if (questionData is TextQuestion q)
         {
             _tq = q;
         }
 
-        if (questionData is null) ActivateForm<formMenu>();
+        if (questionData is null)
+        {
+            ActivateForm<formMenu>();
+        }
 
         for (int i = 0; i < _buttons.Count; i++)
         {
-            if (_buttons[i] is null) continue;
-            if (questionData?.A?.Answers.Count <= i) continue;
+            if (_buttons[i] is null)
+            {
+                continue;
+            }
+
+            if (questionData?.A?.Answers.Count <= i)
+            {
+                continue;
+            }
+
             _buttons[i].Text = questionData?.A?.Answers[i];
         }
 
@@ -60,13 +71,19 @@ public partial class formTextQuestion : Form, IContext
 
         var number = context.GetFirst(NUMBER) as string;
 
-        if (number is null) ActivateForm<formMenu>();
+        if (number is null)
+        {
+            ActivateForm<formMenu>();
+        }
 
         lblNumber.Text = $"{number} / 10";
 
         var onAnswered = context.GetFirst(ACTION);
 
-        if (onAnswered is null) ActivateForm<formMenu>();
+        if (onAnswered is null)
+        {
+            ActivateForm<formMenu>();
+        }
 
         Debug.Print($"OnAnswered is not null");
 

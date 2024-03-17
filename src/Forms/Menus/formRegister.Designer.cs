@@ -48,6 +48,7 @@
             // 
             txtBoxEmail.AcceptsReturn = true;
             txtBoxEmail.AcceptsTab = true;
+            txtBoxEmail.BackColor = Color.FromArgb(192, 255, 192);
             txtBoxEmail.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxEmail.Location = new Point(47, 13);
             txtBoxEmail.Name = "txtBoxEmail";
@@ -61,6 +62,7 @@
             // 
             txtBoxPassword.AcceptsReturn = true;
             txtBoxPassword.AcceptsTab = true;
+            txtBoxPassword.BackColor = Color.FromArgb(192, 255, 192);
             txtBoxPassword.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxPassword.Location = new Point(47, 78);
             txtBoxPassword.Name = "txtBoxPassword";
@@ -73,6 +75,7 @@
             // 
             txtBoxDisplayName.AcceptsReturn = true;
             txtBoxDisplayName.AcceptsTab = true;
+            txtBoxDisplayName.BackColor = Color.FromArgb(192, 255, 192);
             txtBoxDisplayName.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxDisplayName.Location = new Point(47, 143);
             txtBoxDisplayName.Name = "txtBoxDisplayName";
@@ -83,19 +86,22 @@
             // 
             // btnRegister
             // 
+            btnRegister.BackColor = Color.FromArgb(192, 255, 192);
+            btnRegister.FlatStyle = FlatStyle.Flat;
             btnRegister.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             btnRegister.Location = new Point(146, 357);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(174, 63);
             btnRegister.TabIndex = 6;
             btnRegister.Text = "Register!";
-            btnRegister.UseVisualStyleBackColor = true;
+            btnRegister.UseVisualStyleBackColor = false;
             btnRegister.Click += btnRegister_Click;
             // 
             // txtBoxGender
             // 
             txtBoxGender.AcceptsReturn = true;
             txtBoxGender.AcceptsTab = true;
+            txtBoxGender.BackColor = Color.FromArgb(192, 255, 192);
             txtBoxGender.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxGender.Location = new Point(47, 208);
             txtBoxGender.Name = "txtBoxGender";
@@ -109,6 +115,7 @@
             // 
             txtBoxDob.AcceptsReturn = true;
             txtBoxDob.AcceptsTab = true;
+            txtBoxDob.BackColor = Color.FromArgb(192, 255, 192);
             txtBoxDob.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxDob.Location = new Point(47, 273);
             txtBoxDob.Name = "txtBoxDob";
@@ -119,6 +126,7 @@
             // 
             // progressPassword
             // 
+            progressPassword.BackColor = Color.FromArgb(192, 255, 192);
             progressPassword.Location = new Point(47, 127);
             progressPassword.Name = "progressPassword";
             progressPassword.Size = new Size(249, 10);
@@ -135,6 +143,7 @@
             // 
             // pBarUsername
             // 
+            pBarUsername.BackColor = Color.FromArgb(192, 255, 192);
             pBarUsername.Location = new Point(47, 62);
             pBarUsername.Name = "pBarUsername";
             pBarUsername.Size = new Size(249, 10);
@@ -142,6 +151,7 @@
             // 
             // pBarDisplayName
             // 
+            pBarDisplayName.BackColor = Color.FromArgb(192, 255, 192);
             pBarDisplayName.Location = new Point(47, 192);
             pBarDisplayName.Name = "pBarDisplayName";
             pBarDisplayName.Size = new Size(249, 10);
@@ -149,6 +159,7 @@
             // 
             // pBarGender
             // 
+            pBarGender.BackColor = Color.FromArgb(192, 255, 192);
             pBarGender.Location = new Point(47, 257);
             pBarGender.Name = "pBarGender";
             pBarGender.Size = new Size(249, 10);
@@ -156,6 +167,7 @@
             // 
             // pBarDob
             // 
+            pBarDob.BackColor = Color.FromArgb(192, 255, 192);
             pBarDob.Location = new Point(47, 322);
             pBarDob.Name = "pBarDob";
             pBarDob.Size = new Size(249, 10);
@@ -163,19 +175,22 @@
             // 
             // btnBack
             // 
+            btnBack.BackColor = Color.FromArgb(192, 255, 192);
+            btnBack.FlatStyle = FlatStyle.Flat;
             btnBack.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             btnBack.Location = new Point(30, 357);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(108, 63);
             btnBack.TabIndex = 7;
             btnBack.Text = "Back";
-            btnBack.UseVisualStyleBackColor = true;
+            btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;
             // 
             // formRegister
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(800, 450);
             Controls.Add(btnBack);
             Controls.Add(pBarDob);

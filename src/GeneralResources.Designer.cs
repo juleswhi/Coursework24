@@ -63,9 +63,9 @@ namespace ChessMasterQuiz {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ChessMasterLogo {
+        internal static System.Drawing.Bitmap ChessMaster_Alpha {
             get {
-                object obj = ResourceManager.GetObject("ChessMasterLogo", resourceCulture);
+                object obj = ResourceManager.GetObject("ChessMaster_Alpha", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

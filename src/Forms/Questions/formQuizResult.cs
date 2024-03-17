@@ -1,5 +1,4 @@
-﻿using static ChessMasterQuiz.Helpers.ControlHelper;
-namespace ChessMasterQuiz.QuestionDir;
+﻿namespace ChessMasterQuiz.QuestionDir;
 
 public partial class formQuizResult : Form
 {

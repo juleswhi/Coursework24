@@ -1,8 +1,5 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
-using System.Net.Mail;
-using System.Diagnostics;
-using ChessMasterQuiz.Forms;
 using ChessMasterQuiz.Chess;
 
 namespace UserRepresentation;
@@ -40,7 +37,7 @@ public class User
     public string Gender { get; set; } = string.Empty;
 
     // The Date of birth of the user
-    public DateTime DOB { get; set; } 
+    public DateTime DOB { get; set; }
 
     // The `UserType` can either be Admin or User 
     public UserType Type { get; set; } = UserType.USER;
@@ -49,7 +46,7 @@ public class User
     public ELO Elo { get; set; } = new();
 
     // A percentage representing the users accuracy
-    public float Accuracy { get; set; } 
+    public float Accuracy { get; set; } = 100;
 
     // Represents the most questions answered in a single round for a particular user
     public int HighScore { get; set; }
@@ -63,7 +60,7 @@ public class User
     // Bool value to validate who is logged in
     public bool IsLoggedIn { get; private set; }
 
-    public static IReadOnlyList<Image> ProfilePictures { get; } 
+    public static IReadOnlyList<Image> ProfilePictures { get; }
 
     public User()
     { }

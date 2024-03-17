@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using ChessMasterQuiz.Misc;
+﻿using ChessMasterQuiz.Misc;
 
 namespace ChessMasterQuiz;
 
@@ -9,7 +8,7 @@ public partial class formLogin : Form, IContext
     {
         InitializeComponent();
 
-        pBoxLogo.Image = GeneralResources.ChessMasterLogo;
+        pBoxLogo.Image = GeneralResources.ChessMaster_Alpha;
         pBoxLogo.SizeMode = PictureBoxSizeMode.StretchImage;
 
         Resize += onResize;
@@ -50,5 +49,10 @@ public partial class formLogin : Form, IContext
 
     public void UseContext(IEnumerable<DCT> context)
     {
+    }
+
+    private void txtBoxEmail_TextChanged(object sender, EventArgs e)
+    {
+
     }
 }

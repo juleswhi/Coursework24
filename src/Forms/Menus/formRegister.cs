@@ -1,12 +1,11 @@
-﻿using static ChessMasterQuiz.Misc.ValidationType;
-using ChessMasterQuiz.Misc;
-using System.Diagnostics;
+﻿using ChessMasterQuiz.Misc;
+using static ChessMasterQuiz.Misc.ValidationType;
 
 namespace ChessMasterQuiz;
 public partial class formRegister : Form, IContext
 {
-    private Dictionary<ValidationType, ProgressBar> ValidationToBarMap = new();
-    private Dictionary<ValidationType, bool> ValidationToBoolMap = new()
+    private readonly Dictionary<ValidationType, ProgressBar> ValidationToBarMap = new();
+    private readonly Dictionary<ValidationType, bool> ValidationToBoolMap = new()
     {
         { USERNAME, false },
         { PASSWORD, false },
@@ -28,7 +27,7 @@ public partial class formRegister : Form, IContext
             { GENDER, pBarGender }
         };
 
-        pBoxLogo.Image = GeneralResources.ChessMasterLogo;
+        pBoxLogo.Image = GeneralResources.ChessMaster_Alpha;
         pBoxLogo.SizeMode = PictureBoxSizeMode.StretchImage;
         progressPassword.Maximum = 100;
         Resize += FormRegister_Resize;
@@ -49,7 +48,7 @@ public partial class formRegister : Form, IContext
                 }
                 ValidationToBoolMap[vt] = val;
 
-                if(ValidationToBoolMap.All(x => x.Value == true))
+                if (ValidationToBoolMap.All(x => x.Value == true))
                 {
                     btnRegister.Enabled = true;
                 }
@@ -109,7 +108,7 @@ public partial class formRegister : Form, IContext
 
         Users.Add(user);
 
-        WriteUsers();
+        WriteUser(user);
 
         ActivateForm<formMenu>((user, USER));
     }

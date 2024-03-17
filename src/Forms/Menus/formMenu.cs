@@ -1,9 +1,9 @@
-﻿using ChessMasterQuiz.Forms;
-using Chess.BoardRepresentation;
-using ChessMasterQuiz.Misc;
+﻿using Chess.BoardRepresentation;
 using ChessMasterQuiz.Chess;
-using ChessMasterQuiz.Forms.Menus;
+using ChessMasterQuiz.Forms;
 using ChessMasterQuiz.Forms.Admin;
+using ChessMasterQuiz.Forms.Menus;
+using ChessMasterQuiz.Misc;
 
 namespace ChessMasterQuiz;
 
@@ -15,7 +15,7 @@ public partial class formMenu : Form, IContext
     {
         var userContext = (User?)context.GetFirst(USER);
 
-        if(userContext is null)
+        if (userContext is null)
         {
             userContext = ActiveUser;
         }
@@ -23,8 +23,6 @@ public partial class formMenu : Form, IContext
         _user = userContext!;
 
         pBoxProfile.Image = User.ProfilePictures[_user!.ImageIndex];
-
-        label1.Text = _user.Username;
     }
 
     public formMenu()
@@ -34,14 +32,14 @@ public partial class formMenu : Form, IContext
         pBoxProfile.BackgroundImageLayout = ImageLayout.Stretch;
         pBoxProfile.SizeMode = PictureBoxSizeMode.CenterImage;
 
-        Board board = new Board();
+        Board board = new();
 
-        PgnReader reader = new PgnReader();
+        PgnReader reader = new();
 
         reader.FromBytes(PGNLibrary.Steinitz_Best_Games);
         PGN game = new();
 
-        if(reader.Games.Count != 0)
+        if (reader.Games.Count != 0)
         {
             game = reader.Games.First();
         }
@@ -75,4 +73,5 @@ public partial class formMenu : Form, IContext
         MoveHelper.CurrentBoard?.StopGame();
         ActivateForm<formCreatePuzzle>();
     }
+
 }

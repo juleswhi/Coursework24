@@ -1,13 +1,5 @@
 ﻿using static ChessMasterQuiz.Chess.ChessPieces;
 
-using System.Diagnostics;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime.CompilerServices;
-using System.Text;
-using ChessMasterQuiz.Chess;
-using static Chess.Colour;
-using static Chess.PieceType;
-
 namespace Chess;
 public enum Colour
 {
@@ -19,6 +11,10 @@ public record struct Notation(char File, int Rank) : IEquatable<SAN>, IEquatable
 {
     public override string ToString()
     {
+
+        var a = typeof(Notation).GetProperty("File");
+
+
         return $"{File}{Rank}";
     }
 
@@ -29,7 +25,11 @@ public record struct Notation(char File, int Rank) : IEquatable<SAN>, IEquatable
 
     public static Notation From(string location)
     {
-        if (location.Length != 2) return default;
+        if (location.Length != 2)
+        {
+            return default;
+        }
+
         return new Notation(location[0], int.Parse(location[1].ToString()));
     }
 
@@ -53,16 +53,19 @@ public static class ChessHelper
 {
 
 
-    public static Image GetImage(this Piece piece) => piece.Type switch
+    public static Image GetImage(this Piece piece)
     {
-        PAWN => piece.Colour == White ? WhitePawn : BlackPawn,
-        KNIGHT => piece.Colour == White ? WhiteKnight : BlackKnight,
-        BISHOP => piece.Colour == White ? WhiteBishop : BlackBishop,
-        ROOK => piece.Colour == White ? WhiteRook : BlackRook,
-        QUEEN => piece.Colour == White ? WhiteQueen : BlackQueen,
-        KING => piece.Colour == White ? WhiteKing : BlackKing,
-        _ => WhitePawn
-    };
+        return piece.Type switch
+        {
+            PAWN => piece.Colour == White ? WhitePawn : BlackPawn,
+            KNIGHT => piece.Colour == White ? WhiteKnight : BlackKnight,
+            BISHOP => piece.Colour == White ? WhiteBishop : BlackBishop,
+            ROOK => piece.Colour == White ? WhiteRook : BlackRook,
+            QUEEN => piece.Colour == White ? WhiteQueen : BlackQueen,
+            KING => piece.Colour == White ? WhiteKing : BlackKing,
+            _ => WhitePawn
+        };
+    }
 
     public static IEnumerable<T> From<T>(params T[] nums)
     {
@@ -92,17 +95,21 @@ public static class ChessHelper
         return PAWN;
     }
 
-    public static char GetChar(this PieceType type) => type switch
+    public static char GetChar(this PieceType type)
     {
-        PAWN => ' ',
-        KNIGHT => 'N',
-        BISHOP => 'B',
-        ROOK => 'R',
-        QUEEN => 'Q',
-        KING => 'K',
-        _ => '_'
+        return type switch
+        {
+            PAWN => ' ',
+            KNIGHT => 'N',
+            BISHOP => 'B',
+            ROOK => 'R',
+            QUEEN => 'Q',
+            KING => 'K',
+            _ => '_'
 
-    };
+        };
+    }
+
     public static Dictionary<char, PieceType> CharToNotation = new()
     {
         { 'p', PAWN },
@@ -140,14 +147,14 @@ public static class ChessHelper
     {
         var imageSize = image.Size;
 
-        PointF midpoint = new (
-            location.X + (float)0.5*size.Width,
-            location.Y + (float)0.5*size.Height
+        PointF midpoint = new(
+            location.X + (float)0.5 * size.Width,
+            location.Y + (float)0.5 * size.Height
             );
 
-        PointF accountForImage = new (
-            midpoint.X - (float)0.5*imageSize.Width,
-            midpoint.Y - (float)0.5*imageSize.Height
+        PointF accountForImage = new(
+            midpoint.X - (float)0.5 * imageSize.Width,
+            midpoint.Y - (float)0.5 * imageSize.Height
             );
 
 
@@ -217,9 +224,9 @@ public static class ChessHelper
                     new Piece(QUEEN, Notation.From('d', (colour == 1 ? 1 : 8)), (Colour)colour))
             );
 
-        foreach(var piece in Pieces)
+        foreach (var piece in Pieces)
         {
-            if(piece.Location.Rank == 9)
+            if (piece.Location.Rank == 9)
             {
                 Pieces.Remove(piece);
             }

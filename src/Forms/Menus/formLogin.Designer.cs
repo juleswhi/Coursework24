@@ -42,7 +42,7 @@
             // 
             lblNewQuiz.AutoSize = true;
             lblNewQuiz.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lblNewQuiz.Location = new Point(27, 325);
+            lblNewQuiz.Location = new Point(36, 325);
             lblNewQuiz.Name = "lblNewQuiz";
             lblNewQuiz.Size = new Size(271, 36);
             lblNewQuiz.TabIndex = 3;
@@ -55,51 +55,60 @@
             lblLogin.Location = new Point(105, 61);
             lblLogin.Name = "lblLogin";
             lblLogin.Size = new Size(114, 43);
-            lblLogin.TabIndex = 4;
+            lblLogin.TabIndex = 0;
             lblLogin.Text = "Login";
             // 
             // btnRegister
             // 
+            btnRegister.BackColor = Color.FromArgb(192, 255, 192);
+            btnRegister.FlatStyle = FlatStyle.Flat;
             btnRegister.Font = new Font("JetBrains Mono", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnRegister.Location = new Point(67, 371);
+            btnRegister.Location = new Point(76, 371);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(181, 50);
             btnRegister.TabIndex = 5;
             btnRegister.Text = "Register";
-            btnRegister.UseVisualStyleBackColor = true;
+            btnRegister.UseVisualStyleBackColor = false;
             // 
             // txtBoxEmail
             // 
             txtBoxEmail.AcceptsReturn = true;
             txtBoxEmail.AcceptsTab = true;
+            txtBoxEmail.BackColor = Color.WhiteSmoke;
+            txtBoxEmail.BorderStyle = BorderStyle.FixedSingle;
             txtBoxEmail.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxEmail.Location = new Point(56, 125);
             txtBoxEmail.Name = "txtBoxEmail";
-            txtBoxEmail.PlaceholderText = "Username";
+            txtBoxEmail.PlaceholderText = "Username..";
             txtBoxEmail.Size = new Size(222, 43);
             txtBoxEmail.TabIndex = 1;
+            txtBoxEmail.TextChanged += txtBoxEmail_TextChanged;
             // 
             // txtBoxPassword
             // 
             txtBoxPassword.AcceptsReturn = true;
             txtBoxPassword.AcceptsTab = true;
+            txtBoxPassword.BackColor = Color.WhiteSmoke;
+            txtBoxPassword.BorderStyle = BorderStyle.FixedSingle;
             txtBoxPassword.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxPassword.Location = new Point(56, 174);
             txtBoxPassword.Name = "txtBoxPassword";
             txtBoxPassword.PasswordChar = '*';
-            txtBoxPassword.PlaceholderText = "Password";
+            txtBoxPassword.PlaceholderText = "Password..";
             txtBoxPassword.Size = new Size(222, 43);
             txtBoxPassword.TabIndex = 2;
             // 
             // btnLogin
             // 
+            btnLogin.BackColor = Color.FromArgb(192, 255, 192);
+            btnLogin.FlatStyle = FlatStyle.Flat;
             btnLogin.Font = new Font("JetBrains Mono", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnLogin.Location = new Point(56, 223);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(222, 43);
             btnLogin.TabIndex = 3;
             btnLogin.Text = "Login";
-            btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
             // 
             // pBoxLogo
@@ -114,6 +123,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(800, 450);
             Controls.Add(pBoxLogo);
             Controls.Add(txtBoxPassword);

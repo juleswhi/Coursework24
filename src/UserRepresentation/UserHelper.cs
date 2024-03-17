@@ -8,28 +8,35 @@ namespace UserRepresentation;
 public static class UserHelper
 {
     static readonly string _userpath = "users.json";
-
     public static List<User> Users => ReadUsers();
-
     public static List<User> ReadUsers()
     {
         string input = File.ReadAllText(_userpath);
 
         List<User>? users = JsonSerializer.Deserialize<List<User>>(input);
 
-        if(users is null)
+        if (users is null)
         {
             throw new Exception($"Could not serialize the List of users correctly :(");
         }
+
+        Debug.Print($"There are: {users.Count} Users");
 
         return users;
     }
 
     public static void UpdateUser(User user)
     {
+        if(user is null)
+        {
+            return;
+        }
+
         List<User> users = Users;
 
-        users.RemoveAll(x => x.Username == user.Username);
+        if(users.Any(x => x.Username == user.Username)) {
+            users.RemoveAll(x => x.Username == user.Username);
+        }
 
         users.Add(user);
 
@@ -39,6 +46,11 @@ public static class UserHelper
     public static void WriteUsers()
     {
         UpdateUser(ActiveUser!);
+    }
+
+    public static void WriteUser(User user)
+    {
+        UpdateUser(user);
     }
 
     public static void WriteUsers(List<User>? u)
@@ -66,7 +78,7 @@ public static class UserHelper
     }
 
 
-    public static User TestUser => new User("root", "root", false)
+    public static User TestUser => new("root", "root", false)
     {
         Name = "Root User",
         Gender = "N/A",

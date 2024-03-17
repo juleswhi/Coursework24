@@ -3,20 +3,20 @@
 internal class panelLeaderboardEntry : Panel
 {
     public User? user = null;
-    public panelLeaderboardEntry(User u, int index) : base()
+    public panelLeaderboardEntry(User u, int x, int y, int width, int height, int index) : base()
     {
-        Size = new Size(450, 50);
+        Size = new Size(width, height / 5);
         user = u;
-
-        int panelWidth = 450 / 5;
+        int panelWidth = width / 5;
+        int panelHeight = height / 5;
 
         List<Panel> panels = new();
-        for(int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++)
         {
             Panel panel = new()
             {
                 Size = new(panelWidth, 50),
-                Location = new(Location.X + panelWidth * i, Location.Y)
+                Location = new(x + (panelWidth * i), y + (panelHeight * index))
             };
 
             panels.Add(panel);
@@ -37,5 +37,5 @@ internal class panelLeaderboardEntry : Panel
         panels[3].Controls[0].Text = $"{user.HighScore}";
         panels[4].Controls[0].Text = $"{user.QuizesCompleted}";
     }
-    
+
 }

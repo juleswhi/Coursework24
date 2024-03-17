@@ -60,6 +60,8 @@
             // 
             // btnAnswer1
             // 
+            btnAnswer1.BackColor = Color.FromArgb(192, 255, 192);
+            btnAnswer1.FlatStyle = FlatStyle.Flat;
             btnAnswer1.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             btnAnswer1.Location = new Point(129, 116);
             btnAnswer1.Name = "btnAnswer1";
@@ -67,10 +69,12 @@
             btnAnswer1.TabIndex = 1;
             btnAnswer1.Tag = "1";
             btnAnswer1.Text = "Answer 1";
-            btnAnswer1.UseVisualStyleBackColor = true;
+            btnAnswer1.UseVisualStyleBackColor = false;
             // 
             // btnAnswer2
             // 
+            btnAnswer2.BackColor = Color.FromArgb(192, 255, 192);
+            btnAnswer2.FlatStyle = FlatStyle.Flat;
             btnAnswer2.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             btnAnswer2.Location = new Point(412, 116);
             btnAnswer2.Name = "btnAnswer2";
@@ -78,10 +82,12 @@
             btnAnswer2.TabIndex = 2;
             btnAnswer2.Tag = "1";
             btnAnswer2.Text = "Answer 2";
-            btnAnswer2.UseVisualStyleBackColor = true;
+            btnAnswer2.UseVisualStyleBackColor = false;
             // 
             // btnAnswer4
             // 
+            btnAnswer4.BackColor = Color.FromArgb(192, 255, 192);
+            btnAnswer4.FlatStyle = FlatStyle.Flat;
             btnAnswer4.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             btnAnswer4.Location = new Point(412, 242);
             btnAnswer4.Name = "btnAnswer4";
@@ -89,10 +95,12 @@
             btnAnswer4.TabIndex = 4;
             btnAnswer4.Tag = "1";
             btnAnswer4.Text = "Answer 4";
-            btnAnswer4.UseVisualStyleBackColor = true;
+            btnAnswer4.UseVisualStyleBackColor = false;
             // 
             // btnAnswer3
             // 
+            btnAnswer3.BackColor = Color.FromArgb(192, 255, 192);
+            btnAnswer3.FlatStyle = FlatStyle.Flat;
             btnAnswer3.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             btnAnswer3.Location = new Point(129, 242);
             btnAnswer3.Name = "btnAnswer3";
@@ -100,12 +108,13 @@
             btnAnswer3.TabIndex = 3;
             btnAnswer3.Tag = "1";
             btnAnswer3.Text = "Answer 3";
-            btnAnswer3.UseVisualStyleBackColor = true;
+            btnAnswer3.UseVisualStyleBackColor = false;
             // 
             // formTextQuestion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(800, 450);
             Controls.Add(btnAnswer4);
             Controls.Add(btnAnswer2);

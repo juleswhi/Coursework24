@@ -17,7 +17,9 @@ public partial class formResult : Form, IContext
         var elo = (int)context.GetFirst(NUMBER)!;
 
         lblQuestion.Text = $"{correct}/{questionIndex}";
-        label1.Text = $"ELO: {ActiveUser?.Elo.PastRatings[^10]} -> {elo}";
+        label1.Text = $"{ActiveUser?.Elo.PastRatings[^10]} -> {elo}";
+        label1.Center(X);
+        lblQuestion.Center(X);
 
         ActiveUser!.QuizesCompleted++;
         WriteUsers();

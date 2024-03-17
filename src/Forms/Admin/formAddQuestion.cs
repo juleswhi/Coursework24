@@ -37,7 +37,7 @@ namespace ChessMasterQuiz.Forms
                 Q = txtBoxQuestion.Text,
                 A = new Answer(new() { txtBoxAnswerOne.Text, txtBoxAnswerTwo.Text, txtBoxAnswerThree.Text, txtBoxAnswerFour.Text }, (uint)checkBoxes.IndexOf(checkBoxes.First(x => x.Checked))),
                 Rating = int.Parse(txtBoxRating.Text)
-                
+
             };
 
             var serialized = QonConvert.Serialize(tq);

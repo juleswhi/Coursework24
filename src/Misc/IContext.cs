@@ -1,5 +1,4 @@
-﻿using static ChessMasterQuiz.Helpers.ControlHelper;
-namespace ChessMasterQuiz.Misc;
+﻿namespace ChessMasterQuiz.Misc;
 
 public enum ContextTagType
 {

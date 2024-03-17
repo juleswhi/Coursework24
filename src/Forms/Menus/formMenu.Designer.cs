@@ -33,7 +33,6 @@
             btnLeaderboard = new Button();
             btnPlay = new Button();
             btnSettings = new Button();
-            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pBoxProfile).BeginInit();
             SuspendLayout();
             // 
@@ -41,7 +40,7 @@
             // 
             lblLogin.AutoSize = true;
             lblLogin.Font = new Font("JetBrains Mono", 27.7499962F, FontStyle.Regular, GraphicsUnit.Point);
-            lblLogin.Location = new Point(47, 46);
+            lblLogin.Location = new Point(40, 46);
             lblLogin.Name = "lblLogin";
             lblLogin.Size = new Size(220, 49);
             lblLogin.TabIndex = 1;
@@ -49,7 +48,8 @@
             // 
             // pBoxProfile
             // 
-            pBoxProfile.BackColor = SystemColors.ActiveCaption;
+            pBoxProfile.BackColor = Color.FromArgb(192, 255, 192);
+            pBoxProfile.BorderStyle = BorderStyle.FixedSingle;
             pBoxProfile.Location = new Point(716, 12);
             pBoxProfile.Name = "pBoxProfile";
             pBoxProfile.Size = new Size(72, 65);
@@ -59,52 +59,49 @@
             // 
             // btnLeaderboard
             // 
+            btnLeaderboard.BackColor = Color.FromArgb(192, 255, 192);
+            btnLeaderboard.FlatStyle = FlatStyle.Flat;
             btnLeaderboard.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnLeaderboard.Location = new Point(24, 205);
             btnLeaderboard.Name = "btnLeaderboard";
             btnLeaderboard.Size = new Size(253, 83);
             btnLeaderboard.TabIndex = 4;
             btnLeaderboard.Text = "Leaderboard";
-            btnLeaderboard.UseVisualStyleBackColor = true;
+            btnLeaderboard.UseVisualStyleBackColor = false;
             btnLeaderboard.Click += btnLeaderboard_Click;
             // 
             // btnPlay
             // 
+            btnPlay.BackColor = Color.FromArgb(192, 255, 192);
+            btnPlay.FlatStyle = FlatStyle.Flat;
             btnPlay.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnPlay.Location = new Point(24, 116);
             btnPlay.Name = "btnPlay";
             btnPlay.Size = new Size(253, 83);
             btnPlay.TabIndex = 5;
             btnPlay.Text = "Play!";
-            btnPlay.UseVisualStyleBackColor = true;
+            btnPlay.UseVisualStyleBackColor = false;
             btnPlay.Click += btnPlay_Click;
             // 
             // btnSettings
             // 
+            btnSettings.BackColor = Color.FromArgb(192, 255, 192);
+            btnSettings.FlatStyle = FlatStyle.Flat;
             btnSettings.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnSettings.Location = new Point(24, 294);
             btnSettings.Name = "btnSettings";
             btnSettings.Size = new Size(253, 83);
             btnSettings.TabIndex = 5;
             btnSettings.Text = "Settings";
-            btnSettings.UseVisualStyleBackColor = true;
+            btnSettings.UseVisualStyleBackColor = false;
             btnSettings.Click += btnSettings_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(146, 20);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 6;
-            label1.Text = "label1";
             // 
             // formMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(800, 450);
-            Controls.Add(label1);
             Controls.Add(btnSettings);
             Controls.Add(btnPlay);
             Controls.Add(btnLeaderboard);
@@ -124,6 +121,5 @@
         private Button btnLeaderboard;
         private Button btnPlay;
         private Button btnSettings;
-        private Label label1;
     }
 }
