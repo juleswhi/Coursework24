@@ -55,4 +55,10 @@ public partial class formLogin : Form, IContext
     {
 
     }
+
+    private void btnExit_Click(object sender, EventArgs e)
+    {
+        Environment.Exit(0);
+        // Shut down all threads aswell?
+    }
 }

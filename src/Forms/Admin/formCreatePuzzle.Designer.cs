@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnAddPiece = new Button();
             txtBoxWinningMove = new TextBox();
             txtBoxAlternative1 = new TextBox();
             txtBoxAlternative2 = new TextBox();
@@ -63,81 +62,86 @@
             ((System.ComponentModel.ISupportInitialize)pBoxBlackPawn).BeginInit();
             SuspendLayout();
             // 
-            // btnAddPiece
-            // 
-            btnAddPiece.Location = new Point(0, 0);
-            btnAddPiece.Name = "btnAddPiece";
-            btnAddPiece.Size = new Size(75, 23);
-            btnAddPiece.TabIndex = 26;
-            // 
             // txtBoxWinningMove
             // 
-            txtBoxWinningMove.Location = new Point(585, 318);
+            txtBoxWinningMove.Font = new Font("JetBrains Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxWinningMove.Location = new Point(537, 303);
             txtBoxWinningMove.Name = "txtBoxWinningMove";
             txtBoxWinningMove.PlaceholderText = "Winning Move..";
-            txtBoxWinningMove.Size = new Size(75, 23);
+            txtBoxWinningMove.Size = new Size(123, 25);
             txtBoxWinningMove.TabIndex = 4;
             // 
             // txtBoxAlternative1
             // 
-            txtBoxAlternative1.Location = new Point(666, 318);
+            txtBoxAlternative1.Font = new Font("JetBrains Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxAlternative1.Location = new Point(666, 303);
             txtBoxAlternative1.Name = "txtBoxAlternative1";
-            txtBoxAlternative1.PlaceholderText = "Alternative Move";
-            txtBoxAlternative1.Size = new Size(75, 23);
+            txtBoxAlternative1.PlaceholderText = "Alternative..";
+            txtBoxAlternative1.Size = new Size(121, 25);
             txtBoxAlternative1.TabIndex = 5;
             // 
             // txtBoxAlternative2
             // 
-            txtBoxAlternative2.Location = new Point(666, 347);
+            txtBoxAlternative2.Font = new Font("JetBrains Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxAlternative2.Location = new Point(666, 334);
             txtBoxAlternative2.Name = "txtBoxAlternative2";
-            txtBoxAlternative2.PlaceholderText = "Alternative Move";
-            txtBoxAlternative2.Size = new Size(75, 23);
+            txtBoxAlternative2.PlaceholderText = "Alternative..";
+            txtBoxAlternative2.Size = new Size(122, 25);
             txtBoxAlternative2.TabIndex = 6;
             // 
             // txtBoxAlternative3
             // 
-            txtBoxAlternative3.Location = new Point(585, 347);
+            txtBoxAlternative3.Font = new Font("JetBrains Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxAlternative3.Location = new Point(537, 334);
             txtBoxAlternative3.Name = "txtBoxAlternative3";
-            txtBoxAlternative3.PlaceholderText = "Alternative Move";
-            txtBoxAlternative3.Size = new Size(75, 23);
+            txtBoxAlternative3.PlaceholderText = "Alternative..";
+            txtBoxAlternative3.Size = new Size(123, 25);
             txtBoxAlternative3.TabIndex = 7;
             // 
             // btnCreatePuzzle
             // 
-            btnCreatePuzzle.Location = new Point(585, 376);
+            btnCreatePuzzle.BackColor = Color.FromArgb(192, 255, 192);
+            btnCreatePuzzle.FlatStyle = FlatStyle.Flat;
+            btnCreatePuzzle.Font = new Font("JetBrains Mono", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCreatePuzzle.Location = new Point(552, 376);
             btnCreatePuzzle.Name = "btnCreatePuzzle";
-            btnCreatePuzzle.Size = new Size(75, 23);
+            btnCreatePuzzle.Size = new Size(108, 62);
             btnCreatePuzzle.TabIndex = 8;
             btnCreatePuzzle.Text = "Create Puzzle";
-            btnCreatePuzzle.UseVisualStyleBackColor = true;
+            btnCreatePuzzle.UseVisualStyleBackColor = false;
             btnCreatePuzzle.Click += btnCreatePuzzle_Click;
             // 
             // txtBoxRating
             // 
-            txtBoxRating.Location = new Point(612, 256);
+            txtBoxRating.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxRating.Location = new Point(612, 237);
             txtBoxRating.Name = "txtBoxRating";
             txtBoxRating.PlaceholderText = "Rating..";
-            txtBoxRating.Size = new Size(100, 23);
+            txtBoxRating.Size = new Size(100, 29);
             txtBoxRating.TabIndex = 9;
             // 
             // btnBack
             // 
+            btnBack.BackColor = Color.FromArgb(192, 255, 192);
+            btnBack.FlatStyle = FlatStyle.Flat;
+            btnBack.Font = new Font("JetBrains Mono", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnBack.Location = new Point(666, 376);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(75, 23);
+            btnBack.Size = new Size(108, 62);
             btnBack.TabIndex = 11;
-            btnBack.Text = "Back";
-            btnBack.UseVisualStyleBackColor = true;
+            btnBack.Text = "Admin Menu";
+            btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;
             // 
             // cBoxToMove
             // 
             cBoxToMove.AutoSize = true;
-            cBoxToMove.Location = new Point(612, 285);
+            cBoxToMove.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
+            cBoxToMove.Location = new Point(581, 272);
             cBoxToMove.Name = "cBoxToMove";
-            cBoxToMove.Size = new Size(105, 19);
+            cBoxToMove.Size = new Size(169, 25);
             cBoxToMove.TabIndex = 13;
-            cBoxToMove.Text = "White To Move";
+            cBoxToMove.Text = "White To Move?";
             cBoxToMove.UseVisualStyleBackColor = true;
             // 
             // pBoxWhitePawn
@@ -153,7 +157,7 @@
             // pBoxWhiteQueen
             // 
             pBoxWhiteQueen.Image = Chess.ChessPieces.WhiteQueen;
-            pBoxWhiteQueen.Location = new Point(689, 24);
+            pBoxWhiteQueen.Location = new Point(634, 78);
             pBoxWhiteQueen.Name = "pBoxWhiteQueen";
             pBoxWhiteQueen.Size = new Size(51, 47);
             pBoxWhiteQueen.TabIndex = 15;
@@ -163,7 +167,7 @@
             // pBoxWhiteRook
             // 
             pBoxWhiteRook.Image = Chess.ChessPieces.WhiteRook;
-            pBoxWhiteRook.Location = new Point(634, 78);
+            pBoxWhiteRook.Location = new Point(577, 78);
             pBoxWhiteRook.Name = "pBoxWhiteRook";
             pBoxWhiteRook.Size = new Size(51, 47);
             pBoxWhiteRook.TabIndex = 16;
@@ -173,7 +177,7 @@
             // pBoxWhiteBishop
             // 
             pBoxWhiteBishop.Image = Chess.ChessPieces.WhiteBishop;
-            pBoxWhiteBishop.Location = new Point(632, 24);
+            pBoxWhiteBishop.Location = new Point(689, 24);
             pBoxWhiteBishop.Name = "pBoxWhiteBishop";
             pBoxWhiteBishop.Size = new Size(51, 47);
             pBoxWhiteBishop.TabIndex = 17;
@@ -183,7 +187,7 @@
             // pBoxWhiteKnight
             // 
             pBoxWhiteKnight.Image = Chess.ChessPieces.WhiteKnight;
-            pBoxWhiteKnight.Location = new Point(577, 78);
+            pBoxWhiteKnight.Location = new Point(634, 24);
             pBoxWhiteKnight.Name = "pBoxWhiteKnight";
             pBoxWhiteKnight.Size = new Size(51, 47);
             pBoxWhiteKnight.TabIndex = 18;
@@ -264,6 +268,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(800, 450);
             Controls.Add(pBoxBlackPawn);
             Controls.Add(pBoxBlackKnight);
@@ -285,7 +290,6 @@
             Controls.Add(txtBoxAlternative2);
             Controls.Add(txtBoxAlternative1);
             Controls.Add(txtBoxWinningMove);
-            Controls.Add(btnAddPiece);
             Name = "formCreatePuzzle";
             Text = "formCreatePuzzle";
             ((System.ComponentModel.ISupportInitialize)pBoxWhitePawn).EndInit();
@@ -305,7 +309,6 @@
         }
 
         #endregion
-        private Button btnAddPiece;
         private TextBox txtBoxWinningMove;
         private TextBox txtBoxAlternative1;
         private TextBox txtBoxAlternative2;

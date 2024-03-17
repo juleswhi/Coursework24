@@ -6,11 +6,17 @@ public partial class formLeaderboard : Form
     {
         InitializeComponent();
 
+        DisplayInformation();
+        UpdateSortColumn(lblElo);
+    }
+
+    private void DisplayInformation(SortType sortType = SortType.ELO)
+    {
         List<Panel> panels = new();
         panels.AddRange(Controls.OfType<Panel>().First().Controls.OfType<Panel>());
         panels.OrderBy(x => int.Parse((string)x.Tag!));
 
-        Span<User> users = SortbyType(Users, SortType.ELO).Take(panels.Count).ToArray().AsSpan();
+        Span<User> users = SortbyType(Users, sortType).Take(panels.Count).ToArray().AsSpan();
 
         for (int i = 0; i < users.Length; i++)
         {
@@ -34,54 +40,55 @@ public partial class formLeaderboard : Form
     {
         List<User> sorted = users.OrderBy(x => type switch
         {
-            SortType.OVERRALL => x.Elo.Rating,
             SortType.ELO => x.Elo.Rating,
             SortType.HIGHSCORE => x.HighScore,
-            SortType.GAMES => x.QuizesCompleted,
+            SortType.ACCURACY => x.Accuracy,
             _ => x.Elo.Rating
         }).ToList();
 
         return sorted;
     }
 
-    private void button1_Click(object sender, EventArgs e)
-    {
-        ActivateForm<formMenu>();
-    }
 
     private void lblElo_Click(object sender, EventArgs e)
     {
-
+        DisplayInformation(SortType.ELO);
+        UpdateSortColumn(sender as Label);
     }
 
     private void lblAccuracy_Click(object sender, EventArgs e)
     {
-
+        DisplayInformation(SortType.ACCURACY);
+        UpdateSortColumn(sender as Label);
     }
 
     private void lblHighScore_Click(object sender, EventArgs e)
     {
-
+        DisplayInformation(SortType.HIGHSCORE);
+        UpdateSortColumn(sender as Label);
     }
 
-    private void pnlUserOne_Paint(object sender, PaintEventArgs e)
+    private void btnMainMenu_Click(object sender, EventArgs e)
     {
-
+        ActivateForm<formMenu>();
     }
 
-    private void panel1_Paint(object sender, PaintEventArgs e)
+    private void UpdateSortColumn(Label? label)
     {
-    }
+        if (label is null) return;
+        foreach(Label l in Controls.OfType<Label>())
+        {
+            l.Text = l.Text.Replace("*", "");
+        }
 
-    private void panel2_Paint(object sender, PaintEventArgs e)
-    {
+        label.Text += "*";
     }
 
     private enum SortType
     {
-        OVERRALL,
         ELO,
         HIGHSCORE,
-        GAMES
+        GAMES,
+        ACCURACY
     }
 }

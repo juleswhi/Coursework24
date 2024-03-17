@@ -33,6 +33,7 @@
             btnLeaderboard = new Button();
             btnPlay = new Button();
             btnSettings = new Button();
+            btnLogout = new Button();
             ((System.ComponentModel.ISupportInitialize)pBoxProfile).BeginInit();
             SuspendLayout();
             // 
@@ -88,13 +89,26 @@
             btnSettings.BackColor = Color.FromArgb(192, 255, 192);
             btnSettings.FlatStyle = FlatStyle.Flat;
             btnSettings.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSettings.Location = new Point(24, 294);
+            btnSettings.Location = new Point(24, 383);
             btnSettings.Name = "btnSettings";
-            btnSettings.Size = new Size(253, 83);
+            btnSettings.Size = new Size(253, 45);
             btnSettings.TabIndex = 5;
-            btnSettings.Text = "Settings";
+            btnSettings.Text = "Admin Settings";
             btnSettings.UseVisualStyleBackColor = false;
             btnSettings.Click += btnSettings_Click;
+            // 
+            // btnLogout
+            // 
+            btnLogout.BackColor = Color.FromArgb(192, 255, 192);
+            btnLogout.FlatStyle = FlatStyle.Flat;
+            btnLogout.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLogout.Location = new Point(24, 294);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(253, 83);
+            btnLogout.TabIndex = 6;
+            btnLogout.Text = "Logout";
+            btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += btnLogout_Click;
             // 
             // formMenu
             // 
@@ -102,6 +116,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(800, 450);
+            Controls.Add(btnLogout);
             Controls.Add(btnSettings);
             Controls.Add(btnPlay);
             Controls.Add(btnLeaderboard);
@@ -121,5 +136,6 @@
         private Button btnLeaderboard;
         private Button btnPlay;
         private Button btnSettings;
+        private Button btnLogout;
     }
 }

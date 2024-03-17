@@ -1,4 +1,5 @@
-﻿using System.Net.Mail;
+﻿using System.DirectoryServices.ActiveDirectory;
+using System.Net.Mail;
 using System.Text.RegularExpressions;
 using static ChessMasterQuiz.Misc.RequirementType;
 using static ChessMasterQuiz.Misc.ValidationType;
@@ -23,10 +24,19 @@ enum RequirementType
     NUMBER
 }
 
+public enum PasswordRequirementLevel
+{
+    STRONG,
+    MEDIUM,
+    WEAK
+}
+
 internal static class Validator
 {
-    public static (bool, float) Validate(this string text, ValidationType type)
+    public static (bool, float) Validate(this string text, ValidationType type, PasswordRequirementLevel? passwordLevel = null)
     {
+        passwordLevel ??= GetAdminConfig()?.PasswordRequirementLevel;
+
         Dictionary<RequirementType, bool> ValidationLookup = new()
         {
             { LENGTH, false },
@@ -49,22 +59,51 @@ internal static class Validator
             case USERNAME:
                 return (text.ValidateUsername(), 100);
             case PASSWORD:
-                if (text.Length > 8)
+                int minimumLength = passwordLevel switch
+                {
+                    STRONG => 12,
+                    MEDIUM => 8,
+                    WEAK => 6,
+                    _ => 8
+                };
+
+                int specialCharacterCount = passwordLevel switch
+                {
+                    STRONG => 3,
+                    MEDIUM => 1,
+                    _ => 0
+                };
+
+                int upperCaseCount = passwordLevel switch
+                {
+                    STRONG => 1,
+                    MEDIUM => 1,
+                    _ => 0
+                };
+
+                int numberCount = passwordLevel switch
+                {
+                    STRONG => 2,
+                    MEDIUM => 1,
+                    _ => 0
+                };
+
+                if (text.Length > minimumLength)
                 {
                     ValidationLookup[LENGTH] = true;
                 }
 
-                if (text.Where(x => !char.IsLetterOrDigit(x)).Count() > 1)
+                if (text.Where(x => !char.IsLetterOrDigit(x)).Count() >= specialCharacterCount)
                 {
                     ValidationLookup[SPECIALCHARACTERS] = true;
                 }
 
-                if (text.Any(char.IsUpper))
+                if (text.Where(char.IsUpper).Count() >= upperCaseCount)
                 {
                     ValidationLookup[UPPERCASE] = true;
                 }
 
-                if (text.Any(char.IsDigit))
+                if (text.Where(char.IsDigit).Count() >= numberCount)
                 {
                     ValidationLookup[RequirementType.NUMBER] = true;
                 }

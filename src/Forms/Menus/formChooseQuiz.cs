@@ -43,6 +43,19 @@ public partial class formChooseQuiz : Form, IContext
             if (correct)
             {
                 questionsCorrect++;
+                if(_user is User u)
+                {
+                    u.CorrectAnswersInRow++;
+                    if(u.CorrectAnswersInRow > u.HighScore)
+                    {
+                        u.HighScore = u.CorrectAnswersInRow;
+                    }
+                }
+            }
+            else
+            {
+                if (_user is User u)
+                    u.CorrectAnswersInRow = 0;
             }
 
             if (_user is User user)
@@ -58,7 +71,7 @@ public partial class formChooseQuiz : Form, IContext
                 // Update accuracy
                 if (_user?.QuizesCompleted == 0)
                 {
-                    _user.Accuracy = (int)(questionsCorrect * 10);
+                    _user.Accuracy = questionsCorrect * 10;
                 }
                 else
                 {
@@ -98,6 +111,19 @@ public partial class formChooseQuiz : Form, IContext
             if (correct)
             {
                 questionsCorrect++;
+                if(_user is User u)
+                {
+                    u.CorrectAnswersInRow++;
+                    if(u.CorrectAnswersInRow > u.HighScore)
+                    {
+                        u.HighScore = u.CorrectAnswersInRow;
+                    }
+                }
+            }
+            else
+            {
+                if (_user is User u)
+                    u.CorrectAnswersInRow = 0;
             }
 
             if (_user is User user)
@@ -128,5 +154,8 @@ public partial class formChooseQuiz : Form, IContext
         onAnswer(false, -1);
     }
 
-
+    private void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        ActivateForm<formMenu>();
+    }
 }

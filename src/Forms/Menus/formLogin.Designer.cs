@@ -35,6 +35,7 @@
             txtBoxPassword = new TextBox();
             btnLogin = new Button();
             pBoxLogo = new PictureBox();
+            btnExit = new Button();
             ((System.ComponentModel.ISupportInitialize)pBoxLogo).BeginInit();
             SuspendLayout();
             // 
@@ -119,12 +120,26 @@
             pBoxLogo.TabIndex = 6;
             pBoxLogo.TabStop = false;
             // 
+            // btnExit
+            // 
+            btnExit.BackColor = Color.FromArgb(192, 255, 192);
+            btnExit.FlatStyle = FlatStyle.Flat;
+            btnExit.Font = new Font("JetBrains Mono", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnExit.Location = new Point(685, 398);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(103, 40);
+            btnExit.TabIndex = 7;
+            btnExit.Text = "Exit";
+            btnExit.UseVisualStyleBackColor = false;
+            btnExit.Click += btnExit_Click;
+            // 
             // formLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(800, 450);
+            Controls.Add(btnExit);
             Controls.Add(pBoxLogo);
             Controls.Add(txtBoxPassword);
             Controls.Add(txtBoxEmail);
@@ -149,5 +164,6 @@
         private TextBox txtBoxPassword;
         private Button btnLogin;
         private PictureBox pBoxLogo;
+        private Button btnExit;
     }
 }

@@ -63,7 +63,7 @@
             lblElo = new Label();
             lblAccuracy = new Label();
             lblHighScore = new Label();
-            button1 = new Button();
+            btnMainMenu = new Button();
             pnlHolder.SuspendLayout();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
@@ -268,7 +268,6 @@
             panel2.Size = new Size(523, 49);
             panel2.TabIndex = 4;
             panel2.Tag = "3";
-            panel2.Paint += panel2_Paint;
             // 
             // lblUser3HighScore
             // 
@@ -325,7 +324,6 @@
             panel1.Size = new Size(523, 49);
             panel1.TabIndex = 4;
             panel1.Tag = "2";
-            panel1.Paint += panel1_Paint;
             // 
             // lblUser2HighScore
             // 
@@ -382,7 +380,6 @@
             pnlUserOne.Size = new Size(523, 49);
             pnlUserOne.TabIndex = 0;
             pnlUserOne.Tag = "1";
-            pnlUserOne.Paint += pnlUserOne_Paint;
             // 
             // lblUser1HighScore
             // 
@@ -471,18 +468,18 @@
             lblHighScore.Text = "High Score";
             lblHighScore.Click += lblHighScore_Click;
             // 
-            // button1
+            // btnMainMenu
             // 
-            button1.BackColor = Color.FromArgb(192, 255, 192);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("JetBrains Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(663, 387);
-            button1.Name = "button1";
-            button1.Size = new Size(115, 51);
-            button1.TabIndex = 5;
-            button1.Text = "Main Menu";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            btnMainMenu.BackColor = Color.FromArgb(192, 255, 192);
+            btnMainMenu.FlatStyle = FlatStyle.Flat;
+            btnMainMenu.Font = new Font("JetBrains Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMainMenu.Location = new Point(663, 387);
+            btnMainMenu.Name = "btnMainMenu";
+            btnMainMenu.Size = new Size(115, 51);
+            btnMainMenu.TabIndex = 5;
+            btnMainMenu.Text = "Main Menu";
+            btnMainMenu.UseVisualStyleBackColor = false;
+            btnMainMenu.Click += btnMainMenu_Click;
             // 
             // formLeaderboard
             // 
@@ -490,7 +487,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(800, 450);
-            Controls.Add(button1);
+            Controls.Add(btnMainMenu);
             Controls.Add(lblHighScore);
             Controls.Add(lblAccuracy);
             Controls.Add(lblElo);
@@ -552,6 +549,6 @@
         private Label lblUser2Username;
         private Label lblUser1HighScore;
         private Label lblHighScore;
-        private Button button1;
+        private Button btnMainMenu;
     }
 }

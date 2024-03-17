@@ -22,6 +22,11 @@ public partial class formMenu : Form, IContext
 
         _user = userContext!;
 
+        if (_user.Type != UserType.ADMIN)
+        {
+            btnSettings.Hide();
+        }
+
         pBoxProfile.Image = User.ProfilePictures[_user!.ImageIndex];
     }
 
@@ -71,7 +76,13 @@ public partial class formMenu : Form, IContext
     private void btnSettings_Click(object sender, EventArgs e)
     {
         MoveHelper.CurrentBoard?.StopGame();
-        ActivateForm<formCreatePuzzle>();
+        ActivateForm<formAdminMenu>();
     }
 
+    private void btnLogout_Click(object sender, EventArgs e)
+    {
+        ActiveUser!.Logout();
+        UpdateUser(ActiveUser!);
+        ActivateForm<formLogin>();
+    }
 }

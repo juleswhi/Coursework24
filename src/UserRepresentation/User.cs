@@ -51,6 +51,9 @@ public class User
     // Represents the most questions answered in a single round for a particular user
     public int HighScore { get; set; }
 
+    // Represents the number of questions in a row without a loss
+    public int CorrectAnswersInRow { get; set; } = 0;
+
     // The amount of quizs the user has completed
     public int QuizesCompleted { get; set; }
 

@@ -10,10 +10,16 @@
     <Compile Update="CustomControls\panelLeaderboardEntry.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Forms\Admin\formAdminMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Admin\formAdminSettings.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Admin\formCreatePuzzle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Admin\formViewPuzzles.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Menus\formChooseQuiz.cs">

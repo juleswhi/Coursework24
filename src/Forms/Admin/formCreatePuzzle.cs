@@ -80,7 +80,7 @@ public partial class formCreatePuzzle : Form
 
     private void btnBack_Click(object sender, EventArgs e)
     {
-        ActivateForm<formMenu>();
+        ActivateForm<formAdminMenu>();
     }
 
     private void pBoxWhitePawn_Click(object sender, EventArgs e)

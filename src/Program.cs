@@ -1,3 +1,4 @@
+using ChessMasterQuiz.Misc;
 using WinFormsScraper;
 namespace ChessMasterQuiz;
 

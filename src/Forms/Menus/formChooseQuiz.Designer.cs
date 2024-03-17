@@ -30,6 +30,7 @@
         {
             btnPuzzles = new Button();
             btnWrittenQuestions = new Button();
+            btnMainMenu = new Button();
             SuspendLayout();
             // 
             // btnPuzzles
@@ -58,12 +59,26 @@
             btnWrittenQuestions.UseVisualStyleBackColor = false;
             btnWrittenQuestions.Click += btnWrittenQuestions_Click;
             // 
+            // btnMainMenu
+            // 
+            btnMainMenu.BackColor = Color.FromArgb(192, 255, 192);
+            btnMainMenu.FlatStyle = FlatStyle.Flat;
+            btnMainMenu.Font = new Font("JetBrains Mono", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMainMenu.Location = new Point(658, 393);
+            btnMainMenu.Name = "btnMainMenu";
+            btnMainMenu.Size = new Size(130, 45);
+            btnMainMenu.TabIndex = 2;
+            btnMainMenu.Text = "Main Menu";
+            btnMainMenu.UseVisualStyleBackColor = false;
+            btnMainMenu.Click += btnMainMenu_Click;
+            // 
             // formChooseQuiz
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(800, 450);
+            Controls.Add(btnMainMenu);
             Controls.Add(btnWrittenQuestions);
             Controls.Add(btnPuzzles);
             Name = "formChooseQuiz";
@@ -75,5 +90,6 @@
 
         private Button btnPuzzles;
         private Button btnWrittenQuestions;
+        private Button btnMainMenu;
     }
 }

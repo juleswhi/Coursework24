@@ -6,6 +6,11 @@ namespace ChessMasterQuiz.Helpers;
 
 public static class Helper
 {
+    public static AdminConfiguration? GetAdminConfig()
+    {
+        return AdminConfiguration.Read();
+    } 
+
     private static readonly Random _random = new();
     public static Action EmptyAction => new(() => { });
     public static Action<T> EmptyActionGeneric<T>()

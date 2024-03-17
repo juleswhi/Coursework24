@@ -48,3 +48,4 @@ global using static ChessMasterQuiz.Misc.SeverityType;
 global using static UserRepresentation.UserHelper;
 global using DCT = ChessMasterQuiz.Misc.DataContextTag;
 global using static ChessMasterQuiz.Helpers.FormatDirection;
+global using static ChessMasterQuiz.Misc.PasswordRequirementLevel;
