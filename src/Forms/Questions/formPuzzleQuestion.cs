@@ -21,6 +21,8 @@ public partial class formPuzzleQuestion : Form, IContext
         }
         List<string>? answers = puzzle.Moves;
 
+        lblWinningMove.Text += $"\nfor {(puzzle.ToMove == White ? "white" : "black")}?";
+
         List<Button> buttons = new()
         {
             btnAnswer1,

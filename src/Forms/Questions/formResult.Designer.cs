@@ -48,6 +48,7 @@
             // 
             btnHome.BackColor = Color.FromArgb(192, 255, 192);
             btnHome.FlatStyle = FlatStyle.Flat;
+            btnHome.Font = new Font("JetBrains Mono", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnHome.Location = new Point(658, 387);
             btnHome.Name = "btnHome";
             btnHome.Size = new Size(130, 51);

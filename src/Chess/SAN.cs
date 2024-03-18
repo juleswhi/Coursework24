@@ -13,6 +13,7 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
     public PieceType? IsQueening { get; set; } = null;
     public Notation Square { get; set; }
     public Notation InitialSquare { get; set; }
+    public bool NullMove { get; set; } = false;
 
 
     // This ToString override is used to print the SAN in proper notation
@@ -59,6 +60,12 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
     public static SAN From(string str)
     {
         SAN san = new();
+
+        if(str == "resigns" || str == "null")
+        {
+            san.NullMove = true;
+            return san;
+        }
 
         if (str.Count(x => x == 'O') == 2)
         {
@@ -132,12 +139,11 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
 
     public Notation GetInitialLocation()
     {
-
         int PAWN_DIRECTION;
 
         switch (Piece)
         {
-            case PieceType.PAWN:
+            case PAWN:
                 {
                     foreach (var pawn in MoveHelper.CurrentBoard!.Pieces.Where(x => x.Type == PieceType.PAWN))
                     {
@@ -189,7 +195,7 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
                     break;
                 }
 
-            case PieceType.KNIGHT:
+            case KNIGHT:
                 foreach (var knight in MoveHelper.CurrentBoard!.Pieces.Where(x => x.Type == PieceType.KNIGHT))
                 {
                     int knightFile = FileNumberFromChar(knight.Location.File);
@@ -214,8 +220,8 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
                 }
                 break;
 
-            case PieceType.BISHOP:
-                foreach (var bishop in MoveHelper.CurrentBoard!.Pieces.Where(x => x.Type == PieceType.BISHOP))
+            case BISHOP:
+                foreach (var bishop in MoveHelper.CurrentBoard!.Pieces.Where(x => x.Type == BISHOP))
                 {
                     int bishopFile = FileNumberFromChar(bishop.Location.File);
                     int destFile = FileNumberFromChar(Square.File);
@@ -242,6 +248,34 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
                     }
                 }
 
+                break;
+            case QUEEN:
+                foreach (var queen in MoveHelper.CurrentBoard!.Pieces.Where(x => x.Type == QUEEN))
+                {
+                    int queenFile = FileNumberFromChar(queen.Location.File);
+                    int destFile = FileNumberFromChar(Square.File);
+
+                    for (int i = 1; i < 8; i++)
+                    {
+                        // Check in all four directions
+                        if (queenFile + i == destFile && queen.Location.Rank + i == Square.Rank)
+                        {
+                            return queen.Location;
+                        }
+                        else if (queenFile - i == destFile && queen.Location.Rank + i == Square.Rank)
+                        {
+                            return queen.Location;
+                        }
+                        else if (queenFile - i == destFile && queen.Location.Rank - i == Square.Rank)
+                        {
+                            return queen.Location;
+                        }
+                        else if (queenFile + i == destFile && queen.Location.Rank - i == Square.Rank)
+                        {
+                            return queen.Location;
+                        }
+                    }
+                }
                 break;
         }
 

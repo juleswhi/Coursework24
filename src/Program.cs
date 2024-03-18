@@ -10,8 +10,6 @@ internal static class Program
     {
         ApplicationConfiguration.Initialize();
 
-        // Application.Run(new formMain());
-
-        WinFormsScraper.WinFormsScraper.Scrape(["Type", "Size", "Location", "ForeColor", "BackColor", "Font"]);
+        Application.Run(new formMain());
     }
 }

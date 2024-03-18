@@ -472,7 +472,7 @@
             // 
             btnMainMenu.BackColor = Color.FromArgb(192, 255, 192);
             btnMainMenu.FlatStyle = FlatStyle.Flat;
-            btnMainMenu.Font = new Font("JetBrains Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMainMenu.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             btnMainMenu.Location = new Point(663, 387);
             btnMainMenu.Name = "btnMainMenu";
             btnMainMenu.Size = new Size(115, 51);

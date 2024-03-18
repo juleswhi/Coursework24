@@ -29,18 +29,6 @@ public class Piece
 
     public void Move(SAN location)
     {
-        bool legalMove = Type switch
-        {
-            // PieceType.PAWN => MoveHelper.PawnMove(Location, location.Square),
-            _ => true
-        };
-
-        if (!legalMove)
-        {
-            // Debug.Print("Not Legal Move");
-            return;
-        }
-
         var pieceOnSquare = MoveHelper.CurrentBoard!.Pieces.FirstOrDefault(x => x.Location == location.Square);
 
         if (pieceOnSquare is Piece p)
@@ -49,7 +37,6 @@ public class Piece
             p.Remove();
         }
 
-        // Debug.Print($"Legal Move, {location}");
         Location = location.Square;
         MoveHelper.CurrentBoard?.Invalidate();
     }

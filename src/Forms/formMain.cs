@@ -1,4 +1,6 @@
-﻿namespace ChessMasterQuiz;
+﻿using ChessMasterQuiz.Forms;
+
+namespace ChessMasterQuiz;
 
 public partial class formMain : Form
 {
@@ -13,7 +15,6 @@ public partial class formMain : Form
 
         Users.ForEach(x => x.Logout());
 
-        // ActivateForm<formMenu>();
-        ActivateForm<formLogin>();
+        ActivateForm<formSplashScreen>();
     }
 }

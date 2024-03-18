@@ -76,7 +76,7 @@ public partial class formLeaderboard : Form
     private void UpdateSortColumn(Label? label)
     {
         if (label is null) return;
-        foreach(Label l in Controls.OfType<Label>())
+        foreach (Label l in Controls.OfType<Label>())
         {
             l.Text = l.Text.Replace("*", "");
         }

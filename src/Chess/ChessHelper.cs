@@ -51,8 +51,6 @@ public record struct Notation(char File, int Rank) : IEquatable<SAN>, IEquatable
 
 public static class ChessHelper
 {
-
-
     public static Image GetImage(this Piece piece)
     {
         return piece.Type switch
@@ -65,6 +63,19 @@ public static class ChessHelper
             KING => piece.Colour == White ? WhiteKing : BlackKing,
             _ => WhitePawn
         };
+    }
+
+    public static PGN GetScholarsMate()
+    {
+        return new PGN(
+            new List<(SAN, SAN)>()
+            {
+                (SAN.From("e4"), SAN.From("e5")),
+                (SAN.From("Bc4"), SAN.From("Nc6")),
+                (SAN.From("Qh5"), SAN.From("Nf6")),
+                (SAN.From("Qxf7#"), SAN.From("null")),
+            }
+            );
     }
 
     public static IEnumerable<T> From<T>(params T[] nums)

@@ -24,7 +24,7 @@ public static class Helper
             GeneralResources.Chess_Logo_7
         };
 
-        return images[_random.Next(-1, images.Count)];
+        return images[_random.Next(0, images.Count)];
     }
 
     private static readonly Random _random = new();

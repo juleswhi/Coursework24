@@ -136,24 +136,31 @@ public class Board : Panel
 
     private bool _continueGame = true;
 
-    public void DisplayGame(PGN pgn, int PlyPause = 1000)
+    public void DisplayGame(PGN pgn, int PlyPause = 1000, Action? onGameOver = null)
     {
         Thread gameThread = new(() =>
         {
             _continueGame = true;
             foreach (var (white, black) in pgn.Moves)
             {
+                if (white.NullMove) break;
                 this[white.InitialSquare]?.Move(white);
                 Thread.Sleep(PlyPause);
                 if (black is null)
                 {
                     break;
                 }
+                if (black.NullMove) break;
                 this[black.InitialSquare]?.Move(black);
                 Thread.Sleep(PlyPause);
                 if (!_continueGame)
                 {
                     break;
+                }
+
+                if(onGameOver is Action action)
+                {
+                    action();
                 }
             }
         });
