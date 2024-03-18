@@ -110,7 +110,7 @@ public partial class formRegister : Form, IContext
 
         WriteUser(user);
 
-        ActivateForm<formMenu>((user, USER));
+        ActivateForm<formLogin>();
     }
 
     private void progressPassword_Click(object sender, EventArgs e)

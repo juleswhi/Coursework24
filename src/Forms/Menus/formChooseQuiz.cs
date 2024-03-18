@@ -29,7 +29,7 @@ public partial class formChooseQuiz : Form, IContext
         var file = File.ReadAllLines("questions.qon");
 
         var questions = QonConvert.Deserialize(file);
-        questions.Shuffle();
+        questions = questions.ToArray().AsSpan().Shuffle().ToList();
 
         questions = questions.Take(10).ToList();
 
@@ -43,10 +43,10 @@ public partial class formChooseQuiz : Form, IContext
             if (correct)
             {
                 questionsCorrect++;
-                if(_user is User u)
+                if (_user is User u)
                 {
                     u.CorrectAnswersInRow++;
-                    if(u.CorrectAnswersInRow > u.HighScore)
+                    if (u.CorrectAnswersInRow > u.HighScore)
                     {
                         u.HighScore = u.CorrectAnswersInRow;
                     }
@@ -111,10 +111,10 @@ public partial class formChooseQuiz : Form, IContext
             if (correct)
             {
                 questionsCorrect++;
-                if(_user is User u)
+                if (_user is User u)
                 {
                     u.CorrectAnswersInRow++;
-                    if(u.CorrectAnswersInRow > u.HighScore)
+                    if (u.CorrectAnswersInRow > u.HighScore)
                     {
                         u.HighScore = u.CorrectAnswersInRow;
                     }
@@ -157,5 +157,86 @@ public partial class formChooseQuiz : Form, IContext
     private void btnMainMenu_Click(object sender, EventArgs e)
     {
         ActivateForm<formMenu>();
+    }
+
+    private void btnMixed_Click(object sender, EventArgs e)
+    {
+        List<Question> puzzles = new();
+
+        puzzles.AddRange(Puzzle.Puzzles.ToArray().AsSpan().Shuffle());
+        var file = File.ReadAllLines("questions.qon");
+
+        IList<TextQuestion> questions = (IList<TextQuestion>)QonConvert.Deserialize(file);
+        questions = questions.ToArray().AsSpan().Shuffle();
+
+        questions = questions.Take(5).ToList();
+
+        puzzles.AddRange(questions);
+
+        puzzles = puzzles.ToArray().AsSpan().Shuffle().ToList();
+            
+        int questionIndex = 0;
+        int questionsCorrect = 0;
+
+        var onAnswer = EmptyActionGeneric<bool, int>();
+
+        onAnswer += (bool correct, int elo) =>
+        {
+            if (correct)
+            {
+                questionsCorrect++;
+                if (_user is User u)
+                {
+                    u.CorrectAnswersInRow++;
+                    if (u.CorrectAnswersInRow > u.HighScore)
+                    {
+                        u.HighScore = u.CorrectAnswersInRow;
+                    }
+                }
+            }
+            else
+            {
+                if (_user is User u)
+                    u.CorrectAnswersInRow = 0;
+            }
+
+            if (_user is User user)
+            {
+                if (elo != -1)
+                {
+                    ELO.Match(user.Elo, correct ? ELO.MatchupResult.WIN : ELO.MatchupResult.LOSS, elo);
+                }
+            }
+
+            if (questionIndex >= puzzles.Count)
+            {
+                ActivateForm<formResult>(
+                    (questionsCorrect, QUESTIONS_CORRECT),
+                    (questionIndex, INDEX),
+                    (_user?.Elo.Rating!, NUMBER)
+                    );
+                return;
+            }
+
+            if (puzzles[questionIndex++] is Puzzle)
+            {
+                ActivateForm<formPuzzleQuestion>(
+                    (puzzles[questionIndex++] as Puzzle, PUZZLE),
+                    (questionIndex.ToString(), NUMBER),
+                    (onAnswer, ACTION)
+                    );
+            }
+            else 
+            {
+                ActivateForm<formTextQuestion>(
+                    (puzzles[questionIndex++] as TextQuestion, PUZZLE),
+                    (questionIndex.ToString(), NUMBER),
+                    (onAnswer, ACTION)
+                    );
+            }
+        };
+
+        onAnswer(false, -1);
+
     }
 }

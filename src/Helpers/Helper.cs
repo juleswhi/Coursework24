@@ -44,9 +44,9 @@ public static class Helper
         ActivateForm<formMenu>();
     }
 
-    public static void Shuffle<T>(this IList<T> list)
+    public static IList<T> Shuffle<T>(this Span<T> list)
     {
-        int n = list.Count;
+        int n = list.Length;
         while (n > 1)
         {
             n--;
@@ -55,6 +55,8 @@ public static class Helper
             list[k] = list[n];
             list[n] = value;
         }
+
+        return list.ToArray().ToList();
     }
 
     public static int RatingFromDifficulty(Difficulty diff)

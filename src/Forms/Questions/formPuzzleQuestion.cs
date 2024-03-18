@@ -46,7 +46,7 @@ public partial class formPuzzleQuestion : Form, IContext
             };
         }
 
-        if (answers.Count != buttons.Count)
+        if (answers?.Count != buttons.Count)
         {
             return; // Error?
         }
@@ -60,7 +60,7 @@ public partial class formPuzzleQuestion : Form, IContext
 
         Board board = new();
         board.Location = new(30, 30);
-        board.Pieces = puzzle.Setup.ToList();
+        board.Pieces = puzzle.Setup!.ToList();
 
         Controls.Add(board);
     }

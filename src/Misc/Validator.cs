@@ -1,6 +1,7 @@
 ﻿using System.DirectoryServices.ActiveDirectory;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
+using Microsoft.VisualBasic;
 using static ChessMasterQuiz.Misc.RequirementType;
 using static ChessMasterQuiz.Misc.ValidationType;
 
@@ -51,7 +52,7 @@ internal static class Validator
             case ValidationType.EMAIL:
                 return (MailAddress.TryCreate(text, out _), 100);
             case DOB:
-                return (DateTime.TryParse(text, out _), 100);
+                return IsValidAge(text);
             case DISPLAY:
                 return (text.ValidateDisplayName(), 100);
             case GENDER:
@@ -63,8 +64,7 @@ internal static class Validator
                 {
                     STRONG => 12,
                     MEDIUM => 8,
-                    WEAK => 6,
-                    _ => 8
+                    _ => 4,
                 };
 
                 int specialCharacterCount = passwordLevel switch
@@ -193,4 +193,25 @@ internal static class Validator
         { DISPLAY, @"\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+" },
         { GENDER, @"/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u" },
     };
+
+    public static (bool, float) IsValidAge(string b)
+    {
+        if (!DateTime.TryParse(b, out var birth)) 
+            return (false, 0);
+
+        DateTime today = DateTime.Today;
+        int age = today.Year - birth.Year;
+
+        if(birth > today.AddYears(-age))
+        {
+            age--;
+        }
+
+        bool isRightAge = age > 14 && age < 120;
+        int percentage = 50;
+
+        if (isRightAge) percentage = 100;
+
+        return (isRightAge, percentage);
+    }
 }

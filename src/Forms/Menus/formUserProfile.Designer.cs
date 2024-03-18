@@ -79,9 +79,9 @@
             lblQuizCompleted.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblQuizCompleted.Location = new Point(231, 92);
             lblQuizCompleted.Name = "lblQuizCompleted";
-            lblQuizCompleted.Size = new Size(238, 31);
+            lblQuizCompleted.Size = new Size(252, 31);
             lblQuizCompleted.TabIndex = 5;
-            lblQuizCompleted.Text = "QUIZ'S COMPLETED";
+            lblQuizCompleted.Text = "QUIZZES COMPLETED";
             // 
             // lblTopScoreValue
             // 

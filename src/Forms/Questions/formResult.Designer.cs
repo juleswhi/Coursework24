@@ -31,6 +31,7 @@
             lblQuestion = new Label();
             btnHome = new Button();
             label1 = new Label();
+            btnLeaderboard = new Button();
             SuspendLayout();
             // 
             // lblQuestion
@@ -67,12 +68,26 @@
             label1.TabIndex = 3;
             label1.Text = "label1";
             // 
+            // btnLeaderboard
+            // 
+            btnLeaderboard.BackColor = Color.FromArgb(192, 255, 192);
+            btnLeaderboard.FlatStyle = FlatStyle.Flat;
+            btnLeaderboard.Font = new Font("JetBrains Mono", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLeaderboard.Location = new Point(507, 387);
+            btnLeaderboard.Name = "btnLeaderboard";
+            btnLeaderboard.Size = new Size(145, 51);
+            btnLeaderboard.TabIndex = 4;
+            btnLeaderboard.Text = "Leaderboard";
+            btnLeaderboard.UseVisualStyleBackColor = false;
+            btnLeaderboard.Click += btnLeaderboard_Click;
+            // 
             // formResult
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(800, 450);
+            Controls.Add(btnLeaderboard);
             Controls.Add(label1);
             Controls.Add(btnHome);
             Controls.Add(lblQuestion);
@@ -87,5 +102,6 @@
         private Label lblQuestion;
         private Button btnHome;
         private Label label1;
+        private Button btnLeaderboard;
     }
 }

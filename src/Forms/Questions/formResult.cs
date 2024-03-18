@@ -1,4 +1,5 @@
-﻿using ChessMasterQuiz.Misc;
+﻿using ChessMasterQuiz.Forms.Menus;
+using ChessMasterQuiz.Misc;
 
 namespace ChessMasterQuiz.Forms.Questions;
 
@@ -28,5 +29,10 @@ public partial class formResult : Form, IContext
     private void btnHome_Click(object sender, EventArgs e)
     {
         MainMenu();
+    }
+
+    private void btnLeaderboard_Click(object sender, EventArgs e)
+    {
+        ActivateForm<formLeaderboard>();
     }
 }
