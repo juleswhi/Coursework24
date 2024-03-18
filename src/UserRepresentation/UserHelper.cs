@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -64,6 +65,32 @@ public static class UserHelper
     {
         get;
         set;
+    }
+
+    public static Password Hash(this string pass)
+    {
+        // Generate a random `salt` which is needed for the hashing algorithm to make it more secure
+        var salt = RandomNumberGenerator.GetBytes(64);
+
+        // Convert the string `password` to a byte array. This is what the hashing algorithm needs
+        byte[] passwordInBytes = Encoding.UTF8.GetBytes(pass);
+
+        // This snippet hashes the `passwordInBytes` with the `Pbkdf2` hashing algo
+        // Then converts the has to Base64, which is useful to put in text
+        // The salt is also used to hash the password 
+        var hashedPassword =
+                    Rfc2898DeriveBytes.Pbkdf2(passwordInBytes,
+                        salt,
+                        100_000,
+                        HashAlgorithmName.SHA512,
+                        64);
+
+        // Creates the password object with the hashedPassword and the salt.
+        return new(
+                Encoding.UTF8.GetString(hashedPassword),
+                salt
+            );
+
     }
 
     public static string SerializePassword(this Password password)

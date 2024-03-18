@@ -1,20 +1,14 @@
 ﻿using System.Data;
 using System.Diagnostics;
+using ChessMasterQuiz.Forms.Admin;
 using ChessMasterQuiz.Misc;
 
 namespace ChessMasterQuiz.Forms
 {
     public partial class formAddQuestion : Form
     {
-        public formAddQuestion()
-        {
+        public formAddQuestion() =>
             InitializeComponent();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
@@ -37,7 +31,6 @@ namespace ChessMasterQuiz.Forms
                 Q = txtBoxQuestion.Text,
                 A = new Answer(new() { txtBoxAnswerOne.Text, txtBoxAnswerTwo.Text, txtBoxAnswerThree.Text, txtBoxAnswerFour.Text }, (uint)checkBoxes.IndexOf(checkBoxes.First(x => x.Checked))),
                 Rating = int.Parse(txtBoxRating.Text)
-
             };
 
             var serialized = QonConvert.Serialize(tq);
@@ -47,22 +40,16 @@ namespace ChessMasterQuiz.Forms
                 sw.WriteLine(serialized);
             }
 
+            // Clear all text boxes for next question
             foreach (var textbox in Controls.OfType<TextBox>())
             {
                 textbox.Text = "";
             }
-
-            Debug.Print($"Written to file");
         }
 
         private void btnBackToMenu_Click(object sender, EventArgs e)
         {
-            ActivateForm<formMenu>();
-        }
-
-        private void txtBoxRating_TextChanged(object sender, EventArgs e)
-        {
-
+            ActivateForm<formAdminMenu>();
         }
     }
 }

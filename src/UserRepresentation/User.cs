@@ -121,6 +121,7 @@ public class User
         Type = isAdmin ? UserType.ADMIN : UserType.USER;
     }
 
+
     // This method double checks that all users are logged out before logging in a specific user.
     public void Login()
     {

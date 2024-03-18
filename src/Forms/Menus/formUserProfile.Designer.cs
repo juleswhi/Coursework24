@@ -40,6 +40,12 @@
             lblRating = new Label();
             lblMainMenu = new Button();
             btnNext = new Button();
+            lblChangePassword = new Label();
+            txtBoxOldPassword = new TextBox();
+            txtBoxNewPassword = new TextBox();
+            btnChangePassword = new Button();
+            lblOldPasswordIncorrect = new Label();
+            lblNewPasswordInvalid = new Label();
             ((System.ComponentModel.ISupportInitialize)pBoxProfileImage).BeginInit();
             SuspendLayout();
             // 
@@ -86,33 +92,33 @@
             // lblTopScoreValue
             // 
             lblTopScoreValue.AutoSize = true;
-            lblTopScoreValue.Font = new Font("JetBrains Mono", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTopScoreValue.Font = new Font("JetBrains Mono", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblTopScoreValue.ForeColor = Color.FromArgb(0, 192, 0);
-            lblTopScoreValue.Location = new Point(167, 80);
+            lblTopScoreValue.Location = new Point(167, 86);
             lblTopScoreValue.Name = "lblTopScoreValue";
-            lblTopScoreValue.Size = new Size(62, 47);
+            lblTopScoreValue.Size = new Size(51, 39);
             lblTopScoreValue.TabIndex = 7;
             lblTopScoreValue.Text = "-1";
             // 
             // lblQuizCompleteValue
             // 
             lblQuizCompleteValue.AutoSize = true;
-            lblQuizCompleteValue.Font = new Font("JetBrains Mono", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
+            lblQuizCompleteValue.Font = new Font("JetBrains Mono", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblQuizCompleteValue.ForeColor = Color.FromArgb(0, 192, 0);
-            lblQuizCompleteValue.Location = new Point(279, 135);
+            lblQuizCompleteValue.Location = new Point(279, 139);
             lblQuizCompleteValue.Name = "lblQuizCompleteValue";
-            lblQuizCompleteValue.Size = new Size(62, 47);
+            lblQuizCompleteValue.Size = new Size(51, 39);
             lblQuizCompleteValue.TabIndex = 7;
             lblQuizCompleteValue.Text = "-1";
             // 
             // lblAccuracyValue
             // 
             lblAccuracyValue.AutoSize = true;
-            lblAccuracyValue.Font = new Font("JetBrains Mono", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
+            lblAccuracyValue.Font = new Font("JetBrains Mono", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblAccuracyValue.ForeColor = Color.FromArgb(0, 192, 0);
-            lblAccuracyValue.Location = new Point(153, 188);
+            lblAccuracyValue.Location = new Point(153, 192);
             lblAccuracyValue.Name = "lblAccuracyValue";
-            lblAccuracyValue.Size = new Size(62, 47);
+            lblAccuracyValue.Size = new Size(51, 39);
             lblAccuracyValue.TabIndex = 9;
             lblAccuracyValue.Text = "-1";
             // 
@@ -129,11 +135,11 @@
             // lblRatingValue
             // 
             lblRatingValue.AutoSize = true;
-            lblRatingValue.Font = new Font("JetBrains Mono", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
+            lblRatingValue.Font = new Font("JetBrains Mono", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblRatingValue.ForeColor = Color.FromArgb(0, 192, 0);
-            lblRatingValue.Location = new Point(137, 247);
+            lblRatingValue.Location = new Point(125, 241);
             lblRatingValue.Name = "lblRatingValue";
-            lblRatingValue.Size = new Size(62, 47);
+            lblRatingValue.Size = new Size(51, 39);
             lblRatingValue.TabIndex = 11;
             lblRatingValue.Text = "-1";
             // 
@@ -152,9 +158,9 @@
             lblMainMenu.BackColor = Color.FromArgb(192, 255, 192);
             lblMainMenu.FlatStyle = FlatStyle.Flat;
             lblMainMenu.Font = new Font("JetBrains Mono", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lblMainMenu.Location = new Point(559, 361);
+            lblMainMenu.Location = new Point(594, 378);
             lblMainMenu.Name = "lblMainMenu";
-            lblMainMenu.Size = new Size(181, 53);
+            lblMainMenu.Size = new Size(194, 60);
             lblMainMenu.TabIndex = 12;
             lblMainMenu.Text = "Back To Main Menu";
             lblMainMenu.UseVisualStyleBackColor = false;
@@ -172,12 +178,83 @@
             btnNext.UseVisualStyleBackColor = false;
             btnNext.Click += btnNext_Click;
             // 
+            // lblChangePassword
+            // 
+            lblChangePassword.AutoSize = true;
+            lblChangePassword.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
+            lblChangePassword.Location = new Point(21, 317);
+            lblChangePassword.Name = "lblChangePassword";
+            lblChangePassword.Size = new Size(238, 31);
+            lblChangePassword.TabIndex = 15;
+            lblChangePassword.Text = "Change Password?";
+            // 
+            // txtBoxOldPassword
+            // 
+            txtBoxOldPassword.Font = new Font("JetBrains Mono", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxOldPassword.Location = new Point(21, 351);
+            txtBoxOldPassword.Name = "txtBoxOldPassword";
+            txtBoxOldPassword.PlaceholderText = "Old Password..";
+            txtBoxOldPassword.Size = new Size(238, 35);
+            txtBoxOldPassword.TabIndex = 16;
+            txtBoxOldPassword.UseSystemPasswordChar = true;
+            // 
+            // txtBoxNewPassword
+            // 
+            txtBoxNewPassword.Font = new Font("JetBrains Mono", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxNewPassword.Location = new Point(21, 392);
+            txtBoxNewPassword.Name = "txtBoxNewPassword";
+            txtBoxNewPassword.PlaceholderText = "New Password..";
+            txtBoxNewPassword.Size = new Size(238, 35);
+            txtBoxNewPassword.TabIndex = 17;
+            txtBoxNewPassword.UseSystemPasswordChar = true;
+            // 
+            // btnChangePassword
+            // 
+            btnChangePassword.BackColor = Color.FromArgb(192, 255, 192);
+            btnChangePassword.FlatStyle = FlatStyle.Flat;
+            btnChangePassword.Font = new Font("JetBrains Mono", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnChangePassword.Location = new Point(307, 363);
+            btnChangePassword.Name = "btnChangePassword";
+            btnChangePassword.Size = new Size(153, 49);
+            btnChangePassword.TabIndex = 18;
+            btnChangePassword.Text = "Change";
+            btnChangePassword.UseVisualStyleBackColor = false;
+            btnChangePassword.Click += btnChangePassword_Click;
+            // 
+            // lblOldPasswordIncorrect
+            // 
+            lblOldPasswordIncorrect.AutoSize = true;
+            lblOldPasswordIncorrect.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
+            lblOldPasswordIncorrect.ForeColor = Color.FromArgb(192, 0, 0);
+            lblOldPasswordIncorrect.Location = new Point(265, 339);
+            lblOldPasswordIncorrect.Name = "lblOldPasswordIncorrect";
+            lblOldPasswordIncorrect.Size = new Size(260, 21);
+            lblOldPasswordIncorrect.TabIndex = 19;
+            lblOldPasswordIncorrect.Text = "Old password is incorrect";
+            // 
+            // lblNewPasswordInvalid
+            // 
+            lblNewPasswordInvalid.AutoSize = true;
+            lblNewPasswordInvalid.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNewPasswordInvalid.ForeColor = Color.FromArgb(192, 0, 0);
+            lblNewPasswordInvalid.Location = new Point(273, 420);
+            lblNewPasswordInvalid.Name = "lblNewPasswordInvalid";
+            lblNewPasswordInvalid.Size = new Size(240, 21);
+            lblNewPasswordInvalid.TabIndex = 20;
+            lblNewPasswordInvalid.Text = "New password is invalid";
+            // 
             // formUserProfile
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(800, 450);
+            Controls.Add(lblNewPasswordInvalid);
+            Controls.Add(lblOldPasswordIncorrect);
+            Controls.Add(btnChangePassword);
+            Controls.Add(txtBoxNewPassword);
+            Controls.Add(txtBoxOldPassword);
+            Controls.Add(lblChangePassword);
             Controls.Add(btnNext);
             Controls.Add(lblMainMenu);
             Controls.Add(lblRatingValue);
@@ -211,5 +288,11 @@
         private Label lblRating;
         private Button lblMainMenu;
         private Button btnNext;
+        private Label lblChangePassword;
+        private TextBox txtBoxOldPassword;
+        private TextBox txtBoxNewPassword;
+        private Button btnChangePassword;
+        private Label lblOldPasswordIncorrect;
+        private Label lblNewPasswordInvalid;
     }
 }

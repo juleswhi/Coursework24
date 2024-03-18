@@ -20,6 +20,9 @@ public partial class formUserProfile : Form, IContext
             user = ActiveUser!;
         }
 
+        lblNewPasswordInvalid.Hide();
+        lblOldPasswordIncorrect.Hide();
+
         _user = user;
 
         lblUsername.Text = user.Username;
@@ -67,5 +70,32 @@ public partial class formUserProfile : Form, IContext
         pBoxProfileImage.Image = User.ProfilePictures[_user.ImageIndex];
 
         WriteUsers();
+    }
+
+    private void btnChangePassword_Click(object sender, EventArgs e)
+    {
+        string? old = txtBoxOldPassword.Text;
+        string? @new = txtBoxNewPassword.Text;
+
+
+        if (!old.VerifyPassword(_user!))
+        {
+            lblOldPasswordIncorrect.Show();
+            return;
+        }
+
+        (bool valid, var _) = @new.Validate(ValidationType.PASSWORD);
+
+        if (_user!.Type == UserType.USER && !valid)
+        {
+            lblNewPasswordInvalid.Show();
+            return;
+        }
+
+        Password hashedPassword = @new.Hash();
+
+        _user!.Password = hashedPassword;
+
+        UpdateUser(_user!);
     }
 }
