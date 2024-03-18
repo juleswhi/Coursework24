@@ -1,28 +1,46 @@
-﻿using ChessMasterQuiz.Chess;
-namespace Chess;
+﻿namespace Chess;
 
 public class SAN : IEquatable<SAN>, IEquatable<Notation>
 {
+    // 0-0 0-0-0
     public int Castling { get; set; }
+    
+    // dxe5 Bxe5 Qxf7
     public bool Capturing { get; set; } = false;
+
+    // Rf5+ Qxg6+
     public bool Check { get; set; } = false;
+
+    // Qxf7#
     public bool CheckMate { get; set; } = false;
+    
+    // ( 'e', 4 ), ( 'f' 5 )
     public (char, int) PawnCapturing { get; set; }
+
+    // PAWN, QUEEN, BISHOP
     public PieceType Piece { get; set; }
+
+    // Rbf4, f5xg4
     public char? SpecifyPiece { get; set; }
+
+    // f8=Q h1=Q
     public PieceType? IsQueening { get; set; } = null;
+    
+    // e4, d5
     public Notation Square { get; set; }
+
+    // d3, g6
     public Notation InitialSquare { get; set; }
     public bool NullMove { get; set; } = false;
 
 
-    // This ToString override is used to print the SAN in proper notation
-
+    // Print proper notation 
     public override string ToString()
     {
         return GetNotation().Trim();
     }
 
+    // Converts the instance into a standard notation string
     public string GetNotation()
     {
         if (Castling == 1)
@@ -53,10 +71,13 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
         From(str);
     }
 
+    // Empty constructor
     public SAN()
     {
     }
 
+    // Inspired by functional programming 
+    // Converts a SAN string into a SAN object
     public static SAN From(string str)
     {
         SAN san = new();
@@ -137,6 +158,7 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
         };
     }
 
+    // This finds out where a piece could have come from based on a singlular SAN and a piece list  
     public Notation GetInitialLocation()
     {
         int PAWN_DIRECTION;
@@ -147,8 +169,11 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
                 {
                     foreach (var pawn in MoveHelper.CurrentBoard!.Pieces.Where(x => x.Type == PieceType.PAWN))
                     {
+                        // Grab current pawn's file + the final file
                         int pawnFile = FileNumberFromChar(pawn.Location.File);
                         int destFile = FileNumberFromChar(Square.File);
+
+                        // If the pawn is white or black - moves different direction
                         PAWN_DIRECTION = pawn.Colour == Colour.White ? -1 : 1;
                         if (pawn.Location.File != Square.File)
                         {
@@ -157,7 +182,9 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
 
                         if (pawn.Location.Rank == Square.Rank + PAWN_DIRECTION)
                         {
+                            return pawn.Location;
                         }
+                        // Pawn can only move two squares if it is on it's inital square
                         else if (pawn.Location.Rank == Square.Rank + PAWN_DIRECTION * 2)
                         {
                             if (pawn.Colour == Colour.White)
@@ -176,6 +203,7 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
                             }
                         }
 
+                        // Check all pawn one square moves
                         else if (pawnFile == destFile + 1 || pawnFile == destFile - 1)
                         {
                             if (pawn.Location.Rank + PAWN_DIRECTION == Square.Rank)
@@ -185,10 +213,10 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
                         }
                         else
                         {
+                            // No move found, try again on the next pawn
                             continue;
                         }
 
-                        // Debug.Print($"Found PAWN at {pawn.Location.File}{pawn.Location.Rank} to move to {Square.File}{Square.Rank}");
                         return pawn.Location;
                     }
 
@@ -201,6 +229,7 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
                     int knightFile = FileNumberFromChar(knight.Location.File);
                     int destFile = FileNumberFromChar(Square.File);
 
+                    // Knight Jumps
                     if (knightFile == destFile + 1 || knightFile == destFile - 1)
                     {
                         if (knight.Location.Rank == Square.Rank + 2 ||

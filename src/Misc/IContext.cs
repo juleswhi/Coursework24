@@ -1,5 +1,6 @@
 ﻿namespace ChessMasterQuiz.Misc;
 
+// These represent any data that could be passed through
 public enum ContextTagType
 {
     QUESTION,
@@ -22,9 +23,9 @@ public record DataContextTag(object data, ContextTagType tag);
 /*
    The IContext interface allows the Context System 
    to ensure that the method is available 
-   TYPE SAFETY YEAH!
  */
 interface IContext
 {
-    public void UseContext(IEnumerable<DataContextTag> context);
+    // DCT is an alias for DataContextTag 
+    public void UseContext(IEnumerable<DCT> context);
 }
