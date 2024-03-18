@@ -35,3 +35,13 @@ Debug -> Start Without Debugging
 ```
 
 _Alternatively, Press `Ctrl+F5`_
+
+## Default Accounts
+
+Admin:
+- Username: `root`
+- Password: `root`
+
+User:
+- Username: `jim`
+- Password: `Password1@`
