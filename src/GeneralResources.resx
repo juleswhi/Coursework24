@@ -142,4 +142,76 @@
   <data name="Chess_Logo_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Logos\Chess-Logo-7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Untitled_design" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_10_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(10).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_11_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(11).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_12_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(12).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_13_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(13).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_14_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(14).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_15_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(15).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_16_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(16).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_17_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(17).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_18_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(18).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_19_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(19).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_1_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_20_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(20).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_21_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(21).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_22_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(22).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_23_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(23).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_2_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_3_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_4_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_5_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(5).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_6_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(6).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_7_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(7).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_8_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(8).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled_design_9_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\newLogogs\Untitled design(9).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
