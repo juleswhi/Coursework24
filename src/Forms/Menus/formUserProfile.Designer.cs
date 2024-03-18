@@ -57,7 +57,7 @@
             // 
             lblTopScore.AutoSize = true;
             lblTopScore.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTopScore.Location = new Point(51, 92);
+            lblTopScore.Location = new Point(21, 92);
             lblTopScore.Name = "lblTopScore";
             lblTopScore.Size = new Size(140, 31);
             lblTopScore.TabIndex = 3;
@@ -77,7 +77,7 @@
             // 
             lblQuizCompleted.AutoSize = true;
             lblQuizCompleted.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
-            lblQuizCompleted.Location = new Point(231, 92);
+            lblQuizCompleted.Location = new Point(21, 147);
             lblQuizCompleted.Name = "lblQuizCompleted";
             lblQuizCompleted.Size = new Size(252, 31);
             lblQuizCompleted.TabIndex = 5;
@@ -88,7 +88,7 @@
             lblTopScoreValue.AutoSize = true;
             lblTopScoreValue.Font = new Font("JetBrains Mono", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
             lblTopScoreValue.ForeColor = Color.FromArgb(0, 192, 0);
-            lblTopScoreValue.Location = new Point(81, 135);
+            lblTopScoreValue.Location = new Point(167, 80);
             lblTopScoreValue.Name = "lblTopScoreValue";
             lblTopScoreValue.Size = new Size(62, 47);
             lblTopScoreValue.TabIndex = 7;
@@ -99,7 +99,7 @@
             lblQuizCompleteValue.AutoSize = true;
             lblQuizCompleteValue.Font = new Font("JetBrains Mono", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
             lblQuizCompleteValue.ForeColor = Color.FromArgb(0, 192, 0);
-            lblQuizCompleteValue.Location = new Point(332, 135);
+            lblQuizCompleteValue.Location = new Point(279, 135);
             lblQuizCompleteValue.Name = "lblQuizCompleteValue";
             lblQuizCompleteValue.Size = new Size(62, 47);
             lblQuizCompleteValue.TabIndex = 7;
@@ -110,7 +110,7 @@
             lblAccuracyValue.AutoSize = true;
             lblAccuracyValue.Font = new Font("JetBrains Mono", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
             lblAccuracyValue.ForeColor = Color.FromArgb(0, 192, 0);
-            lblAccuracyValue.Location = new Point(81, 308);
+            lblAccuracyValue.Location = new Point(153, 188);
             lblAccuracyValue.Name = "lblAccuracyValue";
             lblAccuracyValue.Size = new Size(62, 47);
             lblAccuracyValue.TabIndex = 9;
@@ -120,7 +120,7 @@
             // 
             lblAccuracy.AutoSize = true;
             lblAccuracy.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
-            lblAccuracy.Location = new Point(51, 265);
+            lblAccuracy.Location = new Point(21, 198);
             lblAccuracy.Name = "lblAccuracy";
             lblAccuracy.Size = new Size(126, 31);
             lblAccuracy.TabIndex = 8;
@@ -131,7 +131,7 @@
             lblRatingValue.AutoSize = true;
             lblRatingValue.Font = new Font("JetBrains Mono", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
             lblRatingValue.ForeColor = Color.FromArgb(0, 192, 0);
-            lblRatingValue.Location = new Point(332, 308);
+            lblRatingValue.Location = new Point(137, 247);
             lblRatingValue.Name = "lblRatingValue";
             lblRatingValue.Size = new Size(62, 47);
             lblRatingValue.TabIndex = 11;
@@ -141,7 +141,7 @@
             // 
             lblRating.AutoSize = true;
             lblRating.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
-            lblRating.Location = new Point(315, 265);
+            lblRating.Location = new Point(21, 247);
             lblRating.Name = "lblRating";
             lblRating.Size = new Size(98, 31);
             lblRating.TabIndex = 10;

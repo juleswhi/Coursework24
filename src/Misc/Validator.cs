@@ -12,6 +12,7 @@ enum ValidationType
     EMAIL,
     USERNAME,
     PASSWORD,
+    PASSWORD_CONFIRM,
     DISPLAY,
     DOB,
     GENDER
@@ -51,6 +52,8 @@ internal static class Validator
         {
             case ValidationType.EMAIL:
                 return (MailAddress.TryCreate(text, out _), 100);
+            case PASSWORD_CONFIRM:
+                return (false, 0);
             case DOB:
                 return IsValidAge(text);
             case DISPLAY:
@@ -140,7 +143,9 @@ internal static class Validator
             return false;
         }
 
+
         return true;
+
     }
 
     private static bool ValidateUsername(this string text)
@@ -164,7 +169,7 @@ internal static class Validator
         {
             return false;
         }
-        // if (Users.Any(x => x.Username?.ToLower() == text)) return false;
+        if (Users.Any(x => x.Username?.ToLower() == text)) return false;
 
         return true;
 

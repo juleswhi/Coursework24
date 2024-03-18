@@ -31,10 +31,7 @@
             btnViewPuzzles = new Button();
             btnViewQuestions = new Button();
             label1 = new Label();
-            chckBoxPasswordStrong = new CheckBox();
             label2 = new Label();
-            checkBoxPasswordWeak = new CheckBox();
-            chckBoxPasswordMedium = new CheckBox();
             btnCreatePuzzles = new Button();
             btnCreateQuestions = new Button();
             label3 = new Label();
@@ -43,6 +40,11 @@
             txtBoxPromote = new TextBox();
             btnPromote = new Button();
             btnDemote = new Button();
+            btnWeak = new Button();
+            btnMedium = new Button();
+            btnStrong = new Button();
+            lblUserNotExist = new Label();
+            lblPromoteYourself = new Label();
             SuspendLayout();
             // 
             // btnViewPuzzles
@@ -81,18 +83,6 @@
             label1.TabIndex = 4;
             label1.Text = "User Settings";
             // 
-            // chckBoxPasswordStrong
-            // 
-            chckBoxPasswordStrong.AutoSize = true;
-            chckBoxPasswordStrong.Font = new Font("JetBrains Mono", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            chckBoxPasswordStrong.Location = new Point(78, 320);
-            chckBoxPasswordStrong.Name = "chckBoxPasswordStrong";
-            chckBoxPasswordStrong.Size = new Size(109, 31);
-            chckBoxPasswordStrong.TabIndex = 5;
-            chckBoxPasswordStrong.Tag = "Strong";
-            chckBoxPasswordStrong.Text = "Strong";
-            chckBoxPasswordStrong.UseVisualStyleBackColor = true;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -102,30 +92,6 @@
             label2.Size = new Size(233, 27);
             label2.TabIndex = 8;
             label2.Text = "Password Strength";
-            // 
-            // checkBoxPasswordWeak
-            // 
-            checkBoxPasswordWeak.AutoSize = true;
-            checkBoxPasswordWeak.Font = new Font("JetBrains Mono", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            checkBoxPasswordWeak.Location = new Point(78, 394);
-            checkBoxPasswordWeak.Name = "checkBoxPasswordWeak";
-            checkBoxPasswordWeak.Size = new Size(83, 31);
-            checkBoxPasswordWeak.TabIndex = 9;
-            checkBoxPasswordWeak.Tag = "Weak";
-            checkBoxPasswordWeak.Text = "Weak";
-            checkBoxPasswordWeak.UseVisualStyleBackColor = true;
-            // 
-            // chckBoxPasswordMedium
-            // 
-            chckBoxPasswordMedium.AutoSize = true;
-            chckBoxPasswordMedium.Font = new Font("JetBrains Mono", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            chckBoxPasswordMedium.Location = new Point(78, 357);
-            chckBoxPasswordMedium.Name = "chckBoxPasswordMedium";
-            chckBoxPasswordMedium.Size = new Size(109, 31);
-            chckBoxPasswordMedium.TabIndex = 10;
-            chckBoxPasswordMedium.Tag = "Medium";
-            chckBoxPasswordMedium.Text = "Medium";
-            chckBoxPasswordMedium.UseVisualStyleBackColor = true;
             // 
             // btnCreatePuzzles
             // 
@@ -222,12 +188,78 @@
             btnDemote.UseVisualStyleBackColor = false;
             btnDemote.Click += btnDemote_Click;
             // 
+            // btnWeak
+            // 
+            btnWeak.BackColor = Color.FromArgb(192, 255, 192);
+            btnWeak.FlatStyle = FlatStyle.Flat;
+            btnWeak.Font = new Font("JetBrains Mono", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnWeak.Location = new Point(71, 396);
+            btnWeak.Name = "btnWeak";
+            btnWeak.Size = new Size(120, 32);
+            btnWeak.TabIndex = 19;
+            btnWeak.Text = "Weak";
+            btnWeak.UseVisualStyleBackColor = false;
+            btnWeak.Click += btnWeak_Click;
+            // 
+            // btnMedium
+            // 
+            btnMedium.BackColor = Color.FromArgb(192, 255, 192);
+            btnMedium.FlatStyle = FlatStyle.Flat;
+            btnMedium.Font = new Font("JetBrains Mono", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMedium.Location = new Point(71, 358);
+            btnMedium.Name = "btnMedium";
+            btnMedium.Size = new Size(120, 32);
+            btnMedium.TabIndex = 20;
+            btnMedium.Text = "Medium";
+            btnMedium.UseVisualStyleBackColor = false;
+            btnMedium.Click += btnMedium_Click;
+            // 
+            // btnStrong
+            // 
+            btnStrong.BackColor = Color.FromArgb(192, 255, 192);
+            btnStrong.FlatStyle = FlatStyle.Flat;
+            btnStrong.Font = new Font("JetBrains Mono", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnStrong.Location = new Point(71, 320);
+            btnStrong.Name = "btnStrong";
+            btnStrong.Size = new Size(120, 32);
+            btnStrong.TabIndex = 21;
+            btnStrong.Text = "Strong";
+            btnStrong.UseVisualStyleBackColor = false;
+            btnStrong.Click += btnStrong_Click;
+            // 
+            // lblUserNotExist
+            // 
+            lblUserNotExist.AutoSize = true;
+            lblUserNotExist.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUserNotExist.ForeColor = Color.FromArgb(192, 0, 0);
+            lblUserNotExist.Location = new Point(296, 417);
+            lblUserNotExist.Name = "lblUserNotExist";
+            lblUserNotExist.Size = new Size(250, 21);
+            lblUserNotExist.TabIndex = 22;
+            lblUserNotExist.Text = "This user does not exist";
+            // 
+            // lblPromoteYourself
+            // 
+            lblPromoteYourself.AutoSize = true;
+            lblPromoteYourself.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPromoteYourself.ForeColor = Color.FromArgb(192, 0, 0);
+            lblPromoteYourself.Location = new Point(283, 420);
+            lblPromoteYourself.Name = "lblPromoteYourself";
+            lblPromoteYourself.Size = new Size(280, 21);
+            lblPromoteYourself.TabIndex = 23;
+            lblPromoteYourself.Text = "You cannot promote yourself";
+            // 
             // formAdminMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(800, 450);
+            Controls.Add(lblPromoteYourself);
+            Controls.Add(lblUserNotExist);
+            Controls.Add(btnStrong);
+            Controls.Add(btnMedium);
+            Controls.Add(btnWeak);
             Controls.Add(btnDemote);
             Controls.Add(btnPromote);
             Controls.Add(txtBoxPromote);
@@ -236,10 +268,7 @@
             Controls.Add(label3);
             Controls.Add(btnCreateQuestions);
             Controls.Add(btnCreatePuzzles);
-            Controls.Add(chckBoxPasswordMedium);
-            Controls.Add(checkBoxPasswordWeak);
             Controls.Add(label2);
-            Controls.Add(chckBoxPasswordStrong);
             Controls.Add(label1);
             Controls.Add(btnViewQuestions);
             Controls.Add(btnViewPuzzles);
@@ -254,10 +283,7 @@
         private Button btnViewPuzzles;
         private Button btnViewQuestions;
         private Label label1;
-        private CheckBox chckBoxPasswordStrong;
         private Label label2;
-        private CheckBox checkBoxPasswordWeak;
-        private CheckBox chckBoxPasswordMedium;
         private Button btnCreatePuzzles;
         private Button btnCreateQuestions;
         private Label label3;
@@ -266,5 +292,10 @@
         private TextBox txtBoxPromote;
         private Button btnPromote;
         private Button btnDemote;
+        private Button btnWeak;
+        private Button btnMedium;
+        private Button btnStrong;
+        private Label lblUserNotExist;
+        private Label lblPromoteYourself;
     }
 }

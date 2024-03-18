@@ -1,4 +1,6 @@
-﻿using ChessMasterQuiz.Misc;
+﻿using System.Diagnostics;
+using System.Net.Mail;
+using ChessMasterQuiz.Misc;
 using static ChessMasterQuiz.Misc.ValidationType;
 
 namespace ChessMasterQuiz;
@@ -9,8 +11,8 @@ public partial class formRegister : Form, IContext
     {
         { USERNAME, false },
         { PASSWORD, false },
-        { DISPLAY, false },
-        { GENDER, false },
+        { PASSWORD_CONFIRM, false },
+        { ValidationType.EMAIL, false },
         { DOB, false }
     };
 
@@ -24,13 +26,14 @@ public partial class formRegister : Form, IContext
             { DISPLAY, pBarDisplayName },
             { USERNAME, pBarUsername },
             { DOB, pBarDob },
-            { GENDER, pBarGender }
+            { ValidationType.EMAIL, pBarGender },
+            { PASSWORD_CONFIRM, pBarDisplayName }
         };
 
         pBoxLogo.Image = GetLogo();
         pBoxLogo.SizeMode = PictureBoxSizeMode.StretchImage;
         progressPassword.Maximum = 100;
-        Resize += FormRegister_Resize;
+        TextBox? passwordBox = Controls.OfType<TextBox>().FirstOrDefault(x => (x.Tag as string) == "password");
         foreach (var control in Controls.OfType<TextBox>())
         {
             control.TextChanged += (s, _) =>
@@ -44,8 +47,14 @@ public partial class formRegister : Form, IContext
                 }
                 else
                 {
-                    ValidationToBarMap[vt].Value = val ? (int)percentage : 0;
+                    if (vt is PASSWORD_CONFIRM && passwordBox?.Text == sender.Text)
+                    {
+                        pBarDisplayName.Value = 100;
+                        val = true;
+                    }
+                    else ValidationToBarMap[vt].Value = val ? (int)percentage : 0;
                 }
+
                 ValidationToBoolMap[vt] = val;
 
                 if (ValidationToBoolMap.All(x => x.Value == true))
@@ -70,9 +79,6 @@ public partial class formRegister : Form, IContext
             }
         }
     }
-    private void FormRegister_Resize(object? sender, EventArgs e)
-    {
-    }
 
     private void btnRegister_Click(object sender, EventArgs e)
     {
@@ -81,27 +87,31 @@ public partial class formRegister : Form, IContext
             // Fields
             { USERNAME,  txtBoxEmail.Text },
             { PASSWORD, txtBoxPassword.Text },
-            { GENDER, txtBoxGender.Text },
-            { DISPLAY, txtBoxDisplayName.Text } ,
+            { ValidationType.EMAIL, txtBoxDisplayName.Text } ,
             { DOB, txtBoxDob.Text }
         };
 
         var enumValues = Enum.GetValues(typeof(ValidationType)).Cast<ValidationType>();
 
-        foreach (var val in enumValues.Where(x => x != ValidationType.EMAIL))
+        foreach (var val in enumValues.Where(ValidationToTextBox.ContainsKey))
         {
-            if (!ValidationToTextBox[val].Validate(val).Item1)
+            if (!ValidationToBoolMap[val])
             {
+                Debug.Print($"{val} is false");
                 return;
             }
         }
 
-        var user = new UserRepresentation.User(
-            name: ValidationToTextBox[DISPLAY],
+        Debug.Print($"All values are correct");
+
+        var _ = MailAddress.TryCreate(ValidationToTextBox[ValidationType.EMAIL], out var addy);
+
+        var user = new User(
+            name: ValidationToTextBox[USERNAME],
             password: ValidationToTextBox[PASSWORD]
             )
         {
-            Gender = ValidationToTextBox[GENDER],
+            Email = addy,
             DOB = DateTime.Parse(ValidationToTextBox[DOB]),
             Username = ValidationToTextBox[USERNAME]
         };
@@ -111,11 +121,6 @@ public partial class formRegister : Form, IContext
         WriteUser(user);
 
         ActivateForm<formLogin>();
-    }
-
-    private void progressPassword_Click(object sender, EventArgs e)
-    {
-
     }
 
     private void txtBoxEmail_TextChanged(object sender, EventArgs e)

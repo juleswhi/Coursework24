@@ -1,43 +1,26 @@
-﻿using ChessMasterQuiz.Misc;
+﻿using System.Diagnostics;
+using ChessMasterQuiz.Misc;
 
 namespace ChessMasterQuiz.Forms.Admin;
 
 public partial class formAdminMenu : Form
 {
+    private AdminConfiguration? _config = new();
     public formAdminMenu()
     {
         InitializeComponent();
+
+        lblUserNotExist.Hide();
+        lblPromoteYourself.Hide();
 
         txtBoxPromote.AutoCompleteMode = AutoCompleteMode.Suggest;
         txtBoxPromote.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
         txtBoxPromote.AutoCompleteCustomSource.AddRange(Users.Select(x => x.Username).ToArray());
 
-        foreach (CheckBox checkBox in Controls.OfType<CheckBox>())
-        {
-            checkBox.CheckedChanged += (s, e) =>
-            {
-                foreach (CheckBox cbox in Controls.OfType<CheckBox>())
-                {
-                    cbox.Checked = false;
-                }
+        List<CheckBox> checkBoxes = Controls.OfType<CheckBox>().ToList();
 
-                var config = GetAdminConfig();
-                if (config is AdminConfiguration c)
-                {
-                    c.PasswordRequirementLevel = (string?)checkBox.Tag switch
-                    {
-                        "Strong" => STRONG,
-                        "Medium" => MEDIUM,
-                        _ => WEAK
-                    };
-
-                    c.Write();
-                }
-
-                checkBox.Checked = true;
-            };
-        }
+        _config = GetAdminConfig();
     }
 
     private void btnCreatePuzzles_Click(object sender, EventArgs e)
@@ -71,12 +54,15 @@ public partial class formAdminMenu : Form
 
         if (user is null)
         {
+            lblUserNotExist.Show();
+            lblPromoteYourself.Hide();
             return;
         }
 
-        if(user.Username == ActiveUser?.Username)
+        if (user.Username == ActiveUser?.Username)
         {
-            MessageBox.Show($"You cannot promote yourself");
+            lblUserNotExist.Hide();
+            lblPromoteYourself.Show();
             return;
         }
 
@@ -101,7 +87,7 @@ public partial class formAdminMenu : Form
             return;
         }
 
-        if(user.Username == ActiveUser?.Username)
+        if (user.Username == ActiveUser?.Username)
         {
             MessageBox.Show($"You cannot demote yourself");
             return;
@@ -117,5 +103,32 @@ public partial class formAdminMenu : Form
     private void btnMainMenu_Click(object sender, EventArgs e)
     {
         ActivateForm<formMenu>();
+    }
+
+    private void btnStrong_Click(object sender, EventArgs e)
+    {
+        if (_config is AdminConfiguration c)
+        {
+            c.PasswordRequirementLevel = STRONG;
+            c.Write();
+        }
+    }
+
+    private void btnMedium_Click(object sender, EventArgs e)
+    {
+        if (_config is AdminConfiguration c)
+        {
+            c.PasswordRequirementLevel = MEDIUM;
+            c.Write();
+        }
+    }
+
+    private void btnWeak_Click(object sender, EventArgs e)
+    {
+        if (_config is AdminConfiguration c)
+        {
+            c.PasswordRequirementLevel = WEAK;
+            c.Write();
+        }
     }
 }

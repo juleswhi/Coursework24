@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using System.Net.Mail;
+using System.Security.Cryptography;
 using System.Text;
 using ChessMasterQuiz.Chess;
 
@@ -38,6 +39,8 @@ public class User
 
     // The Date of birth of the user
     public DateTime DOB { get; set; }
+    // The email of the representative user
+    public MailAddress? Email { get; set; }
 
     // The `UserType` can either be Admin or User 
     public UserType Type { get; set; } = UserType.USER;

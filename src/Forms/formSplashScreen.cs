@@ -33,6 +33,7 @@ public partial class formSplashScreen : Form
         WaitForTimer();
 
         Board board = new();
+        board.Location = new Point((int)((0.5*Width)-(0.5*board.Width)), Location.Y);
         Controls.Add(board);
         board.DisplayGame(ChessHelper.GetScholarsMate(), 500);
     }

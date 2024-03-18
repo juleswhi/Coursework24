@@ -7,19 +7,15 @@ public partial class formLogin : Form, IContext
     public formLogin()
     {
         InitializeComponent();
+        lblIncorrectDetails.Hide();
 
         pBoxLogo.Image = GetLogo();
         pBoxLogo.SizeMode = PictureBoxSizeMode.StretchImage;
 
-        Resize += onResize;
         btnRegister.Click += (s, e) =>
         {
             ActivateForm<formRegister>();
         };
-    }
-
-    private void onResize(object? sender, EventArgs e)
-    {
     }
 
     private void btnLogin_Click(object sender, EventArgs e)
@@ -30,6 +26,7 @@ public partial class formLogin : Form, IContext
         var foundUser = Users.FirstOrDefault(x => x.Username == usernameText);
         if (foundUser is null)
         {
+            lblIncorrectDetails.Show();
             return;
         }
 
@@ -42,19 +39,8 @@ public partial class formLogin : Form, IContext
         ActivateForm<formMenu>((foundUser, USER));
     }
 
-    private void formLogin_Load(object sender, EventArgs e)
-    {
-
-    }
-
     public void UseContext(IEnumerable<DCT> context)
-    {
-    }
-
-    private void txtBoxEmail_TextChanged(object sender, EventArgs e)
-    {
-
-    }
+    {}
 
     private void btnExit_Click(object sender, EventArgs e)
     {

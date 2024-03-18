@@ -53,7 +53,7 @@
             txtBoxEmail.Location = new Point(47, 13);
             txtBoxEmail.Name = "txtBoxEmail";
             txtBoxEmail.PlaceholderText = "Username";
-            txtBoxEmail.Size = new Size(249, 43);
+            txtBoxEmail.Size = new Size(281, 43);
             txtBoxEmail.TabIndex = 1;
             txtBoxEmail.Tag = "username";
             txtBoxEmail.TextChanged += txtBoxEmail_TextChanged;
@@ -67,7 +67,7 @@
             txtBoxPassword.Location = new Point(47, 78);
             txtBoxPassword.Name = "txtBoxPassword";
             txtBoxPassword.PlaceholderText = "Password";
-            txtBoxPassword.Size = new Size(249, 43);
+            txtBoxPassword.Size = new Size(281, 43);
             txtBoxPassword.TabIndex = 2;
             txtBoxPassword.Tag = "password";
             // 
@@ -79,19 +79,19 @@
             txtBoxDisplayName.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxDisplayName.Location = new Point(47, 143);
             txtBoxDisplayName.Name = "txtBoxDisplayName";
-            txtBoxDisplayName.PlaceholderText = "Display Name";
-            txtBoxDisplayName.Size = new Size(249, 43);
+            txtBoxDisplayName.PlaceholderText = "Confirm Password";
+            txtBoxDisplayName.Size = new Size(281, 43);
             txtBoxDisplayName.TabIndex = 3;
-            txtBoxDisplayName.Tag = "display";
+            txtBoxDisplayName.Tag = "password_confirm";
             // 
             // btnRegister
             // 
             btnRegister.BackColor = Color.FromArgb(192, 255, 192);
             btnRegister.FlatStyle = FlatStyle.Flat;
             btnRegister.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
-            btnRegister.Location = new Point(146, 357);
+            btnRegister.Location = new Point(168, 357);
             btnRegister.Name = "btnRegister";
-            btnRegister.Size = new Size(174, 63);
+            btnRegister.Size = new Size(160, 63);
             btnRegister.TabIndex = 6;
             btnRegister.Text = "Register!";
             btnRegister.UseVisualStyleBackColor = false;
@@ -105,10 +105,10 @@
             txtBoxGender.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxGender.Location = new Point(47, 208);
             txtBoxGender.Name = "txtBoxGender";
-            txtBoxGender.PlaceholderText = "Gender";
-            txtBoxGender.Size = new Size(249, 43);
+            txtBoxGender.PlaceholderText = "Email";
+            txtBoxGender.Size = new Size(281, 43);
             txtBoxGender.TabIndex = 4;
-            txtBoxGender.Tag = "gender";
+            txtBoxGender.Tag = "email";
             txtBoxGender.TextChanged += txtBoxGender_TextChanged;
             // 
             // txtBoxDob
@@ -120,7 +120,7 @@
             txtBoxDob.Location = new Point(47, 273);
             txtBoxDob.Name = "txtBoxDob";
             txtBoxDob.PlaceholderText = "DOB D/M/Y";
-            txtBoxDob.Size = new Size(249, 43);
+            txtBoxDob.Size = new Size(281, 43);
             txtBoxDob.TabIndex = 5;
             txtBoxDob.Tag = "dob";
             // 
@@ -130,9 +130,8 @@
             progressPassword.ForeColor = Color.FromArgb(192, 255, 192);
             progressPassword.Location = new Point(47, 127);
             progressPassword.Name = "progressPassword";
-            progressPassword.Size = new Size(249, 10);
+            progressPassword.Size = new Size(281, 10);
             progressPassword.TabIndex = 12;
-            progressPassword.Click += progressPassword_Click;
             // 
             // pBoxLogo
             // 
@@ -148,7 +147,7 @@
             pBarUsername.ForeColor = Color.FromArgb(192, 255, 192);
             pBarUsername.Location = new Point(47, 62);
             pBarUsername.Name = "pBarUsername";
-            pBarUsername.Size = new Size(249, 10);
+            pBarUsername.Size = new Size(281, 10);
             pBarUsername.TabIndex = 14;
             // 
             // pBarDisplayName
@@ -157,7 +156,7 @@
             pBarDisplayName.ForeColor = Color.FromArgb(192, 255, 192);
             pBarDisplayName.Location = new Point(47, 192);
             pBarDisplayName.Name = "pBarDisplayName";
-            pBarDisplayName.Size = new Size(249, 10);
+            pBarDisplayName.Size = new Size(281, 10);
             pBarDisplayName.TabIndex = 15;
             // 
             // pBarGender
@@ -166,7 +165,7 @@
             pBarGender.ForeColor = Color.FromArgb(192, 255, 192);
             pBarGender.Location = new Point(47, 257);
             pBarGender.Name = "pBarGender";
-            pBarGender.Size = new Size(249, 10);
+            pBarGender.Size = new Size(281, 10);
             pBarGender.TabIndex = 16;
             // 
             // pBarDob
@@ -175,7 +174,7 @@
             pBarDob.ForeColor = Color.FromArgb(192, 255, 192);
             pBarDob.Location = new Point(47, 322);
             pBarDob.Name = "pBarDob";
-            pBarDob.Size = new Size(249, 10);
+            pBarDob.Size = new Size(281, 10);
             pBarDob.TabIndex = 17;
             // 
             // btnBack
@@ -183,9 +182,9 @@
             btnBack.BackColor = Color.FromArgb(192, 255, 192);
             btnBack.FlatStyle = FlatStyle.Flat;
             btnBack.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
-            btnBack.Location = new Point(30, 357);
+            btnBack.Location = new Point(47, 357);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(108, 63);
+            btnBack.Size = new Size(115, 63);
             btnBack.TabIndex = 7;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;

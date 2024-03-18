@@ -36,6 +36,7 @@
             btnLogin = new Button();
             pBoxLogo = new PictureBox();
             btnExit = new Button();
+            lblIncorrectDetails = new Label();
             ((System.ComponentModel.ISupportInitialize)pBoxLogo).BeginInit();
             SuspendLayout();
             // 
@@ -83,7 +84,6 @@
             txtBoxEmail.PlaceholderText = "Username..";
             txtBoxEmail.Size = new Size(222, 43);
             txtBoxEmail.TabIndex = 1;
-            txtBoxEmail.TextChanged += txtBoxEmail_TextChanged;
             // 
             // txtBoxPassword
             // 
@@ -133,12 +133,24 @@
             btnExit.UseVisualStyleBackColor = false;
             btnExit.Click += btnExit_Click;
             // 
+            // lblIncorrectDetails
+            // 
+            lblIncorrectDetails.AutoSize = true;
+            lblIncorrectDetails.Font = new Font("JetBrains Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblIncorrectDetails.ForeColor = Color.FromArgb(192, 0, 0);
+            lblIncorrectDetails.Location = new Point(76, 269);
+            lblIncorrectDetails.Name = "lblIncorrectDetails";
+            lblIncorrectDetails.Size = new Size(192, 34);
+            lblIncorrectDetails.TabIndex = 8;
+            lblIncorrectDetails.Text = "Your username and / or \r\npassword are incorrect";
+            // 
             // formLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(800, 450);
+            Controls.Add(lblIncorrectDetails);
             Controls.Add(btnExit);
             Controls.Add(pBoxLogo);
             Controls.Add(txtBoxPassword);
@@ -149,7 +161,6 @@
             Controls.Add(lblNewQuiz);
             Name = "formLogin";
             Text = "Chess Master";
-            Load += formLogin_Load;
             ((System.ComponentModel.ISupportInitialize)pBoxLogo).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -165,5 +176,6 @@
         private Button btnLogin;
         private PictureBox pBoxLogo;
         private Button btnExit;
+        private Label lblIncorrectDetails;
     }
 }
