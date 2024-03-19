@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 
@@ -20,8 +18,6 @@ public static class UserHelper
         {
             throw new Exception($"Could not serialize the List of users correctly :(");
         }
-
-        Debug.Print($"There are: {users.Count} Users");
 
         return users;
     }

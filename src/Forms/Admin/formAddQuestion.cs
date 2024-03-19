@@ -12,7 +12,6 @@ namespace ChessMasterQuiz.Forms
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            Debug.Print("Clicked Button Craete");
             List<CheckBox> checkBoxes = new()
             {
                 checkBox1,

@@ -1,19 +1,12 @@
 ﻿
 // -- Serializer.cs -- 
 //
-// This file contains classes which deal with the Serialization of Deserialization of LON
-// LON stands for ( Lake Object Notation ) and is used to store user and question details on disk
+// This file contains classes which deal with the Serialization of Deserialization of QON
+// QON stands for ( Question Object Notation ) and is used to store question details on disk
 
-// System.Reflection is nessesary due to the nature of the Parser
-// The Parser should be able to look up the properties of types at runtime to deserialize any object
-// Needed for Debug.Print
-// Testing purposes ( this using should be removed )
-using System.Diagnostics;
-using System.Reflection;
 using System.Text;
 using static System.Char;
 using static System.String;
-// This allows for access to the User class
 using static ChessMasterQuiz.Misc.TokenType;
 
 
@@ -361,7 +354,6 @@ file static class Parser
                             {
                                 return;
                             }
-                            // Debug.Print($"Looking at type {type.Name}, for name: {name}");
 
                             var props = type.GetProperties();
 
@@ -383,14 +375,12 @@ file static class Parser
                         {
                             Next();
                             answers.Add((string)Current().Data!);
-                            // Debug.Print($"Added Answer: {Current().Data}");
                             break;
                         }
                         else if (name.ToLower().Contains("index"))
                         {
                             Next();
                             index = int.Parse((string)Current().Data!);
-                            // Debug.Print($"Added Index: {Current().Data}");
                             break;
                         }
                         else
@@ -400,12 +390,10 @@ file static class Parser
 
                         if (property is null)
                         {
-                            // Debug.Print($"Could not find prop for {name}");
                             break;
                         }
 
 
-                        // Debug.Print($"Found Type: {property.Name}");
 
                         // If null, then identifier must be in the Answers 
                         if (property is null)
@@ -420,7 +408,6 @@ file static class Parser
 
                             if (property is null)
                             {
-                                Debug.Print($"Could not find property called: {name} in {question.GetType().Name}");
                                 break;
                             }
 

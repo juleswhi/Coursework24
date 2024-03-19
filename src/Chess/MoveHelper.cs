@@ -1,30 +1,21 @@
-﻿using System.Diagnostics;
-using Chess.BoardRepresentation;
-
-
-namespace ChessMasterQuiz.Chess;
+﻿namespace Chess;
 
 public static class MoveHelper
 {
-
+    // Holds a reference to the chess board that is being displayed at the current moment
     public static Board? CurrentBoard = null;
 
     public static bool CheckIfPieceOnSquare(Notation location)
     {
-        Debug.Print($"Checking if piece is on square.");
         if (CurrentBoard is Board board)
         {
             foreach (var piece in board.Pieces)
             {
                 if (piece.Location == location)
-                {
-                    Debug.Print($"There is a piece on the square");
                     return true;
-                }
             }
         }
 
-        Debug.Print($"There is not a piece on the square");
         return false;
     }
 
@@ -61,15 +52,9 @@ public static class MoveHelper
 
             if (validateMove is Func<Notation, Notation, Board, bool> meth)
             {
-                Debug.Print("Move Function Exists");
                 if (meth(pieces[i].Location, location, CurrentBoard))
                 {
-                    Debug.Print($"Got the correct piece");
                     yield return pieces[i];
-                }
-                else
-                {
-                    Debug.Print($"Could not validate the right square");
                 }
             }
         }

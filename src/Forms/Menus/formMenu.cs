@@ -1,9 +1,6 @@
-﻿using Chess.BoardRepresentation;
-using ChessMasterQuiz.Chess;
-using ChessMasterQuiz.Forms;
+﻿using ChessMasterQuiz.Forms;
 using ChessMasterQuiz.Forms.Admin;
 using ChessMasterQuiz.Forms.Menus;
-using ChessMasterQuiz.Misc;
 
 namespace ChessMasterQuiz;
 

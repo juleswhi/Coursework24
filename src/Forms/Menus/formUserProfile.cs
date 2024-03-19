@@ -42,7 +42,6 @@ public partial class formUserProfile : Form, IContext
         g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half;
 
         g.DrawImage(User.ProfilePictures[_user.ImageIndex], new Rectangle(pBoxProfileImage.Location, zoomedImage.Size));
-        Debug.Print($"Drew image");
     }
 
     private void lblMainMenu_Click(object sender, EventArgs e)

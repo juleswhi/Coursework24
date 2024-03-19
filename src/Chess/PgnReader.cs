@@ -1,8 +1,8 @@
-﻿using System.Reflection;
-using System.Text;
+﻿using System.Text;
 
 namespace Chess;
 
+// Represents ONE pgn game
 public record class PGN(
     string Event,
     string Site,
@@ -34,49 +34,54 @@ public record class PGN(
 
 public class PgnReader
 {
+    // Holds a list of the currently parsed PGNs
     public List<PGN> Games { get; set; } = new();
 
+    // This method is useful when reading straight from a .resx file
     public void FromBytes(params byte[] bytes)
     {
         string str = Encoding.Default.GetString(bytes);
 
+        // Splitting by double new line
         string[] parts = str.Split(new string[]
         {
             "\r\n\r\n"
         },
         StringSplitOptions.RemoveEmptyEntries);
 
-        // for (int i = 0; i < 10; i += 2)
+
+        PGN pgn = new(string.Empty, string.Empty, default, -1, string.Empty, string.Empty,
+            string.Empty, null, null, null, null, null, null, null, new());
+
+
+        // Lex both parts of the game
+        var meta = LexMetadata(parts[0]).Where(x => x.Type == TokenType.KEY
+                                               || x.Type == TokenType.VALUE).ToList();
+
+        var game = LexGame(parts[1]).ToList();
+
+        // Do something with tokens to convert to PGN 
+        pgn = MetaTokensToPgn(pgn, meta);
+
+        // Convert all the moves into SAN 
+        for (int j = 0; j < game.Count; j += 2)
         {
-            PGN pgn = new(string.Empty, string.Empty, default, -1, string.Empty, string.Empty,
-                string.Empty, null, null, null, null, null, null, null, new());
+            (SAN, SAN?) move;
 
-            var meta = LexMetadata(parts[0]).Where(x => x.Type == TokenType.KEY
-                                                   || x.Type == TokenType.VALUE).ToList();
-
-            var game = LexGame(parts[1]).ToList();
-
-            // Do something with tokens to convert to PGN 
-            pgn = MetaTokensToPgn(pgn, meta);
-
-            for (int j = 0; j < game.Count; j += 2)
+            if (j + 1 == game.Count)
             {
-                (SAN, SAN?) move;
-
-                if (j + 1 == game.Count)
-                {
-                    move = (SAN.From((string)game[j].Data!), null);
-                }
-
-                else
-                {
-                    move = (SAN.From((string)game[j].Data!), SAN.From((string)game[j + 1].Data!));
-                }
-                pgn.Moves.Add(move!);
+                move = (SAN.From((string)game[j].Data!), null);
             }
 
-            Games.Add(pgn);
+            else
+            {
+                move = (SAN.From((string)game[j].Data!), SAN.From((string)game[j + 1].Data!));
+            }
+            pgn.Moves.Add(move!);
         }
+
+        Games.Add(pgn);
+
 
     }
 

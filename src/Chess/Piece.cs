@@ -36,7 +36,6 @@ public class Piece
         // If the piece should capture or not
         if (pieceOnSquare is Piece p)
         {
-            Debug.Print($"Found: {pieceOnSquare.Type} on square {location.Square}");
             p.Remove();
         }
 

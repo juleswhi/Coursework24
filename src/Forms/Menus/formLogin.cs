@@ -1,6 +1,4 @@
-﻿using ChessMasterQuiz.Misc;
-
-namespace ChessMasterQuiz;
+﻿namespace ChessMasterQuiz;
 
 public partial class formLogin : Form
 {

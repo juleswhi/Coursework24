@@ -1,23 +1,18 @@
-﻿using static ChessMasterQuiz.Chess.ChessPieces;
+﻿namespace Chess;
 
-namespace Chess;
+// Represents the two colours regardless of their RGB values 
 public enum Colour
 {
     White = 1,
     Black = 2
 }
 
+// A way to represent a place on the chess board
 public record struct Notation(char File, int Rank) : IEquatable<SAN>, IEquatable<string>
 {
-    public override string ToString()
-    {
+    public override string ToString() => $"{File}{Rank}"; 
 
-        var a = typeof(Notation).GetProperty("File");
-
-
-        return $"{File}{Rank}";
-    }
-
+    // Functional programming inspired
     public static Notation From((char, int) location)
     {
         return new Notation(location.Item1, location.Item2);
@@ -51,6 +46,7 @@ public record struct Notation(char File, int Rank) : IEquatable<SAN>, IEquatable
 
 public static class ChessHelper
 {
+    // Gets the corresponding image of the piece
     public static Image GetImage(this Piece piece)
     {
         return piece.Type switch
@@ -65,6 +61,7 @@ public static class ChessHelper
         };
     }
 
+    // For the splash screen ( 4 Move Checkmate )
     public static PGN GetScholarsMate()
     {
         return new PGN(
@@ -78,6 +75,7 @@ public static class ChessHelper
             );
     }
 
+    // Readlly useful extensoin method to turn array into IEnumerable while keeping some functional programming ideas
     public static IEnumerable<T> From<T>(params T[] nums)
     {
         foreach (var n in nums)
@@ -87,6 +85,7 @@ public static class ChessHelper
     }
 
 
+    // Grabs piece from char
     public static PieceType GetPiece(this char c)
     {
         switch (c.ToString().ToLower())
@@ -173,11 +172,14 @@ public static class ChessHelper
     }
 
 
+    // Generate all the pieces in a normal starting chess position 
     public static List<Piece> PopulatePieces()
     {
         List<Piece> Pieces = new();
-        Pieces.AddRange(
 
+
+        // Pawns
+        Pieces.AddRange(
             Enumerable.Range(1, 2)
             .Select(x =>
                 Enumerable.Range(1, 8)
@@ -190,21 +192,10 @@ public static class ChessHelper
                         })
                 );
 
+
+        // Knights
         Pieces.AddRange(
             Enumerable.Range(1, 2).Select(colour =>
-
-                From(1, 8).Select(
-                    x => new Piece(ROOK, Notation.From((char)(x + 96), (colour == 1 ? 1 : 8)), (Colour)colour))
-                        ).Aggregate((x, y) =>
-                        {
-                            return y.Concat(x);
-                        }
-            ));
-
-
-        Pieces.AddRange(
-            Enumerable.Range(1, 2).Select(colour =>
-
                 From(2, 7).Select(
                     x => new Piece(KNIGHT, Notation.From((char)(x + 96), (colour == 1 ? 1 : 8)), (Colour)colour))
                         ).Aggregate((x, y) =>
@@ -214,9 +205,9 @@ public static class ChessHelper
             ));
 
 
+        // Bishops
         Pieces.AddRange(
             Enumerable.Range(1, 2).Select(colour =>
-
                 From(3, 6).Select(
                     x => new Piece(BISHOP, Notation.From((char)(x + 96), (colour == 1 ? 1 : 8)), (Colour)colour))
                         ).Aggregate((x, y) =>
@@ -225,16 +216,31 @@ public static class ChessHelper
                         }
             ));
 
+        // Rooks
         Pieces.AddRange(
             Enumerable.Range(1, 2).Select(colour =>
-                    new Piece(KING, Notation.From('e', (colour == 1 ? 1 : 8)), (Colour)colour))
-            );
+                From(1, 8).Select(
+                    x => new Piece(ROOK, Notation.From((char)(x + 96), (colour == 1 ? 1 : 8)), (Colour)colour))
+                        ).Aggregate((x, y) =>
+                        {
+                            return y.Concat(x);
+                        }
+            ));
 
+        // Queens
         Pieces.AddRange(
             Enumerable.Range(1, 2).Select(colour =>
                     new Piece(QUEEN, Notation.From('d', (colour == 1 ? 1 : 8)), (Colour)colour))
             );
 
+        // Kings
+        Pieces.AddRange(
+            Enumerable.Range(1, 2).Select(colour =>
+                    new Piece(KING, Notation.From('e', (colour == 1 ? 1 : 8)), (Colour)colour))
+            );
+
+
+        // Ensure only the pieces which fit on the board are in the piece list
         foreach (var piece in Pieces)
         {
             if (piece.Location.Rank == 9)
@@ -242,8 +248,6 @@ public static class ChessHelper
                 Pieces.Remove(piece);
             }
         }
-
-
 
         return Pieces;
     }

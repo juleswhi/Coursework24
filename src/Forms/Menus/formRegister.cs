@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Net.Mail;
-using ChessMasterQuiz.Misc;
+﻿using System.Net.Mail;
 using static ChessMasterQuiz.Misc.ValidationType;
 
 namespace ChessMasterQuiz;
@@ -97,12 +95,9 @@ public partial class formRegister : Form, IContext
         {
             if (!ValidationToBoolMap[val])
             {
-                Debug.Print($"{val} is false");
                 return;
             }
         }
-
-        Debug.Print($"All values are correct");
 
         var _ = MailAddress.TryCreate(ValidationToTextBox[ValidationType.EMAIL], out var addy);
 

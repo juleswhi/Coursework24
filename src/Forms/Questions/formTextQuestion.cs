@@ -85,8 +85,6 @@ public partial class formTextQuestion : Form, IContext
             ActivateForm<formMenu>();
         }
 
-        Debug.Print($"OnAnswered is not null");
-
         OnAnswered += (Action<bool, int>)onAnswered!;
 
         lblQuestion.Location = new Point((Width / 2) - (lblQuestion.Width / 2), lblQuestion.Location.Y);

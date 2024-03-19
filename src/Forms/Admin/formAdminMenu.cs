@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using ChessMasterQuiz.Misc;
+﻿using ChessMasterQuiz.Misc;
 
 namespace ChessMasterQuiz.Forms.Admin;
 
