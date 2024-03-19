@@ -12,6 +12,7 @@ public partial class formMain : Form
         InitializeComponent();
         GetPanelHolder = () => panelHolder;
         Text = "Chess Master Quiz";
+        FormBorderStyle = FormBorderStyle.FixedSingle;
         CenterToScreen();
 
         Users.ForEach(x => x.Logout());

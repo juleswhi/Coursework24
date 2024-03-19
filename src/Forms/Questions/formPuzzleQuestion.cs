@@ -1,7 +1,4 @@
-﻿using Chess.BoardRepresentation;
-using ChessMasterQuiz.Misc;
-
-namespace ChessMasterQuiz.Forms.Questions;
+﻿namespace ChessMasterQuiz.Forms.Questions;
 
 public partial class formPuzzleQuestion : Form, IContext
 {

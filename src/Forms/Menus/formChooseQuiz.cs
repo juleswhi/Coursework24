@@ -1,5 +1,4 @@
 ﻿using ChessMasterQuiz.Forms.Questions;
-using ChessMasterQuiz.Misc;
 using ChessMasterQuiz.QuestionDir;
 
 namespace ChessMasterQuiz.Forms.Menus;
@@ -166,8 +165,8 @@ public partial class formChooseQuiz : Form, IContext
         puzzles.AddRange(Puzzle.Puzzles.ToArray().AsSpan().Shuffle());
         var file = File.ReadAllLines("questions.qon");
 
-        IList<TextQuestion> questions = (IList<TextQuestion>)QonConvert.Deserialize(file);
-        questions = questions.ToArray().AsSpan().Shuffle();
+        List<TextQuestion> readQuestions = QonConvert.Deserialize(file).Select(x => (TextQuestion)x).ToList();
+        IList<TextQuestion> questions = readQuestions.ToArray().AsSpan().Shuffle();
 
         questions = questions.Take(5).ToList();
 
@@ -218,18 +217,18 @@ public partial class formChooseQuiz : Form, IContext
                 return;
             }
 
-            if (puzzles[questionIndex++] is Puzzle)
+            if (puzzles[questionIndex] is Puzzle)
             {
                 ActivateForm<formPuzzleQuestion>(
-                    (puzzles[questionIndex++] as Puzzle, PUZZLE),
+                    ((puzzles[questionIndex++] as Puzzle)!, PUZZLE),
                     (questionIndex.ToString(), NUMBER),
                     (onAnswer, ACTION)
                     );
             }
-            else 
+            else if (puzzles[questionIndex] is TextQuestion)
             {
                 ActivateForm<formTextQuestion>(
-                    (puzzles[questionIndex++] as TextQuestion, PUZZLE),
+                    ((puzzles[questionIndex++] as TextQuestion)!, QUESTION),
                     (questionIndex.ToString(), NUMBER),
                     (onAnswer, ACTION)
                     );

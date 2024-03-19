@@ -1,7 +1,5 @@
 ﻿using System.Data;
-using System.Diagnostics;
 using ChessMasterQuiz.Forms.Admin;
-using ChessMasterQuiz.Misc;
 
 namespace ChessMasterQuiz.Forms
 {

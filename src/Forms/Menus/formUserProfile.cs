@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using ChessMasterQuiz.Misc;
-
-namespace ChessMasterQuiz.Forms;
+﻿namespace ChessMasterQuiz.Forms;
 
 public partial class formUserProfile : Form, IContext
 {
@@ -31,17 +28,9 @@ public partial class formUserProfile : Form, IContext
         lblTopScoreValue.Text = user.HighScore.ToString();
         lblRatingValue.Text = user.Elo.Rating.ToString();
 
-        // pBoxProfileImage.Image = User.ProfilePictures[_user.ImageIndex];
-        // pBoxProfileImage.BackgroundImageLayout = ImageLayout.Tile;
-
-        var zoomedImage = new Bitmap(171, 158);
-
-        using Graphics g = pBoxProfileImage.CreateGraphics();
-
-        g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-        g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half;
-
-        g.DrawImage(User.ProfilePictures[_user.ImageIndex], new Rectangle(pBoxProfileImage.Location, zoomedImage.Size));
+        pBoxProfileImage.Image = User.ProfilePictures[_user.ImageIndex];
+        pBoxProfileImage.BackgroundImageLayout = ImageLayout.Tile;
+        pBoxProfileImage.SizeMode = PictureBoxSizeMode.CenterImage;
     }
 
     private void lblMainMenu_Click(object sender, EventArgs e)

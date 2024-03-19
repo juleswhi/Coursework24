@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using Chess.BoardRepresentation;
-
-namespace ChessMasterQuiz.Forms.Admin;
+﻿namespace ChessMasterQuiz.Forms.Admin;
 
 public partial class formViewPuzzles : Form
 {

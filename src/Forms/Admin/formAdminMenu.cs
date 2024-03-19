@@ -1,6 +1,4 @@
-﻿using ChessMasterQuiz.Misc;
-
-namespace ChessMasterQuiz.Forms.Admin;
+﻿namespace ChessMasterQuiz.Forms.Admin;
 
 public partial class formAdminMenu : Form
 {

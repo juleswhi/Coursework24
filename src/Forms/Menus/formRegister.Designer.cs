@@ -56,7 +56,6 @@
             txtBoxEmail.Size = new Size(281, 43);
             txtBoxEmail.TabIndex = 1;
             txtBoxEmail.Tag = "username";
-            txtBoxEmail.TextChanged += txtBoxEmail_TextChanged;
             // 
             // txtBoxPassword
             // 
@@ -109,7 +108,6 @@
             txtBoxGender.Size = new Size(281, 43);
             txtBoxGender.TabIndex = 4;
             txtBoxGender.Tag = "email";
-            txtBoxGender.TextChanged += txtBoxGender_TextChanged;
             // 
             // txtBoxDob
             // 

@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using ChessMasterQuiz.Chess;
-
-namespace Chess;
+﻿namespace Chess;
 
 // Represents every possible piece type 
 public enum PieceType

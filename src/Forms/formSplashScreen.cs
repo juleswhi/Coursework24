@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using Chess.BoardRepresentation;
-
-namespace ChessMasterQuiz.Forms;
+﻿namespace ChessMasterQuiz.Forms;
 
 public partial class formSplashScreen : Form
 {

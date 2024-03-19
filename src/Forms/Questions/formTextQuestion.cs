@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using ChessMasterQuiz.Misc;
-
-namespace ChessMasterQuiz.QuestionDir;
+﻿namespace ChessMasterQuiz.QuestionDir;
 
 public partial class formTextQuestion : Form, IContext
 {

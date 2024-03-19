@@ -116,11 +116,6 @@ public static class Helper
             throw new Exception($"Could not deserialize the List of Puzzles correctly :(");
         }
 
-        foreach (var puzzle in puzzles)
-        {
-            Debug.Print($"{puzzle.Rating}");
-        }
-
         return puzzles;
     }
 }

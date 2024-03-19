@@ -1,7 +1,5 @@
-﻿using System.DirectoryServices.ActiveDirectory;
-using System.Net.Mail;
+﻿using System.Net.Mail;
 using System.Text.RegularExpressions;
-using Microsoft.VisualBasic;
 using static ChessMasterQuiz.Misc.RequirementType;
 using static ChessMasterQuiz.Misc.ValidationType;
 

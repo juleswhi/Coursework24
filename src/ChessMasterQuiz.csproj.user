@@ -19,6 +19,9 @@
     <Compile Update="Forms\Admin\formViewPuzzles.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Admin\formViewQuestions.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\formSplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -47,9 +50,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Questions\formPuzzleQuestion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\Questions\formQuizResult.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Questions\formResult.cs">

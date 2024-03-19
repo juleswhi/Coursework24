@@ -118,18 +118,9 @@ public partial class formRegister : Form, IContext
         ActivateForm<formLogin>();
     }
 
-    private void txtBoxEmail_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
     private void btnBack_Click(object sender, EventArgs e)
     {
         ActivateForm<formLogin>();
     }
 
-    private void txtBoxGender_TextChanged(object sender, EventArgs e)
-    {
-
-    }
 }

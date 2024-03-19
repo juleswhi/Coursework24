@@ -1,5 +1,4 @@
-﻿using ChessMasterQuiz.Chess;
-using static Chess.ChessHelper;
+﻿using static Chess.ChessHelper;
 
 namespace Chess.BoardRepresentation;
 
