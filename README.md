@@ -1,10 +1,12 @@
-# Chess Master
+# Chess Master Quiz
 
 Chess Master is a quiz to challenge your chess knowledge.
 
 It contains both written chess trivia and chess puzzles.
 
 ## Installation
+
+
 
 Option 1:
 Clone this repo
@@ -21,6 +23,8 @@ Code -> Download ZIP
 ```
 
 Then extract the code into a folder of your choice.
+
+_N.B. This project uses .NET 8 and C# 12. If these are not installed on your system, please go [here](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) to install them_
 
 ## Usage
 
