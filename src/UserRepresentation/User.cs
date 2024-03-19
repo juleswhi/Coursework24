@@ -61,7 +61,7 @@ public class User
     public int QuizesCompleted { get; set; }
 
     // Reference to the image found in "Forms/ProfilePictures.resx"
-    public int ImageIndex { get; set; } = 3;
+    public int ImageIndex { get; set; } = 0;
 
     // Bool value to validate who is logged in
     public bool IsLoggedIn { get; private set; }
