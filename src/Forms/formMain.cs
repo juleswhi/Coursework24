@@ -1,4 +1,5 @@
 ﻿using ChessMasterQuiz.Forms;
+using ChessMasterQuiz.Forms.Questions;
 
 namespace ChessMasterQuiz;
 
@@ -17,6 +18,12 @@ public partial class formMain : Form
 
         Users.ForEach(x => x.Logout());
 
+        var tq = new TypeQuestion("What is this opening called", "London Opening")
+        {
+            Rating = 1000
+        };
+
         ActivateForm<formSplashScreen>();
+        // ActivateForm<formUserProfile>((Users.First()!, USER));
     }
 }

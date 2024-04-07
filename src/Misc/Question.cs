@@ -1,4 +1,5 @@
-﻿using static ChessMasterQuiz.Misc.QuestionType;
+﻿using Newtonsoft.Json;
+using static ChessMasterQuiz.Misc.QuestionType;
 
 namespace ChessMasterQuiz.Misc;
 
@@ -7,6 +8,7 @@ public record Answer(List<string> Answers, uint Index);
 public enum QuestionType
 {
     TEXT,
+    TYPE
 }
 
 public enum Difficulty
@@ -50,4 +52,42 @@ public class TextQuestion : Question
     }
     public string Q { get; set; } = string.Empty;
     public Answer? A { get; set; } = null;
+}
+
+public class TypeQuestion : Question
+{
+    public static List<TypeQuestion>? Questions { get; set; } = new();
+    public string Question { get; set; } = string.Empty;
+    public string Answer { get; set; } = string.Empty;
+
+    public List<Piece> Setup = new();
+
+    private const string _path = $"TypeQuestions.json";
+
+    public TypeQuestion()
+    {
+        Type = TYPE;
+        if (Rating != -1)
+        {
+            Rating = RatingFromDifficulty(Difficulty);
+        }
+    }
+
+    public TypeQuestion(string q, string a) : this()
+    {
+        Question = q;
+        Answer = a;
+    }
+
+    public static void ReadQuestions()
+    {
+        Questions = JsonConvert.DeserializeObject<List<TypeQuestion>>(File.ReadAllText(_path));
+    }
+
+    public static void WriteQuestions()
+    {
+        File.WriteAllText(_path, JsonConvert.SerializeObject(Questions));
+    }
+
+
 }

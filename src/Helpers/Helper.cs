@@ -68,6 +68,7 @@ public static class Helper
         ActivateForm<formMenu>();
     }
 
+    // Fischer Yates shuffle algorirthm
     public static IList<T> Shuffle<T>(this Span<T> list)
     {
         int n = list.Length;

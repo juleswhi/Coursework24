@@ -7,6 +7,14 @@ public partial class formSplashScreen : Form
     {
         InitializeComponent();
 
+        // Set form to double buffered
+        SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
+        // Set panel to double bufferd
+        typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty    
+        | BindingFlags.Instance | BindingFlags.NonPublic, null,
+        pnlProgressBar, new object[] { true });
+
         pnlProgressBar.Paint += (s, e) =>
         {
             e.Graphics.FillRectangle(Brushes.LightGreen, new Rectangle(0, 0, (int)(pnlProgressBar.Width * progress), pnlProgressBar.Height));

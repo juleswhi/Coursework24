@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formRegister));
             txtBoxEmail = new TextBox();
             txtBoxPassword = new TextBox();
             txtBoxDisplayName = new TextBox();
@@ -41,7 +43,10 @@
             pBarGender = new ProgressBar();
             pBarDob = new ProgressBar();
             btnBack = new Button();
+            toolTipPassword = new ToolTip(components);
+            pBoxQuestionPassword = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pBoxLogo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pBoxQuestionPassword).BeginInit();
             SuspendLayout();
             // 
             // txtBoxEmail
@@ -50,10 +55,10 @@
             txtBoxEmail.AcceptsTab = true;
             txtBoxEmail.BackColor = Color.White;
             txtBoxEmail.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtBoxEmail.Location = new Point(47, 13);
+            txtBoxEmail.Location = new Point(12, 16);
             txtBoxEmail.Name = "txtBoxEmail";
             txtBoxEmail.PlaceholderText = "Username";
-            txtBoxEmail.Size = new Size(281, 43);
+            txtBoxEmail.Size = new Size(268, 43);
             txtBoxEmail.TabIndex = 1;
             txtBoxEmail.Tag = "username";
             // 
@@ -63,10 +68,10 @@
             txtBoxPassword.AcceptsTab = true;
             txtBoxPassword.BackColor = Color.White;
             txtBoxPassword.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtBoxPassword.Location = new Point(47, 78);
+            txtBoxPassword.Location = new Point(12, 81);
             txtBoxPassword.Name = "txtBoxPassword";
             txtBoxPassword.PlaceholderText = "Password";
-            txtBoxPassword.Size = new Size(281, 43);
+            txtBoxPassword.Size = new Size(268, 43);
             txtBoxPassword.TabIndex = 2;
             txtBoxPassword.Tag = "password";
             // 
@@ -76,10 +81,10 @@
             txtBoxDisplayName.AcceptsTab = true;
             txtBoxDisplayName.BackColor = Color.White;
             txtBoxDisplayName.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtBoxDisplayName.Location = new Point(47, 143);
+            txtBoxDisplayName.Location = new Point(12, 146);
             txtBoxDisplayName.Name = "txtBoxDisplayName";
             txtBoxDisplayName.PlaceholderText = "Confirm Password";
-            txtBoxDisplayName.Size = new Size(281, 43);
+            txtBoxDisplayName.Size = new Size(268, 43);
             txtBoxDisplayName.TabIndex = 3;
             txtBoxDisplayName.Tag = "password_confirm";
             // 
@@ -102,10 +107,10 @@
             txtBoxGender.AcceptsTab = true;
             txtBoxGender.BackColor = Color.White;
             txtBoxGender.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtBoxGender.Location = new Point(47, 208);
+            txtBoxGender.Location = new Point(12, 211);
             txtBoxGender.Name = "txtBoxGender";
             txtBoxGender.PlaceholderText = "Email";
-            txtBoxGender.Size = new Size(281, 43);
+            txtBoxGender.Size = new Size(268, 43);
             txtBoxGender.TabIndex = 4;
             txtBoxGender.Tag = "email";
             // 
@@ -115,10 +120,10 @@
             txtBoxDob.AcceptsTab = true;
             txtBoxDob.BackColor = Color.White;
             txtBoxDob.Font = new Font("JetBrains Mono", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtBoxDob.Location = new Point(47, 273);
+            txtBoxDob.Location = new Point(12, 276);
             txtBoxDob.Name = "txtBoxDob";
             txtBoxDob.PlaceholderText = "DOB D/M/Y";
-            txtBoxDob.Size = new Size(281, 43);
+            txtBoxDob.Size = new Size(268, 43);
             txtBoxDob.TabIndex = 5;
             txtBoxDob.Tag = "dob";
             // 
@@ -126,9 +131,9 @@
             // 
             progressPassword.BackColor = Color.FromArgb(192, 255, 192);
             progressPassword.ForeColor = Color.FromArgb(192, 255, 192);
-            progressPassword.Location = new Point(47, 127);
+            progressPassword.Location = new Point(12, 130);
             progressPassword.Name = "progressPassword";
-            progressPassword.Size = new Size(281, 10);
+            progressPassword.Size = new Size(268, 10);
             progressPassword.TabIndex = 12;
             // 
             // pBoxLogo
@@ -143,36 +148,36 @@
             // 
             pBarUsername.BackColor = Color.FromArgb(192, 255, 192);
             pBarUsername.ForeColor = Color.FromArgb(192, 255, 192);
-            pBarUsername.Location = new Point(47, 62);
+            pBarUsername.Location = new Point(12, 65);
             pBarUsername.Name = "pBarUsername";
-            pBarUsername.Size = new Size(281, 10);
+            pBarUsername.Size = new Size(268, 10);
             pBarUsername.TabIndex = 14;
             // 
             // pBarDisplayName
             // 
             pBarDisplayName.BackColor = Color.FromArgb(192, 255, 192);
             pBarDisplayName.ForeColor = Color.FromArgb(192, 255, 192);
-            pBarDisplayName.Location = new Point(47, 192);
+            pBarDisplayName.Location = new Point(12, 195);
             pBarDisplayName.Name = "pBarDisplayName";
-            pBarDisplayName.Size = new Size(281, 10);
+            pBarDisplayName.Size = new Size(268, 10);
             pBarDisplayName.TabIndex = 15;
             // 
             // pBarGender
             // 
             pBarGender.BackColor = Color.FromArgb(192, 255, 192);
             pBarGender.ForeColor = Color.FromArgb(192, 255, 192);
-            pBarGender.Location = new Point(47, 257);
+            pBarGender.Location = new Point(12, 260);
             pBarGender.Name = "pBarGender";
-            pBarGender.Size = new Size(281, 10);
+            pBarGender.Size = new Size(268, 10);
             pBarGender.TabIndex = 16;
             // 
             // pBarDob
             // 
             pBarDob.BackColor = Color.FromArgb(192, 255, 192);
             pBarDob.ForeColor = Color.FromArgb(192, 255, 192);
-            pBarDob.Location = new Point(47, 322);
+            pBarDob.Location = new Point(12, 325);
             pBarDob.Name = "pBarDob";
-            pBarDob.Size = new Size(281, 10);
+            pBarDob.Size = new Size(268, 10);
             pBarDob.TabIndex = 17;
             // 
             // btnBack
@@ -188,12 +193,24 @@
             btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;
             // 
+            // pBoxQuestionPassword
+            // 
+            pBoxQuestionPassword.BackColor = Color.White;
+            pBoxQuestionPassword.Image = (Image)resources.GetObject("pBoxQuestionPassword.Image");
+            pBoxQuestionPassword.Location = new Point(247, 89);
+            pBoxQuestionPassword.Name = "pBoxQuestionPassword";
+            pBoxQuestionPassword.Size = new Size(31, 29);
+            pBoxQuestionPassword.SizeMode = PictureBoxSizeMode.StretchImage;
+            pBoxQuestionPassword.TabIndex = 18;
+            pBoxQuestionPassword.TabStop = false;
+            // 
             // formRegister
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(800, 450);
+            Controls.Add(pBoxQuestionPassword);
             Controls.Add(btnBack);
             Controls.Add(pBarDob);
             Controls.Add(pBarGender);
@@ -210,6 +227,7 @@
             Name = "formRegister";
             Text = "formRegister";
             ((System.ComponentModel.ISupportInitialize)pBoxLogo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pBoxQuestionPassword).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -229,5 +247,7 @@
         private ProgressBar pBarGender;
         private ProgressBar pBarDob;
         private Button btnBack;
+        private ToolTip toolTipPassword;
+        private PictureBox pBoxQuestionPassword;
     }
 }

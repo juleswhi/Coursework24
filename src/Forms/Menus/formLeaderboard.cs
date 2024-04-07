@@ -16,9 +16,9 @@ public partial class formLeaderboard : Form
         panels.AddRange(Controls.OfType<Panel>().First().Controls.OfType<Panel>());
         panels.OrderBy(x => int.Parse((string)x.Tag!));
 
-        Span<User> users = SortbyType(Users, sortType).Take(panels.Count).ToArray().AsSpan();
+        List<User> users = SortbyType(Users, sortType).Take(panels.Count).ToList();
 
-        for (int i = 0; i < users.Length; i++)
+        for (int i = 0; i < users.Count; i++)
         {
             Label? name = panels[i].Controls.OfType<Label>()
                 .FirstOrDefault(x => (string?)x.Tag == "username");
@@ -33,6 +33,7 @@ public partial class formLeaderboard : Form
             elo!.Text = $"{users[i].Elo.Rating}";
             accuracy!.Text = $"{users[i].Accuracy}";
             high!.Text = $"{users[i].HighScore}";
+
         }
     }
 

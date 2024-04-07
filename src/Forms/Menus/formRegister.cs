@@ -4,6 +4,11 @@ using static ChessMasterQuiz.Misc.ValidationType;
 namespace ChessMasterQuiz;
 public partial class formRegister : Form, IContext
 {
+
+    private const string WEAK_PASSWORD_TT = "You must have 4 characters in your password.";
+    private const string MEDIUM_PASSWORD_TT = "You must have 8 characters, including 1 special character, 1 number and 1 upper case character";
+    private const string STRONG_PASSWORD_TT = "You must have 12 characters, including 3 special characters, 2 numbers and 1 upper case character";
+
     private readonly Dictionary<ValidationType, ProgressBar> ValidationToBarMap = new();
     private readonly Dictionary<ValidationType, bool> ValidationToBoolMap = new()
     {
@@ -17,6 +22,15 @@ public partial class formRegister : Form, IContext
     public formRegister()
     {
         InitializeComponent();
+
+        var level = GetAdminConfig()?.PasswordRequirementLevel;
+
+        toolTipPassword.SetToolTip(pBoxQuestionPassword, level switch
+        {
+            WEAK => WEAK_PASSWORD_TT,
+            MEDIUM => MEDIUM_PASSWORD_TT,
+            _ => STRONG_PASSWORD_TT,
+        });
 
         btnRegister.Enabled = false;
         ValidationToBarMap = new()

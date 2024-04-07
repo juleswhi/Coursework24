@@ -37,7 +37,7 @@ public partial class formAdminMenu : Form
 
     private void btnViewQuestions_Click(object sender, EventArgs e)
     {
-        // View questions
+        ActivateForm<formViewQuestions>();
     }
 
     private void btnPromote_Click(object sender, EventArgs e)

@@ -8,13 +8,19 @@ public partial class formUserProfile : Form, IContext
     }
 
     private User? _user;
-    public void UseContext(IEnumerable<DataContextTag> context)
+    private bool _isLoggedInUser = false;
+    public void UseContext(IEnumerable<DCT> context)
     {
         User? user = (User)context.Get(USER).First();
 
         if (user is null)
         {
             user = ActiveUser!;
+        }
+
+        if(user.Username == ActiveUser?.Username)
+        {
+            _isLoggedInUser = true;
         }
 
         lblNewPasswordInvalid.Hide();
@@ -29,8 +35,18 @@ public partial class formUserProfile : Form, IContext
         lblRatingValue.Text = user.Elo.Rating.ToString();
 
         pBoxProfileImage.Image = User.ProfilePictures[_user.ImageIndex];
-        pBoxProfileImage.BackgroundImageLayout = ImageLayout.Tile;
-        pBoxProfileImage.SizeMode = PictureBoxSizeMode.CenterImage;
+        pBoxProfileImage.BackgroundImageLayout = ImageLayout.Stretch;
+        pBoxProfileImage.SizeMode = PictureBoxSizeMode.StretchImage;
+
+        if(!_isLoggedInUser)
+        {
+            lblChangePassword.Hide();
+            txtBoxNewPassword.Hide();
+            txtBoxOldPassword.Hide();
+            btnChangePassword.Hide();
+            btnNext.Hide();
+        } 
+
     }
 
     private void lblMainMenu_Click(object sender, EventArgs e)

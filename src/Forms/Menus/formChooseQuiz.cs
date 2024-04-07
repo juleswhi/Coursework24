@@ -1,4 +1,5 @@
-﻿using ChessMasterQuiz.Forms.Questions;
+﻿using System.Diagnostics;
+using ChessMasterQuiz.Forms.Questions;
 using ChessMasterQuiz.QuestionDir;
 
 namespace ChessMasterQuiz.Forms.Menus;
@@ -173,7 +174,7 @@ public partial class formChooseQuiz : Form, IContext
         puzzles.AddRange(questions);
 
         puzzles = puzzles.ToArray().AsSpan().Shuffle().ToList();
-            
+
         int questionIndex = 0;
         int questionsCorrect = 0;
 
@@ -237,5 +238,76 @@ public partial class formChooseQuiz : Form, IContext
 
         onAnswer(false, -1);
 
+    }
+
+    private void btnTypingQuestions_Click(object sender, EventArgs e)
+    {
+        Debug.Print($"HIT THE BUTTON FR");
+        TypeQuestion.ReadQuestions();
+        var questions = TypeQuestion.Questions;
+
+        if(questions is null)
+        {
+            Debug.Print($"Questions is null");
+            return;
+        }
+
+        questions = questions.ToArray().AsSpan().Shuffle().Take(
+            questions.Count <= 6 ? questions.Count : 5
+            ).ToList();
+
+        var onAnswer = EmptyActionGeneric<bool, int>();
+
+        int questionIndex = 0;
+        int questionsCorrect = 0;
+
+        onAnswer += (bool correct, int elo) =>
+        {
+            if (correct)
+            {
+                questionsCorrect++;
+                if (_user is User u)
+                {
+                    u.CorrectAnswersInRow++;
+                    if (u.CorrectAnswersInRow > u.HighScore)
+                    {
+                        u.HighScore = u.CorrectAnswersInRow;
+                    }
+                }
+            }
+            else
+            {
+                if (_user is User u)
+                    u.CorrectAnswersInRow = 0;
+            }
+
+            if (_user is User user)
+            {
+                if (elo != -1)
+                {
+                    ELO.Match(user.Elo, correct ? ELO.MatchupResult.WIN : ELO.MatchupResult.LOSS, elo);
+                }
+            }
+
+            if (questionIndex >= questions.Count)
+            {
+                ActivateForm<formResult>(
+                    (questionsCorrect, QUESTIONS_CORRECT),
+                    (questionIndex, INDEX),
+                    (_user?.Elo.Rating!, NUMBER)
+                    );
+                return;
+            }
+
+            ActivateForm<formTypeQuestion>(
+                (questions[questionIndex++]!, QUESTION),
+                (questionIndex.ToString(), NUMBER),
+                (onAnswer, ACTION)
+                );
+        };
+
+        Debug.Print($"Before answerering");
+        onAnswer(false, -1);
+        Debug.Print($"After answerering");
     }
 }

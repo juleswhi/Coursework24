@@ -13,6 +13,7 @@
     <Content Include="bin\Debug\net7.0-windows\AdminConfig.json" />
     <Content Include="bin\Debug\net7.0-windows\FormDetails.txt" />
     <Content Include="bin\Debug\net7.0-windows\puzzles.json" />
+    <Content Include="bin\Debug\net7.0-windows\TypeQuestions.json" />
     <Content Include="bin\Debug\net7.0-windows\users.json" />
   </ItemGroup>
 

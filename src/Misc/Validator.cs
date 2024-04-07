@@ -89,7 +89,7 @@ internal static class Validator
                     _ => 0
                 };
 
-                if (text.Length > minimumLength)
+                if (text.Length >= minimumLength)
                 {
                     ValidationLookup[LENGTH] = true;
                 }

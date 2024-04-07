@@ -32,6 +32,7 @@
             btnWrittenQuestions = new Button();
             btnMainMenu = new Button();
             btnMixed = new Button();
+            btnTypingQuestions = new Button();
             SuspendLayout();
             // 
             // btnPuzzles
@@ -80,11 +81,24 @@
             btnMixed.Font = new Font("JetBrains Mono", 35.9999962F, FontStyle.Regular, GraphicsUnit.Point);
             btnMixed.Location = new Point(127, 99);
             btnMixed.Name = "btnMixed";
-            btnMixed.Size = new Size(534, 122);
+            btnMixed.Size = new Size(264, 122);
             btnMixed.TabIndex = 3;
             btnMixed.Text = "Mixed";
             btnMixed.UseVisualStyleBackColor = false;
             btnMixed.Click += btnMixed_Click;
+            // 
+            // btnTypingQuestions
+            // 
+            btnTypingQuestions.BackColor = Color.FromArgb(192, 255, 192);
+            btnTypingQuestions.FlatStyle = FlatStyle.Flat;
+            btnTypingQuestions.Font = new Font("JetBrains Mono", 26.2499962F, FontStyle.Regular, GraphicsUnit.Point);
+            btnTypingQuestions.Location = new Point(397, 99);
+            btnTypingQuestions.Name = "btnTypingQuestions";
+            btnTypingQuestions.Size = new Size(264, 122);
+            btnTypingQuestions.TabIndex = 4;
+            btnTypingQuestions.Text = "Typing Questions";
+            btnTypingQuestions.UseVisualStyleBackColor = false;
+            btnTypingQuestions.Click += btnTypingQuestions_Click;
             // 
             // formChooseQuiz
             // 
@@ -92,6 +106,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(800, 450);
+            Controls.Add(btnTypingQuestions);
             Controls.Add(btnMixed);
             Controls.Add(btnMainMenu);
             Controls.Add(btnWrittenQuestions);
@@ -107,5 +122,6 @@
         private Button btnWrittenQuestions;
         private Button btnMainMenu;
         private Button btnMixed;
+        private Button btnTypingQuestions;
     }
 }
