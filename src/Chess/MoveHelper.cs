@@ -12,7 +12,9 @@ public static class MoveHelper
             foreach (var piece in board.Pieces)
             {
                 if (piece.Location == location)
+                {
                     return true;
+                }
             }
         }
 

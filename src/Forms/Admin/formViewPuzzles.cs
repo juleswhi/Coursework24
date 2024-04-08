@@ -2,10 +2,10 @@
 
 public partial class formViewPuzzles : Form
 {
-    private Board _board = new();
-
-    private List<Puzzle> _puzzles = new();
+    private readonly Board _board = new();
+    private readonly List<Puzzle> _puzzles = new();
     private int _puzzleIndex = 0;
+
     public formViewPuzzles()
     {
         InitializeComponent();
@@ -14,7 +14,9 @@ public partial class formViewPuzzles : Form
         Puzzle.CreatePuzzles();
         _puzzles = Puzzle.Puzzles;
 
+        // Grab the pieces from first puzzle and display
         _board.Pieces = _puzzles[_puzzleIndex].Setup!.ToList();
+        // Update the board
         _board.Invalidate();
     }
 
@@ -26,8 +28,9 @@ public partial class formViewPuzzles : Form
 
     private void btnNextPuzzle_Click(object sender, EventArgs e)
     {
+        // Ensure that index always in bounds
         _puzzleIndex++;
-        if(_puzzleIndex >= _puzzles.Count)
+        if (_puzzleIndex >= _puzzles.Count)
         {
             _puzzleIndex = 0;
         }
@@ -37,8 +40,9 @@ public partial class formViewPuzzles : Form
 
     private void btnPreviousPuzzle_Click(object sender, EventArgs e)
     {
+        // Ensure that index always in bounds
         _puzzleIndex--;
-        if(_puzzleIndex <= 0)
+        if (_puzzleIndex <= 0)
         {
             _puzzleIndex = _puzzles.Count - 1;
         }

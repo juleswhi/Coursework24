@@ -64,7 +64,10 @@ public partial class formRegister : Form, IContext
                         pBarDisplayName.Value = 100;
                         val = true;
                     }
-                    else ValidationToBarMap[vt].Value = val ? (int)percentage : 0;
+                    else
+                    {
+                        ValidationToBarMap[vt].Value = val ? (int)percentage : 0;
+                    }
                 }
 
                 ValidationToBoolMap[vt] = val;

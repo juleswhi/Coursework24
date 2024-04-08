@@ -144,14 +144,22 @@ public class Board : Panel
             _continueGame = true;
             foreach (var (white, black) in pgn.Moves)
             {
-                if (white.NullMove) break;
+                if (white.NullMove)
+                {
+                    break;
+                }
+
                 this[white.InitialSquare]?.Move(white);
                 Thread.Sleep(PlyPause);
                 if (black is null)
                 {
                     break;
                 }
-                if (black.NullMove) break;
+                if (black.NullMove)
+                {
+                    break;
+                }
+
                 this[black.InitialSquare]?.Move(black);
                 Thread.Sleep(PlyPause);
                 if (!_continueGame)
@@ -159,7 +167,7 @@ public class Board : Panel
                     break;
                 }
 
-                if(onGameOver is Action action)
+                if (onGameOver is Action action)
                 {
                     action();
                 }

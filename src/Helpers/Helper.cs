@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Text.Json;
-using ChessMasterQuiz.Misc;
+﻿using System.Text.Json;
 
 namespace ChessMasterQuiz.Helpers;
 
@@ -9,7 +7,7 @@ public static class Helper
     public static AdminConfiguration? GetAdminConfig()
     {
         return AdminConfiguration.Read();
-    } 
+    }
 
     public static Image GetLogo()
     {
@@ -63,10 +61,6 @@ public static class Helper
         return new Action<Ti, Tj>((_, _) => { });
     }
 
-    public static void MainMenu()
-    {
-        ActivateForm<formMenu>();
-    }
 
     // Fischer Yates shuffle algorirthm
     public static IList<T> Shuffle<T>(this Span<T> list)

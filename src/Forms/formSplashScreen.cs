@@ -11,7 +11,7 @@ public partial class formSplashScreen : Form
         SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 
         // Set panel to double bufferd
-        typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty    
+        typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
         | BindingFlags.Instance | BindingFlags.NonPublic, null,
         pnlProgressBar, new object[] { true });
 
@@ -38,7 +38,7 @@ public partial class formSplashScreen : Form
         WaitForTimer();
 
         Board board = new();
-        board.Location = new Point((int)((0.5*Width)-(0.5*board.Width)), Location.Y);
+        board.Location = new Point((int)((0.5 * Width) - (0.5 * board.Width)), Location.Y);
         Controls.Add(board);
         board.DisplayGame(ChessHelper.GetScholarsMate(), 500);
     }

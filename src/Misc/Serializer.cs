@@ -23,11 +23,11 @@ namespace ChessMasterQuiz.Misc;
 // It uses overloading so only one method call is needed
 public static class QonConvert
 {
-    // Serialize a question into a Lon String
+    // Serialize a question into a Qon String
     public static string Serialize(Question question)
     {
         // StringBuilder is used as it is much faster than traditional string concat.
-        // This becomes nesessary when working with large strings ( 250+ concat operations )
+        // This becomes nesessary when working with large strings ( 100+ concat operations )
         StringBuilder stringBuilder = new();
 
         // Improvement to be made:
@@ -58,20 +58,6 @@ public static class QonConvert
         }
 
         // Return the final build string
-        return stringBuilder.ToString();
-    }
-
-    // This method deals with serializing a list of objectrs 
-    public static string Serialize<T>(this List<T> objects) where T : Question
-    {
-        StringBuilder stringBuilder = new();
-
-        foreach (var obj in objects)
-        {
-            stringBuilder.Append(Serialize(obj));
-            stringBuilder.Append("\n");
-        }
-
         return stringBuilder.ToString();
     }
 
@@ -132,7 +118,6 @@ file class Token
 
     // This constructor can be used if no data is present.
     // However, an exception will be thrown if either a `DATA` or an `IDENTIFER` passed
-    // DON'T USE EXCEPTIONS!
     public Token(TokenType type)
     {
         if (type == DATA || type == IDENTIFIER)
@@ -426,23 +411,12 @@ file static class Parser
                             property.SetValue(question, Convert.ChangeType(Current().Data, property.PropertyType));
                         }
 
-
-                        // If its not a 
-                        // else
-                        // {
-                        // property.SetValue(question, Current().Data);
-                        // }
-
-
-
-
                         break;
                     }
             }
             Next();
         }
 
-        // question.A = new(null,);
         question.A = new(answers, (uint)index);
         return question;
     }
@@ -457,7 +431,4 @@ file static class Parser
 
         return prop;
     }
-
-
-
 }

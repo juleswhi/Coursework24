@@ -11,7 +11,10 @@ public class AdminConfiguration
         string json = File.ReadAllText(Path);
         AdminConfiguration? config = JsonConvert.DeserializeObject<AdminConfiguration>(json);
 
-        if (config is null) return default;
+        if (config is null)
+        {
+            return default;
+        }
 
         return config;
     }

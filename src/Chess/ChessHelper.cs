@@ -10,7 +10,10 @@ public enum Colour
 // A way to represent a place on the chess board
 public record struct Notation(char File, int Rank) : IEquatable<SAN>, IEquatable<string>
 {
-    public override string ToString() => $"{File}{Rank}"; 
+    public override string ToString()
+    {
+        return $"{File}{Rank}";
+    }
 
     // Functional programming inspired
     public static Notation From((char, int) location)

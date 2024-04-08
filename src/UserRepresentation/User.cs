@@ -75,18 +75,18 @@ public class User
     {
         ProfilePictures = new List<Image>()
         {
-            ChessPieces.WhitePawn,
-            ChessPieces.WhiteKnight,
-            ChessPieces.WhiteBishop,
-            ChessPieces.WhiteRook,
-            ChessPieces.WhiteQueen,
-            ChessPieces.WhiteKing,
-            ChessPieces.BlackPawn,
-            ChessPieces.BlackKnight,
-            ChessPieces.BlackBishop,
-            ChessPieces.BlackRook,
-            ChessPieces.BlackQueen,
-            ChessPieces.BlackKing
+            WhitePawn,
+            WhiteKnight,
+            WhiteBishop,
+            WhiteRook,
+            WhiteQueen,
+            WhiteKing,
+            BlackPawn,
+            BlackKnight,
+            BlackBishop,
+            BlackRook,
+            BlackQueen,
+            BlackKing
         };
     }
 

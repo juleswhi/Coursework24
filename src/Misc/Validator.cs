@@ -167,7 +167,10 @@ internal static class Validator
         {
             return false;
         }
-        if (Users.Any(x => x.Username?.ToLower() == text)) return false;
+        if (Users.Any(x => x.Username?.ToLower() == text))
+        {
+            return false;
+        }
 
         return true;
 
@@ -188,7 +191,6 @@ internal static class Validator
         return true;
     }
 
-
     public static Dictionary<ValidationType, string> ValidationTypeRegex = new()
     {
         { ValidationType.EMAIL, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" },
@@ -199,13 +201,15 @@ internal static class Validator
 
     public static (bool, float) IsValidAge(string b)
     {
-        if (!DateTime.TryParse(b, out var birth)) 
+        if (!DateTime.TryParse(b, out var birth))
+        {
             return (false, 0);
+        }
 
         DateTime today = DateTime.Today;
         int age = today.Year - birth.Year;
 
-        if(birth > today.AddYears(-age))
+        if (birth > today.AddYears(-age))
         {
             age--;
         }
@@ -213,7 +217,10 @@ internal static class Validator
         bool isRightAge = age > 14 && age < 120;
         int percentage = 50;
 
-        if (isRightAge) percentage = 100;
+        if (isRightAge)
+        {
+            percentage = 100;
+        }
 
         return (isRightAge, percentage);
     }

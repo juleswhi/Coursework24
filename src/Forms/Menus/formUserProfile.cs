@@ -18,7 +18,7 @@ public partial class formUserProfile : Form, IContext
             user = ActiveUser!;
         }
 
-        if(user.Username == ActiveUser?.Username)
+        if (user.Username == ActiveUser?.Username)
         {
             _isLoggedInUser = true;
         }
@@ -38,14 +38,14 @@ public partial class formUserProfile : Form, IContext
         pBoxProfileImage.BackgroundImageLayout = ImageLayout.Stretch;
         pBoxProfileImage.SizeMode = PictureBoxSizeMode.StretchImage;
 
-        if(!_isLoggedInUser)
+        if (!_isLoggedInUser)
         {
             lblChangePassword.Hide();
             txtBoxNewPassword.Hide();
             txtBoxOldPassword.Hide();
             btnChangePassword.Hide();
             btnNext.Hide();
-        } 
+        }
 
     }
 

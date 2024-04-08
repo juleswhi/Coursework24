@@ -27,7 +27,7 @@ public partial class formResult : Form, IContext
 
     private void btnHome_Click(object sender, EventArgs e)
     {
-        MainMenu();
+        ActivateForm<formMenu>();
     }
 
     private void btnLeaderboard_Click(object sender, EventArgs e)

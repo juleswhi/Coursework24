@@ -2,7 +2,7 @@
 
 public partial class formAdminMenu : Form
 {
-    private AdminConfiguration? _config = new();
+    private readonly AdminConfiguration? _config = new();
     public formAdminMenu()
     {
         InitializeComponent();
@@ -43,7 +43,9 @@ public partial class formAdminMenu : Form
     private void btnPromote_Click(object sender, EventArgs e)
     {
         if (string.IsNullOrEmpty(txtBoxPromote.Text))
+        {
             return;
+        }
 
         string username = txtBoxPromote.Text;
 
@@ -73,7 +75,9 @@ public partial class formAdminMenu : Form
     private void btnDemote_Click(object sender, EventArgs e)
     {
         if (string.IsNullOrEmpty(txtBoxPromote.Text))
+        {
             return;
+        }
 
         string username = txtBoxPromote.Text;
 

@@ -1,6 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using ChessMasterQuiz;
 
 namespace UserRepresentation;
 
@@ -8,6 +9,8 @@ public static class UserHelper
 {
     static readonly string _userpath = "users.json";
     public static List<User> Users => ReadUsers();
+
+    // get from file
     public static List<User> ReadUsers()
     {
         string input = File.ReadAllText(_userpath);
@@ -16,22 +19,25 @@ public static class UserHelper
 
         if (users is null)
         {
-            throw new Exception($"Could not serialize the List of users correctly :(");
+            ActivateForm<formLogin>();
+            return default;
         }
 
-        return users;
+        return users!;
     }
 
+    // Update user reference to file
     public static void UpdateUser(User user)
     {
-        if(user is null)
+        if (user is null)
         {
             return;
         }
 
         List<User> users = Users;
 
-        if(users.Any(x => x.Username == user.Username)) {
+        if (users.Any(x => x.Username == user.Username))
+        {
             users.RemoveAll(x => x.Username == user.Username);
         }
 
@@ -50,6 +56,7 @@ public static class UserHelper
         UpdateUser(user);
     }
 
+    // Serialize and write
     public static void WriteUsers(List<User>? u)
     {
         string json = JsonSerializer.Serialize(u);
@@ -89,24 +96,6 @@ public static class UserHelper
 
     }
 
-    public static string SerializePassword(this Password password)
-    {
-        StringBuilder sb = new();
-
-        sb.Append($"{nameof(password.Hashed)}{{{password.Hashed}}}");
-
-        sb.Append($"{nameof(password.Salt)}{{{Encoding.UTF8.GetString(password.Salt)}}}");
-
-        return sb.ToString();
-    }
-
-
-    public static User TestUser => new("root", "root", false)
-    {
-        Name = "Root User",
-        Gender = "N/A",
-    };
-
     public static bool VerifyPassword(this string password, User user)
     {
         byte[] passwordInBytes = Encoding.UTF8.GetBytes(password);
@@ -123,10 +112,5 @@ public static class UserHelper
             return true;
         }
         return false;
-    }
-
-    public static void Add(this User user)
-    {
-        Users.Add(user);
     }
 }

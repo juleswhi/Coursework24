@@ -5,8 +5,10 @@ namespace ChessMasterQuiz.Forms
 {
     public partial class formAddQuestion : Form
     {
-        public formAddQuestion() =>
+        public formAddQuestion()
+        {
             InitializeComponent();
+        }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {

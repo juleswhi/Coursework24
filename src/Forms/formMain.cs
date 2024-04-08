@@ -1,5 +1,4 @@
 ﻿using ChessMasterQuiz.Forms;
-using ChessMasterQuiz.Forms.Questions;
 
 namespace ChessMasterQuiz;
 

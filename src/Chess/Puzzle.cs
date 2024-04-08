@@ -1,6 +1,4 @@
-﻿using ChessMasterQuiz.Misc;
-
-namespace Chess;
+﻿namespace Chess;
 
 public class Puzzle : Question
 {

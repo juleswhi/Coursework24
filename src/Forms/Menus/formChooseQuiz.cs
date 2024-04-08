@@ -55,7 +55,9 @@ public partial class formChooseQuiz : Form, IContext
             else
             {
                 if (_user is User u)
+                {
                     u.CorrectAnswersInRow = 0;
+                }
             }
 
             if (_user is User user)
@@ -123,7 +125,9 @@ public partial class formChooseQuiz : Form, IContext
             else
             {
                 if (_user is User u)
+                {
                     u.CorrectAnswersInRow = 0;
+                }
             }
 
             if (_user is User user)
@@ -202,7 +206,9 @@ public partial class formChooseQuiz : Form, IContext
             else
             {
                 if (_user is User u)
+                {
                     u.CorrectAnswersInRow = 0;
+                }
             }
 
             if (_user is User user)
@@ -258,7 +264,7 @@ public partial class formChooseQuiz : Form, IContext
         TypeQuestion.ReadQuestions();
         var questions = TypeQuestion.Questions;
 
-        if(questions is null)
+        if (questions is null)
         {
             Debug.Print($"Questions is null");
             return;
@@ -290,7 +296,9 @@ public partial class formChooseQuiz : Form, IContext
             else
             {
                 if (_user is User u)
+                {
                     u.CorrectAnswersInRow = 0;
+                }
             }
 
             if (_user is User user)

@@ -4,7 +4,7 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
 {
     // 0-0 0-0-0
     public int Castling { get; set; }
-    
+
     // dxe5 Bxe5 Qxf7
     public bool Capturing { get; set; } = false;
 
@@ -13,7 +13,7 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
 
     // Qxf7#
     public bool CheckMate { get; set; } = false;
-    
+
     // ( 'e', 4 ), ( 'f' 5 )
     public (char, int) PawnCapturing { get; set; }
 
@@ -25,7 +25,7 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
 
     // f8=Q h1=Q
     public PieceType? IsQueening { get; set; } = null;
-    
+
     // e4, d5
     public Notation Square { get; set; }
 
@@ -82,7 +82,7 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
     {
         SAN san = new();
 
-        if(str == "resigns" || str == "null")
+        if (str == "resigns" || str == "null")
         {
             san.NullMove = true;
             return san;

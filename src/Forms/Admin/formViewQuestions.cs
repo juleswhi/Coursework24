@@ -2,8 +2,8 @@
 
 public partial class formViewQuestions : Form
 {
-    List<Label> _answers = new();
-    List<TextQuestion> questions = new();
+    readonly List<Label> _answers = new();
+    readonly List<TextQuestion> questions = new();
     int _index = 0;
     public formViewQuestions()
     {
@@ -51,7 +51,10 @@ public partial class formViewQuestions : Form
         {
             _index = 0;
         }
-        else _index++;
+        else
+        {
+            _index++;
+        }
 
         PopulateFields(questions[_index]);
     }
@@ -62,7 +65,10 @@ public partial class formViewQuestions : Form
         {
             _index = questions.Count - 1;
         }
-        else _index--;
+        else
+        {
+            _index--;
+        }
 
         PopulateFields(questions[_index]);
     }
