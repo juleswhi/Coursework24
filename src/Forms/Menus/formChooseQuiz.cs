@@ -174,7 +174,6 @@ public partial class formChooseQuiz : Form, IContext
         IList<TextQuestion> questions = readQuestions.ToArray().AsSpan().Shuffle();
 
         questions = questions.Take(5).ToList();
-
         puzzles.AddRange(questions);
 
         TypeQuestion.ReadQuestions();

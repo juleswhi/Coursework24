@@ -4,9 +4,9 @@ Chess Master is a quiz to challenge your chess knowledge.
 
 It contains both written chess trivia and chess puzzles.
 
+A link to the Writeup can be found [here](https://docs.google.com/document/d/1o6fUtgXkuEMf3CeTZ7xT748wtEm9PWjd__fYglQ2dBU/edit?usp=sharing).
+
 ## Installation
-
-
 
 Option 1:
 Clone this repo
