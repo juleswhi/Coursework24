@@ -91,6 +91,7 @@
             // 
             // panel5
             // 
+            panel5.BorderStyle = BorderStyle.FixedSingle;
             panel5.Controls.Add(lblUser6HighScore);
             panel5.Controls.Add(lblUser6Accuracy);
             panel5.Controls.Add(lblUser6Elo);
@@ -107,10 +108,9 @@
             lblUser6HighScore.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser6HighScore.Location = new Point(400, 12);
             lblUser6HighScore.Name = "lblUser6HighScore";
-            lblUser6HighScore.Size = new Size(110, 21);
+            lblUser6HighScore.Size = new Size(0, 21);
             lblUser6HighScore.TabIndex = 3;
             lblUser6HighScore.Tag = "high";
-            lblUser6HighScore.Text = "High Score";
             // 
             // lblUser6Accuracy
             // 
@@ -118,10 +118,9 @@
             lblUser6Accuracy.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser6Accuracy.Location = new Point(265, 12);
             lblUser6Accuracy.Name = "lblUser6Accuracy";
-            lblUser6Accuracy.Size = new Size(90, 21);
+            lblUser6Accuracy.Size = new Size(0, 21);
             lblUser6Accuracy.TabIndex = 2;
             lblUser6Accuracy.Tag = "accuracy";
-            lblUser6Accuracy.Text = "Accuracy";
             // 
             // lblUser6Elo
             // 
@@ -129,10 +128,9 @@
             lblUser6Elo.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser6Elo.Location = new Point(156, 12);
             lblUser6Elo.Name = "lblUser6Elo";
-            lblUser6Elo.Size = new Size(40, 21);
+            lblUser6Elo.Size = new Size(0, 21);
             lblUser6Elo.TabIndex = 1;
             lblUser6Elo.Tag = "elo";
-            lblUser6Elo.Text = "ELO";
             // 
             // lblUser6Username
             // 
@@ -140,13 +138,13 @@
             lblUser6Username.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser6Username.Location = new Point(16, 12);
             lblUser6Username.Name = "lblUser6Username";
-            lblUser6Username.Size = new Size(90, 21);
+            lblUser6Username.Size = new Size(0, 21);
             lblUser6Username.TabIndex = 0;
             lblUser6Username.Tag = "username";
-            lblUser6Username.Text = "USERNAME";
             // 
             // panel4
             // 
+            panel4.BorderStyle = BorderStyle.FixedSingle;
             panel4.Controls.Add(lblUser5HighScore);
             panel4.Controls.Add(lblUser5Accuracy);
             panel4.Controls.Add(lblUser5Elo);
@@ -163,10 +161,9 @@
             lblUser5HighScore.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser5HighScore.Location = new Point(400, 12);
             lblUser5HighScore.Name = "lblUser5HighScore";
-            lblUser5HighScore.Size = new Size(110, 21);
+            lblUser5HighScore.Size = new Size(0, 21);
             lblUser5HighScore.TabIndex = 3;
             lblUser5HighScore.Tag = "high";
-            lblUser5HighScore.Text = "High Score";
             // 
             // lblUser5Accuracy
             // 
@@ -174,10 +171,9 @@
             lblUser5Accuracy.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser5Accuracy.Location = new Point(265, 12);
             lblUser5Accuracy.Name = "lblUser5Accuracy";
-            lblUser5Accuracy.Size = new Size(90, 21);
+            lblUser5Accuracy.Size = new Size(0, 21);
             lblUser5Accuracy.TabIndex = 2;
             lblUser5Accuracy.Tag = "accuracy";
-            lblUser5Accuracy.Text = "Accuracy";
             // 
             // lblUser5Elo
             // 
@@ -185,10 +181,9 @@
             lblUser5Elo.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser5Elo.Location = new Point(156, 12);
             lblUser5Elo.Name = "lblUser5Elo";
-            lblUser5Elo.Size = new Size(40, 21);
+            lblUser5Elo.Size = new Size(0, 21);
             lblUser5Elo.TabIndex = 1;
             lblUser5Elo.Tag = "elo";
-            lblUser5Elo.Text = "ELO";
             // 
             // lblUser5Username
             // 
@@ -196,13 +191,13 @@
             lblUser5Username.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser5Username.Location = new Point(16, 12);
             lblUser5Username.Name = "lblUser5Username";
-            lblUser5Username.Size = new Size(90, 21);
+            lblUser5Username.Size = new Size(0, 21);
             lblUser5Username.TabIndex = 0;
             lblUser5Username.Tag = "username";
-            lblUser5Username.Text = "USERNAME";
             // 
             // panel3
             // 
+            panel3.BorderStyle = BorderStyle.FixedSingle;
             panel3.Controls.Add(lblUser4HighScore);
             panel3.Controls.Add(lblUser4Accuracy);
             panel3.Controls.Add(lblUser4Elo);
@@ -219,10 +214,9 @@
             lblUser4HighScore.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser4HighScore.Location = new Point(400, 12);
             lblUser4HighScore.Name = "lblUser4HighScore";
-            lblUser4HighScore.Size = new Size(110, 21);
+            lblUser4HighScore.Size = new Size(0, 21);
             lblUser4HighScore.TabIndex = 3;
             lblUser4HighScore.Tag = "high";
-            lblUser4HighScore.Text = "High Score";
             // 
             // lblUser4Accuracy
             // 
@@ -230,10 +224,9 @@
             lblUser4Accuracy.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser4Accuracy.Location = new Point(265, 12);
             lblUser4Accuracy.Name = "lblUser4Accuracy";
-            lblUser4Accuracy.Size = new Size(90, 21);
+            lblUser4Accuracy.Size = new Size(0, 21);
             lblUser4Accuracy.TabIndex = 2;
             lblUser4Accuracy.Tag = "accuracy";
-            lblUser4Accuracy.Text = "Accuracy";
             // 
             // lblUser4Elo
             // 
@@ -241,10 +234,9 @@
             lblUser4Elo.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser4Elo.Location = new Point(156, 12);
             lblUser4Elo.Name = "lblUser4Elo";
-            lblUser4Elo.Size = new Size(40, 21);
+            lblUser4Elo.Size = new Size(0, 21);
             lblUser4Elo.TabIndex = 1;
             lblUser4Elo.Tag = "elo";
-            lblUser4Elo.Text = "ELO";
             // 
             // lblUser4Username
             // 
@@ -252,13 +244,13 @@
             lblUser4Username.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser4Username.Location = new Point(16, 12);
             lblUser4Username.Name = "lblUser4Username";
-            lblUser4Username.Size = new Size(90, 21);
+            lblUser4Username.Size = new Size(0, 21);
             lblUser4Username.TabIndex = 0;
             lblUser4Username.Tag = "username";
-            lblUser4Username.Text = "USERNAME";
             // 
             // panel2
             // 
+            panel2.BorderStyle = BorderStyle.FixedSingle;
             panel2.Controls.Add(lblUser3HighScore);
             panel2.Controls.Add(lblUser3Accuracy);
             panel2.Controls.Add(lblUser3Elo);
@@ -275,10 +267,9 @@
             lblUser3HighScore.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser3HighScore.Location = new Point(400, 12);
             lblUser3HighScore.Name = "lblUser3HighScore";
-            lblUser3HighScore.Size = new Size(110, 21);
+            lblUser3HighScore.Size = new Size(0, 21);
             lblUser3HighScore.TabIndex = 3;
             lblUser3HighScore.Tag = "high";
-            lblUser3HighScore.Text = "High Score";
             // 
             // lblUser3Accuracy
             // 
@@ -286,10 +277,9 @@
             lblUser3Accuracy.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser3Accuracy.Location = new Point(265, 12);
             lblUser3Accuracy.Name = "lblUser3Accuracy";
-            lblUser3Accuracy.Size = new Size(90, 21);
+            lblUser3Accuracy.Size = new Size(0, 21);
             lblUser3Accuracy.TabIndex = 2;
             lblUser3Accuracy.Tag = "accuracy";
-            lblUser3Accuracy.Text = "Accuracy";
             // 
             // lblUser3Elo
             // 
@@ -297,10 +287,9 @@
             lblUser3Elo.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser3Elo.Location = new Point(156, 12);
             lblUser3Elo.Name = "lblUser3Elo";
-            lblUser3Elo.Size = new Size(40, 21);
+            lblUser3Elo.Size = new Size(0, 21);
             lblUser3Elo.TabIndex = 1;
             lblUser3Elo.Tag = "elo";
-            lblUser3Elo.Text = "ELO";
             // 
             // lblUser3Username
             // 
@@ -308,13 +297,13 @@
             lblUser3Username.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser3Username.Location = new Point(16, 12);
             lblUser3Username.Name = "lblUser3Username";
-            lblUser3Username.Size = new Size(90, 21);
+            lblUser3Username.Size = new Size(0, 21);
             lblUser3Username.TabIndex = 0;
             lblUser3Username.Tag = "username";
-            lblUser3Username.Text = "USERNAME";
             // 
             // panel1
             // 
+            panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(lblUser2HighScore);
             panel1.Controls.Add(lblUser2Accuracy);
             panel1.Controls.Add(lblUser2Elo);
@@ -331,10 +320,9 @@
             lblUser2HighScore.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser2HighScore.Location = new Point(400, 12);
             lblUser2HighScore.Name = "lblUser2HighScore";
-            lblUser2HighScore.Size = new Size(110, 21);
+            lblUser2HighScore.Size = new Size(0, 21);
             lblUser2HighScore.TabIndex = 3;
             lblUser2HighScore.Tag = "high";
-            lblUser2HighScore.Text = "High Score";
             // 
             // lblUser2Accuracy
             // 
@@ -342,10 +330,9 @@
             lblUser2Accuracy.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser2Accuracy.Location = new Point(265, 12);
             lblUser2Accuracy.Name = "lblUser2Accuracy";
-            lblUser2Accuracy.Size = new Size(90, 21);
+            lblUser2Accuracy.Size = new Size(0, 21);
             lblUser2Accuracy.TabIndex = 2;
             lblUser2Accuracy.Tag = "accuracy";
-            lblUser2Accuracy.Text = "Accuracy";
             // 
             // lblUser2Elo
             // 
@@ -353,10 +340,9 @@
             lblUser2Elo.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser2Elo.Location = new Point(156, 12);
             lblUser2Elo.Name = "lblUser2Elo";
-            lblUser2Elo.Size = new Size(40, 21);
+            lblUser2Elo.Size = new Size(0, 21);
             lblUser2Elo.TabIndex = 1;
             lblUser2Elo.Tag = "elo";
-            lblUser2Elo.Text = "ELO";
             // 
             // lblUser2Username
             // 
@@ -364,13 +350,13 @@
             lblUser2Username.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser2Username.Location = new Point(16, 12);
             lblUser2Username.Name = "lblUser2Username";
-            lblUser2Username.Size = new Size(90, 21);
+            lblUser2Username.Size = new Size(0, 21);
             lblUser2Username.TabIndex = 0;
             lblUser2Username.Tag = "username";
-            lblUser2Username.Text = "USERNAME";
             // 
             // pnlUserOne
             // 
+            pnlUserOne.BorderStyle = BorderStyle.FixedSingle;
             pnlUserOne.Controls.Add(lblUser1HighScore);
             pnlUserOne.Controls.Add(lblUser1Accuracy);
             pnlUserOne.Controls.Add(lblUser1Elo);
@@ -387,10 +373,9 @@
             lblUser1HighScore.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser1HighScore.Location = new Point(400, 12);
             lblUser1HighScore.Name = "lblUser1HighScore";
-            lblUser1HighScore.Size = new Size(110, 21);
+            lblUser1HighScore.Size = new Size(0, 21);
             lblUser1HighScore.TabIndex = 3;
             lblUser1HighScore.Tag = "high";
-            lblUser1HighScore.Text = "High Score";
             // 
             // lblUser1Accuracy
             // 
@@ -398,10 +383,9 @@
             lblUser1Accuracy.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser1Accuracy.Location = new Point(265, 12);
             lblUser1Accuracy.Name = "lblUser1Accuracy";
-            lblUser1Accuracy.Size = new Size(90, 21);
+            lblUser1Accuracy.Size = new Size(0, 21);
             lblUser1Accuracy.TabIndex = 2;
             lblUser1Accuracy.Tag = "accuracy";
-            lblUser1Accuracy.Text = "Accuracy";
             // 
             // lblUser1Elo
             // 
@@ -409,10 +393,9 @@
             lblUser1Elo.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser1Elo.Location = new Point(156, 12);
             lblUser1Elo.Name = "lblUser1Elo";
-            lblUser1Elo.Size = new Size(40, 21);
+            lblUser1Elo.Size = new Size(0, 21);
             lblUser1Elo.TabIndex = 1;
             lblUser1Elo.Tag = "elo";
-            lblUser1Elo.Text = "ELO";
             // 
             // lblUser1Username
             // 
@@ -420,10 +403,9 @@
             lblUser1Username.Font = new Font("JetBrains Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point);
             lblUser1Username.Location = new Point(16, 12);
             lblUser1Username.Name = "lblUser1Username";
-            lblUser1Username.Size = new Size(90, 21);
+            lblUser1Username.Size = new Size(0, 21);
             lblUser1Username.TabIndex = 0;
             lblUser1Username.Tag = "username";
-            lblUser1Username.Text = "USERNAME";
             // 
             // lblUsername
             // 

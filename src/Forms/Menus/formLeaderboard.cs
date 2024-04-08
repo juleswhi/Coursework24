@@ -1,4 +1,6 @@
-﻿namespace ChessMasterQuiz.Forms.Menus;
+﻿using System.Diagnostics;
+
+namespace ChessMasterQuiz.Forms.Menus;
 
 public partial class formLeaderboard : Form
 {
@@ -14,26 +16,32 @@ public partial class formLeaderboard : Form
     {
         List<Panel> panels = new();
         panels.AddRange(Controls.OfType<Panel>().First().Controls.OfType<Panel>());
-        panels.OrderBy(x => int.Parse((string)x.Tag!));
+        panels.OrderBy(x => -int.Parse((string)x.Tag!));
 
         List<User> users = SortbyType(Users, sortType).Take(panels.Count).ToList();
+        users.Reverse();
 
         for (int i = 0; i < users.Count; i++)
         {
-            Label? name = panels[i].Controls.OfType<Label>()
+            Debug.Print($"Iteration: {i}, Username: {users[i].Username}");
+
+            Label? name = panels[panels.Count - i - 1].Controls.OfType<Label>()
                 .FirstOrDefault(x => (string?)x.Tag == "username");
-            Label? elo = panels[i].Controls.OfType<Label>()
+            Label? elo = panels[panels.Count - i - 1].Controls.OfType<Label>()
                 .FirstOrDefault(x => (string?)x.Tag == "elo");
-            Label? accuracy = panels[i].Controls.OfType<Label>()
+            Label? accuracy = panels[panels.Count - i - 1].Controls.OfType<Label>()
                 .FirstOrDefault(x => (string?)x.Tag == "accuracy");
-            Label? high = panels[i].Controls.OfType<Label>()
+            Label? high = panels[panels.Count - i - 1].Controls.OfType<Label>()
                 .FirstOrDefault(x => (string?)x.Tag == "high");
 
             name!.Text = $"{users[i].Username}";
+            name.Click += (s, e) =>
+            {
+                ActivateForm<formUserProfile>((Users.First(x => x.Username == name!.Text), USER));
+            };
             elo!.Text = $"{users[i].Elo.Rating}";
             accuracy!.Text = $"{users[i].Accuracy}";
             high!.Text = $"{users[i].HighScore}";
-
         }
     }
 
