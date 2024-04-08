@@ -17,6 +17,11 @@ public partial class formMain : Form
 
         Users.ForEach(x => x.Logout());
 
+        FormClosed += (s, e) =>
+        {
+            MoveHelper.CurrentBoard?.StopGame();
+        };
+
         var tq = new TypeQuestion("What is this opening called", "London Opening")
         {
             Rating = 1000

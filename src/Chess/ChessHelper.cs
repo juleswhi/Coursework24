@@ -21,16 +21,6 @@ public record struct Notation(char File, int Rank) : IEquatable<SAN>, IEquatable
         return new Notation(location.Item1, location.Item2);
     }
 
-    public static Notation From(string location)
-    {
-        if (location.Length != 2)
-        {
-            return default;
-        }
-
-        return new Notation(location[0], int.Parse(location[1].ToString()));
-    }
-
     public static Notation From(char file, int rank)
     {
         return new Notation(file, rank);

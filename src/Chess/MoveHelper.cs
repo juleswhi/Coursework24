@@ -5,32 +5,10 @@ public static class MoveHelper
     // Holds a reference to the chess board that is being displayed at the current moment
     public static Board? CurrentBoard = null;
 
-    public static bool CheckIfPieceOnSquare(Notation location)
-    {
-        if (CurrentBoard is Board board)
-        {
-            foreach (var piece in board.Pieces)
-            {
-                if (piece.Location == location)
-                {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
     public static bool SquareIsNotation(Notation square, Notation move)
     {
         return square == move;
     }
-
-    public static bool CheckIfCheck()
-    {
-        return false;
-    }
-
     public static IEnumerable<Piece> GetPieceThatCouldMove(Notation location)
     {
         if (CurrentBoard is null)
@@ -46,9 +24,9 @@ public static class MoveHelper
         {
             validateMove = pieces[i] switch
             {
-                { Type: PieceType.PAWN } => PawnMove,
-                { Type: PieceType.KNIGHT } => KnightMove,
-                { Type: PieceType.BISHOP } => BishopMove,
+                { Type: PAWN } => PawnMove,
+                { Type: KNIGHT } => KnightMove,
+                { Type: BISHOP } => BishopMove,
                 _ => PawnMove
             };
 

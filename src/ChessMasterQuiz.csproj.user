@@ -7,9 +7,6 @@
     <Compile Update="Chess\BoardRepresentation\Square.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="CustomControls\panelLeaderboardEntry.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Update="Forms\Admin\formAdminMenu.cs">
       <SubType>Form</SubType>
     </Compile>

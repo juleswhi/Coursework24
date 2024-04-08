@@ -54,6 +54,7 @@ public partial class formMenu : Form, IContext
 
     private void pBoxProfile_Click(object sender, EventArgs e)
     {
+        // Stop game stops the thread so game stops playing in background
         MoveHelper.CurrentBoard?.StopGame();
         ActivateForm<formUserProfile>((_user!, USER));
     }
