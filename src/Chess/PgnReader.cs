@@ -239,10 +239,8 @@ public class PgnReader
         int _current = 0;
 
         var next = (int n = 1) => _current += n;
-        _ = () => str[_current++];
         var current = () =>
         {
-
             if (_current >= str.Length)
             {
                 return str[^1];
