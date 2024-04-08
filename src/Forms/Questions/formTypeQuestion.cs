@@ -63,7 +63,7 @@ public partial class formTypeQuestion : Form, IContext
     {
         if (OnAnswered is Action<bool, int> answer)
         {
-            var ans = txtBoxAnswer.Text == _question.Answer;
+            var ans = txtBoxAnswer.Text.ToLower().Contains(_question.Answer.ToLower());
             answer(ans, _question!.Rating);
         }
     }

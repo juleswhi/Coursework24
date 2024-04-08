@@ -104,6 +104,7 @@ partial class formCreateTypeQuestion
         // 
         // pBoxWhitePawn
         // 
+        pBoxWhitePawn.Image = WhitePawn;
         pBoxWhitePawn.Location = new Point(577, 24);
         pBoxWhitePawn.Name = "pBoxWhitePawn";
         pBoxWhitePawn.Size = new Size(51, 47);
@@ -113,6 +114,7 @@ partial class formCreateTypeQuestion
         // 
         // pBoxWhiteQueen
         // 
+        pBoxWhiteQueen.Image = WhiteQueen;
         pBoxWhiteQueen.Location = new Point(634, 78);
         pBoxWhiteQueen.Name = "pBoxWhiteQueen";
         pBoxWhiteQueen.Size = new Size(51, 47);
@@ -122,6 +124,7 @@ partial class formCreateTypeQuestion
         // 
         // pBoxWhiteRook
         // 
+        pBoxWhiteRook.Image = WhiteRook;
         pBoxWhiteRook.Location = new Point(577, 78);
         pBoxWhiteRook.Name = "pBoxWhiteRook";
         pBoxWhiteRook.Size = new Size(51, 47);
@@ -131,6 +134,7 @@ partial class formCreateTypeQuestion
         // 
         // pBoxWhiteBishop
         // 
+        pBoxWhiteBishop.Image = WhiteBishop;
         pBoxWhiteBishop.Location = new Point(689, 24);
         pBoxWhiteBishop.Name = "pBoxWhiteBishop";
         pBoxWhiteBishop.Size = new Size(51, 47);
@@ -140,6 +144,7 @@ partial class formCreateTypeQuestion
         // 
         // pBoxWhiteKnight
         // 
+        pBoxWhiteKnight.Image = WhiteKnight;
         pBoxWhiteKnight.Location = new Point(634, 24);
         pBoxWhiteKnight.Name = "pBoxWhiteKnight";
         pBoxWhiteKnight.Size = new Size(51, 47);
@@ -149,6 +154,7 @@ partial class formCreateTypeQuestion
         // 
         // pBoxWhiteKing
         // 
+        pBoxWhiteKing.Image = WhiteKing;
         pBoxWhiteKing.Location = new Point(689, 77);
         pBoxWhiteKing.Name = "pBoxWhiteKing";
         pBoxWhiteKing.Size = new Size(51, 47);
@@ -158,6 +164,7 @@ partial class formCreateTypeQuestion
         // 
         // pBoxBlackKing
         // 
+        pBoxBlackKing.Image = BlackKing;
         pBoxBlackKing.Location = new Point(691, 183);
         pBoxBlackKing.Name = "pBoxBlackKing";
         pBoxBlackKing.Size = new Size(51, 47);
@@ -167,6 +174,7 @@ partial class formCreateTypeQuestion
         // 
         // pBoxBlackQueen
         // 
+        pBoxBlackQueen.Image = BlackQueen;
         pBoxBlackQueen.Location = new Point(634, 184);
         pBoxBlackQueen.Name = "pBoxBlackQueen";
         pBoxBlackQueen.Size = new Size(51, 47);
@@ -176,6 +184,7 @@ partial class formCreateTypeQuestion
         // 
         // pBoxBlackRook
         // 
+        pBoxBlackRook.Image = BlackRook;
         pBoxBlackRook.Location = new Point(577, 184);
         pBoxBlackRook.Name = "pBoxBlackRook";
         pBoxBlackRook.Size = new Size(51, 47);
@@ -185,6 +194,7 @@ partial class formCreateTypeQuestion
         // 
         // pBoxBlackBishop
         // 
+        pBoxBlackBishop.Image = BlackBishop;
         pBoxBlackBishop.Location = new Point(689, 130);
         pBoxBlackBishop.Name = "pBoxBlackBishop";
         pBoxBlackBishop.Size = new Size(51, 47);
@@ -194,6 +204,7 @@ partial class formCreateTypeQuestion
         // 
         // pBoxBlackKnight
         // 
+        pBoxBlackKnight.Image = BlackKnight;
         pBoxBlackKnight.Location = new Point(634, 131);
         pBoxBlackKnight.Name = "pBoxBlackKnight";
         pBoxBlackKnight.Size = new Size(51, 47);
@@ -203,6 +214,7 @@ partial class formCreateTypeQuestion
         // 
         // pBoxBlackPawn
         // 
+        pBoxBlackPawn.Image = BlackPawn;
         pBoxBlackPawn.Location = new Point(577, 131);
         pBoxBlackPawn.Name = "pBoxBlackPawn";
         pBoxBlackPawn.Size = new Size(51, 47);
