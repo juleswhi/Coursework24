@@ -128,4 +128,14 @@ public partial class formAdminMenu : Form
             c.Write();
         }
     }
+
+    private void btnCreateTypeQuestion_Click(object sender, EventArgs e)
+    {
+        ActivateForm<formCreateTypeQuestion>();
+    }
+
+    private void btnViewTypeQuesion_Click(object sender, EventArgs e)
+    {
+        ActivateForm<formViewTypeQuestion>();
+    }
 }

@@ -15,6 +15,7 @@ public partial class formViewPuzzles : Form
         _puzzles = Puzzle.Puzzles;
 
         _board.Pieces = _puzzles[_puzzleIndex].Setup!.ToList();
+        _board.Invalidate();
     }
 
 
@@ -31,6 +32,7 @@ public partial class formViewPuzzles : Form
             _puzzleIndex = 0;
         }
         _board.Pieces = _puzzles[_puzzleIndex].Setup!.ToList();
+        _board.Invalidate();
     }
 
     private void btnPreviousPuzzle_Click(object sender, EventArgs e)
@@ -41,5 +43,6 @@ public partial class formViewPuzzles : Form
             _puzzleIndex = _puzzles.Count - 1;
         }
         _board.Pieces = _puzzles[_puzzleIndex].Setup!.ToList();
+        _board.Invalidate();
     }
 }

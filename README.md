@@ -47,5 +47,5 @@ Admin:
 - Password: `root`
 
 User:
-- Username: `jim`
+- Username: `jimmy`
 - Password: `Password1@`

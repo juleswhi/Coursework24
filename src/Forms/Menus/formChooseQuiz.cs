@@ -173,6 +173,11 @@ public partial class formChooseQuiz : Form, IContext
 
         puzzles.AddRange(questions);
 
+        TypeQuestion.ReadQuestions();
+        puzzles.AddRange(TypeQuestion.Questions!.Take(
+            TypeQuestion.Questions?.Count < 5 ? TypeQuestion.Questions.Count : 5
+            ));
+
         puzzles = puzzles.ToArray().AsSpan().Shuffle().ToList();
 
         int questionIndex = 0;
@@ -234,6 +239,14 @@ public partial class formChooseQuiz : Form, IContext
                     (onAnswer, ACTION)
                     );
             }
+            else if (puzzles[questionIndex] is TypeQuestion)
+            {
+                ActivateForm<formTypeQuestion>(
+                    ((puzzles[questionIndex++] as TypeQuestion)!, QUESTION),
+                    (questionIndex.ToString(), NUMBER),
+                    (onAnswer, ACTION)
+                    );
+            }
         };
 
         onAnswer(false, -1);
@@ -242,7 +255,6 @@ public partial class formChooseQuiz : Form, IContext
 
     private void btnTypingQuestions_Click(object sender, EventArgs e)
     {
-        Debug.Print($"HIT THE BUTTON FR");
         TypeQuestion.ReadQuestions();
         var questions = TypeQuestion.Questions;
 

@@ -45,6 +45,8 @@
             btnStrong = new Button();
             lblUserNotExist = new Label();
             lblPromoteYourself = new Label();
+            btnCreateTypeQuestion = new Button();
+            btnViewTypeQuesion = new Button();
             SuspendLayout();
             // 
             // btnViewPuzzles
@@ -52,9 +54,9 @@
             btnViewPuzzles.BackColor = Color.FromArgb(192, 255, 192);
             btnViewPuzzles.FlatStyle = FlatStyle.Flat;
             btnViewPuzzles.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
-            btnViewPuzzles.Location = new Point(17, 70);
+            btnViewPuzzles.Location = new Point(18, 155);
             btnViewPuzzles.Name = "btnViewPuzzles";
-            btnViewPuzzles.Size = new Size(283, 79);
+            btnViewPuzzles.Size = new Size(249, 79);
             btnViewPuzzles.TabIndex = 2;
             btnViewPuzzles.Text = "View All Puzzles";
             btnViewPuzzles.UseVisualStyleBackColor = false;
@@ -65,9 +67,9 @@
             btnViewQuestions.BackColor = Color.FromArgb(192, 255, 192);
             btnViewQuestions.FlatStyle = FlatStyle.Flat;
             btnViewQuestions.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
-            btnViewQuestions.Location = new Point(17, 155);
+            btnViewQuestions.Location = new Point(276, 155);
             btnViewQuestions.Name = "btnViewQuestions";
-            btnViewQuestions.Size = new Size(283, 79);
+            btnViewQuestions.Size = new Size(249, 79);
             btnViewQuestions.TabIndex = 3;
             btnViewQuestions.Text = "View All Questions";
             btnViewQuestions.UseVisualStyleBackColor = false;
@@ -98,9 +100,9 @@
             btnCreatePuzzles.BackColor = Color.FromArgb(192, 255, 192);
             btnCreatePuzzles.FlatStyle = FlatStyle.Flat;
             btnCreatePuzzles.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCreatePuzzles.Location = new Point(324, 70);
+            btnCreatePuzzles.Location = new Point(18, 70);
             btnCreatePuzzles.Name = "btnCreatePuzzles";
-            btnCreatePuzzles.Size = new Size(283, 79);
+            btnCreatePuzzles.Size = new Size(249, 79);
             btnCreatePuzzles.TabIndex = 11;
             btnCreatePuzzles.Text = "Create Puzzle";
             btnCreatePuzzles.UseVisualStyleBackColor = false;
@@ -111,9 +113,9 @@
             btnCreateQuestions.BackColor = Color.FromArgb(192, 255, 192);
             btnCreateQuestions.FlatStyle = FlatStyle.Flat;
             btnCreateQuestions.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCreateQuestions.Location = new Point(324, 155);
+            btnCreateQuestions.Location = new Point(276, 70);
             btnCreateQuestions.Name = "btnCreateQuestions";
-            btnCreateQuestions.Size = new Size(283, 79);
+            btnCreateQuestions.Size = new Size(249, 79);
             btnCreateQuestions.TabIndex = 12;
             btnCreateQuestions.Text = "Create Question";
             btnCreateQuestions.UseVisualStyleBackColor = false;
@@ -249,12 +251,40 @@
             lblPromoteYourself.TabIndex = 23;
             lblPromoteYourself.Text = "You cannot promote yourself";
             // 
+            // btnCreateTypeQuestion
+            // 
+            btnCreateTypeQuestion.BackColor = Color.FromArgb(192, 255, 192);
+            btnCreateTypeQuestion.FlatStyle = FlatStyle.Flat;
+            btnCreateTypeQuestion.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCreateTypeQuestion.Location = new Point(534, 70);
+            btnCreateTypeQuestion.Name = "btnCreateTypeQuestion";
+            btnCreateTypeQuestion.Size = new Size(249, 79);
+            btnCreateTypeQuestion.TabIndex = 24;
+            btnCreateTypeQuestion.Text = "Create Type Question";
+            btnCreateTypeQuestion.UseVisualStyleBackColor = false;
+            btnCreateTypeQuestion.Click += btnCreateTypeQuestion_Click;
+            // 
+            // btnViewTypeQuesion
+            // 
+            btnViewTypeQuesion.BackColor = Color.FromArgb(192, 255, 192);
+            btnViewTypeQuesion.FlatStyle = FlatStyle.Flat;
+            btnViewTypeQuesion.Font = new Font("JetBrains Mono", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point);
+            btnViewTypeQuesion.Location = new Point(534, 155);
+            btnViewTypeQuesion.Name = "btnViewTypeQuesion";
+            btnViewTypeQuesion.Size = new Size(249, 79);
+            btnViewTypeQuesion.TabIndex = 25;
+            btnViewTypeQuesion.Text = "View All Type Questions";
+            btnViewTypeQuesion.UseVisualStyleBackColor = false;
+            btnViewTypeQuesion.Click += btnViewTypeQuesion_Click;
+            // 
             // formAdminMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(800, 450);
+            Controls.Add(btnViewTypeQuesion);
+            Controls.Add(btnCreateTypeQuestion);
             Controls.Add(lblPromoteYourself);
             Controls.Add(lblUserNotExist);
             Controls.Add(btnStrong);
@@ -297,5 +327,7 @@
         private Button btnStrong;
         private Label lblUserNotExist;
         private Label lblPromoteYourself;
+        private Button btnCreateTypeQuestion;
+        private Button btnViewTypeQuesion;
     }
 }

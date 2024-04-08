@@ -32,6 +32,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ChessPieces.resx</DependentUpon>
     </Compile>
+    <Compile Update="Forms\Admin\formCreateTypeQuestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Admin\formViewTypeQuestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\ProfilePictures.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
