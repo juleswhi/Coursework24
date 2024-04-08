@@ -11,7 +11,7 @@ public partial class formSplashScreen : Form
         SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 
         // Set panel to double bufferd
-        typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+        _ = typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
         | BindingFlags.Instance | BindingFlags.NonPublic, null,
         pnlProgressBar, new object[] { true });
 

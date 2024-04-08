@@ -106,22 +106,22 @@ public class PgnReader
                 }
                 if (prop.PropertyType == typeof(string))
                 {
-                    prop.SetMethod?.Invoke(pgn, new object[] { (string)meta[i + 1].Data! });
+                    _ = (prop.SetMethod?.Invoke(pgn, new object[] { (string)meta[i + 1].Data! }));
                 }
                 else if (prop.PropertyType == typeof(DateTime?))
                 {
                     DateTime date = Convert.ToDateTime(meta[i + 1].Data);
-                    prop.SetMethod?.Invoke(pgn, new object[] { date });
+                    _ = (prop.SetMethod?.Invoke(pgn, new object[] { date }));
                 }
                 else if (prop.PropertyType == typeof(int?))
                 {
                     int num = Convert.ToInt32(meta[i + 1].Data);
-                    prop.SetMethod?.Invoke(pgn, new object[] { num });
+                    _ = (prop.SetMethod?.Invoke(pgn, new object[] { num }));
                 }
                 else
                 {
                     var data = Convert.ChangeType(meta[i + 1].Data, prop.PropertyType);
-                    prop.SetMethod?.Invoke(pgn, new object[] { data! });
+                    _ = (prop.SetMethod?.Invoke(pgn, new object[] { data! }));
                 }
             }
 
@@ -131,7 +131,7 @@ public class PgnReader
         return pgn;
     }
 
-    enum TokenType
+    private enum TokenType
     {
         KEY,
         VALUE,
@@ -142,7 +142,7 @@ public class PgnReader
         RIGHT_CURLY
     }
 
-    record struct Token(TokenType Type, object? Data)
+    private record struct Token(TokenType Type, object? Data)
     {
         public override string ToString()
         {
@@ -164,7 +164,7 @@ public class PgnReader
         };
 
         Type pgnType = typeof(PGN);
-        var props = pgnType.GetProperties();
+        _ = pgnType.GetProperties();
 
         for (; _current < str.Length;)
         {
@@ -185,11 +185,11 @@ public class PgnReader
                     {
 
                         StringBuilder sb = new();
-                        next(1);
+                        _ = next(1);
                         while (current() != '"')
                         {
-                            sb.Append(current());
-                            next(1);
+                            _ = sb.Append(current());
+                            _ = next(1);
                         }
 
                         yield return consume(
@@ -204,14 +204,14 @@ public class PgnReader
                     {
                         if (!char.IsLetterOrDigit(current()))
                         {
-                            next(1);
+                            _ = next(1);
                             break;
                         }
                         StringBuilder sb = new();
                         while (char.IsLetterOrDigit(current()))
                         {
-                            sb.Append(current());
-                            next(1);
+                            _ = sb.Append(current());
+                            _ = next(1);
                         }
 
                         yield return consume(
@@ -239,7 +239,7 @@ public class PgnReader
         int _current = 0;
 
         var next = (int n = 1) => _current += n;
-        var peek = () => str[_current++];
+        _ = () => str[_current++];
         var current = () =>
         {
 
@@ -256,7 +256,7 @@ public class PgnReader
             int referenceCount = 1;
             while (referenceCount != 0)
             {
-                next();
+                _ = next();
                 if (current() == skipper)
                 {
                     referenceCount++;
@@ -294,14 +294,14 @@ public class PgnReader
                         break;
 
                     case '$':
-                        next(2);
+                        _ = next(2);
                         break;
 
                     default:
                         {
                             if (char.IsNumber(current()) || current() == '.' || char.IsWhiteSpace(current()) || !char.IsLetter(current()))
                             {
-                                next();
+                                _ = next();
                                 break;
                             }
 
@@ -309,8 +309,8 @@ public class PgnReader
                             StringBuilder sb = new();
                             while (current() != ' ')
                             {
-                                sb.Append(current());
-                                next();
+                                _ = sb.Append(current());
+                                _ = next();
                             }
 
                             yield return consume(

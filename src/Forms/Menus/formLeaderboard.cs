@@ -14,7 +14,7 @@ public partial class formLeaderboard : Form
         // Grab panels and order based on specific tags
         List<Panel> panels = new();
         panels.AddRange(Controls.OfType<Panel>().First().Controls.OfType<Panel>());
-        panels.OrderBy(x => -int.Parse((string)x.Tag!));
+        _ = panels.OrderBy(x => -int.Parse((string)x.Tag!));
 
         // Sort users aswell
         List<User> users = SortbyType(Users, sortType).Take(panels.Count).ToList();

@@ -238,7 +238,7 @@ public static class ChessHelper
         {
             if (piece.Location.Rank == 9)
             {
-                Pieces.Remove(piece);
+                _ = Pieces.Remove(piece);
             }
         }
 

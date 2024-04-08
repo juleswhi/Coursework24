@@ -1,7 +1,6 @@
 ﻿using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
-using ChessMasterQuiz.Chess;
 
 namespace UserRepresentation;
 

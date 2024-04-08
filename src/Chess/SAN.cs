@@ -68,7 +68,7 @@ public class SAN : IEquatable<SAN>, IEquatable<Notation>
 
     public SAN(string str)
     {
-        From(str);
+        _ = From(str);
     }
 
     // Empty constructor

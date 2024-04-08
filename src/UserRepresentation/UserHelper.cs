@@ -7,7 +7,7 @@ namespace UserRepresentation;
 
 public static class UserHelper
 {
-    static readonly string _userpath = "users.json";
+    private static readonly string _userpath = "users.json";
     public static List<User> Users => ReadUsers();
 
     // get from file
@@ -38,7 +38,7 @@ public static class UserHelper
 
         if (users.Any(x => x.Username == user.Username))
         {
-            users.RemoveAll(x => x.Username == user.Username);
+            _ = users.RemoveAll(x => x.Username == user.Username);
         }
 
         users.Add(user);

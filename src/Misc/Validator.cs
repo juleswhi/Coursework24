@@ -5,7 +5,7 @@ using static ChessMasterQuiz.Misc.ValidationType;
 
 namespace ChessMasterQuiz.Misc;
 
-enum ValidationType
+internal enum ValidationType
 {
     EMAIL,
     USERNAME,
@@ -16,7 +16,7 @@ enum ValidationType
     GENDER
 }
 
-enum RequirementType
+internal enum RequirementType
 {
     LENGTH,
     SPECIALCHARACTERS,

@@ -45,7 +45,7 @@ public class Piece
     // Get rid of the piece
     public void Remove()
     {
-        MoveHelper.CurrentBoard?.Pieces.Remove(this);
+        _ = (MoveHelper.CurrentBoard?.Pieces.Remove(this));
     }
 
     // Pretty print the information ouht

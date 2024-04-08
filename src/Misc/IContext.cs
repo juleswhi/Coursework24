@@ -24,7 +24,7 @@ public record DataContextTag(object data, ContextTagType tag);
    The IContext interface allows the Context System 
    to ensure that the method is available 
  */
-interface IContext
+internal interface IContext
 {
     // DCT is an alias for DataContextTag 
     public void UseContext(IEnumerable<DCT> context);

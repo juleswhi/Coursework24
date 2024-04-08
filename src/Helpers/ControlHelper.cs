@@ -97,7 +97,7 @@ public static class ControlHelper
         // If the method exists | The form impl the interface
         if (method is not null && typeof(IContext).IsAssignableFrom(typeof(T)))
         {
-            method!.Invoke(instance, new object[] { context });
+            _ = method!.Invoke(instance, new object[] { context });
         }
 
         // WinFormsScraper.WinFormsScraper.Scrape(instance);

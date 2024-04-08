@@ -2,9 +2,9 @@
 
 public partial class formViewQuestions : Form
 {
-    readonly List<Label> _answers = new();
-    readonly List<TextQuestion> questions = new();
-    int _index = 0;
+    private readonly List<Label> _answers = new();
+    private readonly List<TextQuestion> questions = new();
+    private int _index = 0;
     public formViewQuestions()
     {
         InitializeComponent();

@@ -32,9 +32,9 @@ public static class QonConvert
 
         // Improvement to be made:
         // Use reflection to get types at runtime, loop through them and append to stringBuilder
-        stringBuilder.Append($"Type:\"{(int)question.Type}\",");
-        stringBuilder.Append($"Name:\"{question.Name}\",");
-        stringBuilder.Append($"Rating:\"{question.Rating}\",");
+        _ = stringBuilder.Append($"Type:\"{(int)question.Type}\",");
+        _ = stringBuilder.Append($"Name:\"{question.Name}\",");
+        _ = stringBuilder.Append($"Rating:\"{question.Rating}\",");
 
         // If the question is a TextQuestion:
         // Loop through potential answers and append them to stringBuilder 
@@ -46,15 +46,15 @@ public static class QonConvert
         // Once again use reflection 
         if (question is TextQuestion)
         {
-            stringBuilder.Append("{");
+            _ = stringBuilder.Append("{");
             TextQuestion tq = (question as TextQuestion)!;
-            stringBuilder.Append($"Q:\"{tq.Q}\",");
+            _ = stringBuilder.Append($"Q:\"{tq.Q}\",");
             for (int i = 0; i < tq.A!.Answers.Count; i++)
             {
-                stringBuilder.Append($"Answer{i + 1}:\"{tq.A.Answers[i]}\",");
+                _ = stringBuilder.Append($"Answer{i + 1}:\"{tq.A.Answers[i]}\",");
             }
-            stringBuilder.Append($"Index:\"{tq.A.Index}\"");
-            stringBuilder.Append("}");
+            _ = stringBuilder.Append($"Index:\"{tq.A.Index}\"");
+            _ = stringBuilder.Append("}");
         }
 
         // Return the final build string
@@ -144,9 +144,10 @@ file static class Lexer
 {
     // This is a pointer to the current char in the string 
     // ( The char to be evaluated ) 
-    static int _current;
+    private static int _current;
+
     // The list of `Tokens` which will be returned to the consumer
-    static List<Token> _tokens = new();
+    private static List<Token> _tokens = new();
 
     // These methods deal with navigating the string
 
@@ -157,28 +158,28 @@ file static class Lexer
     // The same concept is used here
 
     // Next is used to iterate to the next char ( represented by `_current` ) 
-    static void Next(int step = 1)
+    private static void Next(int step = 1)
     {
         _current += step;
     }
 
     // The `Peek` method is used to look at the next char in the str
     // w/o having to increment the _current variable
-    static char Peek(ReadOnlySpan<char> str)
+    private static char Peek(ReadOnlySpan<char> str)
     {
         return str[_current + 1];
     }
 
     // The `Current` method is ued to look at the current char in the str 
     // Perhaps the most important helper method here
-    static char Current(ReadOnlySpan<char> str)
+    private static char Current(ReadOnlySpan<char> str)
     {
         return str[_current];
     }
 
     // The `Consume` method adds the `token` to the list, 
     // and moves onto the next char to be evaluated
-    static void Consume(Token token)
+    private static void Consume(Token token)
     {
         _tokens.Add(token);
         _current++;
@@ -233,7 +234,7 @@ file static class Lexer
                         // While in the string, append the current char to the StringBuilder 
                         while (Current(str) != '"')
                         {
-                            sb.Append(Current(str));
+                            _ = sb.Append(Current(str));
                             // Jump to next char in the string
                             Next();
                         }
@@ -253,7 +254,7 @@ file static class Lexer
                         StringBuilder sb = new();
                         while (IsLetterOrDigit(Current(str)))
                         {
-                            sb.Append(Current(str));
+                            _ = sb.Append(Current(str));
                             Next();
                         }
 
@@ -278,32 +279,31 @@ file static class Lexer
 // And converts them into useable C# objects.
 file static class Parser
 {
-    static readonly List<Type> ValidTypes = new()
+    private static readonly List<Type> ValidTypes = new()
     {
         typeof(Question),
         typeof(TextQuestion),
         typeof(Answer)
     };
+    private static int _current;
+    private static List<Token> _tokens = new();
 
-    static int _current;
-    static List<Token> _tokens = new();
-
-    static void Next(int step = 1)
+    private static void Next(int step = 1)
     {
         _current += step;
     }
 
-    static Token Peek()
+    private static Token Peek()
     {
         return _tokens[_current < _tokens.Count ? _current + 1 : _current];
     }
 
-    static Token Current()
+    private static Token Current()
     {
         return _tokens[_current];
     }
 
-    static Token Previous()
+    private static Token Previous()
     {
         return _tokens[_current > 0 ? _current - 1 : _current];
     }
@@ -403,7 +403,7 @@ file static class Parser
                         // If the property is an enum, then a explicit conversion from stirng -> enum Type is needed
                         if (property!.PropertyType.IsEnum)
                         {
-                            Enum.TryParse(property.PropertyType, (string)Current().Data!, out var output);
+                            _ = Enum.TryParse(property.PropertyType, (string)Current().Data!, out var output);
                             property.SetValue(question, output);
                         }
                         else

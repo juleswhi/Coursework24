@@ -90,7 +90,7 @@ public partial class formAdminMenu : Form
 
         if (user.Username == ActiveUser?.Username)
         {
-            MessageBox.Show($"You cannot demote yourself");
+            _ = MessageBox.Show($"You cannot demote yourself");
             return;
         }
 
